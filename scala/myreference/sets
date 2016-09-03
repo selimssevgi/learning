@@ -1,0 +1,7 @@
+- There are both mutable and immutable sets in scala.
+
+- By default, scala gives you immutable version. If u want otherwise, u need to
+  import mutable set.
+
+> var jetSet = Set("Boeing", "Airbus",)
+> jetSet += "Lear"

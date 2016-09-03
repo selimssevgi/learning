@@ -1,0 +1,27 @@
+- Scala list are immutable. the values of its elements cannot be changed.
+- operations dont change the values or list, but creates and returns a new list
+
+> val oneTwoThree = List(1, 2, 3)
+
+- ::: list concationation operator
+  > val oneTwo = List(1, 2)
+  > val threeFour = List(3, 4)
+  > val OneTwoThreeFour = oneTwo ::: threeFour
+
+- :: cons operator. prepends a new element to the beginning of an existing list
+  > val twoThree = List(2, 3)
+  > val oneTwoThree = 1 :: twoThree
+
+-! If a operator ends with colon, it is called on its right operand.
+  > thoTree.::(1)
+
+- emtpy list
+  > val emptyList = Nil
+  > val emptyList = List()
+
+- Another way to create a list
+  > val oneTwoThree = 1 :: 2 :: 3 :: Nil
+
+- List doesnt offer an append operation. Cus it takes more time to add an element
+  to the end, prepending an element is contant time. Either call reverse on a list
+  or use ListBuffer, which is mutable list.

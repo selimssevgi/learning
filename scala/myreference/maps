@@ -1,0 +1,4 @@
+- The structure is same as sets. Mutable and immutable. Default version is immutable.
+
+> val romanNumeral = Map(1 -> "I", 2 -> "II", 3 -> "IV")
+> println(romanNumeral(3))

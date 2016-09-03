@@ -1,0 +1,12 @@
+- Scala has two kinds of variables. var and val
+
+- val : is for value. similar to final variable in java. 
+        a val can never be reassigned.
+
+  > val msg = "Hello World!"
+
+- var : is for variable. A var can be reassigned throughtput its lifetime
+
+- in Scala, variables types are specify after variable name, separated by a colon.
+
+  > val msg: String = "Hello World!"

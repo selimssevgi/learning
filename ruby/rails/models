@@ -1,0 +1,6 @@
+# Models in Rails use a singular name,
+  and their corresponding database tables use a plural name.
+  Rails provides a generator for creating models
+
+$ rails generate model Article title:string text:text
+rails g model comment user:references movie:references comment:text 

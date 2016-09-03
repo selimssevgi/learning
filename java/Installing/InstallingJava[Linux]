@@ -1,0 +1,19 @@
+Depoyu Ekle : 
+
+sudo add-apt-repository ppa:webupd8team/java 
+
+Depoyu Güncelle : 
+
+sudo apt-get update 
+
+JDK'yı Kur : 
+
+sudo apt-get install oracle-java7-installer
+
+JDK'yı Kaldır : 
+
+sudo apt-get remove oracle-java7-installer
+
+JAVA'yı test et : 
+
+http://www.java.com/en/download/testjava.jsp

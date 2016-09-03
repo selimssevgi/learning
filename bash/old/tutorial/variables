@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Üsteki kısım yazacagimiz script yorumlanınca(interpretering) hangi interpreter in kullanacagını belirtmek icin.
+
+# bash Scripting de değiskenlerin(variables) kullanımı : 
+
+
+		#########
+
+#		Degiskenlere deger atandigi iki tarafta atama işaretine bitişik yazilmalidir1 / degiskenAdi="degiskenDegeri"
+#		Degiskenlerin tuttugu degeri kullanmak icin $ operatoru ile kullanıdır.  / $degiskenAdi
+#		Degiskenlerin ilk degerleri olmak zorunda degildir. / degiskenAdi= veya degiskenAdi=""
+
+		#########
+
+
+# Degisken tanimlama : 
+degiskenIsmi="degiskenDegeri"
+
+# Degiskenlerin kullanımı : 
+echo $degiskenIsmi

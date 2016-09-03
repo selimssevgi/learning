@@ -1,0 +1,39 @@
+Shell provides features for integer arithmetic.
+
+(( expression )) 
+
+to get the result start with $
+
+(( e++ )) 
+(( e-- )) 
+(( e-=5 )) 
+
+# Notice that whitespace is ignored:
+
+echo $((2+2))
+4
+$ echo $(( 2+2 ))
+4
+$ echo $(( 2 + 2 ))
+4
+
+!! for floating point numbers use bc command
+f=$(echo 1/3 | bc -l)
+
+first_num=0
+second_num=0
+
+echo -n "Enter the first number --> "
+read first_num
+echo -n "Enter the second number -> "
+read second_num
+
+echo "first number + second number = $((first_num + second_num))"
+echo "first number - second number = $((first_num - second_num))"
+echo "first number * second number = $((first_num * second_num))"
+echo "first number / second number = $((first_num / second_num))"
+echo "first number % second number = $((first_num % second_num))"
+echo "first number raised to the"
+echo "power of the second number   = $((first_num ** second_num))"
+       
+# Notice how the leading "$" is not needed to reference variables inside the arithmetic expression such as "first_num + second_num".

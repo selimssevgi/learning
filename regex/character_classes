@@ -1,0 +1,13 @@
+
+!! Bracket expression !!
+Is a list of characters enclosed by "[" and "]".
+It matches any single character in that list;
+if the first character of the list is the caret, "^", then it matches any character NOT in the list.
+  
+  For example, the regular expression "[0123456789]" matches any single digit.
+
+!! range expression !! 
+consists of two characters separated by a hypen
+
+[a-d] -> [abcd]
+

@@ -1,0 +1,61 @@
+#!/bin/bash
+
+# program to print a text file with header and footers
+
+# usage : printable file
+
+# Create a temporary file name that gives preference
+# to the user's local tmp directory and has a name
+# that is resistant to "temp race attacks"
+
+if [ -d "~/tmp" ]; then
+	TEMP_DIR=~/tmp
+else
+	TEMP_DIR=/temp
+fi
+
+TEMP_FILE=$TEMP_DIR/printable.$$.$RANDOM
+PROGNAME=$(basename $0)
+
+function usage
+{
+	# Display usage message on standard error
+	echo "Usage : $PROGNAME file" 1>&2
+}
+
+function cleanUp
+{
+	# Perform program exit housekeeping	
+	# Optionall accepts and exit status
+	rm -f $TEMP_FILE
+	exit $1
+}
+
+function errorExit 
+{
+	# Display error message and exit
+	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1>&2
+	cleanUp 1 # Basarısız oldugu ıcın 1 gonderıyoruz.
+}
+
+trap cleanUp SIGHUP SIGINT SIGTERM
+
+if [ $# != "1" ]; then 
+	usage # function
+	errorExit "One file to print must be specified."
+fi
+
+if [ ! -f "$1" ]; then
+	errorExit "File $1 cannot be read"
+fi
+
+pr $1 > $TEMP_FILE || errorExit "Cannot format file"
+
+echo -n "Print file? [y/s] : "
+read 
+
+if [ "$REPLY" = "y" ]; then
+	lpr $TEMP_FILE || errorExit "Cannot print file"
+fi
+
+cleanUP

@@ -1,0 +1,40 @@
+sed is a stream editor that lets you quickly edit files 
+or streams using pattern matching and replacements.
+
+By default, the results of any edits we make to a source file,
+or input stream, will be sent to STDOUT, the standard output.
+The original file will be unaffected by the edits.
+
+sed "s/regexp/replacement/" <file> # use quotes ti escape character from shell
+
+sed "s/[aeiou]/*/" <file> # replace all vowels and replace them with *
+
+sed "s/[aeiou]/*/g" <file> # global replace
+
+sed "s/cha/foo/2" <file> # nth replace. replace every second cha with foo
+
+sed -i "s/cha/foo/2" <file> # editin in places. save edits to the file.
+
+sed -i.tmp "s/(name)/Mark/" file.txt # cp file.txt file.txt.temp. edits are in file.txt
+
+sed "s/happy/Merry/i" <file> # case insensitive search
+
+sed "/cha/s/./*/g" <file> # find lines matches with cha. then replace all the line with *
+
+sed 's/[aeiou]/\u&/g' <file> # make all vowels uppercase. & represent a match from the search part
+
+sed 's/[A-Z]/\l&/g' <file> # all uppercase to lowercase
+
+sed -n "s/(name)/Mark/" <file> # suppress the default output of sed
+
+sed -n "s/(name)/Mark/p" <file> # print only the changes 
+
+sed -n "s/(name)/Mark/pw birthday2.txt" birthday.txt # print modified line to birthday2.txt file
+
+sed -n '1~2p' birthday.txt # print starting at line 1 print every 2 line
+
+sed "/(name)/d" <file> # delete matching lines
+
+sed 's/<[^>]*>//g' example.html | sed '/^$/d' # strip out html tags and remove blank lines
+
+sed 's/<[^>]*>//g;/^$/d' example.html # combined sed command, slightly faster than above 

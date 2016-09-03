@@ -1,0 +1,107 @@
+C Dili - 6. Konu
+
+================================================================
+
+#define BASLA  0  /* Dongunun baslangic noktasi */
+#define BITIR  9  /* Dongunun bitis noktasi     */
+#define MAX(A,B)  ((A)>(B)?(A):(B))  /* Max makro tanimlanmasi */
+#define MIN(A,B)  ((A)>(B)?(B):(A))  /* Min makro tanimlanmasi */ 
+
+main()
+{
+int index,mn,mx;
+int sayac  = 5;
+
+   for (index = BASLA;index <= BITIR;index++) {
+      mx = MAX(index,sayac);
+      mn = MIN(index,sayac);
+      printf("Max simdi %d ve min de %d ..\n",mx,mn);
+   }
+}
+
+================================================================
+
+Bu programda, ilk defa define lara ve makrolarla tanisacaksiniz. Ilk dort
+satirdaki "#define" sozcuklerine dikkat edin. Butun makrolar ve define'lar
+bu sekilde baslar. Derleme baslamadan, on-derleyici (preprocessor) bu
+tanimlari alir, ve programda bu sembolleri gercek degerleri ile
+degistirir. Ornegin, BASLA sembolunu heryerde sifir ile degistirir.
+Derleyicinin kendisi, bu BASLA yada BITIR sembollerini gormez bile.
+
+Boyle ufak bir programda bu sekilde semboller tanimlamak luzumsuzdur,
+fakat ikibin satirlik bir programda, yirmiyedi yerde BASLA olsa idi,
+sayede #define'i degistirmek, programdaki rakamlari degistirmekten daha
+kolay olurdu. 
+
+Ayni sekilde on-derleyici, BITIS sembolu gordugu heryere 9 rakamini
+koyar. 
+
+C de alisilmis bir teknik de, BASLA yada BITIR gibi sembolik sabitlerin
+buyuk harfle, ve degisken isimlerinin de kucuk harfle yazilmasidir. 
+
+MAKRO NEDIR ?
+
+Makro, bir #define satirindan baska birsey degildir. Fakat icinde islemler
+yapabildigi icin, ona ozel bir isim verilmistir. Ornegin ucuncu satirda,
+iki rakamin hangisi buyukse onu donduren MAX isimli bir makro
+tanimliyoruz. Bundan sonra on-derleyici ne zaman MAX termini ve arkasindan
+parantezi gorurse, bu parantezlerin arasinda iki tane deger bulacagini
+farz eder, ve tanimda bulunan deyimi, buraya koyar.  Ornegin, onikinci
+satira gelindiginde, "A" yerine "index" ve "B" yerine de "sayac" konur.
+
+Ayni sekilde "MIN" isimli makro da kendisine gecirilen iki rakamin
+hangisi daha kucukse, o degeri dondurur. 
+
+Bu makrolarda bir suru fazlalik parantez goreceksiniz. Bunlarin nedeni,
+bir sonraki programda anlasilacak..
+
+YALNIS BIR MAKRO
+
+================================================================
+
+
+#define HATALI(A)   A*A*A      /* Kup icin hatali makro */
+#define KUP(A)    (A)*(A)*(A)  /* Dogusu ...            */
+#define KARE(A)    (A)*(A)     /* Karesi icin dogru makro */
+#define START 1
+#define STOP  9
+
+main()
+{
+int i,offset;
+
+   offset = 5;
+
+   for (i = START;i <= STOP;i++) {
+      printf("%3d in karesi %4d dir, ve kubu ise %6d dir..\n",
+              i+offset,KARE(i+offset),KUP(i+offset));
+
+      printf("%3d in HATALIsi ise %6d dir.\n",i+offset,HATALI(i+offset));
+   }
+}
+
+================================================================
+
+Ilk satira baktiginiza, HATALI isimli makronun bir rakamin kubunu
+aldigini goruyoruz. Gercektende, bu makro bazen dogru calismaktadir.
+
+Programin kendisinde,i+offset 'in  KUP unun hesaplandigi yeri
+inceleyelim. Sayet i 1 ise, offset de 5 olduguna gore, 1+5 = 6 olacaktir.
+KUP isimli makroyu kullanirken, degerler:
+
+	(1+5)*(1+5)*(1+5) = 6*6*6 = 216
+	
+olacaktir. Halbuki, HATALI yi kullanirsak, carpmanin onceligi, toplamadan
+fazla oldugundan, degerleri:
+
+	1+5*1+5*1+5 = 1+5+5+5 = 16
+	
+seklinde buluyoruz. Yani, parantezler, degiskenleri dogru bir sekilde
+birbirinden ayrimak icin gereklidir. 
+
+Programin gerisi basittir, ve sizin incelemenize birakilmistir.. 
+
+ODEV:
+
+1. 7 den -5 e dogru sayan bir program yaziniz.
+

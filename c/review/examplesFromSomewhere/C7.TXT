@@ -1,0 +1,307 @@
+C Dili - 7. Konu
+
+KELIME KATARI (STRING) NEDIR?
+
+Bir katar, genellikle harflerden olusan karakterler dizisidir. Ciktinizin
+guzel ve manali gorunmesi icin, icinde isimler ve adresler olabilmesi
+icin, programlarinizin katarlar kullanmasi sarttir. C dilinde tam tanimi,
+"char" tipi bilgilerin, NULL karakter (yani sifir) ile sonlandirilmasidir.
+
+C bir katari karsilastiracagi, kopyalayacagi yada ekrana yansitacagi
+zaman, bunlari gerceklestiren fonksiyonlar, NULL gorunene dek bu islemi
+yapmak uzere programlanmistir.
+
+ARRAY (dizi) NEDIR?
+
+dizi, ayni tip verilerin birbiri arkasina tanimlanmasidir. Kelime katari,
+bir cins dizidir. 
+
+CHRSTRG.C:
+================================================================
+
+main()
+{
+char isim[7];       /* Bir karakter dizisi tanimlayalim */
+
+   isim[0] = 'T';
+   isim[1] = 'u';
+   isim[2] = 'r';
+   isim[3] = 'g';
+   isim[4] = 'u';
+   isim[5] = 't';
+   isim[6] = 0;     /* Bos karakter - katarin sonu  */
+
+   printf("Isim %s dur. \n",isim);
+   printf("Icinden bir karakter: %c\n",isim[2]);
+   printf("Ismin bir parcasi: %s \n",&isim[3]);
+}
+
+================================================================
+
+Bu programda, ilk once, "char" tipi bir tanimlama goruyoruz. Koseli
+parantezler icinde, kac hanelik bir dizi tanimlanacagini belirtiyoruz. C
+dilinde butun diziler sifirdan basladigi icin, bu tanimlama ile
+kullanabilecegimiz en yuksek index degeri 6 dir. 
+
+KATAR NASIL KULLANILIR
+
+Demek ki, "isim" degiskeni, icinde 7 tane karakter tutabilir. Fakat en son
+karakterin sifir olmasi zorunlugu oldugu icin, kullanilabilecek olan alan
+6 karakterliktir. Bu katarin icine manali birsey yuklemek icin, yedi tane
+komut veriyoruz - her biri, katara bir karakter atamaktadir. En sonunda
+da, katarin sonunu belirten sifir rakamini koyuyoruz. (Bir "#define" ile
+NULL karakteri, programin basinda sifir olarak tanimlayabiliriz.)
+
+printf komutundaki %s isareti, printf'e "isim" isimli katardan, sifira
+rastlayincaya kadar ekrana yazmasini belirtir. Dikkat etmeniz gereken bir
+nokta, "isim" degiskeninin indexinin yazilmasinin gerekmedigidir.
+
+KATARIN BIR KISMININ YAZILMASI
+
+Ikinci printf komutu ise %c ile, katarin icinden sadece bir karakter
+(harf) yazilmasini gosterir. Istedigimiz karakterin index numarasini da,
+"isim" degiskeninin yanina, koseli parantezler arasinda gosterebiliriz. 
+
+Son printf komutunda ise, katarin 4. karakterinden itibaren yazmanin bir
+ornegidir. "isim" degiskeninin onundeki & (ampersand) isareti, isim[3]'un
+hafizada saklandigi adresin printf'e gecirilmesini belirtir. Adresleri 8.
+konuda gorecegiz, fakat ufak bir ornek ile size bizleri nelerin
+bekledigini gostermek istedim.
+
+BAZI KATAR FONKSIYONLARI
+
+KATAR.C
+================================================================
+
+main()
+{
+char isim1[12],isim2[12],karisik[25];
+char baslik[20];
+
+   strcpy(isim1,"Rosalinda");
+   strcpy(isim2,"Zeke");
+   strcpy(baslik,"Bu bir basliktir.");
+
+   printf("     %s\n\n",baslik);
+   printf("isim 1:  %s \n",isim1);
+   printf("isim 2:  %s \n",isim2);
+
+   if(strcmp(isim1,isim2)>0)  /* sayet isim1 > isim2 ise, 1 dondurur */
+      strcpy(karisik,isim1);
+   else
+      strcpy(karisik,isim2);
+
+   printf("Alfabetik olarak en buyuk isim %s dir.\n",karisik);
+
+   strcpy(karisik,isim1);
+   strcat(karisik,"  ");
+   strcat(karisik,isim2);
+   printf("Iki isim birden %s\n",karisik);
+}
+================================================================
+Ilk once 4 tane katar tanimliyoruz. Daha sonra, "strcpy" isimli cok pratik
+bir fonksiyona geliyoruz. Yaptigi is, bir katari, bir digerine, ta ki
+sifir bulunana kadar kopyalamak.  Hangi katarin hangisine kopyalancagini
+hatirlamak icin, bir atama komutunu dusunun ("x=23" gibi). Veri,
+sagdakinden, soldakine kopyalanir. Bu komutun yapilmasindan sonra, isim1
+in icinde, "Rosalinda" olacaktir - den-densiz olarak.  Den-denler,
+derleyicinin sizin bir katar tanimladiginizi anlamasi icin gereklidir. 
+
+KATARLARIN ALFABETIK OLARAK SIRAYA KONMASI
+
+Ilginizi cekebilecek diger bir fonksiyonda, "strcmp" dur. Sayet kendisine
+gecirilen birinci katar ikinciden daha buyukse, 1 dondurur, ayni ise 0, ve
+ikinci daha buyukse -1 dondurur. "Zeke" katarinin kazanmasi, sizi herhalde
+sasirtmaz. Burada katarin boyu onemli degildir, sadece icindeki
+karakterler. Ayrica harflerin buyuk yada kucuk harf olmasi da fark
+ettirir. C de bir katarin butun harflerini kucuk yada buyuge ceviren
+fonksiyonlar da vardir. Bunlari daha ileri kullanacagiz. 
+
+KATARLARI BIRBIRINE EKLEMEK
+
+En son satirda, "strcat" isimli yeni bir fonksiyon goreceksiniz. Gorevi,
+bir katarin sonuna diger katari eklemektir. Bunu yaparken NULL karakterin
+de yerli yerinde olmasini saglar. Burada, "isim1", "karisik" 'a
+kopyalanir, daha sonra "karisik" a iki bosluk ve "isim2" eklenir. 
+
+Katarlar zor degildir, ve son derece faydalidirlar. Onlari kullanmayi
+iyice ogrenmenizde fayda vardir. 
+
+
+BIR TAMSAYI DIZISI
+
+INTDIZIN.C:
+================================================================
+main()
+{
+int degerler[12];
+int index;
+
+   for (index = 0;index < 12;index++)  
+      degerler[index] = 2 * (index + 4);
+
+   for (index = 0;index < 12;index++)
+      printf("Index = %2d deki degeri %3d dir..\n",index,degerler[index]);
+
+}
+================================================================
+
+Bu programda, bir tamsayi dizisi tanimliyoruz. Gordugunuz gibi, ayni katar
+tanimlama gibi.. Bu sayede, index degiskeni haric oniki tane degiskenimiz
+oluyor. Bu degiskenlerin isimleri "degerler[0]" , "degerler[1]" ,vs. dir.
+Ilk "for" dongusunde, bunlara deger atiyoruz, ikincisi ise, index
+degiskeni ve "degerler" dizisinin icindekileri ekrana yaziyor. 
+
+BIR KAYAR NOKTA DIZINI
+
+BUYUKDIZ.C:
+================================================================
+char isim1[] = "Birinci Program basligi";
+
+main()
+{
+int index;
+int ivir[12];
+float tuhaf[12];
+static char isim2[] = "Ikinci Program Basligi";
+
+   for (index = 0;index < 12;index++) {
+      ivir[index] = index + 10;
+      tuhaf[index] = 12.0 * (index + 7);
+   }
+
+   printf("%s\n",isim1);
+   printf("%s\n\n",isim2);
+   for (index = 0;index < 12;index++)
+      printf("%5d %5d %10.3f\n",index,ivir[index],tuhaf[index]);
+}
+================================================================
+
+Burada, "float" olarak tanimli bir kayar nokta dizisi goruyorsunuz.
+Ayrica bu program, katarlara nasil baslangic degeri atanabilecegini
+gosteriyor. Koseli parantezlerin icini bos birakarak, derleyicinin o
+veriyi saklamak icin yeteri kadar yer ayarlamasini sagladik. Programin
+icinde, bir katar daha ilk degerini veriyoruz. Burada onune "static"
+koymak zorunlugumuz var. Baska yeni birsey yok bu programda. Degiskenler
+rastgele degerlere atanir, ve sonra da bu degerler ekrana yazdirilir. 
+
+
+BIR FONKSIYONDAN DEGER DONDURME
+
+GERIDOND.C:
+================================================================
+main()
+{
+int index;
+int matrix[20];
+
+   for (index = 0;index < 20;index++)              /* veriyi uretelim */
+      matrix[index] = index + 1;
+
+   for (index = 0;index < 5;index++)         /* orjinal veriyi, ekrana. */
+      printf("Baslangic   matrix[%d] = %d\n",index,matrix[index]);
+
+   yapbirsey(matrix);              /* fonksiyona gidip, deger degistirme */
+
+   for (index = 0;index < 5;index++)       /* degismis matrix i yazalim  */
+      printf("Geri donen  matrix[%d] = %d\n",index,matrix[index]);
+} 
+
+yapbirsey(list)                 /* Veri donusunu gosterir */
+int list[];
+{
+int i;
+
+   for (i = 0;i < 5;i++)                   /* print original matrix */ 
+      printf("Onceki  matrix[%d] = %d\n",i,list[i]);
+
+   for (i = 0;i < 20;i++)                   /* add 10 to all values */
+      list[i] += 10;
+
+   for (i = 0;i < 5;i++)                   /* print modified matrix */
+      printf("Sonraki matrix[%d] = %d\n",i,list[i]);
+}
+================================================================
+
+Bir fonksiyondan deger dondurmenin bir yolu da, diziler kullanmaktir. 
+Buradam 20 hanelik bir dizi tanimladiktan sonra, icine degerler atiyoruz,
+bu degerlerin ilk besini ekrana yazdiktan sonra, "yapbirsey" isimli
+fonksiyona atliyoruz. Burada goreceginiz gibi, bu fonksiyon "matrix"
+isimli diziye "list" demeyi tercih ediyor. Fonksiyona, ne cins bir dizi
+gececegini bildirmek icin, "int" olarak "list"i tanimliyoruz. Fonksiyona
+kac elemanlik bir dizi gecegini soylememize luzum yok, fakat istenirse
+belirtilebilir. Bu nedenle bos koseli parantezler kullaniyoruz. 
+
+Bu fonksiyon da, kendisine gecen degerleri gosterdikten sonra, bu
+degerlere 10 ekliyor, ve yeni degerleri gosterip, ana programa geri
+donuyor. Ana programda goruyoruz ki, fonksiyonun yaptigi degisiklikler,
+"matrix" degerlerini de degistirmis. 
+
+Dizilerin, normal degiskenlerin aksine, fonksiyondaki degerleri degisince,
+cagiran programdaki dizinin degerlerinin degismesini garipsiyebilirsiniz.
+Pointerlar konusuna gelince butun bunlar daha manali olacaktir. 
+
+BIRDEN FAZLA BOYUTLU DIZILER
+
+COKLUDIZ.C:
+================================================================
+main()
+{
+int i,j;
+int buyuk[8][8],dev[25][12];
+
+   for (i = 0;i < 8;i++)
+      for (j = 0;j < 8;j++)
+         buyuk[i][j] = i * j;       /* Bu bir carpim tablosudur */
+
+   for (i = 0;i < 25;i++)
+      for (j = 0;j < 12;j++)
+         dev[i][j] = i + j;     /* Bu da bir toplama tablosudur */
+
+   buyuk[2][6] = dev[24][10]*22;
+   buyuk[2][2] = 5;
+   buyuk[buyuk[2][2]][buyuk[2][2]] = 177;  /* bu,  buyuk[5][5] = 177; demek */
+
+   for (i = 0;i < 8;i++) {
+      for (j = 0;j < 8;j++)
+         printf("%5d ",buyuk[i][j]);
+      printf("\n");               /* Her i nin degeri artinca, bir RETURN */
+   }
+}
+================================================================
+
+Burada iki tane iki boyutlu dizi kullaniyoruz. "buyuk" adli 8 e 8 lik
+dizinin elemanlari [0][0] dan [7][7] ye kadar, toplam 64 tanedir. Diger
+tanimli "dev" dizi ise, kare degildir, fakat dizinin kare olmasinin sart
+olmadigini gosteren bir ornektir. 
+
+Iki dizi de biri carpim tablosu, digeri de toplama tablosu ile doldurulur.
+
+Dizi elemanlarinin tek tek degistirilebilecegini gostermek icin, once
+"buyuk" un elemanlarinda birine, "dev" in bir elemani ile, 22 ile
+carpildiktan sonra atanir. Ikinci atamada ise, "buyuk[2][2]" elemani 5
+degerine atanir. Herhangi bir islemin index olarak kullanilabilecegini
+gosteren ucuncu atama ise, aslinda "big[5][5] = 177;" dir.
+
+ODEVLER
+
+1. Herbiri yaklasik 6 karakter uzunlugunda uc kisa katarin icine "strcpy"
+ile iclerine "bir", "iki" ve "dort" kelimelerini kopyalayan bir program
+yazin. Daha sonra, bu katarlari, daha buyuk bir katarin icine, uc kelimeyi
+bir araya getirerek yerlestirin. Cikan sonucu on kere ekrana yazdirin.
+
+2. Herbiri 10 elemanli olan "dizi1" ve "dizi2" isimli iki tamsayi dizisi
+tanimlayin, ve iclerine bir dongu ile, ivir zivir bilgi doldurun. Daha
+sonra her bir elemanini, ayni boydaki bir baska diziye ekleyin. Bu cikan
+sonucu da "diziler" isimli 3. bir diziye atayin. Sonuclari ekrana
+yazdirin: 
+
+1   2  +  10  = 12
+2   4  +  20  = 34
+3   6  +  30  = 36   gibi..
+
+Ipucu: printf komutu soyle gorunecek:
+    printf("%4d %4d + %4d = %4d\n",index,dizi1[index],dizi2[index],
+            diziler[index]);
+    
+

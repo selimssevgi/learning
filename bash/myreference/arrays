@@ -1,0 +1,58 @@
+
+a=() # array definetion
+
+declare -a arrayname=(element1 element2)
+
+
+b=("apple" "banana" "cherry") # no comma!
+
+!! Accessing an element !!
+${b[2]}
+
+!! Set an element value !!
+b[5]="kiwi"
+
+!! remove an element !! 
+unset array[2] # set the elements null, doesnt remove completely
+
+!! remove an element !!
+array=( ${array[@]/Red*/} )
+
+!! add to the end of the array !!
+b+=("mango")
+
+!! add more element 
+array=("array[@]" element1 element2)
+
+!! output whole array !!
+echo ${b[@]} # apple banana cherry kiwi mango
+
+!! length of an array !!
+${#arrayname[@]}
+
+!! accessing the last element !!
+echo ${b[@]: -1}
+
+!! copying an array !!
+newarray=("${array[@]}")
+
+!! extraction with offset and length for an array !!
+${arrayname[@]:2:3} # take three elements starting from second position
+
+!! extraction with offset and length for an element !!
+${array[2]:2:3}
+
+!! filter an array, removes values by pattern !! 
+${array[@]/*[aA]*/} # remove elements containing either a or A
+
+!! concatenate arrays !!
+array=( "${array[@]}" "${array[@]}")
+version > 3
+Associative Arrays
+declare -A myarray
+
+myarray[color]=blue
+
+myarray["office building"]="HQ West"
+
+echo ${myarray[color]}

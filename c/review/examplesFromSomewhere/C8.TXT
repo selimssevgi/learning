@@ -1,0 +1,242 @@
+C Dili - 8. Konu
+
+POINTER NEDIR?
+
+Basitce, pointer, bir adrestir. Bir degisken olmak yerine, bir degiskenin
+hafizadaki adresini tasiyan bir 'ok isareti'dir.
+
+================================================================
+
+main()                      /* Pointer kullanimi ornegi */
+{
+int index,*pt1,*pt2;
+
+   index = 39;                      /* herhangi bir deger  */
+   pt1 = &index;                   /* 'index' in adresi    */
+   pt2 = pt1;
+
+   printf("Deger simdi %d %d %d dir.\n",index,*pt1,*pt2);
+
+   *pt1 = 13;           /* 'index' in degerine degisiklik yapalim */
+
+   printf("Degistikten sonra ise %d %d %d\n",index,*pt1,*pt2);
+}
+
+================================================================
+
+Su an icin, programin index degiskenini ve iki tane astrisk ile baslayan
+terimlerin tanimlandigi yere bakmayin. Aslinda astrisk denilen bu isarete,
+biz simdilik 'yildiz' diyelim. 
+
+Programda ilk once, index degiskenine 39 degerini atiyoruz. Bunun
+altindaki satirda ise, pt1'e tuhaf bir deger atanmasini goruyoruz - index
+degiskeni, ve onunde bir & ampersand isareti ile. Bu ornekte, pt1 ve pt2
+pointer dir, ve index de basit bir degiskendir. Simdi bir problemle karsi
+karsiyayiz. Bu programda pointer kullaniliyor, fakat nasil kullanilacagini
+ogrenmedik. 
+
+Bu gorecekleriniz biraz aklinizi karistiracak, fakat bunlari anlamadan
+gecmeyin. 
+
+IKI ONEMLI KURAL
+
+1. Onune ampersand isareti konmus bir degisken, o degiskenin adresini
+belirtir. Yani altinci satir, soyle okunabilir: "pt1, index isimli
+degiskenin adresini alir."
+
+2. Onune yildiz konmus bir pointer, kendisinin tuttugu adreste bulunan
+degeri gosterir. Programin dokuzuncu satiri, soyle okunabilir: "pt1
+pointer'inin gosterdigi yere, 13 degeri atandi."
+
+HAFIZA YARDIMCISI
+
+1.  &  'i bir adres olarak dusunun.
+2.  *  'i adresteki deger olarak dusunun.
+
+pt1 ve pt2 pointer olarak, kendileri bir deger tasimazlar, fakat
+bellekteki bir adresi gosterirler. Bu programda, 'index' degiskenini
+gosteren pointer'lar oldugu icin, degiskenin degerini hem index ile, hemde
+onun adresini tasiyan pointer'lar ile degistirebiliriz. 
+
+Dokuzuncu satirda, index degiskeninin degeri, pt1 pointer'i ile
+degistiriliyor. Program icinde 'index' i kullandigimiz herhangi biryerde,
+(pt1 baska birseye atanincaya kadar), '*pt1' i de kullanmamiz
+mumkundur, cunku pt1, index'in adresini tasimaktadir.
+
+BIR BASKA POINTER
+
+Programa degisklik katmak icin, birbaska pointer daha tanimladim. "pt2"
+isimli bu pointer, yedinci satirda "pt1"'in tasidigi adresi almaktadir. Bu
+atamadan once, ayni henuz deger atanmamis degiskenler gibi icinde rastgele
+bilgiler vardir. Bundan sonra, "pt2" de "index" degiskeninin adresini
+tasimaktadir. Ornegin, dokuzuncu satirda "*pt1" i "*pt2" ile degistirsek
+de, sonuc ayni olacaktir - cunku iki pointer da ayni adresi tasimaktadir. 
+
+SADECE BIR DEGISKEN
+
+Bu programda uc tane degisken var gibi gorunse de, aslinda bir tane
+degisken tanimlidir. Iki pointer ise, bu degiskenin adresini tutmaktadir.
+Bu durum, "printf" komutunun hep 13 degerini yazmasindan da anlasilabilir.
+
+Bu gercekten anlamasi zor bir kavramdir, fakat en kucuk C programlari
+disinda hepsi tarafindan kullanildigi icin, ogrenmeniz gereklidir.
+
+POINTER NASIL TANIMLANIR
+
+Programin ucuncu satirinda, ilk once "index" isimli degisken tanimlanir,
+daha sonra da iki tane pointer tanimlamasi goreceksiniz. Ikinci tanim, su
+sekilde okunabilir: "pt1'in gosterecegi adres, bir tamsayi degiskenine ait
+olacak." Yani, "pt1", tamsayi bir degiskeninin pointer'i olur. Ayni
+sekilde, "pt2" de, yine bir tamsayi degiskeninin pointer'i olur.
+
+Bir pointer, bir degiskenin adresini tasimak icin tanimlanir.
+Tanimlandigindan baska bir degisken tipi icin kullanimi "uyumsuz veri
+tipi" hatasinin olusmasina sebep olur. Ornegin, "float" tipi bir pointer,
+"int" tipli bir degiskenin adresini alamaz. 
+
+POINTER'LI IKINCI PROGRAMIMIZ
+
+POINTER2.C:
+================================================================
+main()
+{
+char katar[40],*orada,bir,iki;
+int *pt,list[100],index;
+
+   strcpy(katar,"Bu bir karakter kataridir.");
+
+   bir = katar[0];                 /* bir ve iki ayni degeri tasirlar */
+   iki = *katar;
+   printf("Ilk cikti %c %c\n",bir,iki);
+
+   bir = katar[8];                /* bir ve iki ayni degeri tasirlar */
+   iki = *(katar+8);
+   printf("Ikinci cikti %c %c\n",bir,iki);
+
+   orada = katar+10;        /* katar+10 ve katar[10] aynidir. */
+   printf("Ucuncu cikti %c\n",katar[10]);
+   printf("Dorduncu cikti %c\n",*orada);
+
+   for (index = 0;index < 100;index++)
+      list[index] = index + 100;
+   pt = list + 27;
+   printf("Besinci cikti %d\n",list[27]);
+   printf("Altinci cikti %d\n",*pt);
+}
+================================================================
+
+Bu programda, iki tane pointer, iki tane dizi ve uc tane degisken
+tanimliyoruz. "orada" isimli pointer, karakter tipi, ve "pt" ise, tamsayi
+tipindedir.
+
+BIR KATAR DEGISKENI ASLINDA BIR POINTER DIR
+
+C programlama dilinde, bir katar degiskeni, o katarin baslangicini
+gosteren bir pointer olarak tanimlanmistir. Programda bir bakin:  once
+"katar" isimli diziye sabit bir katar atiyoruz. Daha sonra, "bir" isimli
+degiskene, "katar" in ilk harfini atiyoruz. Sonra, "iki" isimli degiskene,
+ayni degeri atiyoruz. Ikinci satirda "*katar[0]" yazmak yalnis olurdu,
+cunku yildiz isareti, koseli parantezlerin yerini almaktadir. 
+
+"katar" i neredeyse tam bir pointer gibi kullanabilirsiniz, yegane farki,
+tuttugu adres degistirilemez, ve daima o katarin baslangic adresini
+gosterir.
+
+Onkinci satira gelince, katarin dokuzuncu karakterinin (sifirdan
+basladigimiz icin), iki ayri sekilde "bir" ve "iki" isimli degiskenlere
+atandigini goruyoruz. 
+
+C programlama dili, pointer'in tipine gore, index ayarlamasini
+otomatik olarak yapar. Bu durumda, "katar" bir "char" olarak tanimlandigi
+icin, baslangic adresine 8 eklenir. Sayet "katar" "int" (tamsayi) olarak
+tanimlanmis olsa idi, index iki ile carpilip, "katar" in baslangic
+adresine eklenirdi. 
+
+"orada" bir pointer oldugu icin, 16. satirda "katar" in 11. elemaninin
+adresini tasiyabilir. "orada" gercek bir pointer oldugu icin, herhangi bir
+karakter degiskeninin adresini gosterebilir. 
+
+POINTER VE ARITMETIK
+
+Her cesit islemler, pointer'lar ile mumkun degildir. Pointer bir adres
+oldugundan, ona bir sabit rakam ekleyip, daha ilerideki bir adrese
+erismek mumkundur. Ayni sekilde, pointer'in adresinde bir rakam cikartip,
+daha onceki hafiza bolgelerine erismek mumkundur. Iki pointer'i toplamak
+pek mantikli degildir, cunku bilgisayardaki adresler sabit degildir.
+Cikacak rakamin tuhaf olacagi icin pointer ile carpma da yapilamaz. Ne
+yaptiginizi dusunurseniz, yapabilecekleriniz ve yapamayacaklariniz kendini
+belli edecektir. 
+
+TAMSAYI POINTER'I 
+
+"list" isimli tamsayi dizisine, 100 den 199 a kadar degerler verilir. Daha
+sonra, 28. elemanin adresini, "pt" isimli pointer'a atiyoruz. Daha sonra
+ekrana yazdigimizda, gercektende, o degeri aldigini goruyoruz.
+
+Daha onceki konularda, bir fonksiyondan veri degerlerini dondurmek icin
+iki metod oldugunu soylemistim. Ilki, bir dizi kullanarakti. Ikincisini
+herhalde tahmin edersiniz. Sayet tahmininiz "pointer sayesinde" idiyse,
+tebrikler.
+
+CIFTYON.C:
+================================================================
+main()
+{
+int cevizler,elmalar;
+
+   cevizler = 100;
+   elmalar = 101;
+   printf("Baslangic degerleri %d %d\n",cevizler,elmalar);
+
+			   /* "degistir" i cagirinca,         */
+   degistir(cevizler,&elmalar);  /* cevizlerin DEGERI ve,     */
+			   /* elmalarin adresini geciriyoruz  */
+
+   printf("Bitis degerleri ise, %d %d dir..\n",cevizler,elmalar);
+}
+
+degistir(kuru_yemis,meyvalar)       /* kuru_yemis tamsayidir   */
+int kuru_yemis,*meyvalar;           /* meyvalar bir tamsayi pointer'idir */
+{
+   printf("Degerler %d %d\n",kuru_yemis,*meyvalar);
+   kuru_yemis = 135;
+   *meyvalar = 172;
+   printf("Sonraki degerler %d %d\n",kuru_yemis,*meyvalar);
+}
+================================================================
+Burada, iki tane tamsayi degiskeni (pointer degil) tanimliyoruz:
+"cevizler" ve "elmalar". Once bunlara birer deger atiyoruz, ve "degistir"
+isimli fonksiyonu cagiriyoruz. Cagirirken, "cevizler" in degeri (100), ve
+"elmalar" degiskeninin adresini geciriyoruz. Fakat, fonksiyona da, bir
+deger ve bir adres gelecegini haber vermemiz gereklidir. Bunun icin,
+fonksiyonun parametreleri tanimlanirken, bir adres tasiyacak olan sembolun
+basina bir yildiz koymamiz yeterlidir. 
+
+
+Fonksiyonun icinde, bu iki degeri degistirip, eski ve yeni degerleri
+ekrana yaziyoruz. Bu program calistiginda, ana programdaki "cevizler" in
+degerinin  ayni kaldigini fakat "elmalar" in yeni degerlerini aldigini
+goreceksiniz. 
+
+"cevizler" in degerinin ayni kalmasinin nedeni, fonksiyona bir
+deger gecirildiginde, C dilinin o degerin bir kopyasini fonksiyona
+gecirmesi yuzundendir. Programa geri dondugunuzde, degerin bir kopyasini
+kullandigimiz icin asil degerin degismedigini goreceksiniz.
+
+"elmalar" in degerinin degismesi ise, yine fonksiyona "elmalar"
+degiskeninin adresinin bir kopyasi gecirildigi halde, bu adres ana
+programdaki "elmalar" a karsilik geldigi icin, fonksiyonda bu adresteki
+degeri degistirir degistirmez, "elmalar" in da degeri degismis olur. 
+
+ODEV
+
+1. Bir karakter katari tanimlayin, ve icine "strcpy" ile bilgi koyun. Bir
+dongu ve pointer ile katari harf-harf (teker teker) ekrana yazin. 
+Programin basinda pointer'i katarin ilk elemanina atayin, daha sonra cift
+arti isareti ile pointer'in degerini arttirin. Ayri bir tamsayi degiskeni
+ile kac karakter yazilacagini kontrol edin..
+
+2. 1. deki programi, pointeri katarin sonuna atayip, cift eksi isaretini
+kullanarak sondan basa dogru yazmasi icin degistiriniz.
+
+

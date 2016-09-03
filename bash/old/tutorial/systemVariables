@@ -1,0 +1,22 @@
+# !/bin/bash
+#
+# A script to display System Variables
+# which are created and maintained by Linux itself.Defined in CAPITAL LETTERS
+
+clear
+
+		### Daha fazlasını gormek icin 'printenv' komutu shell kullanılabilir.
+
+echo "BASH : $BASH"
+echo "BASH VERSION : $BASH_VERSION"
+echo "COLUMNS : $COLUMNS"
+echo "HOME : $HOME"
+echo "LINES : $LINES"
+echo "LOGNAME : $LOGNAME"
+echo "OSTYPE : $OSTYPE"
+echo "PATH : $PATH"
+echo "PS1 : $PS1"
+echo "PWD : $PWD"
+echo "SHELL : $SHELL"
+echo "USER : $USER"
+

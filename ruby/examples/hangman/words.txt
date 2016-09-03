@@ -1,0 +1,9 @@
+computer
+glass
+harddisk
+mouse
+nokia
+paper
+hand
+screen
+clock

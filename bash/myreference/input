@@ -1,0 +1,31 @@
+
+READ
+
+To get input from the keyboard, you use the read command.
+The read command takes input from the keyboard and assigns it to a variable.
+
+Here is an example:
+
+echo -n "Enter some text > "
+read text
+echo "You entered: $text"
+
+If you don't give the read command the name of a variable to assign its input, 
+it will use the environment variable REPLY.
+
+The read command also takes some command line options. The two most interesting ones are -t and -s.
+The -t option followed by a number of seconds provides an automatic timeout for the read command.
+This means that the read command will give up after the specified number of seconds if no response has been received from the user.
+This option could be used in the case of a script that must continue even if the user does not answer the prompts.
+
+Here is the -t option in action:
+
+echo -n "Hurry up and type something! > "
+if read -t 3 response; then
+  echo "Great, you made it in time!"
+else
+  echo "Sorry, you are too slow!"
+fi
+
+The -s option causes the user's typing not to be displayed.
+This is useful when you are asking the user to type in a password or other confidential information.

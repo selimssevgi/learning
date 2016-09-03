@@ -1,0 +1,27 @@
+Helpful for putting large amounts of text without worrying about escape sequences or string evaluation.
+“Here documents” begin with <<-.
+These are followed immediately by an identifier or string that specifies the ending delimiter.
+(No space is allowed, to prevent ambiguity with the left-shift operator.)
+The text of the string literal begins on the next line and continues 
+until the text of the delimiter appears on a line by itself.
+
+document = <<-HERE         # We begin with <<- followed by the ending delimiter HERE
+This is a string literal.
+It has two lines and abruptly ends with a newline...
+HERE
+
+poem = <<END 
+\tThe lovely world
+with logic so firmly planted
+cannot discern \n the needs of love
+nor comprehend passion from intuition
+and requires an explanation
+\n\t\twhere there is none.
+END
+
+That is called a "heredoc" or "here document".
+It is used to create a multi-line string, and you use it by starting with << and an all caps word, in this case END.
+Ruby then reads everything into a string until it sees another END.
+You can use any word, not just END, so if your string has the word "END" in it,
+you would use something different like <<BIGDOC and end with BIGDOC.
+The last thing is the string includes all the indentation.

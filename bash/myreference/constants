@@ -1,0 +1,13 @@
+
+There may be values that, once set, should never be changed.
+These are called constants. It is a common idea in programming.
+Most programming languages have special facilities to support values that are not allowed to change.
+Bash also has these facilities but, to be honest, I never see it used.
+Instead, if a value is intended to be a constant, it is given an uppercase name to remind the programmer 
+that it should be considered a constant even if it's not being enforced.
+
+Environment variables are usually considered constants since they are rarely changed.
+Like constants, environment variables are given uppercase names by convention.
+Uppercase names for constants and lowercase names for variables.
+
+CONSTANT_VARIABLE="this value will not change!!"

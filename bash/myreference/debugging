@@ -1,0 +1,15 @@
+#!/bin/bash -x
+
+# add -x parameter at top to trace all the script. 
+
+Alternately, you can use the set command within your script to turn tracing on and off.
+Use set -x to turn tracing on and set +x to turn tracing off.
+For example.:
+
+set -x
+if [ $number = "1" ]; then
+  echo "Number equals 1"
+else
+  echo "Number does not equal 1"
+fi
+set +x

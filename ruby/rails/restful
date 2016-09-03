@@ -1,0 +1,22 @@
+GET                     # used for reading data on the web; it just means “get a page”,
+                          and every time you visit a site like http://www.google.com/
+                          or http://www.wikipedia.org/ your browser is submitting a GET request
+
+POST                    # it is the request sent by your browser when you submit a form.
+                          In Rails applications, POST requests are typically used for creating things 
+                          (although HTTP also allows POST to perform updates).
+
+PATCH 
+
+DELETE
+
+
+PATCH and DELETE, are designed for updating and destroying things on the remote server.
+These requests are less common than GET and POST since browsers are incapable of sending them natively,
+but some web frameworks (including Ruby on Rails) have clever ways of making it seem like browsers are issuing such requests.
+As a result, Rails supports all four of the request types GET, POST, PATCH, and DELETE.
+
+
+the Static Pages controller does not use the standard REST actions.
+This is normal for a collection of static pages:
+the REST architecture isn’t the best solution to every problem.

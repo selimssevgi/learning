@@ -1,0 +1,9 @@
+The while command causes a block of code to be executed over and over,
+as long as the exit status of a specified command is true.
+Here is a simple example of a program that counts from zero to nine:
+
+number=0
+while [ "$number" -lt 10 ]; do
+  echo "Number = $number"
+  number=$((number + 1))
+done

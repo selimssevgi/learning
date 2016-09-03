@@ -1,0 +1,14 @@
+# Version 1
+
+# Double forward slash
+# Borrowed from c++ 
+# included in C99
+
+// a comment line in c program
+
+# Version 2 
+
+/* a comment line in c */
+
+/* multiple comment lines
+   here is another one */

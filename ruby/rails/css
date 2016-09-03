@@ -1,0 +1,37 @@
+<%= stylesheet_link_tag 'application', media: 'all',
+                                       'data-turbolinks-track' => true %> 
+
+# is a call to this function.
+
+# Parentheses are optional in ruby : 
+# Parentheses on function calls are optional.
+stylesheet_link_tag('application', media: 'all',
+                                   'data-turbolinks-track' => true)
+stylesheet_link_tag 'application', media: 'all',
+                                   'data-turbolinks-track' => true
+
+
+# When hashes are the last argument in a function call, the curly braces are optional,
+# so these two are equivalent:
+
+# Curly braces on final hash arguments are optional.
+stylesheet_link_tag 'application', { media: 'all',
+                                     'data-turbolinks-track' => true }
+stylesheet_link_tag 'application', media: 'all',
+                                     'data-turbolinks-track' => true}
+
+
+# the data-turbolinks-track key-value pair use the old-style hashrocket syntax?
+# This is because using the newer syntax to write
+      data-turbolinks-track: true
+is invalid because of the hyphens. (hyphens can’t be used in symbols.) 
+      'data-turbolinks-track' => true
+
+# Ruby correctly interprets the lines
+
+stylesheet_link_tag 'application', media: 'all',
+                                   'data-turbolinks-track' => true
+
+even with a line break between the final elements?
+Ruby doesn’t distinguish between newlines and other whitespace in this context.
+

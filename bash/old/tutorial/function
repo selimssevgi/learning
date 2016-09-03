@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Usteki satir yazacagım script yorumlanırken hangı yorumlayıcının kullanması gerektigi belirtiyor.
+
+# Script Def : Bash Scripting de FUNCTION larin kullanım yapısı
+
+function Hello() {
+	echo "Hello, there"
+}
+
+function arguman {
+	echo "$1"
+}
+
+Hello2() {
+	echo "hello2,there."
+}
+
+Hello
+Hello2
+arguman "Arguman gonderildi."

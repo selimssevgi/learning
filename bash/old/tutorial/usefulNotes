@@ -1,0 +1,64 @@
+# The difference between a good program and a poor one is often measured in term of program's ROBUTNESS.
+
+# İyi yazilmiş bir program bittigi noktada bir tane EXIT STATUS degeri gonderir.
+
+
+# Yazdigimiz scripti debugging etmek icin "bash -x ./scriptName" komutunu kullanabiliriz.
+	- Kontrol ettigi komutların basına + koyuyor.
+	- Eger hata bulduysa bunu ekrana yaziyor.
+
+# Yazdigimiz scriptlerde shell in kendi(built in) komutlarını da kullanabiliyoruz.Bunun iki yolu var.
+	- Eski yontem : `command` / tek ve ters tırnak işaretiyle yapılan.
+	- Yeni yontem : $(command) / Bu gorsel olarak daha guzel ve akılda kalıcı.
+
+# Ekrana data aktarırken bunu sekillendirmemiz mümkün.C deki gibi "backslash escape characters" yardımıyla yapmamiz mumkun.
+	- Ancak default olarak bu disabled durumda bunu aktifleştirmemiz için echo komutunu -e parametresi ile kullaniyor.
+	- echo -e "Selim Sırrı Sevgi \nYildiz Teknik Uni." gibi.
+
+# Script yazarken bazen tek satırdaki kod uzayabilir.Bunu parçalara ayırmak icin backslash ı kullanabiliriz.
+	- Ancak backslashtan sonra direkt altsatıra gecmelıyız, yoksa bosluk karekteririni escape etmiş oluruz.
+	- echo " My name is \
+		Selim Sırrı Sevgi" gibi.
+
+# Fonksiyonları programlarımızı daha kolay geliştirilebilir hale getirmek icin kullanırız.Bash Scriptimizde kullandıgımız fonksiyonları body kısmında en az bir tane komut olmalıdır.Yoksa fonksiyon hata dondurur.En azından bir return komutu kullanılabilir.
+	- Stubbing diye bir yontem var.Fonksiyon içerigi tam olarak o an kafamızda belirlememişsek yer alıyormussuz gibi fonk. olusturuyoruz.
+	- function systemInfo() {
+		# Temporary function stub
+		echo "function systemInfo"
+	  }
+
+# Exit Status : Unix uygulamalarında programın düzgün çalışıp çalışmadıgını anlamak icin işletim sistemine bildirir. Bunu exit status yardımı ile yapar. Exit Status 0 ve 255 arasında sayısal bır degerdır.0 basarı demek,geri kalanlar hatadır.Exit Status 2 onemli ozelligi vardır : 
+	- Hataların tespiti ve sonuclandırılması icin kullanılır.
+	- Yanlış/Dogru testlerinin program icerisinde kullanılmasına yarar. 
+
+# Bash scriptlere göz atıldıgı zaman gorulecektir ki diger dillere göre fazla ";" komut sonu işareti kullanılmaz.Cünkü komutlar satır satır yazılır.Her satırın sonu bir komut bitişidir.Ancak iki komutu bir satirda kullanmak istedigimiz zaman komut sonu işaretini ";" kullanabiliriz.
+	- if [ expression ] ; then
+	- if [ expression ]
+		then command   // Aslında burda bir sorun var gibi. Tam anlayamadım.then de bir komut(mu?) ve sonra ki de komut arasında bir şey yok!!
+
+# İyi scriptler yazmak istiyorsak scriptimizin sonuna exit degeri koymamız daha iyi olacaktır. exit 0 : basarili, exit 1 : basarisiz anlamında.
+
+# Scriptlerimizin basinda bazı degiskenleri bos degerlerle tanımlayabiliriz : var= veya var="".bu iki durumda da degiskenlerin ici bostur.Peki biz bu degiskenleri ifli/karsilastırmali ifadeler kullanirsak ne olur > if [ $var = "1" ] : Karsilastirmanin sol tarafı bos kalacaktır ve shell bize binary operator kullanıp tek tarafinda gecerli deger bulundurdugumuz icin "unary operator expected" hatasi verecektir.
+	- Bu turlu hatalardan kacinmak icin karsilastirma ifadadelerin > if [ "$var" = "1" ] : Seklinde bir kullanım bazen ongorulemeyecek hataların
+	onune gececektir. 
+
+
+# and-or - AND ve OR un kullanımı
+
+ - AND yerine && , OR yerine || kullanilir.
+
+## command1 && command2 
+
+ -  And operatorunde once birinci komuta bakılır.Eger birinci komut true 
+    cıkmıssa ıkıncı komuta bakalır buna göre ıslem yapılır.
+ -  Ama eger birinci komut zaten yanlıs cıkmıssa ıkıncı komutun kontrolune    gerek yoktur.
+
+
+## command1 || command2
+
+ - OR operatorunde ise birinci komuta bakalır.Dogruysa ikinci komutu 
+   bakmaya gerek yoktur.Ama birinci komut false cıktıysa ıkıncı komuta
+   ve sonuc buna gore belirlenir.
+
+
+

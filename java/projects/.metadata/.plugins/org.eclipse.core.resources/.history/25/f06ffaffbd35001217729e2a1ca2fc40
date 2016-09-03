@@ -1,0 +1,12 @@
+
+public class ArrayDec {
+
+	public static void main(String[] args) {
+		int[] c = new int[12]; // first way
+		int[] arrayName;
+		
+		arrayName = new int[12]; // second way
+
+	}
+
+}

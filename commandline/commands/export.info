@@ -1,0 +1,12 @@
+change enviroment variables
+
+Most shell scripts execute in a private environment:
+Variables are not inherited by child processes unless they are exported by the parent shell.
+
+export TESTING="1 2 3"
+
+env | grep TESTING
+
+echo $TESTING
+
+unset TESTING

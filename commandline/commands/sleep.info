@@ -1,0 +1,9 @@
+put terminal to sleep
+
+sleep 5s #terminal sleeps for 5 seconds
+
+sleep 5m
+
+sleep 5h
+
+use C^C to cancel sleeping command if you tried 5h

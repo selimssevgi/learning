@@ -1,0 +1,442 @@
+C dili - 5. Konu
+
+
+Fonksiyonlar ve degiskenler
+
+KARETOPL.C:
+================================================================
+
+int toplam; /* Global degisken      */
+
+main()
+{
+int index;
+
+   baslik();        /* Baslik isimli fonksiyonu cagirir     */
+
+   for (index = 1;index <= 7;index++)
+     kare(index); /* Bu, kare fonksiyonunu cagirir.  */
+
+   bitis();        /* Bu da, bitis isimli fonksiyonu cagirir */
+}
+
+baslik()        /* Bu fonksiyonun tanimidir                 */
+{
+   toplam = 0;     /* "Toplam" isimli degiskene 0 degeri atanir.. */
+   printf("Bu, kare programinin basligidir\n\n");
+}
+
+kare(rakam)   /* Bu, kare fonksiyonunun baslangicidir */
+int rakam;
+{
+int karesi;				/* Yerel degisken tanimlaniyor */
+
+   karesi = rakam * rakam ;  /* Karesini olusturuyor. */
+   toplam += karesi;		/* Bulunan deger, toplama ekleniyor */
+   printf("%d nin karesi %d dir.\n",rakam,karesi);
+}
+
+bitis()   /* Bitis fonksiyonu tanimlaniyor.  */
+{
+   printf("\nKarelerin toplami: %d dir..\n",toplam);
+}
+================================================================
+
+
+KARETOPL.C isimli programa bir bakin. Bu program, fonksiyonlu ilk
+programimiz. Goreceginiz gibi C de fonksiyon tanimlamak o kadar kolaydir
+ki, programlarin fonksiyonlara parcalanmasi neredeyse istemeden olur.
+Aslinda, biz fonksiyonlari kullanip duruyorduk, ornegin kullandigimiz
+printf komutu, bir fonksiyondur. Printf fonksiyonu, derleyici ile gelen
+fonksiyon kutuphanesinin bir parcasidir.
+
+Bu programin calisan kismina bir bakin. baslik() isimli bir satir ile
+basliyor. Iste C de, herhangi bir fonksiyon, bu sekilde cagirilir: ismi,
+parantez, ve sayet varsa bu fonksiyona gonderilmesi istenen degerler
+yazilir. Programin calismasi bu satira gelince, baslik isimli fonksiyona
+atlanir, ve buradaki islemler yapilir. Bitince, program geri doner, ve
+ana programda kaldigi yerden isleme devam eder, ve "for" dongusune gelir.
+Burada, yedi kere "kare" isimli bir fonksiyonu cagirir, daha sonra "bitis"
+fonksiyonunu cagirir ve program sona erer. 
+
+FONKSIYONUN TANIMLANMASI
+
+main'den sonra ayni main'in ozelliklerini tasayan bir program
+goreceksiniz. Sadece bunun ismi "baslik()" olarak tanimlanmistir. Bu
+basligin ilk satirinda "toplam" degiskeninin degeri 0 a atanir, ve bir
+baslik satiri yazilir. Dikkat ederseniz, "toplam" degiskenini,
+fonksiyonlarin disinda, programin basinda tanimlamistik. Bu sekilde
+tanimlanan bir degisken, o programdaki herhangi bir fonksiyondan
+cagirilabilir.  Bu tip degiskenlere "global" denir. 
+
+Bu iki satiri main() in icine de koymamiz mumkundur. Bu ornek sadece
+fonksiyonlarin kullanimini gostermektedir. 
+
+FONKSIYONA DEGER GECIRMEK
+
+Ana programda, "for" dongusunde, "index++" deyimini goruyorsunuz. Ilk
+olarak gecen konuda ogrendigimiz birer birer arttirma metoduna alismaya
+bakin, cunku C programlarinda cok karsilasacaksiniz.
+
+"kare" isimli fonksiyonu cagirirken, bir yenilik kattik. Yani, parantez
+icindeki "index" deyimini. Bu da derleyiciye, o fonksiyona gidince,
+"index" in o andaki degerini de beraberimizde goturmek istedigimizi
+belirtir. "Kare" isimli fonksiyonun basligina baktigimizda ise,
+parantezler icinde bir baska degisken ismi goruyoruz: "rakam." Ana
+programdan "kare(index)" dedigimizde gelen index'in degerine, bu fonksiyon
+icinde 'rakam' diyecegimizi belirtiyoruz. Buna rakam demek yerine
+istedigimiz herhangi bir ismi verebilirdik - C nin degisken isim
+kurallarina uymasi sarti ile. Fonksiyon, ona ne tip bir deger
+gecirilecegini bilmesi icinde, hemen alt satirda, "int rakam" diyerek,
+gelecek bu degerin bir integer olacagini belirtiyoruz. 
+
+Kume isaretinden sonra, "int karesi" deyimi ile, sadece bu fonksiyonun
+icinde tanimli olan bir degisken daha tanimlandigini goruyoruz.  Bundan
+sonra, "karesi" degiskenine 'rakam' in karesini atiyoruz, ve "toplam"
+degiskenine de "karesi" degiskeninin degerini ekliyoruz.
+
+BIR FONKSIYONA DEGER ATAMA HAKKINDA DAHA BILGI
+
+Aslinda "index" in degerini fonksiyona gecirdigimizde, anlattigimdan biraz
+daha fazla sey oldu. Gercekte, "index" in degerini gecirmedik bu
+fonksiyona, o degerin bir kopyasini gecirdik. Bu sayede, "index" in asil
+degeri, fonksiyon tarafindan kazara zarar goremez. "rakam" isimli
+degiskenimizi fonksiyon icinde istedigimiz gibi degistirebilirdik, fakat
+ana programa geri dondugumuzde, "index" in degeri yine ayni kalirdi. 
+
+Boylece, degiskenin degerinin zarar gormesini onlemis oluyoruz, fakat ayni
+zamanda, ana programa bir deger dondurmemize de mani oluyoruz. Pointers
+kisimina gelince, cagiran fonkisyona degeri dondurmek icin, iyi tanimli
+bir metod gorecegiz. O zamana kadar ana programa deger dondurmenin yegane
+yolu, global degiskenler kullanaraktir. Global degiskenlerden biraz
+bahsetmistik, bu konu icersinde, daha da bahsedecegiz. 
+
+Programa devam ederek, bitis() isimli bir fonksiyonun cagirilisina
+geliyoruz. Bu cagirma da, hicbir yerel degiskeni olmayan fonksiyonu
+cagirir. "toplam" degiskeninin degerini yazdiktan sonra ana kesime donen
+program, yapacak baska birsey olmadigini gorunce durur. 
+
+UFAK BIR YALANI ITIRAF ETME ZAMANI
+
+Biraz once size bir fonksiyondan bir deger dondurmek icin yegane yolun
+global degiskenler ile olabilecegini soylemistim. Fakat bir baska metod
+daha var. Lutfen KARELER.C isimli programa bakin...
+
+KARELER.C:
+=====================================================================
+
+main()  /* Ana program burada.  */
+{
+int x,y;
+
+   for(x = 0;x <= 7;x++) {
+      y = squ(x);  			/* x*x i hesaplayalim.. */
+      printf("%d nin karesi %d dir...\n",x,y);
+   }
+
+   for (x = 0;x <= 7;++x) 
+      printf("%d nin karesi %d dir...\n",x,squ(x));
+}
+
+squ(in)  /* Bir rakamin karesini bulan fonksiyon */
+int in;
+{
+int kare;
+
+   kare = in * in;
+   return(kare);  	/* Yeni buldugumuz deger donduruluyor.. */
+}
+
+=====================================================================
+
+Bu program, tek bir deger dondurmenin kolay oldugunu gosteriyor. Fakat,
+birden fazla deger dondurmek icin, baska metodlara gerek oldugunu
+hatirlamanizda fayda var. 
+
+ana programda, iki tane tamsayi degiskeni tanimliyoruz, ve 8 kere islenen
+bir "for" dongusu baslatiyoruz. Dongudeki ilk satir, "y = squ(x);", yeni
+ve tuhaf gorunuslu bir satir. Onceki programlarda gordugumuz gibi, squ(x)
+kisimi, squ isimli fonksiyonu, x parametresi ile cagirmaktadir. Fonksiyona
+baktigimizda, bu gecen degiskenin orada 'in' isminde oldugunu, ve kare
+ismindeki yerel degiskene, gecirdigimiz degerin karesinin atandigini
+goruyoruz. Daha sonra, yeni "return" komutunu goruyoruz. Parantezler
+icindeki bu deger, fonksiyonun kendisine atanir, ve ana programa bu deger
+dondurulur. Yani, "squ(x)" fonksiyonu, x in karesine atanir, ve bu deger,
+ana programa atanir. Ornegin, x in degeri 4 ise, y nin degeri, "y=squ(x)"
+satirindan sonra 16 olacaktir.
+
+Bir baska dusunme sekli de, "squ(x)" sozcugunu, "x" in karesi degerinde bir
+degisken olarak dusunmektir. Bu yeni degisken de, degiskenlerin
+kullanildigi herhangi bir yerde kullanilabilir. Baska bir degisken olarak
+gormeye bir ornek olarak bu programda ikinci bir dongu vardir. Burada,
+y degiskenine atamak yerine, printf'in icinde, bu fonksiyonu cagiriyoruz.
+
+Bir fonksiyondan donecek degiskenin tipi, derleyiciye bildirilmelidir.
+Fakat, bizim yaptigimiz gibi sayet belirtmezsek, derleyici donecek degerin
+tam sayi (integer) olacagini kabul edecektir. Baska tiplerin tanimlanmasini
+ise, bundan sonraki programda gorecegiz..
+
+
+KAYAR NOKTA FONKSIYONLARI
+
+KAYARKAR.C:
+================================================================
+
+float z;   /* Bu bir global degiskendir */
+
+main()
+{
+int index;
+float x,y,sqr(),glsqr();
+
+   for (index = 0;index <= 7;index++){
+      x = index;  /* int'i float yapalim  */
+      y = sqr(x); /* x'in karesini alalim..   */
+      printf("%d in karesi %10.4f dir.\n",index,y);
+   }
+
+   for (index = 0; index <= 7;index++) {
+      z = index;
+      y = glsqr();
+      printf("%d in karesi %10.4f dir.\n",index,y);
+   }
+}
+
+float sqr(deger)  /* float'in karesini al, float dondur. */
+float deger;
+{
+float karesi;
+
+   karesi = deger * deger;
+   return(karesi);
+}
+
+float glsqr()    /* float'in karesini al, float dondur. */
+{
+   return(z*z);
+}
+================================================================
+
+KAYARKAR.C isimli programa bir bakin. Ilk once daha sonra kullanacagimiz
+bir global degisken tanimlamak ile basliyor. Programin "main" kisiminda,
+bir tamsayi degiskeni tanimlaniyor. Bunun altinda, iki tani tamsayi
+degiskeni, iki tane de tuhaf gorunuslu tanimlamalar var. "sqr()" ve
+"glsqr()" isimli iki fonksiyon gibi gorunuyorlar, ve oyleler. Bu, C
+dilinde "int" yani tamsayi dan baska birsey dondurecek bir fonksiyonun
+(float mesela) resmi sekilde tanimlanmasidir. Bu derleyiciye, bu iki
+fonksiyondan bir deger donunce, bu degerin float olacagini bildiriyor. 
+
+Simdi programin ortasinda yer alan "sqr" fonksiyonuna bir bakin. Burada
+fonksiyonun isminin basinda bir "float" sozcugu goreceksiniz. Bu
+derleyiciye herhangi bir yerden bu fonksiyon cagirilinca, donecek degerin
+float olacagini bildiriyor. Simdi bu fonksiyon, ana programdaki cagirma
+ile uyumludur. Bunun altinda, "float deger" satirini goruyorsunuz. Bu da,
+bu fonksiyona, cagiran tarafindan gecirilecek degerin, bir "float" yani
+kayar nokta olacagini bildirir. 
+
+Bundan sonraki fonksiyon "glsqr" da, bir kayar nokta donduruyor, fakat o,
+input icin global bir degikeni (z degiskenini) kullaniyor. Ayrica, yeni
+bir degisken tanimlamadan, karesini almayi "return" komutunun icinde
+yapiyor. 
+
+DEGISKENLERIN ALANI
+
+ALAN.C:
+================================================================
+int say;        /* Bu bir global degiskendir.  */
+
+main()
+{
+register int index; /* Bu degisken sadece "main" icinde kullanilabilir */
+
+   baslik_1();
+   baslik_2();
+   baslik_3();
+                      /* bu programin ana "for" dongusu  */
+   for (index = 8;index > 0;index--)
+   {
+      int birsey; /* Bu degisken sadece bu kume isaretleri arasinda tanimli */
+	 
+      for (birsey = 0;birsey <= 6;birsey++)
+         printf("%d ",birsey);
+
+      printf(" index simdi: %d oldu.\n",index);
+    }
+}
+
+int sayac;      /* Bu degisken bu noktadan sonra kullanilabilir. */
+
+baslik_1()
+{
+int index;        /* Bu degisken sadece baslik_1 icinde tanimli */
+
+   index = 23;
+   printf("Baslik_1 deki degeri %d\n",index);
+}
+
+baslik_2()
+{
+int say;    /* Bu degisken sadece baslik_2 icinde gecerli */
+            /* ayni isimli global degiskenin yerini alir.. */
+
+   say = 53;
+   printf("Baslik_2 deki degeri %d\n",say);
+   sayac = 77;
+}
+
+baslik_3()
+{
+   printf("Baslik_3 deki degeri ise %d\n",sayac);
+}
+================================================================
+
+Ilk tanimlanan degisken "say", butun fonksiyonlardan once tanimlandigi
+icin, herhangi biri tarafindan cagirilabilir, ve daima erisilebilir. Daha
+sonra, "sayac" isimli bir degisken tanimliyoruz. Bu da global bir
+degiskendir, fakat ana programdan sonra tanimlandigi icin, ana program
+tarafindan kullanilamaz. Global bir degisken, fonksiyonlarin disinda
+tanimlanan degiskenlere denir. Bu tip degiskenlere dissal degiskenler adi
+da verilebilir. 
+
+Ana programa geri donerek, "index" isimli degiskenin tanimina bakalim. Su
+an icin "register" sozcugunu goz onune almayin. Bu degisken "otomatik" bir
+degiskendir, yani o fonksiyon cagirildiginda olusur, ve fonksiyondan
+cikinca kaybolur. Ana program baska fonksiyonlari cagirdiginda bile daima
+calisir oldugundan, burada pek manasi yoktur. Tanimlanan diger bir
+degisken de, "birsey" degiskenidir. Bu degisken, sadece "for" dongusunun
+icinde tanimlidir, ve baska bir yerden erisilemez. Herhangi bir kume
+dongusunun basina, degisken tanimlamalari konulabilir. Kumeden cikinca, bu
+degisken tanimsiz olacaktir. 
+
+OTOMATIK DEGISKENLER HAKKINDA...
+
+Baslik_1'e bir bakin. "index" isimli bir degisken kullaniyor. Bu
+degiskenin ana programdaki "index" ile arasinda, ikisinin de otomatik
+degisken olmasi disinda hicbir bag yoktur. Program, bu fonksiyonu
+islemezken, bu degisken yoktur bile. Baslik_1 cagirildiginda, bu degisken
+yaratilir, ve baslik_1 bitince de bu degisken silinir. Fakat bu, ana
+programdaki ayni isimli degiskenin degerini hic etkilemez, cunku ayri
+nesnelerdir.
+
+Yani otomatik degiskenler, gerektiginde yaratilirlar, ve isleri bitince de
+silinirler. Hatirlamaniz gereken bir nokta da, bir fonksiyon birden fazla
+kere cagirildiginda, otomatik degiskenlerin eski degerleri saklanmaz, yeni
+bastan deger atanmalari gerekir. 
+
+STATIK DEGISKENLER ?
+
+Bir baska degisken tipi ise, statik degiskenlerdir. Degiskeni tanimlarken
+basina "static" sozcugunu koyarak, o degisken yada degiskenler,
+fonksiyonun tekrar tekrar cagirilmasinda, eski degerlerini tutarlar.
+
+Ayni sozcugu bir global degiskenin onune koyarak, o degiskenin sadece o
+kutuk icindeki fonksiyonlara tanimli olmasini saglayabiliriz. Bundanda
+anlayacaginiz gibi, birkac parcadan olusan kutukler arasinda global
+degiskenlerin tanimlanmasi mumkundur. Bunu 14. konuda daha iyi gorecegiz.
+
+AYNI ISMI TEKRAR KULLANMAK
+
+baslik_2 ye bir bakin. Burada "say" isimli degiskenin tekrar
+tanimlandigini ve 53 degerini aldigini goruyoruz. Global olarak
+tanimlanmasina karsin, ayni isimde bir otomatik degisken tanimlamak
+mumkundur. Bu degisken tumuyle yeni bir degiskendir, ve global olarak,
+programin basinda tanimlanan "say" ile arasinda hicbir baglanti yoktur. Bu
+sayede kafanizda "acaba global isimlerle karisirmi" sorusu olmadan
+fonksiyon yazabilirsiniz.
+
+REGISTER DEGISKENLERI NEDIR
+
+Sozumu tutarak, register degiskenine donelim. Bir bilgisayar bilgiyi
+hafizada yada registerlerde tutabilir. Register sahasina erisim, hafizaya
+erisimden cok daha hizlidir, fakat programcinin kullanabilecegi az sayida
+register vardir. Bazi degiskenlerin program tarafindan cok kullanilacagini
+dusunuyorsaniz, o degiskeni "register" olarak tanimlayabilirsiniz.
+Bilgisayar ve derleyici tipinize gore, bir yada birkac degiskeni bu
+sekilde tanimlayabilirsiniz. Cogu derleyicilerin hic register degiskenleri
+yoktur, ve "register" sozcugunu goz onune almadan derleme yaparlar. 
+
+Register degiskenleri, sadece tamsayi ve karakter tipi degiskenler ile
+kullanilabilir. Sectiginiz derleyiciye gore, unsigned, long yada short
+tipleride register olabilir. 
+
+DEGISKENLERI NEREDE TANIMLAYALIM
+
+Bir fonksiyona parametre olarak gecirilmis degiskenler varsa, bunlarin
+tanimi, fonksiyon isminden sonra, ve acik kume isaretinden once
+yapilmalidir. Fonksiyonda kullanilan diger degiskenler ise, fonksiyonun
+basinda, hemen acik kume isaretinden sonra tanimlanir. 
+
+STANDART FONKSIYON KUTUPHANESI
+
+Her derleyici, icinde bircok fonksiyon olan bir kutuphane ile birlikte
+gelir. Bunlar genellikle giris/cikis islemleri, karakter ve katar isleme,
+ve matemetiksel fonksiyonlari icerir. Bunlarin cogunu sonraki konularda
+gorecegiz. 
+
+Bunun disinda, cogu derleyicinin, standart olmayan, ve kullandiginiz
+bilgisayarin ozelliklerini kullanan, ilave fonksiyonlari vardir. Ornegin,
+IBM-PC ve uyumlular icin, BIOS servislerini kullanan fonksiyonlar
+sayesinde, isletim sistemine komutlar vermeyi, yada ekrana direk yazmayi
+saglayan fonksiyonlar olabilir. 
+
+RECURSION NEDIR ?
+
+RECURS.C:
+================================================================
+
+main()
+{
+int index;
+
+   index = 8;
+   geri_say(index);
+}
+
+geri_say(rakam)
+int rakam;
+{
+   rakam--;
+   printf("rakam degeri %d dir.\n",rakam);
+   if (rakam > 0)
+      geri_say(rakam);
+   printf("Simdi rakam %d oldu..\n",rakam);
+}
+
+================================================================
+
+Recursion, ilk karsilasildiginda cok korkutucu gorunen bir kavramdir.
+Fakat RECURS.C isimli programa bakarsaniz, recursion'un butun zorlugunu
+yenebiliriz. Aslinda fazla basit ve dolayisi ile aptal olan bu program,
+bize recursion'un kullanimini gostermesi bakimindan cok yararlidir. 
+
+Recursion, kendini cagiran bir fonksiyondan baska birsey degildir. Yani,
+bitmek icin bir kontrol mekanizmasina ihtiyaci olan bir dongudur.
+Karsinizdaki programda "index" degiskeni 8 e atanir, ve "geri_say"
+fonksiyonunun parametresi olarak kullanilir. Bu fonksiyon da, bu
+degiskenin degerini teker teker azaltir, ve bize bu degeri gosterir. Sonra
+tekrar kendisini cagirir, degeri bir kez daha azalir, tekrar, tekrar..
+Sonunda deger sifira ulasir, ve dongu artik kendini cagirmaz. Bunun
+yerine, daha onceki cagirmada kaldigi yere geri doner, tekrar geri doner,
+en sonunda ana programa geri doner, ve program sona erer.
+
+
+NE OLDU ?
+
+Fonksiyon kendisini cagirdiginda, butun degiskenlerini,ve cagirilan
+fonksiyonun islemesi bittiginde donmesi gereken yeri hafizaya sakladi.
+Bir dahaki sefere kendinin tekrar cagirdiginda, yine ayni seyi yapti, ta
+ki kendisini tekrar cagirmasi bitene kadar. Daha sonra tekrar bu
+bilgileri, ayni koyus sirasi ile geri okudu. 
+
+Hatirlamaniz gereken nokta, recursion'un bir noktada bitmesi gerektigidir,
+sayet sonsuz bir donguye girerseniz, bilgisayarin hafizasi bitecek ve bir
+hata mesaji cikacaktir.
+
+ODEVLER
+
+1. Daha once yazdigimiz Santigrad'dan Fahrenheit'a karsilik tablosundaki
+derece hesaplamasini bir fonksiyona geciriniz.
+2. Ekrana isminizi 10 kere yazan bir program yaziniz. Yazma isini yapmak
+icin bir fonksiyon cagiriniz. Daha sonra bu fonksiyonu main() in basina
+alarak, derleyicinin bunu kabul edip etmedigini kontrol ediniz.
+

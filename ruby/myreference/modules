@@ -1,0 +1,24 @@
+module Greeter
+  def hello name
+    puts "Hello #{name}"
+  end
+
+  def goodbye name
+    puts "Goodby #{name}"
+  end
+end
+
+Greeter.hello "Selim" # error. cus def must be Greeter.hello
+
+class Persona
+  include Greeter # one of main porpuses of the modules in ruby
+                  # importing all method into class
+                  # easily sharing methods in classes
+  def initialize name
+    @name = name
+  end
+end
+
+person = Person.new "Selim"
+
+!! another porpuse is namespacing

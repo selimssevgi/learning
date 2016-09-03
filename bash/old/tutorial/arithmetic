@@ -1,0 +1,26 @@
+#!/bin/bash 
+
+# Arithmetic : Script Def - Scriptlerde kullanilan aritmetik islemler.
+
+############# Aciklamalar
+# Shell ancak integer sayilar üzerinde islem yapabiliyor.[Diger sayi artimetigi icin farkli programlar var.]
+# Aritmetik islemlerde degiskenlerin tuttugu degerleri kullanmak icin $ işaretini kullanmamiz gerekmiyor.
+############# Aciklamalar
+
+firstNum=0
+secondNum=0
+
+echo -n "Enter a number > "
+read firstNum
+echo -n "Enter another number > "
+read secondNum
+
+echo "first number + second number = $((firstNum + secondNum))"
+echo "first number - second number = $((firstNum - secondNum))"
+echo "first number * second number = $((firstNum * secondNum))"
+echo "first number / second number = $((firstNum / secondNum))"
+echo "first number % second number = $((firstNum % secondNum))"
+echo -e "first number raised to the power \nof the second number = $((firstNum ** secondNum))"
+
+
+

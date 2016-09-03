@@ -1,0 +1,31 @@
+tr is an UNIX utility for translating, or deleting, or squeezing repeated characters.
+It will read from STDIN and write to STDOUT.
+
+echo "Hello" | tr "e" "E" # replace all e with E in given Hello string
+
+echo "Hello how are you" | tr " " '-' # Spaces being transformed to hyphens
+
+echo "Hello how are you 1234" | tr -d [0-9] # Digits (numerals) being deleted
+
+tr "()" "[]"
+
+tr -d [a-z] # delete all lower case from a to z
+
+tr abcdefghijklmnopqrstuvwxyz ABCDEFGHIJKLMNOPQRSTUVWXYZ # translate lower case to upper case
+
+tr [:lower:] [:upper:] # translate lower case to upper case
+
+tr a-z A-z
+
+tr -s '\n' ' ' < file.txt # Join all the lines in a file into a single line
+
+echo "This is for testing" | tr [:space:] '\t' # translate white spaces to tab
+
+!! We can use -s option to squeeze the repetiton of characters.
+echo "This    is    for testing" | tr -s [:space:] '\t'
+
+tr -s " " " " # Replace all sequences of multiple spaces with just one space
+!! echo "Hello world!" | tr "world" "name" # output : Heeea namee
+Translate characters not strings!
+
+

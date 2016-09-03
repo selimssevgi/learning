@@ -1,0 +1,8 @@
+Everything in Ruby, including strings and even nil, is an object.
+
+It’s easier to describe what objects do, which is respond to messages.
+An object like a string, for example, can respond to the message length,
+which returns the number of characters in the string:
+
+Typically, the messages that get passed to objects are methods,
+which are functions defined on those objects.

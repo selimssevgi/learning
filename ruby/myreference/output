@@ -1,0 +1,31 @@
+#!/usr/bin/ruby
+
+In Ruby the " (double-quote) tell Ruby to replace variables it finds with #{},
+but the ' (single-quote) tells Ruby to leave the string alone and ignore any variables inside it.
+
+puts "some characters to print" # puts has new line at the end by default
+print "this is a line without a new line" # doesnt have a new line by default
+
+puts "First line\n Second line"
+
+puts "First line", "Second line" # comma is like using puts twice
+puts """
+One of the multiple ones.
+Another one.
+And one more.
+"""
+
+puts "This is the varilable value : #{variable}"
+
+puts "The sum of the integers : #{int1 + int2}"
+
+puts var1
+
+puts var1 + var2 # concat
+
+puts "Using 'single quotes' in strings!"
+
+puts "." * 10 # string repetation. 10 dots
+
+#Formatting : there are times when you want to apply the same format to multiple values.
+#             That's when %{} comes in handy. Check out |formatter|

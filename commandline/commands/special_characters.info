@@ -1,0 +1,20 @@
+# * asterisk character is a shorthand to match "any" characters.
+
+# ? character matches any signle character.
+
+# [...] matches any of the characters inside. 
+  [abc] matches a or b or c
+  [a-z] matches one of the letter in range a to z
+
+# ^ and ! reverse the meaning inside of []
+  [^abc] matches anything except a or b or c
+
+# [:name:] 
+  [:alpha:]
+  [:punct:]
+
+# $ shell variable
+
+# \ escapre character. 
+  rm Account\$1.class
+  rm 'Account$1.class' // '' tells interpreter not to process whats inside

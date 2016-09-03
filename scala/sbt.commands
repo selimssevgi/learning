@@ -1,0 +1,13 @@
+- starting up sbt 
+  Go in to the base directory of the project.
+  $sbt
+
+$ sbt about # first initialization and version control
+
+> console # Scala interpreter in sbt. it will load all the projects code
+
+> compile # compiles the source code
+
+> test # run scala unit test
+
+> run # run the main methods, shows them if there are more than one

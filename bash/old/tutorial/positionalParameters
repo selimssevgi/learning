@@ -1,0 +1,14 @@
+#/bin/bash
+
+# positionalParameters - Script Def : Deneme
+
+##### Bu script son girdigimiz komutu inceler.Her ayrı komut ve parametreyi başka degiskenlere aktarır.
+
+# Mesela ls -a dedigimiz zaman burda $0=ls ve $1=-a dır.Bu degiskenler 0 dan 9 a kadar gider.
+
+
+echo "Positional Parameters"
+echo '$0 = ' $0
+echo '$1 = ' $1
+echo '$2 = ' $2
+echo '$3 = ' $3

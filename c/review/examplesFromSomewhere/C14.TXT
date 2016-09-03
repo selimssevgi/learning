@@ -1,0 +1,45 @@
+C Dili - 14. Konu
+
+Komut Satirinda Verilen Parametrelerin Okunmasi
+
+Parametre Nedir?
+
+Parametre kullancinin, program isminin yaninda yazdigi ek bilgilerdir.
+Parametreler, birbirinden bosluk ile ayrilirlar. Kullanici, herhangi bir
+komutun yaninda parametreler girebilir. SIMDINE.C de de gorebileceginiz gibi,
+bu parametreleri programa gecirmek son derece kolaydir. Bunu yapmak icin,
+
+main(adet,kelime) 
+int adet;
+char *kelime[];
+{
+
+seklinde tanimlanmalidir. 'adet' degiskeni, kac tane parametre girildigini
+sayar. Bu, sayet hic parametre girilmemisse, 1 dir, ve parametre
+girildikce, bu deger artar. Ornegin,
+
+rm -ie myfile.out
+
+orneginde, adet=3 dur, yani komut satirinda birbirinden boslukla ayrilmis
+3 sozcuk vardir.
+
+'Kelime' degiskeni ise, bir pointerlar dizisidir. Bu dizinin her elemani,
+bellekteki parametrelerin, baslangic adreselerini tutar. Yani,
+
+kelime[0] ----->>  rm.exe
+kelime[1] ----->>  -ie
+kelime[2] ----->>  myfile.out
+
+gibidir. Daima, 'kelime' nin 0 inci elemani, programin isminin baslangic
+adresini tutar, bundan sonra gelen diger 1,2 ve diger indeksler, diger
+parametrelerin baslangic adreselerini tutarlar. Kullanimlari, ornegin,
+normal bir char buffer[80] tipli bir diziye atamak icin, soyle olabilir: 
+
+strcpy(buffer,kelime[2]);
+
+tabii, isim kelime, ve adet olmak zorunda degildir, herhangi birsey
+olabilir. C de alisilmis tutum, 'adet' yerine 'argc' ve 'kelime' yerine
+'argv' sozcuklerinin kullanilmasidir. Kelimenin kac tane indeksi oldugu,
+'adet' degiskeninden bulunabilir: Kelime, daima (adet-1) tane indekse
+sahiptir.
+

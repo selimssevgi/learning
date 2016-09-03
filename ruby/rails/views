@@ -1,0 +1,5 @@
+# A view's purpose is to display this information in a human readable format.
+  An important distinction to make is that it is the controller, not the view, where information is collected.
+  The view should just display that information.
+  By default, view templates are written in a language called eRuby (Embedded Ruby)
+  which is processed by the request cycle in Rails before being sent to the user.

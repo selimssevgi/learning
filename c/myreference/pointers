@@ -1,0 +1,9 @@
+int *p;         # declaretion of integer pointer
+                # it says p variable is going to hold an address 
+                # which point to an integer
+
+int x = 1;
+
+p = &x;         # & returns the address of x variable
+
+int y = *p;     # * returns the value that p points

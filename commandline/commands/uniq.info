@@ -1,0 +1,11 @@
+Uniq command is helpful to remove or detect duplicate entries in a file.
+
+The uniq command replaces the consecutive repetitions with only one line in each case.
+
+uniq -c <filename> # to count occurrence of lines in file
+
+uniq -d <filename> # only prints duplicate lines
+
+uniq -u <filename> # only prints unique lines
+
+uniq -c -i | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//' # trim leading and trailing white space. 

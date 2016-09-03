@@ -1,0 +1,274 @@
+DINAMIK YER ACMA
+
+Dinamik yer acma, ilk karsilastiginizda korkutucu bir tanimdir, fakat
+aslinda o kadar zor degildir. Su ana kadar kullandigimiz tum degiskenler,
+statik degiskenler idiler. Yani, derleyici tarafindan, derleme yada link
+etabinda kendilerine yer ayrilmisti. (Aslinda bazilari "otomatik"
+degiskenler olduklarindan, derleyici tarafindan dinamik olarak yer
+ayrilmisti, fakat bu bize gorunmuyordu). Dinamik degiskenler, program
+yuklendiginde var olmayan, fakat gerektiginde kendilerine hafizada yer
+tahsis edilen degiskenlerdir. Bu metod ile, diledigimiz kadar degiskeni
+tanimlamak, kullanmak, ve baska degiskenlerin o sahayi kullanmasi icin,
+o sahayi tekrar serbest birakabiliriz. 
+
+DINLIST.C:
+================================================================
+main()
+{
+struct hayvan {
+   char ismi[25];
+   char cinsi[25];
+   int yasi;
+} *evcil1, *evcil2, *evcil3;
+
+   evcil1 = (struct hayvan *)malloc(sizeof(struct hayvan));
+   strcpy(evcil1->ismi,"General");
+   strcpy(evcil1->cinsi,"Karisik Birsey");
+   evcil1->yasi = 1;
+
+   evcil2 = evcil1;   /* evcil2 simdi yukaridaki veri
+                         yapisina karsilik geliyor */
+
+   evcil1 = (struct hayvan *)malloc(sizeof(struct hayvan));
+   strcpy(evcil1->ismi,"Bobi");
+   strcpy(evcil1->cinsi,"Labrador");
+   evcil1->yasi = 3;
+
+   evcil3 = (struct hayvan *)malloc(sizeof(struct hayvan));
+   strcpy(evcil3->ismi,"Kristal");
+   strcpy(evcil3->cinsi,"Alman Coban");
+   evcil3->yasi = 4;
+
+       /* Yukardaki bilgiyi yazalim */
+
+   printf("%s, bir %sdir ve %d yasindadir.\n", evcil1->ismi,
+           evcil1->cinsi, evcil1->yasi);
+
+   printf("%s, bir %sdir ve %d yasindadir.\n", evcil2->ismi,
+           evcil2->cinsi, evcil2->yasi);
+
+   printf("%s, bir %sdir ve %d yasindadir.\n", evcil3->ismi,
+           evcil3->cinsi, evcil3->yasi);
+
+   evcil1 = evcil3;   /* evcil1 simdi evcil3 un gosterdigi
+                         yapiyi gosteriyor              */
+
+   free(evcil3);    /* bir structure'u siliyor                 */
+   free(evcil2);    /* bu da bir baska structure'u siliyor     */
+/* free(evcil1);    bu yapilamaz - niye? anlatacagim!          */
+}
+================================================================
+
+"hayvan" isimli bir structure tanimlama ile basliyoruz. Bu tanimladigimiz
+tip ile bir degisken tanimlamiyoruz, sadece 3 tane pointer tanimliyoruz.
+Bu programin devamina da bakarsaniz, hicbir yerde bir degisken tanimina
+rastlayamazsiniz. Guzel. Veriyi saklayabilecegimiz hicbir yer yok.
+Elimizdeki yegane sey, 3 tane pointers dir. Birseyler yapabilmek icin,
+degiskenler tanimlamamiz gerekli, o zaman dinamik olarak tanimlayalim.
+
+DINAMIK DEGISKEN TANIMLAMAK
+
+Programin ilk satiri, "evcil1" isimli pointer'a birsey atayarak 3
+degiskenden olusan bir dinamik yapi tanimliyor. Programin kalbi, satirin
+ortasinda gomulu bulunan "malloc" fonksiyonudur. Bu, baska bilgilere
+ihtiyaci olan "hafiza ayir" fonksiyonudur. "malloc" fonksiyonu, normalde,
+hafizanin "heap" denilen kesiminde, "n" karakter boyunda, ve karakter
+tipinde bir yer ayiracaktir. "n", fonksiyona gecirilen yegane
+parametredir. "n" hakkinda birazdan konusacagiz, fakat ilk once "heap":
+
+HEAP NEDIR?
+
+Her derleyicinin calisacak kodun boyu, kac degisken
+kullanilabilecegi, kaynak kodun boyu gibi sinirlari vardir. IBM-PC ve
+uyumlular icin bu sinir cogu derleyici icin 64K lik bir calisacak kod
+boyudur. (Calisacak koddan kastim, ismi EXE yada COM ile biten
+kutuklerdir.) Bunun sebebi, IBM-PC nin 64K lik segman boyuna sahip bir
+mikroisleyiciye sahip olmasindandir. Daha "uzakta" yer alan veriye ise,
+ozel erisme yontemleri gerektirmektedir. Programi kucuk ve verimli tutmak
+icin, bu yontemler kullanilmamakta, ve program, cogu programlar icin
+yeterli olan 64K lik bir sahaya sigmak zorunlulugundadir.
+
+Heap sahasi, bu 64K lik sahanin disinda bulunan ve programlarin veri ve
+degisken saklamak icin kullanilabilecekleri bir yerdir. Veriler ve
+degiskenler, sistem tarafindan "malloc" cagirilinca heap'e konur. Sistem,
+verinin nereye kondugunu takip eder. Istedigimizde, bir degiskeni tanimsiz
+yaparak, heap de bosluklar yaratiriz. Sistem bu bosluklara, yeni "malloc"
+tanimlari oldugunda baska veriler koyarak kullanir. Yani, heap'in yapisi
+son derece dinamiktir - surekli degisir..
+
+SEGMANLAR HAKKINDA
+
+Daha pahalli derleyiciler, kullanmak istediginiz hafiza tipini secmenizi
+saglarlar. Lattice yada Microsoft'un derleyicileri ile, program boyunun
+64K nin altinda kalmasini, ve programin daha verimli calismasi ile
+programin 640K sinirinda kalmasi, daha uzun adresleme metodu ile daha az
+verimli calismasi arasinda bir secim yapabilirsiniz. Uzun adresleme,
+segmanlar arasi erisimi gerektireceginden, biraz daha yavas calisan
+programlara sebep olacaktir. Yavaslama, cogu programlar icin onemsiz
+olacaktir. 
+
+Sayet bir programin kodu ve hafiza gereksinimi toplam 64K yi asmiyorsa, ve
+stack'i kullanmiyorsa, bir .COM kutugu haline getirilebilir. Bir .COM
+kutugu hafizanin bir kopyasi seklinde oldugu icin, cok hizli bir sekilde
+yuklenebilir. Halbuki .EXE tipindeki bir kutugun adreslerinin hafizada
+yeniden yerlestirilmesi gereklidir. Dolayisi ile ufak hafiza modeli, daha
+hizli yuklenen programlar yaratabilir. Bunun hakkinda endiselenmeyin,
+birkac programcinin endiselendigi ufak bir detaydir.
+
+Dinamik tanimlama ile, verileri "heap" e saklamak mumkundur. Tabii, lokal
+degiskenleri, ve indeks sayaclari tipindeki degisenleri heap de saklamak
+istemezsiniz - sadece buyuk dizileri ve structure'lari..
+
+Kucuk hafiza modelinde kalmaktan daha onemli birsey, bilgisayarin
+hafizasinin sinirlarinda kalmaktir. Sayet programiniz cok buyuk birkac
+saha tanimliyorsa, fakat bunlari ayni zamanda kullanmiyorsa, bir parcasini
+dinamik olarak tanimlayip, kullanip, silebilirsiniz. Sonra, ayni sahayi
+bir baska veri parcasi icin kullanabilirsiniz. 
+
+"malloc" A GERI DONUS
+
+Umarim, "heap" hakkindaki parca, size "malloc" ile ne yaptigimizi
+gostermistir. Sadece, sisteme kendisine bir parca hafiza verilmesini talep
+edip, bu sahanin ilk elemanina (baslangicina) bir pointer dondurmektedir.
+Parantezler arasinda gerekli olan yegane parametre, istenilen blok'un
+boyudur. Bu programda, basinda tanimladigimiz structure'u saklayabilecek
+bir yere ihtiyacimiz vardir. "sizeof", yeni bir fonksiyondur, en azindan
+bize, ve parantezlerinin icindeki parametresinin boyunu byte cinsinden
+dondurmektedir. Yani, "hayvan" structure'unun boyunu byte olarak
+dondurmektedir. Bu deger "malloc" a dondurulur. Fonksiyonu cagirinca bize
+heap'de bir saha ayrilmis oluyor, ve "evcil1" bu sahanin baslangicini
+gosteriyor. 
+
+CAST NEDIR?
+
+Hala, "malloc" fonksiyonun onunde, tuhaf gorunuslu bir birsey var. Buna
+"cast" denir. "malloc" fonksiyonu normalde, ayrilan sahanin baslangicini
+gosteren "char" tipli bir pointer dondurur. Cogu zaman, "char" tipli bir
+pointer istemeyiz. Biz bu ornekte, "hayvan" structure'unu gosterecek bir
+pointer istiyoruz, ve bu nedenle, derleyiciye bu tuhaf yapi ile bunu
+belirtiyoruz. Cast'i koymazsaniz, cogu derleyici, pointer'i dogru bir
+sekilde dondurecektir, size bir uyari mesaji verip, gayet iyi calisan bir
+program yaratacaktir. Iyi programlama teknigi, derleyicinin uyari
+mesajlari vermesine mani olmaktir. 
+
+
+DINAMIK OLARAK TANIMLADIGIMIZ SAHAYI KULLANMAK
+
+
+Structure ve pointer konusu ile ilgili konusmamizi hatirlarsaniz, sayet
+bir structure'umuz ve onu gosteren bir pointer'imiz varsa, icindeki
+herhangi bir degiskene erisebiliriz. Denemek icin, programin bundan
+sonraki 3 satirinda, structure'a degerler atayacagiz. Bu komutlarin statik
+olarak tanimli atamalara benzedigini fark edeceksiniz. 
+
+Bundan sonraki satirda, "evcil1" in degerini "evcil2" ye atiyoruz. Bunu
+yapmak, yeni bir veri yaratmiyor, sadece ayni yeri gosteren iki tane
+pointer'imiz oluyor. "evcil2", simdi yarattigimiz structure'u gosterdigi
+icin, "evcil1", birbaska dinamik tanimli structure yaratmakta
+kullanilabilir. 
+
+  o  "evcil2" yi de yeni dinamik tanim icin kullanabilirdik. 
+
+Sonunda, bir baska saha tanimlayip, "evcil3" u bunun baslangicina
+atiyoruz. 
+
+DINAMIK TANIMLI SAHADAN KURTULMAK
+
+Birbaska yeni fonksiyon ise, "free" dir. Bu fonksiyon, ayirdigimiz hafiza
+parcasini tekrar sisteme iade etmekte kullanilir. Kullanimi icin, bloku
+gosteren bir pointer'i, parametre olarak gecirin.
+
+Dinamik tanimin bir baska ozelligini gostermek icin, bir baska sey daha
+yapiyoruz. "evcil1" in degeri, "evcil3" e ataniyor. Bunu yaparak, "evcil1"
+in tuttugu degeri kaybetmis oluyoruz - cunku artik "evcil3" un degerini
+tutmaktadir. Dolayisi ile, artik hicbir zaman kullanilamaz. Bu hafiza
+sahasi, bu noktadan sonra erisilemez, ve "ziyan" olmustur. Bu, bir
+programda normal olarak yapmayacaginiz birseydir - sadece dikkatinizi
+cekmek icin konulmustur.
+
+Ilk "free" fonksiyon cagirimi, "evcil1" ve "evcil3" un gosterdigi sahayi
+ortadan kaldirir, ikincisi de "evcil2" nin gosterdigi sahayi ortadan
+kaldirir. Dolayisi ile, daha once yarattigimiz verileri kaybetmis olduk.
+Heap'de bir parca daha bilgi vardir, fakat onun yerini gosteren bir
+pointer olmadigi icin, erisilemez. "evcil1" in sahasini tekrar "free"
+etmeye calismak, bir hata olacaktir, cunku zaten "evcil3" ile ayni yer
+ortadan kaldirilmistir. Fakat endiselenmeye luzum yoktur, cunku DOS a
+donunce, butun heap sahasi silinecektir.
+
+BAYAGI COK KONUSTUK
+
+Bu son program hakkinda nerdeyse 4 sayfa konustuk, fakat iyi harcanmis bir
+zaman idi bu. Sizin icin dinamik tanimlama hakkinda ogrenmediginiz hicbir
+seyin kalmadigini bilmek, sevindirici birsey olmali. Tabii ki, bu sahanin
+kullanimi hakkinda bircok sey orgenebilirsiniz, fakat dinamik tanimlama
+hakkinda daha fazla ogrenebileceginiz birsey yoktur.
+
+BIR POINTER DIZISI
+
+BUYUKDIN.C:
+================================================================
+
+main()
+{
+struct hayvan {
+   char ismi[25];
+   char cinsi[25];
+   int yasi;
+} *evcil[12], *point;       /* bu, 13 tane pointer ve
+                              0 degisken tanimliyor */
+	
+int index;
+
+  /* ilk once, dinamik sahayi ivir zivirla dolduralim. */
+	
+   for (index = 0;index < 12;index++) {
+      evcil[index] = (struct hayvan *)malloc(sizeof(struct hayvan));
+      strcpy(evcil[index]->ismi,"General");
+      strcpy(evcil[index]->cinsi,"Karisik cins");
+      evcil[index]->yasi = 4;
+   }
+
+   evcil[4]->yasi = 12;        /* Bu atamalar, bazi sahalara  */
+   evcil[5]->yasi = 15;        /*      nasil luzumsuz bilgi   */
+   evcil[6]->yasi = 10;        /*  yazilabilecegini gosterir. */
+
+       /* yukarda tanimladiklarimizi yazalim.   */
+
+   for (index = 0;index <12;index++) {
+      point = evcil[index];
+      printf("%s, bir %s, ve %d yasindadir.\n", point->ismi,
+              point->cinsi, point->yasi);
+   }
+
+   /* Iyi programlama teknigi, dinamik yaratilmis sahanin, */
+   /* sisteme iade edilmesini soyler..                     */
+
+   for (index = 0;index < 12;index++)
+      free(evcil[index]);
+}
+
+================================================================
+
+Bu program, bir oncekine cok benzer. Basit tutmak icin, 12 elemanlik bir
+pointer dizisi tanimliyoruz, ve bir "point" isimli bir pointer daha
+tanimliyoruz. 
+
+Size yeni olan "*evcil[12]" terimini biraz anlatmakta fayda var. Burada
+yaptigimiz 12 tane pointer'dan olusan bir dizi tanimladik. Ilki "evcil[0]"
+ve sonuncusu "evcil[11]". Aslinda, bir diziyi indekssiz kullanmak, o
+dizinin adresini verdiginden, kendi basina "evcil" demekle, pointerin
+pointerini tanimlamis oluyoruz. Bu C de tumuyle yasaldir, ve hatta daha
+ileri de gidebilirsiniz - fakat cabucak kafaniz karisir. Dolayisi ile,
+"int ****pt" demek, yasaldir, ve bu bir pointer'in pointer'inin
+pointer'inin pointer'ini tanimlar - sayet dogru saydiysam. Iyice C ye
+alisincaya kadar bu tip seylerden kacinmanizi tavsiye ederim.
+
+Simdi, 12 tane pointer'imiz var, ve biz bunlar herhangi bir pointer gibi
+kullanabiliriz. Bir dongu icinde kendimize dinamik yer acip, icine
+istedigimiz verileri yazabiliriz. Rastgele secilmis bazi sahalara yeniden
+bilgi atadiktan sonra, ekrana sonuclari yaziyoruz. "point" isimli pointer,
+sadece size gosterme amaci ile kullanilmistir. Veri, "evcil[n]" diyerek
+tanimlanabilirdi. Son olarak 12 veri bloku "free" ile serbest birakilir ve
+program sona erer.
+
+

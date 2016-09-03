@@ -1,0 +1,7 @@
+# Remove duplication by using a view partial.
+  By convention, partial files are prefixed with an underscore.
+
+
+<%= render 'layouts/header' %>
+This line looks for a file called app/views/layouts/_header.html.erb
+evaluate its content, and insert the results into the view.

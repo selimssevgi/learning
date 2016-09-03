@@ -1,0 +1,26 @@
+Sort command is helpful to sort/order lines in text files.
+
+# numeric sort is ascending by default.
+
+sort <filename> # sort the lines in the file lexicographical (lexical, dictionary, alphabetical) 
+
+sort -n <filename> # sort on numeric value
+
+sort -h <filename> # sort on human numeric value 1K < 1M
+
+sort -M <filename> # sort months
+
+sort -r <filename> # in reverse order
+
+sort -u <filenae> # get unique lines
+
+sort -t"|" # specify delimeter
+
+sort -k3 # sort by the third word
+
+sort -o <outputfile> # stores sorted output into specified output file
+
+TAB=$(printf "\t")
+sort -nr -k2 -t"$TAB" # sort numerically, in descending order, use second colum, use tab as delimeter
+
+-t $'\t' for a tab delimited file

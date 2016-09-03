@@ -1,0 +1,171 @@
+C Dili - 2. Konu
+
+ILK C PROGRAMINIZ
+
+En basit C programi:
+
+main()
+{
+}
+
+Bu bir programdir, ve bunu kisaltmanin, basitlestirmenin bir yolu yoktur.
+Isin kotu tarafi, bu program birsey yapmaz. Buradaki en onemli kelime,
+main() sozcugudur. Her programda olmasi gereken bu sozcuk, daha sonra
+gorecegimiz gibi, ilk satirda olmak zorunda degildir, fakat bir giris
+noktasi saglamasi nedeni ile gereklidir. Bunu takiben, iki tane parantez
+vardir. Bunlar da, main'in bir fonksiyon oldugunu belirtir. (Bir
+fonksiyonun tam olarak nelerden olustugunu daha sonra gorecegiz)
+Programin kendisi ise, iki kume isareti arasinda yer alir.
+
+BIRSEYLER YAPAN BIR PROGRAM:
+
+Daha ilginc bir program:
+
+main()
+{
+	printf("Bu bir satirlik yazidir.");
+}
+
+Bu programin, ayni diger program gibi, main, ve kume isaretleri vardir.
+Icinde yer alan fonksiyonun, bir satiri ekrana getirmesi icin, satiri " "
+isaretleri arasina aliyoruz. Ayrica fonksiyonun parametresi oldugunu
+belirtmek icin de, cevresine parantez koyuyoruz.
+
+Satirin sonundaki noktali virgule dikkatinizi cekerim: Bir satirin
+bittigini derleyiciye bildirmek icin, C dilinde ; noktali virgul
+kullanilir. 
+
+DAHA COK SEY YAZAN BIR PROGRAM
+
+main()
+{
+	printf("Bu bir satirlik yazidir.\n");
+	printf("Bu bir baska ");
+	printf(" satirdir.\n");
+	printf("Bu ucuncu satirdir.\n");
+}
+
+
+Bu programda, 4 tane islenecek komut vardir. Satirlar bu sirada islenir.
+Ilk satirin sonundaki tuhaf ters bolu isareti, ondan sonra gelecek
+karakterin bir kontrol karakteri oldugunu belirtiyor. Bu durumda n harfi,
+yeni bir satir istegini belirtir. Yani, cursor, ekranin sol basina, ve bir
+satir asagiya kayar. Katarin herhangi bir yerinde yeni bir satir isteyince,
+"\n" komutunu verebilirsiniz. Hatta bir kelimenin ortasina bile koyup,
+kelimeyi iki satira bolebilirsiniz. 
+
+Ilk komut, metini ekrana yazar, ve bir satir asagi iner. Ikinci komut,
+yazdiktan sonra, yeni satir yapmadan, ucuncu komutun icindekileri ekrana
+yazar. Bu komutun sonunda, yeni satira gecilir. Dorduncu komut ise, ucuncu
+satiri yazar, ve bir return karakteri sunar.
+
+
+RAKAMLAR YAZALIM
+
+main()
+{
+	int index;
+	
+	index = 13;
+	printf("Indexin degeri simdi %d\n",index);
+	index = 27;
+	printf("Indexin degeri simdi %d\n",index);
+	index = 10;
+	printf("Indexin degeri simdi %d\n",index);
+}
+
+Bu programda ise, ilk defa olarak bir degisken kullaniyoruz. main() ve {
+isaretlerine artik alismis olmalisiniz. Bunun altinda "int index" diye bir
+satir yer aliyor. Bu satir, "index" isimli bir tamsayi degiskenini
+tanimliyor. Cogu mikrobilgisayarlar icin, 'int' tipi bir degiskenin
+alabilecegi degerler, -32768 ila 32767 dir.  'index' ismi ise,
+TANIMLAYICILAR da bahsettigimiz kurallara uyan herhangi birsey olabilir.
+Bu satirin sonunda da, satirin bittigini belirten ; noktali virgul yer
+alir. 
+
+Bir satirda birden fazla tam sayi tanimlanabilir, fakat henuz biz bununla
+ortaligi karistirmayacagiz.
+
+Programi incelerken, uc tane atama satiri oldugunu, ve bu satirlarin
+altinda da degerlerin yazildigini goruyoruz. Once 13 atanir, ve ekrana
+yazilir, sonra 27 ve 10.
+
+RAKAMLARI NASIL YAZARIZ
+
+Sozumuze sadik kalmak icin, tekrar printf komutuna donelim, ve nasil
+calistigini gorelim. Gordugunuz gibi, butun satirlar, birbiri ile ayni, ve
+diger orneklerden farki, icindeki % isareti. Bu harf, printf'e ekrana
+yazmayi durdurup, ozel birsey yapmasini soyler. % isaretinden sonra gelen
+harf, d, bir tamsayi yazilacagini belirtir. Bundan sonra, yeni satira
+geciren tanidik \n isaretini goruyoruz. 
+
+Den-denler arasinda kalan butun harfler, printf komutu ile ekrana
+cikacaklari tanimlar. Bundan sonraki virgul ve "index" sozcugu yer alir.
+printf komutu buradan degiskenin degerlerini okur. Daha fazla %d ekleyerek
+,ve bunlari yine virgul ile birbirine ekleyerek, birden fazla degiskenin
+de bu komut ile goruntulenmesini saglayabiliriz. Hatirlamaniz gereken
+onemli bir nokta, saha tanimlayici %d ile gecirdiginiz degisken miktari,
+ayni kalmalidir, yoksa bir runtime hatasi verir. 
+
+BILGI SATIRLARI NASIL EKLENIR
+
+/* Bu satiri, derleyici kullanmaz */
+
+main()	/* Bir satir daha */
+{	
+	printf("Bilgi satirlarinin nasil eklenecegini ");
+						/* Bilgi satirlari, 
+						bir satirdan uzun olabilir.
+						*/
+	printf("goruyoruz.\n");
+}
+
+/* Ve programin sonu... */
+
+
+
+Programa aciklik katmak icin, eklenebilecek bilgiler, derleyici tarafindan
+uzerinden atlanir. Lutfen yukaridaki programi, iyi bir ornek olarak
+almayin. Son derece daginik bir sekilde katilmis bilgi satirlari, sadece
+kullanimini gostermek amaci iledir. Bilgi satirlari, /*  isaretleri ile
+baslar, ve */ isareti ile sona erir. 
+
+Dikkat etmeniz gereken bir nokta, birkac satirdan olusan bilgi
+satirlarinda bulunan program komutlarinin, isleme konmayacagidir.
+
+Bilgi satirlari, programin nasil calistigini gostermesi bakimindan cok
+onemlidir. Yazdiginiz bir programin, bir baskasi tarafindan okunabilmesi,
+yada siz nasil calistigini unuttuktan sonra hatirlayabilmeniz icin, mumkun
+oldugu kadar cok bilgi satiri eklemekte fayda vardir. 
+
+Bazi derleyiciler ic ice bilgi satirlarini kabul ederler, fakat genelde,
+ic ice bilgi satirlari kabul edilmez.
+
+IYI SAYFA DIZIMI
+
+Yazdiginiz bir program, kolay anlasilir olmalidir. Bunun icin, duzgun bir
+sekilde programlamak cok onemlidir. C derleyicileri, komutlar arasindaki
+bosluklari goz onune almaz, ve bu nedenle de programlariniza aciklik
+katmak icin, dilediginiz gibi bosluk ve bos satir birakabilirsiniz. 
+
+Su iki programi karsilastiralim:
+
+main() /* Program buradan basliyor */
+{
+	printf("iyi yazis,");
+	printf            ("programin anlasilmasini kolaylastirir\n");
+}
+
+ve:
+
+main() /* Program buradan basliyor */ {printf("iyi yazis,"); printf
+("programin anlasilmasini kolaylastirir\n");}
+
+
+Odev:
+
+1. Ekrana kendi isminizi yazacak bir program yazin.
+2. Programa ayri satirlarda, iki "printf" satiri daha ekleyerek,
+adresinizi ve telefon numaranizi da yazdirin.
+
+

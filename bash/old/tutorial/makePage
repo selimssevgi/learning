@@ -1,0 +1,161 @@
+#!/bin/bash
+
+# Script Def : makePage- A script to produce an Html file.
+
+################################			
+# cat komutuna standart bir input veriyoruz. << anlamı budur.cat komutu zaten dosya icerigini okuyor.
+# _EOF_ kullanılan yere herhangi bir string gelebilir ancak geleneksel oldugu icin _EOF_ kullanıyoruz.
+# input olarak verilen deger hangi stringle(_EOF_) baslatıldı ise o stringle bitirilmeli!			
+#################################
+
+
+title="System Information for" 
+
+
+
+########## FUNCTIONS / Fonksiyonları kullanmadan once tanımlamamız gerekiyor.
+
+
+# Fonksiyonları ilerde gerekli kısımları dolduracak sekilde ayarladık.Hem hata da vermeyecekler.
+function showUptime
+{
+	echo "<h2> System Uptime</h2>"
+	echo "<pre>"
+	uptime # shell built-in function.
+	echo "</pre>"
+
+}
+
+function systemInfo
+{
+	# find any release files in /etc
+
+	if ls /etc/*release 1>/dev/null 2>&1; then
+		echo "<h2>System release info</h2>"
+		echo "<pre>"
+			
+		for i in /etc/*release; do
+			# Since we can't be sure of
+			# length of the file, only
+			# display the first line.
+		
+			head -n 1 $i
+		done
+		uname -orp
+		echo "</pre>"
+	fi	
+}
+
+function homeSpace
+{
+	echo "<h2>home directory space by user</h2>"
+	echo "<pre>"
+
+	format="%8s%10s%10s  %-s\n"
+	printf "$format" "Dirs" "Files" "Blocks" "Directory"
+	printf "$format" "----" "-----" "------" "---------"
+	
+	if [ $(id -u) = "0" ]; then
+		dirList="/home/*"
+	else
+		dirList=$HOME
+	fi  
+
+	for homeDir in $dirList; do
+		totalDir=$(find $homeDir -type d | wc -l)
+		totalFiles=$(find $homeDir -type f | wc -l)
+		totalBlocks=$(du -s $homeDir)
+		printf "$format" $totalDir $totalFiles $totalBlocks
+	done
+	
+	echo "</pre>"
+
+} # end of homeSpace
+
+function driveSpace(){
+	echo "<h2>Filesystem Space</h2>"
+	echo "<pre>"
+	df
+	echo "</pre>"
+
+}
+
+function writePage
+{
+cat << _EOF_
+<html>
+	<head>
+		<title>	$title $HOSTNAME </title>
+	</head>	
+	
+	<body>
+		$title $HOSTNAME
+		<p>Updated on $(date +"%x %r %Z") by $USER</p>
+		$(systemInfo)
+		$(showUptime)
+		$(driveSpace)
+		$(homeSpace)
+	</body>
+</html>
+_EOF_
+
+}
+
+function usage
+{
+	echo "usage : makePage [[[-f filename] [-i]] | [-h]"
+}
+# Scriptin alacagı iki parametre argumanlarını default olarak belirliyoruz.
+interactive=
+filename=~/system_page.html
+
+# Eger parametremiz varsa bunları isleme sokuyoruz.
+while [ "$1" != "" ]; do
+	case $1 in
+		# makePage -f sayfa.html dedigimizde $1=-f dir.$2=sayfa.html dir.Bizim dosya ismini almamız icin bu noktada positional parametre leri bir kere kardırmamız lazım
+		-f | --file ) 		shift
+					filename=$1
+					;;
+		-i | --interactive ) 	interactive=1
+					;;
+		-h | --help ) 		usage
+					exit
+					;;
+		* ) 			usage
+					exit
+					;;
+	esac
+	shift
+done
+
+# ınteractive parametresine argümant gonderilmişse orayı kullanıyoruz.
+
+if [ "$interactive" = "1" ]; then
+	
+	response=
+	
+	echo -n "Enter name of output file [$filename] > "
+	read response
+	
+	# Girilen deger bos degilse : 
+	if [ -n "$response" ]; then
+		filename=$response
+	fi
+	
+	# Dosya onceden var mı? 
+	if [ -f $filename ]; then  
+		echo -n "Output file exists. Overwrite? (y/n) > "
+		read response
+		
+		if [ "$response" != "y" ]; then
+			echo "Exiting program"
+			exit 1
+		fi
+	fi
+fi
+
+# write page (comment out until testing is complete)
+
+writePage > $filename
+
+

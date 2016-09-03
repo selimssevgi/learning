@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Üsteki satir script yorumlaninca hangi yorumlayicinin kullanilacagini belirtmek icin.
+
+# Script Definetion : Kullanicidan veri alıp,degiskene atadiktan sonra ekrana yazdirma scripti
+
+		###########
+		
+#		echo : Output komutudur.Ekrana veri yazdirmak icin kullanilir.
+#		read : Input komutudur.Kullanicidan alinan veriye degiskenlerde saklamak icin kullanilir.
+
+		###########
+
+
+echo "Enter your name : "
+
+# name adli degiskene kullanicinin girdigi degeri yaziyoruz.
+read name
+echo "Enter your age:"
+read age
+echo "Enter your sex : male/female"
+read sex
+
+# Kullanicidan alinan bilgiler ekrana yazdiriliyor.
+echo "You are a $age years old $sex called $name"
+

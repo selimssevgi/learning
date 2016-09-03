@@ -1,0 +1,12 @@
+#/!bin/bash
+
+# rootMu - Script Def : Kullanici bir islem yapacagi zaman root olup olmadigini kontrol edeceginiz.
+
+# "id" komutu bize o anda sistemi kullanan kullanicinin kim oldugunu soyler.
+# "id -u" -u parametresi ise o anki kullanicinin sayisal id sini bize soyler.
+# Sistemde id'si 0(sıfır) olan kullanici root kullanicisidir.
+
+if [ $(id -u) != "0"  ]; then 
+	echo "you must be the superuser to run this script!" >&2 
+	exit 1 # Scriptimiz basarisizlıkla sonuclandi.
+fi

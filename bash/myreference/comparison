@@ -1,0 +1,32 @@
+
+[[ expression ]] # return 0:true 1:false .result in $?
+
+
+!! for comparing strings !!
+
+[[ $a < $b ]]
+[[ $a > $b ]]
+[[ $a <= $b ]]
+[[ $a >= $b ]]
+[[ $a == $b ]]
+[[ $a != $b ]]
+
+[[ -z $a ]] # is null?
+[[ -n $a ]] # is not null?
+
+[[ -z $a && -n $b ]]
+
+
+!! for comparing integers !!
+
+[[ $a -lt $b ]]
+[[ $a -gt $b ]]
+[[ $a -le $b ]]
+[[ $a -ge $b ]]
+[[ $a -eq $b ]]
+[[ $a -ne $b ]]
+
+!! Logic operations !!
+[[ $a && $b ]]
+[[ $a || $b ]]
+[[ ! $a ]]

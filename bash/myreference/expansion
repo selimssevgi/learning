@@ -1,0 +1,36 @@
+!! Shell Expansion !!
+After the command has been split into tokens, these tokens or words are expanded or resolved.
+There are EIGHT KINDS of expansion performed.
+
+!! Brace Expansion : generate arbitrary strings !!
+Brace expansion is performed before any other expansions,
+and any characters special to other expansions are preserved in the result.
+
+echo sp{el,il,al}l # spell spill spall
+
+!! Tilde Expansion !!
+~   is replaced $HOME
+~+  is replaced $PWD
+~-  is replaced $OLDPWD
+
+!! Parameter Expansion !!
+${PARAMETER}
+${PARAMETER}somecharacter # braces make this usage safe
+${$10} # more than one digit positional parameter
+
+!! Command Substitution !! 
+> Command substitution allows the output of a command to replace the command itself.
+
+$(command)
+`command`
+
+!! Arithmetic Expansion !!
+> allows the evaluation of an arithmetic expression and the substitution of the result.
+
+$(( EXPRESSION ))
+
+!! Process Substitution !! 
+
+!! Word Splitting !!
+
+!! File name Expansion !! 

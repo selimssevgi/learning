@@ -1,0 +1,22 @@
+puts varName.class # tells the type of the variable
+
+puts "Hello".class  # String
+puts 3.class        # Fixnum
+puts 3.14.class     # Float
+puts true.class     # TrueClass
+puts false.class    # FalseClass
+puts [1, 'a'].class # Array
+puts nil.class      # NilClass # void, answer of 'doesnt exist', 
+puts :sysbol.class  # Symbol
+puts my_hash.class  # Hash
+variableName = variableValue
+
+cars = 30 # int
+
+half = 1.5 # floating point
+
+name = 'Selim' # string
+
+isBoolean = true # boolean
+
+fullName = "SS#{name}" # string in string

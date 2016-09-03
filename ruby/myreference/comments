@@ -1,0 +1,14 @@
+# A comment, this is so you can read your program later.
+# Anything after the # is ignored by ruby.
+
+puts "I could have code like this." # and the comment after is ignored
+
+# You can also use a comment to "disable" or comment out a piece of code:
+# puts "This won't run."
+
+How do I comment out multiple lines?
+Put a # in front of each one.
+
+Why does the # in puts "Hi # there." not get ignored?
+The # in that code is inside a string, so it will be put into the string until the ending " character is hit.
+These pound characters are just considered characters and aren't considered comments.

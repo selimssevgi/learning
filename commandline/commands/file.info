@@ -1,0 +1,7 @@
+# tells what kind of file is
+
+# file * 
+ReadMe.txt: ASCII text
+Shift.class: compiled Java class data, version 45.3
+Shift.java: ASCII Java program text
+anIcon.gif: GIF image data, version 89a, 26 x 26,

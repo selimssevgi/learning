@@ -1,0 +1,14 @@
+#
+#
+# Script to print user info who currently login,current date & time
+#
+
+# Ekranı onceki girdilerden temizlemek icin
+clear
+
+echo "Hello $USER"
+echo "Today is \c";date
+echo "Number of user login : \c" ; who | wc -1
+echo "Calender"
+cal
+exit 0

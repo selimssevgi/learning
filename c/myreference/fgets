@@ -1,0 +1,12 @@
+# do not use gets, is not safe and depraceted!
+
+# use fgets instead. 
+
+fgets(<variable>, <max_size>, stdin)
+
+# at top 
+enum { max_string = 127 }
+static char string[max_string + 1] = "";
+
+# in main
+fgets(string, max_string, stdin)

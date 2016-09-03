@@ -1,0 +1,18 @@
+		#### Comment hakkında bir kaç bilgi
+
+# Uzunca yazılmış veya uzun sure sonra tekrar goz atılacak kodlarda
+  gerekli yerlerde(comment) yorum yapmak herkesin faydasınadır.
+
+# Bu yuzden her programlama dilinde bunun icin bazı yapılar mevcuttur.
+
+# BASH scriptingde de 2 türlü yorum şekli mevcuttur.
+
+	- Tek satirlik yorumlar
+	(#) işareti ile yapılır.Yorumlayıcı tarafından ignore edilir.
+
+	- Kod blogunu test için devre dışı bırakmak
+	: << BİRKELİME
+		KOD BLOGU
+	AYNIKELİME
+
+

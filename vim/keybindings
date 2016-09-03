@@ -1,0 +1,37 @@
+ESC -> Normal mode
+
+gu -> go lowercase,
+gU -> go uppercase,
+
+gu$ -> go lowercase until the end of the line
+
+ce -> change until the end of the word
+
+dd -> delete the whole line, can be pasted
+
+gf -> go to the file with the name cursor is on
+
+dt. -> delete to the next period
+
+yt; -> yank to the next ;
+
+yy -> yank the whole line
+
+cc -> change line
+
+ZZ -> shortcut for :wq, :x
+
+gg -> move to the start of the file
+
+dw -> delete the word
+
+d$ -> delete to the end of the line
+
+de -> delete to the end of the current word
+
+!!! :help object-select
+
+Second, the function body (the portions of the function between the { and } characters) must contain at least one valid command.
+# delete inner of the () : %vi)
+# delete inner and () together : %va)
+# after selecting : d, x etc. http://stackoverflow.com/questions/405415/can-you-grab-or-delete-between-parentheses-in-vi-vim

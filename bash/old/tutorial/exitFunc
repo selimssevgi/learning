@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# A slicker error hangling routine
+
+# I put a variable in my scripts name PROGNAME which
+# holds the name of the program being run. You can get this
+# value from the first item on the command line ($0)
+
+PROGNAME=$(basename $0)
+
+function errorExit
+{
+#
+#	Fucntion for exit due to fatal program error
+#		Accepts 1 argument:
+#			string containing descriptive error message
+#
+	
+	echo "${PROGNAME}: ${1:-"Unknown Error"}" 1<&2
+}
+
+# Example call of the errorExit function.note the inclusion
+# of the LINENO environment variable. It contains current line number.
+
+echo "Example of error with line number and message"
+errorExit "$LINENO : An error has accurred."
+
+
+
+
+
+
+
+
+
+

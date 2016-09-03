@@ -1,0 +1,72 @@
+C-Dili  0. Konu                                 Baski Tarihi: 28/ 3/89
+                                                Son editleme: 15/10/90
+
+      JomSoft Programmer , Cracker & Hacker Team Since 1997
+
+Bu kitab Turgut Kalfaoßlu Tarafçndan Yapçlmçütçr Yasal Haklarç Saklçdçr
+JomSoft Tarafçndan daßçtçlmasç uygun gîrÅlmÅütÅr. 
+Bilgi iáin : ôzgÅr ÄIMEN Karakan_c21@hotmail.com
+http://members.xoom.com/JomSoftCO ICQ : 18874648
+
+
+
+KIMIN ICIN?
+
+C dili, ogrenmesi basit bir dil degildir. Bu nedenle hicbir bilgisayar
+dili bilmeyenlere, bu kitabi tavsiye etmiyorum. Sayet BASIC
+biliyorsaniz, cok iyi. Pascal, COBOL, FORTRAN, harika. Biraz MS-DOS
+bilmenizde de fayda var. Fakat C dilini ogrenmek icin DOS eksperi
+olmaniz gerekmez.
+
+
+NASIL?
+
+Ilk once, bu kitabin sonu .TXT ile biten kutuklerini, bir yaziciya
+yollayin. Bu sayede, ekranda derlenecek programi incelerken, elinizde
+metini okuyabilirsiniz. Bu kitapta konularin icine serpistirilmis
+ornekler bulacaksiniz. Bircok yerde, bu ornegin hangi kutukte bulundugu
+belirtilecektir. Ornegi inceledikten sonra, derleyiciniz ile kutugu
+derleyip, sonuclari incelemenizde fayda vardir.
+
+
+HANGI DERLEYICI?
+
+Herhangi bir C derleyicisini kullanabilirsiniz. Hatta, bedavaya
+dagitilan SMALL-C derleyicisini, Software Sandwich sirketinden temin
+edebilirsiniz. Daha fazla bilgi icin lutfen DERLEYICI.TXT isimli kutuge
+bakin.
+
+PARASAL
+
+Bu kitap, Coronado Enterprises sirketi tarafindan, kullanici destekli
+olarak sunulmus bir elektronik-kitabin tercumesidir. Turkcesi, Turgut
+Kalfaoglu tarafindan hazirlanmistir. Kendisi, yani ben, bu tercumeye ek
+olarak buyuk miktarda yaziyi da, kendi deneyimimden katmistir. Bu
+tercume de, kullanici-destekli olarak Turk bilgisayar piyasasina
+verilmistir. Bu kitap, bedava degildir. Sayet bu kitabi kullanip, size
+birseyler ogrettigine karar verirseniz, yaklasik $20 dolar karsilik bir
+bagisin adresime gonderilmesini rica ederim.
+
+
+Turgut Kalfaoglu              Earn/Bitnet adresi:  TURGUT@TREARN
+1378 Sok. 8/10
+Izmir 35210
+Turkiye
+
+Bagis aldigim taktirde, bu tip yayinlari surdurecegim. Lutfen
+kullanici-destekli fikrini destekleyin, ve icine bakamadan aldiginiz
+pahali kitaplari, ve programlari fes edebilecek bu metodu surdurmeme
+yardimci olun.
+
+HAKLAR
+
+Bu kitabin her hakki Turgut Kalfaoglu ve Coronado Enterprises inc. e
+aittir. Bu kitabi istediginiz gibi degistirebilirsiniz, fakat baskalarina
+vereceginiz zaman, orjinal hali ile dagitmaniz gerekmektedir.
+
+ONERILER, EKLER
+
+Bu kitabin bir sonraki 'baskisi' icin sayet onerileriniz var ise, bilmek
+isterim. Lutfen adresime eklenmesini istediginiz malzemeyi gonderiniz. 5
+1/4 lik disket halinde gondermenizi tercih ederim. Tesekkurler!
+

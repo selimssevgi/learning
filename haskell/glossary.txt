@@ -1,0 +1,8 @@
+# ghc : glasgow haskell compiler
+
+# ghci : interactive haskell compiler
+         haskell Read, Evaluate, Print Loop (REPL)
+
+# runhaskell : Execute a program without compiling. very slow.
+
+# type inference : haskell can figure out the type of vars by itself, we dont have to explicitly tell

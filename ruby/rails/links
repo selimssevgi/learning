@@ -1,0 +1,7 @@
+
+# Adding links 
+<%= link_to "Home",   '#' %>
+<%= link_to "sample app", '#', id: "logo" %>
+<%= link_to "Sign up now!", '#', class: "btn btn-lg btn-primary" %>
+<%= link_to "About", about_path %>    # uses named path
+nameofthelink, url, third arguments is an options hash(optional!)

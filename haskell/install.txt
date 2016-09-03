@@ -1,0 +1,3 @@
+# https://www.haskell.org/platform/#linux-ubuntu
+  -sudo apt-get install haskell-platform
+  -ghc -v

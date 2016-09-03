@@ -1,0 +1,52 @@
+or dictionaries
+
+# Hashes won't keep things in order. That's not their job.
+# It'll just pair up two things: a key and a value.
+
+# Initialization
+my_hash = Hash.new    # empty hash
+
+my_hash = Hash.new(1) # defult value of default key
+my_hash.default = 1
+
+my_hash = { "first_name" => "SSS", "last_name" => "Selim" }
+
+my_hash = { "first_name" => "SSS", 3.14 => "Selim" } # use any basic type can be used keys
+ 
+!! Convention
+my_hash = { :first_name => "SSS", :last_name => "Selim" } # using symbols as keys. 
+
+my_hash = { first_name: "SSS", last_name: "Selim" } # same as above, better looking!
+
+# Addition
+my_hash["middle_name"] = "Srr"
+my_hash.store(key,value)
+my_hash[:firstname] # SSS
+my_hash[3.14] = "PI" # adding new entry
+
+# Deletion
+my_hash.delete(key)
+my_hash.delete(3.14) # remove the entry from hash
+
+value = my_hash[:akey] # nil
+value ||= "default value for nil"
+my_hash.length
+my_hash.empty?
+my_hash.keys # return keys array
+my_hash.values # return values array
+my_hash.has_value? "PI" # true
+my_hash.has_key? :first_name
+
+# Iteration
+my_hash.each do |key, value|
+  puts key
+  puts value
+end
+
+my_hash.each do |arr|
+  puts arr[0] # key
+  puts arr[1] # value
+end
+
+ratings = Hash.new(0)     # set all of initial rating counts to zero.
+books.values.each { |rate| ratings[rate] += 1 }

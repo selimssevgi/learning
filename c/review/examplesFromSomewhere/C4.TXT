@@ -1,0 +1,450 @@
+C dili - 4. Konu
+
+TAM SAYI ATAMA
+
+TAMSAYI.C:
+================================================================
+main()
+{
+	int a,b,c;
+	
+	a = 12;
+	b = 3;
+
+	c = a+b;
+	c = a-b;
+	c = a*b;
+	c = a/b;
+	c = a%b;
+
+	c = 12*a+b/2-a*b*2/(a*c+b*2);
+
+	a = a + 1;	/* arttirma islemleri */
+	b = b * 5;
+	
+	a = b = c = 20;	/* Coklu atamalar */
+	a = b = c = 12*13/4;
+}
+================================================================
+
+Bu programda uc tam sayi degiskeni tanimliyoruz (a,b,c), ve bunlara
+degerler atiyoruz. Ilk iki satirda a ve b ye sayisal degerler veriyoruz.
+Daha sonraki dort satirda, basit islemler goruyorsunuz. 
+
+Besinci satirda ise, modulo operatorunu goruyorsunuz. Modulo, iki degisken
+birbirine bolundugunde, kalan degeri verir. Modulo, sadece integer ve char
+degisken tipleri ile kullanilabilir. 
+
+Daha sonra gelen iki arttirma islemleri ise, bu sekilde derleyici
+tarafindan kabul edilir, fakat bunlari yazmanin daha kestirme bir sekli
+vardir - bunu daha sonra gorecegiz. 
+
+Son iki satira gelince, bunlar cok tuhaf gorunebilir goze. C derleyicisi,
+atama satirlarini, sagdan sola dogru okur. Bunun sayesinde, coklu atamalar
+gibi, cok faydali islemler yapilabilir. Bu ornekte, derleyici, yirmiyi
+alip, c ye atiyor. Sola dogru devam ederken, b yi gorup, en son elde
+edilen sonucu (20) b ye atiyor. Ayni sekilde a ya da, b nin degeri
+veriliyor. 
+
+Bu programi derleyip, calistirmak son derece SIKICI olabilir. Bu programin
+hicbir ciktisi yoktur. Dilerseniz, ogrendiginiz printf fonksiyonu ile,
+programin yaptiklarini daha yakindan inceleyebilirsiniz.
+
+C de veri tanimlari, program bloku icinde, islenecek komutlardan once
+gelir. Sayet tanimlari programin ortasina yerlestirmeye calisirsaniz,
+derleyici bir hata verecektir.
+
+VERI TIPLERI
+
+main()
+{
+	int a,b,c;		/* -32767 den 32767 ye - tamsayi olarak */
+	char x,y,z;		/* 0 dan 255 e - tamsayi olarak */
+	float num,toy,thing;	/* 10e-38 den 10e+38 e - ondalikli olarak */
+	
+	a = b = c = -27;
+	x = y = z = 'A';
+	num = toy = thing = 3.6792;
+	
+	a = y;		/* a nin degeri simdi 65 (karakter A) */
+	x = b;		/* x simdi tuhaf bir sayi olacak */
+	num = b; 		/* num simdi -27.00 olacak */
+	a = toy		/* a simdi 3 olacak */
+}
+
+Gordugunuz gibi, birkac integer daha tanimladik. Fakat, bundan baska, iki
+yeni tip daha kattik. "Char" ve "float". 
+
+"Char" tipi, nerdeyse integer ile ayni manada. Fakat, sadece 0 ila 255
+arasindaki sayilari alabilir, ve genellikle hafizada bir bytelik bir yerde
+saklanir. Bu tip veri, genellikle kelime katarlari saklamak icin
+kullanilir. 
+
+DATA TIPLERININ KARISTIRILMASI
+
+Bu anda, C nin "int" ve "char" i nasil kullandigini gormenin tam zamani. C
+deki "int" tipi ile calisan cogu fonksiyonlar, karakter tip veri ile de
+ayni sekilde calisabilir, cunku karakter tipi, bir cins integer'dir.
+"char" ve "int" tiplerini neredeyse istediginiz gibi karistirmak
+mumkundur. Derleyicinin akli karismaz, ama sizin karisabilir. Bunun icin
+dogru tip veriyi kullanmakta fayda vardir.
+
+FLOAT
+
+Ikinci yeni tip veri, "float" tipidir. Kayar nokta da denilen bu tipin
+sinirlari cok genistir. Cogu bilgisayarlarda, float tipi 10e-38 den 10e+38
+e kadardir. 
+
+YENI VERI TIPLERINI NASIL KULLANALIM
+
+Bu programin ilk uc satirinda, dokuz tane degiskene deger ataniyor. 
+
+* Daha once gordugumuz gibi, "char" tipi, aslinda bir "integer" tipi
+oldugundan, bir "char" in "int" e cevrilmesinde hicbir sorun yoktur.
+* Fakat, bir integer'i "char" a cevirmek icin, bir standart yoktur. Bu
+nedenle, sayet tamsayi degiskeninin degeri, "char" sahasindan buyukse,
+cikan sonuc cok sasirtici olabilir. 
+* Ucuncu satirda ise, bir tamsayiyi, "float" a atiyoruz. Bu durumda,
+derleyici, bu ceviriyi bizim icin yapar. 
+* Fakat tersini yapmak ise, biraz daha karisiktir. Derleyici sayet varsa,
+degiskenin ondalik degerini ne yapacagina karar vermek zorundadir.
+Genellikle de, ondalik kesimi gozardi eder.
+
+Bu programin da hicbir ciktisi yok. Hem zaten karakter ve float tiplerinin
+nasil ekrana yazilabilecegini gormedik.. Bundan sonraki programa kadar
+sabir.. 
+
+COKVERI.C:
+================================================================
+
+main()
+{
+	int a;              /* basit tamsayi tipi              */
+	long int b;         /* uzun tamsayi tipi               */
+	short int c;        /* kisa tamsayi tipi               */
+	unsigned int d;     /* isaretsiz (+ - siz) tamsayi     */
+	char e;             /* karakter tipi                   */
+	float f;            /* kayar nokta tipi                */
+	double g;           /* cift hassasiyet kayar nokta     */
+ 
+	a = 1023;
+	b = 2222;
+	c = 123;
+	d = 1234;
+	e = 'X';
+	f = 3.14159;
+	g = 3.1415926535898;
+ 
+	printf("a = %d\n",a);      /* desimal               */
+	printf("a = %o\n",a);      /* oktal                 */
+	printf("a = %x\n",a);      /* heksadesimal          */
+	printf("b = %ld\n",b);     /* uzun desimal          */
+	printf("c = %d\n",c);      /* kisa desimal          */
+	printf("d = %u\n",d);      /* isaretsiz             */
+	printf("e = %c\n",e);      /* karakter              */
+	printf("f = %f\n",f);      /* kayar nokta           */
+	printf("g = %f\n",g);      /* cift hassasiyet k.n   */
+	printf("\n");
+	printf("a = %d\n",a);      /* basit 'int' cikti          */
+	printf("a = %7d\n",a);     /* 7 uzunlukta bir saha kullan*/
+	printf("a = %-7d\n",a);    /* sola dayali 7 lik saha     */
+	printf("\n");
+	printf("f = %f\n",f);      /* basit kayan nokta     */
+	printf("f = %12f\n",f);    /* 12 lik bir saha kullan*/
+	printf("f = %12.3f\n",f);  /* noktadan sonra 3 hane */
+	printf("f = %12.5f\n",f);  /* noktadan sonra 5 hane */
+	printf("f = %-12.5f\n",f); /* sola yapisik 12 hane  */
+}
+
+================================================================
+
+Bu program, C dilinde bulunan butun standart basit veri tiplerini
+kapsiyor. Baska tiplerde var, fakat bunlar basit tiplerin bir araya
+gelmesi ile olusurlar. Bunlardan daha sonra bahsedecegiz.
+
+Programi inceleyin. Ilk once basit 'int', sonra 'long int' ve 'short int'
+gorunuyor. 'unsigned' tipi, yine integer kadar bir sahada saklanir, fakat
+arti yada eksi isareti tasimadigindan, genellikle siniri 0 - 65535 dir.
+(Sayet long, short, yada unsigned deyimi kullanilmissa, sonuna 'int'
+yazilmasi gereksizdir.) 
+
+Daha once char ve float u gormustuk. Bunlar disinda kalan 'double' tipi,
+'float' a nazaran daha buyuk bir sahada saklanir, ve daha hassas sonuclar
+verebilir. 
+
+Cogu derleyicilerin matematik fonksiyonlari, float tipini kullanmaz,
+double tipini kullanir. Bu nedenle verdiginiz float degeri, size
+transparan olarak double'a cevirir. 
+
+PRINTF'IN CEVIRIM KARAKTERLERI
+
+Printf fonksiyonunda kullanilan karakterler sunlardir:
+
+	d	desimal
+	o	oktal
+	x	heksadesimal
+	u	unsigned (isaretsiz)
+	c 	karakter
+	s	string (karakter katari)
+	f	float (kayar nokta)
+	
+Bu harfler, bir yuzde isaretinden sonra kullanirlar. Bu iki harf arasina
+sunlar ilave edilebilir:
+
+	-	sahasinin icinde sola dayanmis 
+	(n)	minimum saha uzunlugunu belirler
+	.	n ile m yi birbirinden ayirir
+	(m)	float tipi icin noktadan sonraki hane sayisi
+	l	'long' tipi oldugunu belirtmek icin
+	
+Bu programi derleyip sonuclarini inceleyin. Dilediginiz gibi degistirerek,
+sonuclari inceleyin.
+
+MANTIKSAL KARSILASTIRMALAR
+
+KARSILAS.C:
+================================================================
+
+
+main()  /* Bir suru karsilastirma */
+{
+int x = 11,y = 11,z = 11;
+char a = 40,b = 40,c = 40;
+float r = 12.987,s = 12.987,t = 12.987;
+ 
+                         /* Birinci grup */
+ 
+   if (x == y) z = -13;   /* z = -13 olacak                */
+   if (x > z)  a = 'A';   /* a = 65  olacak                */
+   if (!(x > z)) a = 'B'; /* bu hicbir sey yapmayacak */
+   if (b <= c) r = 0.0;   /* r = 0.0 olacak                */
+   if (r != s) t = c/2;   /* t = 20  olacak                */
+ 
+                    /* Ikinci grup   */
+ 
+   if (x = (r != s)) z = 1000; /* x pozitif olacak, ve
+                             z = 1000 olacak       */
+   if (x = y) z = 222;   /* bu, x = y, and z = 222 yapar */
+   if (x != 0) z = 333;  /* z = 333 olacak   */
+   if (x) z = 444;       /* z = 444 olacak */
+ 
+                    /* Ucuncu grup */
+ 
+   x = y = z = 77;
+   if ((x == y) && (x == 77)) z = 33; /* z = 33 olur   */
+   if ((x > y) || (z > 12))   z = 22; /* z = 22 olacak */
+   if (x && y && z) z = 11;           /* z = 11 olur   */
+   if ((x = 1) && (y = 2) && (z = 3)) r = 12.00; /* Bu ise,
+				 x = 1, y = 2, z = 3, r = 12.00 yapar */
+   if ((x == 2) && (y = 3) && (z = 4)) r = 14.56; /* Birsey degistiremez */
+ 
+ 
+                    /* Dorducu grup */
+ 
+if (x == x); z = 27.345;  /* z daima deger degistirir */
+if (x != x)  z = 27.345;  /* Hicbirsey degismez    */
+if (x = 0)   z = 27.345;  /* x = 0 olur, z degismez */
+ 
+}
+
+================================================================
+
+	Karsilas.C isimli programa lutfen bakin. Ilk basinda dokuz tane
+degisken hazirliyoruz. Daha once yapmadigimiz sekilde, bunlari hem
+tanimlayip, hem ilk degerlerini veriyoruz. 
+
+Gordugunuz gibi if ile komutlar arasinda bir satir birakmamiz gerekmiyor.
+Programin daha okunabilir olmasi icin arada satir birakmak sart degildir.
+
+Birinci gruptaki karsilastirmalar, iki degiskeni karsilastirdiklari icin,
+en basit olanlari. Ilk satirda, x in y ye esit olup olmadigina bakiyoruz.
+Burada iki esit isareti yerine (==) tek esit de kullanilabilirdi, fakat
+manasi degisirdi.  
+
+Ucuncu satirda, NOT isaretini goruyorsunuz. Bu unlem isareti, herhangi bir
+karsilastirmanin sonucunu degistirmek icin kullanilabilir.
+
+DAHA ZOR KARSILASTIRMALAR
+
+
+Ikinci grupta yer alan karsilastirmalar daha zor. Ilk once parantezler
+arasinda tuhaf bir ifade yer aliyor.. Bunu anlamak icin C dilindeki
+'EVET' ve 'HAYIR' kavramlarini bilmemiz gerekiyor. C de 'HAYIR', 0
+degerindedir. 'EVET' ise, sifirdan degisik herhangi birseydir. Bir
+EVET/HAYIR testinin sonucu herhangi bir integer yada karakter
+degiskenine atanabilir.
+
+Ilk ornege bakin: r!=s deyimi, r nin degeri 0.0 a atandigindan, 'EVET'
+bir sonuc verecektir. Bu sonuc, sifirdan degisik bir rakam, ve herhalde 1
+olacaktir. Olusan bu sonuc, x degiskenine atanir. Sayet x den sonra iki
+esit isareti olsa idi (x == (r!=s) gibi)  bu durumda bu 1 degeri, x ile
+karsilastirilirdi. Fakat tek bir isaret oldugundan, r ile s yi
+karsilastirmanin sonucu, x e atanir. Ayrica bu atama isleminin sonucu da
+sifirdan degisik oldugundan, z de 1000 e esitlenir.
+
+Ikinci ornekte ise, x degiskeni, y nin degerini alir, cunku arada tek esit
+isareti vardir. Ayrica sonuc 11 oldugundan, z de 222 ye esitlenir.
+
+Ikinci grubun ucuncusunde, x i sifira karsilastiriyoruz. Sayet sonuc
+'EVET' ise, yani x sifir degilse, z ye 333 degerini atiyoruz. Bu grubun
+en son orneginde ise, sayet x in degeri sifir degil ise, z ye 444
+atiyoruz. Yani ucuncu ve dorduncu ornekler, birbirine esdirler. 
+
+Ucuncu gruptaki karsilastirmalar, yeni deyimler sunuyor. Yani 'AND' ve
+'OR' deyimleri. Ilk once 3 degiskene de 77 degerini atiyoruz ki, islemlere
+bilinen degerlerle basliyabilelim.  Buradaki ilk ornekte, yeni kontrol
+isaretimiz '&&' i goruyoruz. Bu satirin okunusu ise:
+'Sayet x, y ye esit ise, vede x, 77 ye esit ise, z nin degerini 33 yap.'
+Yani, AND operandi icin, iki taraftaki islemlerin EVET (TRUE) sonuc
+vermesi gereklidir.
+
+Bundan sonraki ornek ise, '||' (OR) isaretini gosteriyor. Bu satir ise, 
+'Sayet x, y den buyuk ise, YADA z, 12 den buyuk ise, z nin degerini 22 yap.'
+z nin degeri 12 den buyuk oldugu icin, x in y den buyuk olup olmamasi
+onemli degildir. Cunku OR operandi icin ikisinden birinin EVET olmasi
+yeterlidir. 
+
+Bircok kisimdan olusan bir mantiksal karsilastirma yaparken, karsilastirma
+soldan saga dogru yapilir, ve sonuc garantilendiginde, bu satirin
+islenmesi durur. Mesela, bir AND karsilastirmasinda, sayet AND in sol
+tarafindaki islem HAYIR (FALSE) sonuc verirse, sag tarafindaki islem
+yapilmaz. Yada, bir OR isleminde, sol tarafindaki islem EVET (TRUE) sonuc
+verirse, islemin OR dan sonrasina bakilmaz.
+
+OPERANDLARIN ISLEM SIRASI
+
+Hangi operand ilk once islenir? Bu konuda bircok kural vardir, ve
+derleyicinin kitabini bunlari uzun uzun anlatir. Fakat, benim tavsiyem,
+bunlarla ugrasmak yerine, once islenmesini istediginiz kisimin cevresine
+parantez koymanizdir. 
+
+Ucuncu gruptaki orneklere devam ederek, dorduncu ornekte, uc tane basit
+degiskenin birbiri ile AND edildigini goruyoruz. Ucunun de degerleri
+sifirdan degisik oldugundan, sonuc EVET oluyor, ve z nin degeri 11 e
+esitlenir. 
+
+Bundan sonraki ornekte ise, uc tane atama islemi gorunuyor. Sayet daha
+onceki ornekleri anladiysaniz, bu 'if' komutunun dort tane degeri
+degistirdigini gorebilirsiniz. 
+
+BIR HILE 
+
+Ucuncu grubun en son orneginde ise, bir hile var. Ilk once, (x==2) nin
+HAYIR la sonuc verdigini goruyoruz. Ve daha once gordugumuz gibi, C dili,
+sonuctan emin oluncaya kadar if komutunu isler. Yani, hepsi AND oldugu
+icin, vede ilk ifade HAYIR (FALSE) oldugu icin, islemi o noktada keser,
+ve y,z ve r nin degerleri degismez.
+
+Dorduncu gruptaki orneklerin hicbiri calismaz. Bu grup, basinizi derde
+sokabilecek komutlardir. ilk ornekte, x == x komutu daima dogrudur, fakat
+hemen arkasindan gelen noktali virgul yuzunden, bundan sonra gelen
+z=27.345 komutu ayri bir komut olarak her zaman islenir. 
+
+ikincisi daha kolay - x daima x e esit olacagindan, denklem daima yalnis
+olacaktir. Son olarak, x e sifir degeri atanir, ve parantezin sonucu sifir
+oldugundan, z ye atama yapilmaz.
+
+C NIN CABUK TARAFLARI
+
+C de 3 tane, bakinca hicbir seye benzemeyen, fakat programlarken hiz
+saglayan kestirme yol vardir. Bu metodlar iyi C programcilari tarafindan
+cok SIK kullanildigindan, ogrenmenizde fayda vardir. 
+
+KESTIRME.C:
+================================================================
+
+main()
+{
+int x = 0,y = 2,z = 1025;
+float a = 0.0,b = 3.14159,c = -37.234;
+
+                                              /* Arttirma     */
+   x = x + 1;       /* Bu x i bir arttirir */
+   x++;             /* Bu da..           */
+   ++x;             /*        Bu da..    */
+   z = y++;         /* z = 2, y = 3 */
+   z = ++y;         /* z = 4, y = 4 */
+
+                                              /* Azaltma      */
+   y = y - 1;       /* Bu y nin degerini bir azaltir */
+   y--;             /* Bu da..           */
+   --y;             /*          Buddah.. */
+   y = 3;
+   z = y--;         /* z = 3, y = 2 */
+   z = --y;         /* z = 1, y = 1 */
+
+                                       /* aritmetik islemler */
+   a = a + 12;      /* a ya 12 eklemek        */
+   a += 12;         /* 12 daha eklemek..      */
+   a *= 3.2;        /* a yi 3.2 ile carpmak     */
+   a -= b;          /* b yi a dan cikarmak     */
+   a /= 10.0;       /* a yi ona bolmek        */
+
+                                   /* sartli islemler        */
+   a = (b >= 3.0 ? 2.0 : 10.5 );     /* Bu islem.......     */
+
+   if (b >= 3.0)                     /* ve bu islemler..    */
+      a = 2.0;                       /* birbiri ile aynidir */
+   else                              /* ve ayni sonucu      */
+      a = 10.5;                      /* saglarlar.          */
+
+   c = (a > b?a:b);        /* c, a yada b nin max ini alir  */
+   c = (a > b?b:a);        /* c, a yada b nin min ini alir. */
+}
+================================================================
+
+KESTIRME.C ye bakin. Bu programda, ilk komutta, x in degeri bir tane
+arttiriliyor. Ikinci ve ucuncu komutlar da ayni seyi yaparlar. Yani, iki
+tane arti isareti, degiskenin degerini bir arttirir. Ayrica, sayet ++
+isareti degiskenin onunde ise, degisken kullanilmadan once degeri
+arttirilir, sayet ++ isareti degiskenin arkasinda (saginda) ise,
+kullanildiktan sonra degeri arttirilir. 
+
+Dorduncu komutta ise, y nin degeri, z ye atanir, ve daha sonra da y nin
+degeri bir arttirilir. Bundan sonraki komutta ise, y nin degeri ilk once
+arttirilir, daha sonra bu deger z ye verilir.
+
+Ikinci grupta, azaltici operatorleri goruyoruz. Ayni arttirici operatorler
+gibi, bu gruptaki ornekler de bir oncekiler ile aynidir. 
+
+Ucuncu grupta, aritmetik kestirme metodlari goruyoruz. ilk ornekte, a ya
+12 eklenir. Bunun altindaki satirda ise, tekrar ayni sey yapilir. Yani, +=
+operatoru, soldaki degiskene, sag tarafin sonucunun eklenecegini belirtir.
+Yine ayni sekilde, bu is carpma, cikarma, ve bolme islemleri icin de
+yapilabilir. 
+
+Dorduncu grupta ise, a ya, karmasik bir degerin atandigini goruyoruz.
+Bunun hemen altindaki if... satirlari ise, bu tek satir ile es anlamdadir.
+Bu karsilastirma operatoru, uc parcadan olusmustur. Bu parcalar
+birbirinden soru, ve iki nokta isaretleri ile ayrilirlar. Ilk once soru
+isaretinden onceki kisim degerlendirilir, sonuc EVET cikar ise, soru
+isaretinden hemen sonraki deger, dondurulur, sayet sonuc HAYIR cikar ise,
+iki nokta isaretinden sonraki deger dondurulur. 
+
+Bundan sonra ise, bu karsilastirma operatorunun c ye atama yapmakta
+kullanildigini goruyoruz. Ilk once, a ile b nin hangisinin degeri buyukse,
+o degere c ye atanir, ve ikincide ise, hangisi daha kucuk ise, o c ye
+atanir. 
+
+ODEV:
+
+1. Birden onikiye sayacak bir program yazin. Bu program, sayarken
+rakamlari ve bu rakamlarin karelerini ekrana yazsin.
+
+	1	1
+	2	4
+	3	9   gibi..
+	
+2. Birden onikiye sayan programi biraz degistirerek, sayimi yazan, ve 1 in
+inversini, bes haneli alan bir program yazin. Yani:
+
+	1	1.00000
+	2	 .50000
+	3	 .33333
+	4	 .25000 gibi..
+	
+3. Birden yuze kadar sayan, fakat 32 ila 39 arasindaki degerleri yazan bir
+program yazin. Her satira bir rakam yazilsin..
+
+<EOF>
+

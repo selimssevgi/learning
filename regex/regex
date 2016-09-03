@@ -1,0 +1,32 @@
+!! Operators !!
+
+.       Matches any single character
+
+?       preceding item is optional and will be matched, at most, once
+
+*       preceding item will be matched zero or more times
+
++       prededing item will be matched one or more times
+
+{N}     preceding item is matched exactly N times
+
+{N,}    preceding item is matched N or more times
+
+{N,M}   preceding item is matched at least N times, but not more than M times
+
+-       represents the range if it is not first or last in a list or the ending point of a range in a list
+
+^       matches the empty string at the beginning of a line; also the characters not in the range of a list
+
+$       matches the empty string at the end of a line
+
+\b      matches the empty string at the edge of a word
+
+\B      matches the empty string provided it is not at the edge of a word
+
+\<      match the empty string at the beginning of word
+
+\>      match the empty string at the end of word
+
+|       
+

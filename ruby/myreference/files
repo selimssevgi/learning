@@ -1,0 +1,30 @@
+fd = open(filename, 'r') # 'r' , open file in read-only. default paramater.
+fd = open(filename, 'w') # 'w'
+fd = open(filename, 'a') # 'a' 
+fd.read # reads the whole file content
+fd.readline
+fd.truncate(0) # delete the all content
+fd.write("somestring\n")
+fd.close
+
+File.exist?(filename) # true or false
+fd.gets.chomp
+fd.seek(0)
+
+# Read line by line
+File.foreach(filename).with_index do |line, line_num|
+  puts "#{line_num}: #{line}"
+end
+
+myFile=File.open("paths_to_file","r")
+while(line=myFile.gets)
+   //do stuff with line
+end
+
+File.open(file, "r") do |fh|
+    header = fh.readline
+    # Process the header
+    while(line = fh.gets) != nil
+      #do stuff
+    end
+end

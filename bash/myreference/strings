@@ -1,0 +1,22 @@
+
+!! String concatenation !! 
+a="Hello"
+b="World" 
+c=$a$b # helloworld
+
+!! string length !!
+${#variable}
+
+!! substring, string slicing !!
+d=${c:3} #from 3rd to end (starts from 0)
+
+d=${c:3:4} 
+
+d=${c: -4} # take four character from end. space is important
+
+d=${c: -4:3}
+
+!! String replacing !!
+${originalString/old/new} # just replace first occurence
+
+${variable//old/new} # replaces all matches

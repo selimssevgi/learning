@@ -1,0 +1,20 @@
+# ls 
+-- put output on standart out
+
+# ls > my.files
+-- prints nothing, cus is redirected to my.files.
+
+# ls somenonexistingfile
+ls : somenonexistingfile : No such file or directory
+
+# ls somenonexistingfile > save.out
+ls : somenonexistingfile : No such file or directory
+  
+!! Still prints something. Cus we redirect standart out, but it uses standart err
+
+# ls somenonexistingfile 2> save.err
+
+The use of the number 2 comes from an implementation detail: All the I/O descriptors for
+a UNIX process were kept in an array. The first three elements of the array, numbered 0, 1,
+and 2, were defined to be the standard in, out, and err, in that order. Thus in the shell you can
+also redirect standard out by using “1>” as well as the shorter “>”.

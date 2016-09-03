@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# moreIf - Script def : Case in gorevini daha fazla if ile yapabiliriz.
+
+########################################################
+# Asagıda goruldugu gibi bir kac farklı durumu kontrol 
+# etmek icin IF yapısı kullanıldıgı zaman
+# yapısal ve gorsel olarak pekte mantıklı.
+# Ayrıca bir cok hatanın yapılması da muhtemel.
+# bunun yerine shell in bize sundugu CASE yapısı var.
+#########################################################
+
+echo -n "Enter a number between 1 and 3 inclusive > "
+read number
+
+if [ "$number" = "1" ]; then
+	echo "You entered one."
+else
+    if [ "$number" = "2" ]; then
+	echo "You entered two."
+    else
+	if [ "$number" = "3" ]; then
+		echo "You entered three."
+	else 
+		echo -e "You did not enter a number \nbetween 1 and 3"
+	fi
+    fi
+fi
+

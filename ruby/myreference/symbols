@@ -1,0 +1,16 @@
+When you place a colon in front of a simple word, you get a Ruby symbol.
+Symbols are much cheaper than strings (in terms of computer memory.) 
+If you need to use a word over and over in your program itself, use a symbol.
+Rather than having thousands of copies of that word in memory,
+the computer will store a symbol only once, and refer to it over and over.
+
+books["some book"] = :quite_good
+
+puts "symbol".object_id == "symbol".object_id  # false
+puts :symbol.object_id == :symbol.object_id    # true
+
+As a result of having less baggage,
+symbols are easier to compare to each other;
+strings need to be compared character by character,
+while symbols can be compared all in one go.
+This makes them ideal for use as hash keys.

@@ -1,0 +1,6 @@
+
+#Unpacking
+
+firstVar, secondVar, thirdVar = ARGV
+
+userName = ARGV.first # gets the first argument

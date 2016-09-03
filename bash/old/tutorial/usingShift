@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# usingShift - Script Def : shift komutunun kullanimi.
+
+# shift komutu positional parameter olayıyla kullanılan bir shell built-in komutudur.
+
+# Diyelim ki komutumuz bir kaç tane argumanı var. O zaman $1,$2,$3 positional parametre leri deger tasıyacak.
+
+# Bizim bu degerleri sırasıyla karsılık gelen islemleri yapmamız gerekecek.
+
+# İste bu noktada SHIFT komutu işe yarar hale gelecek
+
+# shift komutunun kullanıldıgı noktadan sonra $2 nin degerini artık $1 tasiyacak.Yani argumanlara birer sıraya geriye dogru gelecek.
+
+echo "You start with $# positional parameters"
+
+# Loop until all parameter are used up
+while [ "$1" != "" ]; do
+	echo "Parameter 1 equals $1"
+	echo "You now have $# positional parameters"
+	
+	# Shift all the parameters down by one
+	shift
+done

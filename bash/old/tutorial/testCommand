@@ -1,0 +1,41 @@
+		###### Test komutu hakkında bilgiler.
+
+# Ne işe yarar :   "test" komutu program akısında karar mekanizmalarının kullanımını saglar.TRUE(0) ve FALSE(1) sonuclarından birini üretir.
+
+# Kullanımı : test <expressin> veya [ <expressin> ] ikisi de aynı görevi yapan farkli kullanımlardır.
+	      Burda anlaşılacagı gibi [] parantezleri SHELL syntaxın bir parçası değil test komutunun yapısıdır. !!!!!
+
+# HATA yapılabilecek bir kaç nokta : 
+
+	- test komutu, dosyaları test etmek icin kullanıldıgında sadece bir dosya ister.
+		OR HATA1: 
+			myMusic="/data/music/artist name - song.mp3"
+			if [ -e "$myMusic"]; 
+		
+		Degiskeni incelediginizde tek string olmasına ragmen icinde bosluklar var.[ -e /data/music/artis.... ];yani $myMusic şeklinde alırsak
+		hata verecektir.Çünkü burda tek dosya testi amaçlanmış ama bosluklardan dolayı bir kaç argumanmış gibi algılanacak ve hatalara 
+		sebep olacaktır.Bu yüzden dosya isimleri "$myMusic" şekilnde kullanılırsa tek bir kelime olarak algılanacaktır.
+	
+	- test komutunun yazım kurallarındaki bosluk(space)lar keyfi değildir.Önemlidir!
+		OR HATA2:
+			if [ "$myString"!="test" ]
+
+		Bu kullanımın sonucu her zaman turu olacaktır.Cunku syntax yanlıştır.BOSLUKLAR ONEMLİ!
+
+		Dogru kullanım : if [ "birinciifade" operator(!=) "ikinci ifade" ] _> if [ "$myString" != "test" ]
+
+# test komutu yardımıyla test edebildigimiz bir kac turde durum vardır.
+	
+	- file test 		[ -e "$fileName"]
+	- string test		[ "$string1" != "$string2"]	
+	- arithmetic test	[ $integer1 -eq $integer2 ]
+	- misc test 		[ <test1> -a <test2> ] // -a for "and". ( -a,-o,!..)
+
+# Number of Arguments Rule diye bir sey var!!!!
+
+# AND OR kullanımı.
+	if [ -n "$var" ] && [ -e "$var" ]; then
+	if [ -n "$var" -a -e "$var" ]; then   // && || yazılısları parantezlerin icinde kullanmamalısın.HATA verir.
+
+## Her testi kendi icinde ayrı yazman ve onları && || şeklindeki operatorlerle birleştirmen DAHA İYİ/TAVSİYE edilen bu.
+	

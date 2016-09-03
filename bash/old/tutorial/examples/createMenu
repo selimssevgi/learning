@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# createMenu - Script Def : bir kac secenekten olusan bir menu olustur
+
+# createMenu2 : while ile yazılmıs bir ornegi. 
+
+
+selection=   # Degıskenımızı deger atamadan tanımlıyoruz.
+
+until [ "$selection" = "0" ]; do
+	echo ""
+	echo "PROGRAM MENU"
+	echo "1 - Display free disk space"
+	echo -e "2 - Display free memory\n"
+	echo "0 - exit"
+	
+	echo -n "Enter Selection : "
+	read selection
+	echo ""
+
+	case $selection in 
+		1 ) df ;;
+		2 ) free ;;
+		0 ) exit ;;
+		* ) echo "Please enter 1, 2, or 0"
+	esac
+done
+

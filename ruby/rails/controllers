@@ -1,0 +1,14 @@
+# A controller's purpose is to receive specific requests for the application.
+  Routing decides which controller receives which requests.
+  Often, there is more than one route to each controller,
+  and different routes can be served by different actions.
+  Each action's purpose is to collect information to provide it to a view.
+
+
+$ rails generate controller welcome index     # controller named welcome, with an action named index
+
+!! A frequent practice is to place the standard CRUD actions in each controller in the following order:
+  index, show, new, edit, create, update and destroy.
+  You may use any order you choose,
+  but keep in mind that these are public methods;
+  they must be placed before any private or protected method in the controller in order to work.

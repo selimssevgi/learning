@@ -1,0 +1,49 @@
+# Every Object responds the class method
+s = "foobar"       
+s.class                                               # String
+s.class.superclass                                    # Object
+s.class.superclass.superclass                         # BasicObject
+s.class.superclass.superclass.superclass              # nil
+
+# self keyword
+Ruby allows us to use the self keyword: inside class, self is the object itself
+
+# Modifying Built-in Class
+# Ruby classes can be opened and modified
+# We are adding a new method in built-in String class
+class String
+  # return true if the string is its own reverse
+  def palindrome?
+    self == self.reverse
+  end
+end
+
+# Modifying built-in classes is a powerful technique,
+# but with great power comes great responsibility,
+# and it’s considered bad form to add methods to built-in classes 
+# without having a really good reason for doing so.
+
+# Inheretance
+class Dog < Animal 
+  # Dog class is inhereting from Animal
+end
+class Todo
+  attr_reader :title, :due_date, :status # attr_reader : public
+  
+  def initialize title, due_date
+    @title = title
+    @due_date = due_date
+    @status = :new
+  end
+
+  def mark_as_done
+    @finished_at = Time.new
+    @status = :done
+  end
+end
+
+todo = Todo.new "Study Ruby", Time.new(2017,12,24)
+puts todo.inspect
+
+todo.mark_as_done
+puts todo.inspect

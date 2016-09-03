@@ -1,0 +1,135 @@
+BUYUK VE KUCUK HARFLER
+
+BUY-KUC.C:
+================================================================
+#include <STDIO.H>
+#include <ctype.h>   /* Not: Derleyiciniz bunu gerektirmeyebilir */
+
+main()
+{
+FILE *fp;
+char satir[80], kutukismi[24];
+char *c;
+
+   printf("Kutuk ismini girin -> ");
+   scanf("%s",kutukismi);
+   fp = fopen(kutukismi,"r");
+
+   do {
+      c = fgets(satir,80,fp);   /* bir satir oku */
+      if (c != NULL) {
+         karistir_butun_karakterleri(satir);
+      }
+   } while (c != NULL);
+
+   fclose(fp);
+}
+
+karistir_butun_karakterleri(satir)
+
+/* Bu fonksiyon butun buyuk harfleri kucuge, butun kucukleri 
+de buyuge cevirir. Diger butun karakterleri etkilemez. */
+
+char satir[];
+{
+int index;
+
+   for (index = 0;satir[index] != 0;index++) {
+      if (isupper(satir[index]))     /* buyuk harfse,1 doner */
+         satir[index] = tolower(satir[index]);
+      else {
+         if (islower(satir[index]))  /* kucuk harfse,1 doner */
+            satir[index] = toupper(satir[index]);
+      }
+   }
+   printf("%s",satir);
+}
+================================================================
+
+Bu basit programdaki yeni fonksiyonlar sunlardir:
+
+isupper();            Karakter buyuk harfmidir?
+islower();            Karakter kucuk harfmidir?
+toupper();            Karakteri buyuk harf yap.
+tolower();            Karakteri kucuk harf yap.
+
+
+ilk fonksiyon, sayet parametresi olarak gecirilen deger, buyuk harf ise
+('A'-'Z'), 1 degerini dondurur, sayet baska bir karakter ise, 0 degeri doner.
+
+ikincisi, sayet parametresi kucuk harf ise, 1 degerini dondurur.
+
+3uncu ve son fonksiyonlar ise, parametre olarak gecirilen karakteri buyuk
+yada kucuk harfe degistirirler.
+
+KARAKTERLERIN SINIFLANDIRILMASI
+
+KARKLAS.C:
+================================================================
+#include <stdio.h>
+#include <ctype.h>  /* Derleyiciniz bunu gerektirmeyebilir */
+
+main()
+{
+FILE *fp;
+char satir[80], kutukismi[24];
+char *c;
+
+   printf("Kutukismi -> ");
+   scanf("%s",kutukismi);
+   fp = fopen(kutukismi,"r");
+
+   do {
+      c = fgets(satir,80,fp);   /* bir satir oku */
+      if (c != NULL) {
+         veriyi_say(satir);
+      }
+   } while (c != NULL);
+
+   fclose(fp);
+}
+
+satiri_say(satir)
+char satir[];
+{
+int beyazlar, kars, rakamlar;
+int index;
+
+   beyazlar = kars = rakamlar = 0; 
+
+   for (index = 0;satir[index] != 0;index++) {
+      if (isalpha(satir[index]))   /* 1 eger satir[] alfabetik ise   */
+          kars++;
+      if (isdigit(satir[index]))   /* 1 eger satir[] rakam ise     */
+          rakamlar++;
+      if (isspace(satir[index]))   /* 1 eger satir[] bosluk ise tab, */
+          beyazlar++;               /*           yada yeni satir ise */ 
+   }   /* sayan dongunun sonu */
+
+   printf("%3d%3d%3d %s",beyazlar,kars,rakamlar,satir);
+}
+================================================================
+
+Bircok yerde, \n yi, yeni bir satiri belirtmek icin kullandik, fakat cok
+kullanilan baska kontrol karakterleri de vardir. Bu sekilde tanimlidirlar:
+
+         \n        Yeni satir
+	    \t        Tab
+	    \b        Bir hane geri
+	    \"        Cift tirnak
+	    \\        Ters bolu
+	    \0        NULL (sifir)
+
+Gordugunuz program, bir karakterin tipini belirleyen fonksiyonlar
+kullanir. Kullandigi 3 fonksiyon sunlardir: 
+
+ isalpha();        Karakter alfabetik mi?
+ isdigit();        Karakter bir rakam mi?
+ isspace();        Karakter \n , \t yada bosluk mu?
+ 
+Program yeterince basit, bu nedenle daha fazla detaylara girmiyorum.. 
+Bu yeni fonksiyonlarin kullanimi da, ayni "isupper" yada "toupper"
+fonksiyonlari gibidir.
+
+<EOF>
+

@@ -1,0 +1,8 @@
+The until command works exactly the same way,
+except the block of code is repeated as long as the specified command's exit status is false.
+
+number=0
+until [ "$number" -ge 10 ]; do
+  echo "Number = $number"
+number=$((number + 1))
+  done

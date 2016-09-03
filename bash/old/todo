@@ -1,0 +1,122 @@
+#!/bin/bash
+
+# todo - a basic todo script.
+
+##### Config
+
+# Gorevlerin saklanacagi dosya
+dir="SSS-todo"
+
+# Gorevlerin bulundugu dizin
+fulDir=~/"$dir"
+
+# Tamamlanan dosyaların Saklanagı dosya
+comDir="completed"
+
+# Tamamlanmış görevlerin bulundugu dizin
+fulComDir="$fulDir"/"$comDir"
+
+##### Functions
+
+error() {
+	echo "$1"
+	exit 1
+}
+
+newTask() {
+	touch "$fulDir"/"$baslik"
+	echo "$aciklama" > "$fulDir"/"$baslik"
+}
+
+getInfo() {
+	echo -n "Görev Basligi : "
+	read baslik
+	
+	echo -n "Notlar / Aciklamalar : "
+	read aciklama
+}
+
+deleteTask() {
+	echo $1
+	echo -n "Görev Tamamen silinecek.Emin misiniz? [e/h] : "
+	read
+
+	if [ "$REPLY" = "e" ]; then
+		# Silinmek istenen gorev var mı??
+		rm "$fulDir"/"$1"
+	fi
+}
+
+listTasks() {
+	# ? Hiç görev olmayabilir.
+	tur=$1
+	
+	case $tur in
+	a | all ) listByType "$(ls "$fulDir") $(ls "$fulComDir")" ;;
+	c | complete ) listByType "$(ls "$fulComDir")" ;;
+	uc | uncomplete ) listByType "$(ls "$fulDir")" ;;
+	* ) usage ;;	
+	esac
+}
+
+listByType() {
+	tur="$1"
+	for i in $tur ; do
+		if [ ! -d "$fulDir/$i" ]; then
+			echo "$i"
+		fi	
+	done
+}
+
+moveCompleted() {
+	# Tasinacak gorev var mı?
+	# Tasindigi yerde aynı baslıkta var mı?
+	task=$1
+	
+	mv "$fulDir"/"$task" $fulComDir
+	
+	if [ ! $? ]; then
+		error "Bir hata olustu."
+	else
+		echo "islem basariyla gerçeklesti."
+	fi
+}
+
+displayDetail() {
+	task="$1"
+	# Görev tanımlanmış mı?
+	
+	echo "$task ait notlar : "
+	echo << $(cat "$fulDir/$task")
+}
+
+usage() {
+	echo ""
+}
+# SSS-todo yoksa olusturuyoruz.
+if [ ! -d "$fulDir" ]; then
+	mkdir $fulDir
+	echo "~/$dir : SSS-todo klasoru basariyla olusturuldu."	
+fi
+
+# SSS-todo/completed yoksa olusturuyoruz.
+if [ ! -d "$fulComDir" ]; then
+	mkdir "$fulComDir"
+	echo "~/$dir/$comDir olusturuldu."
+fi
+
+# Kullanımı Kontrol Et.
+if [ "$1" = "" ]; then
+	usage
+fi
+
+# Positional Parametreleri kontrol et.
+case $1 in
+	-a | --add ) getInfo; newTask ;;
+	-d | --delete ) deleteTask $2 ;; # $2 gonderilmis mi?
+	-c | --complete ) moveCompleted $2 ;;     
+	-ls | --list ) listTasks $2 ;;
+	-dt | --detail ) displayDetail $2 ;; 
+	* ) usage ;;	
+esac
+

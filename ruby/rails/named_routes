@@ -1,0 +1,13 @@
+root             'static_pages#home'
+get 'help'    => 'static_pages#help'
+get 'about'   => 'static_pages#about'
+get 'contact' => 'static_pages#contact'
+
+
+help_path -> '/help'
+help_url  -> 'http://www.example.com/help'
+
+the common convention of using the _path form except when doing redirects,
+where we’ll use the _url form. 
+(This is because the HTTP standard technically requires a full URL after redirects,
+though in most browsers it will work either way.)

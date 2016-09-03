@@ -1,0 +1,16 @@
+# rvm.io 
+          RVM is a command-line tool which allows you to easily install, manage,
+          and work with multiple ruby environments from interpreters to sets of gems.
+
+
+# rubygems.org 
+          Ruby 1.9 and newer ships with RubyGems built-in
+          RubyGems will automatically download the correct version for your platform.
+
+
+# bundler.io 
+          Bundler provides a consistent environment for Ruby projects by tracking and installing the exact gems and versions that are needed. 
+
+
+# heroku.com 
+          

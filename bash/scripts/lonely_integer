@@ -1,0 +1,33 @@
+#!/bin/bash
+
+read count
+
+read -a line
+
+echo ${line[@]}
+
+declare -i i=0
+
+while [ $i -lt $count ]; do
+  buldu=1
+  if [[ "${line[$i]}" != "x" ]]; then 
+    j=$(( i+1 ))
+      while [ $j -lt $count ]; do
+      if [ "${line[$i]}" == "${line[$j]}" ]; then
+        buldu=0
+        line[$j]="x"
+        break
+      fi
+      ((j++))
+    done
+  else
+    echo "x e esit cikti"
+  fi
+
+  if [ $buldu -eq 1 ] && [ "${line[$i]}" != "x" ]; then
+    break
+  fi
+  ((i++))
+done
+
+echo ${line[$i]}

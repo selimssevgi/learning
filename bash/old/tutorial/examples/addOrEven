@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# addOrEven : Script Def : Kullanicidan alinacak bir sayinin cift(even) veya tek(odd) oldugunu tespit eder.
+
+number=0  # Degisken tanımlama ve deger atama
+
+echo -n "Enter a number > " # Ekrana yazdirdiktan sonra ayni satirda bekliyor.
+read number # Kullanicidan aldigi degeri number degiskenine atıyor.
+
+echo "Number is $number."
+
+# = "string" ler için -eq, -gt ise sayilar icin.
+
+if [ $((number % 2)) -eq 0 ]; then 
+	echo "Number is even."
+else
+	echo "Number is odd."
+fi

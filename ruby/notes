@@ -1,0 +1,16 @@
+# Everything is an object in Ruby.
+print self # Ruby treats self as the object in which it is currently referred to.
+
+# Each object in Ruby may have methods associated with it.
+
+if # is for comments, then how come # -*- coding: utf-8 -*- works?
+Ruby still ignores that as code, but it's used as a kind of "hack"
+or workaround for problems with setting and detecting the format of a file.
+You also find a similar kind of comment for editor settings.
+
+If you are from another country, and you get errors about ASCII encodings, 
+then put this at the top of your Ruby scripts:
+
+# -*- coding: utf-8 -*-
+
+It will fix them so that you can use Unicode UTF-8 in your scripts without a problem.

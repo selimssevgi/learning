@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# longTime - Script Def : Saniye olarak verilen bir degeri saat / dk / sn cinsinden ekrana yazdiracak.
+
+seconds=0
+
+echo -n "Enter number of seconds > "
+read seconds
+
+hours=$((seconds / 3600))      # Saniyenin icindeki saat sayisi
+seconds=$((seconds % 3600))    # İlk saniye degerinden saat olusturacak saniyeleri cıkardıktan sonra kalan deger.	
+minutes=$((seconds / 60))      # Kalan saniyelerden oluşabilecek dakika	
+seconds=$((seconds % 60))      # Dakikalari olusturacak saniye buyuklugunu cıkardıktan sonra sadece saniyeler kalacak.
+
+echo "$hours hour(s) : $minutes minute(s) : $seconds second(s)"

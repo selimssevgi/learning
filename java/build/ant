@@ -1,0 +1,82 @@
+http://ant.apache.org
+http://ant.apache.org/manual/index.html
+http://tutorials.jenkov.com/ant/ant-tutorial.html
+
+# Download binary file
+
+# extract to /usr/local/
+
+# in bash profile set variables
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle                                     
+export ANT_HOME=/usr/local/ant                                                  
+export PATH=$PATH:$ANT_HOME/bin 
+
+
+# check
+ant -v 
+
+# build.xml
+By default Ant looks for a build script named build.xml in your project root directory,
+
+# Inside build.xml
+<project>
+
+   <target name="firstTarget">
+     <echo>My First Ant Project!</echo>
+   </target>
+
+</project>
+
+# in the same directory with build.xml
+ant firstTarget
+
+# <project name="MyProject" default="TargetName" basedir="."> 
+name    is just to know which project the script belongs to
+default is for time when there is no argument/target is specified. $ant
+basedir is used when resolving relative paths
+
+>>If no basedir is specified then Ant will use the root directory of the project,
+meaning the directory where the Ant build script is located.
+
+# Ant Properties: key and value pairs configuration inside the script
+<property name="dir.src" value="src"/> # like defining variables
+
+# referencing ant properties: ${propertyName}
+<property name="dir.build.classes" value="${dir.build}/classes"/>
+
+## Ant properties are IMMUTABLE and GLOBAL
+the ones in the target definition will be available globally after execution of the target.
+
+# Ant Targets: a sequence of tasks. So common targets : 
+  clean:   An Ant target for cleaning up the build output directory 
+           deleting compiled class files, deleting generated source code,
+           or just deleting the whole build output directory completely.
+
+  compile: An Ant target for compiling the Java source code in the project.
+
+  jar:     An Ant target for creating a JAR file from the compiled classes.
+
+  test:    An Ant target for running all unit tests for the Java code.
+
+  javadoc: An Ant target for creating JavaDoc comments from the Java code.
+
+# Simple project,property,target,tast 
+<project name="SimpleExample">
+  <property name="version">1.0.0</property>
+  
+  <target name="firstTarget">
+    <echo> This is version ${version}</echo>
+  </target>
+</project>
+
+# Target Dependencies: First execute dependendies
+<project> 
+  <target name="A"> <echo>Target A</echo> </target>
+  <target name="B" depends="A"> <echo>Target B</echo> </target>
+  <target name="C" depends="A, B"> <echo>Target C</echo> </target>
+</project> 
+
+>> Even in dependendies chain contains a target twice, it will be executed just once!
+
+# Ant Tasks: unit of ant scripts. There are already predefined tasks, look into manual
+They are executed in sequence in which they are listed inside the target.

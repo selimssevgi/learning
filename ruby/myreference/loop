@@ -1,0 +1,7 @@
+An infinite loop in Ruby
+
+loop do 
+  ## do something
+
+  break if <condition>
+end

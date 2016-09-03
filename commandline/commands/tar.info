@@ -1,0 +1,50 @@
+take several files and archive them together into a single file -
+this is where the tar (tape archive) command comes in.
+
+tar can quickly join together multiple files into one larger file,
+while still preserving meta-data such as Unix permissions.
+By default tar does not compress files,
+but it does have a flag that will compress the archive using gzip.
+
+
+tar -c <directory> # the archive was printed to STDOUT and not saved to a file.
+                     Writing archives to the STDOUT instead of a file can be useful 
+                     when you want to pipe the output of the archive into another command.
+                     it is useful to know that tar can create an archive without having to save it to a file.
+
+
+tar -cf foo.tar <directory> # save the archive to foo.tar. doesnt print any output.
+
+tar -cvf foo.tar <directory> # print the list the files in the archive
+
+tar -cvf foo.tar <file> <anotherfile> <directory> # as many as we want
+
+find . name \*gemspec | tar -cvf gemspecs.tar -T - # find files. -T read file list from another file. - for pipe.
+
+tar -tf foo.tar # list files in existing archive
+
+tar -xvf foo.tar # extracting files 
+
+tar -xvf foo.tar <filename> # just extract specified file
+
+tar -rvf foo.tar <filetobeappened> # append additional files to the archive
+
+tar -uvf foo.tar <filetobeupdated> # update file in archive
+
+tar -xvf foo.tar -C ./newfolder # specified the location to be extracted to
+
+tar does not compress archives by default,
+it just generates a single large file from multiple smaller files.
+tar does provide three different compression algorithms to you.
+The first one, gzip (-z), is the most common.
+The others are bzip2 (-j) and Unix compress (-Z).
+bzip2 is considerably slower for compression and decompression, but produces smaller archives,
+and Unix compress is faster, but produces considerably larger archives.
+
+tar -czf foo.tar.gz <directory> # use the -z flag to run the archive through gzip and compress it to make it smaller.
+                                 it is customary to append .gz to the end of the archive’s file name 
+                                 to let others know that this archive has been compressed
+
+tar -xvzf foo.tar.gz # extracting compressed files
+
+

@@ -1,0 +1,28 @@
+# ++ and -- are NOT reserved operator in Ruby.
+
+C's increment/decrement operators are in fact hidden assignment.
+They affect variables, not objects.
+You cannot accomplish assignment via method. Ruby uses +=/-= operator instead.
+
+# Exclamation Points. Methods may have exclamation points in their name,
+# which just means to impact the current data, rather than making a copy.
+array.sort      # returns a sorted array
+array.sort!     # array changed now is sorted
+
+# using two spaces for indentation is a near-universal convention in Ruby, railtutorial.org
+
+# no reverse method for numbers
+40.to_s.reverse
+
+# When you work with classes much of your time is spent talking about making the class "do things.
+# Instead of naming your functions after what the function does, instead name it as if it's a command you are giving to the class.
+# Same as pop is saying "Hey array, pop this off." 
+# It isn't called remove_from_end_of_list because even though that's what it does, that's not a command to an array.
+
+
+# Your class should use "camel case" like SuperGoldFactory rather than super_gold_factory.
+# Try not to do too much in your initialize functions. It makes them harder to use.
+# Your other functions should use "underscore format" so write my_awesome_hair and not myawesomehair or MyAwesomeHair.
+# Be consistent in how you organize your function arguments.
+# If your class has to deal with users, dogs, and cats, keep that order throughout unless it really doesn't make sense.
+# If you have one function that takes (dog, cat, user) and the other takes (user, cat, dog), it'll be hard to use.

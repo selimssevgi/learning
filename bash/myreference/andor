@@ -1,0 +1,18 @@
+#!/bin/bash
+
+command1 && command2
+command2 is executed if, and only if, command1 returns an exit status of zero.
+
+command1 || command2
+command2 is executed if, and only if, command1 returns a non-zero exit status.
+
+# Simplest of all
+
+cd $some_directory || error_exit "Cannot change directory! Aborting"
+rm *
+
+# Another way to do it if exiting is not desired
+
+cd $some_directory && rm *
+
+

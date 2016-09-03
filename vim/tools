@@ -1,0 +1,10 @@
+Manage your 'runtimepath' with ease.
+In practical terms, pathogen.vim makes it super easy to install plugins 
+and runtime files in their own private directories.
+
+https://github.com/tpope/vim-pathogen
+
+
+# Vundle 
+https://github.com/VundleVim/Vundle.vim
+https://www.digitalocean.com/community/tutorials/how-to-use-vundle-to-manage-vim-plugins-on-a-linux-vps

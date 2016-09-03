@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Usteki satır hangi yorumlayıcının kullanilmasi gerektigi belirtiyor.
+
+# Unlem isaretinden sonra bosluk olmadıgına dikkat.
+
+# Script Def : Kullanicidan veri alirken read komutunun farkli bir kullanimi : 
+
+read -p "Please enter your name : " name
+read -p "Please enter your age : " age
+read -p "please enter your sex : male/female : " sex
+
+echo "You are a $age years old $sex called $name."
+
+# Kullacıdan veri istersen aynı satırda kal.
+echo -n "Ne yapmak istiyorsun?"
+
+# Ekrana veri yazdırırken backslash escapes kullanmak için.
+echo -e "ilk satir \n ikinci satir." # -e Enable

@@ -1,0 +1,12 @@
+git checkout master
+git checkout -b <what-feature-will-be-working-on>
+.
+.
+.
+rake test
+git add -A
+git commit -m "define what you have done"
+git checkout master
+git merge <branch-name>
+git push
+

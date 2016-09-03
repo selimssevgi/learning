@@ -1,0 +1,58 @@
+The test command is used most often with the if command to perform true/false decisions.
+The command is unusual in that it has two different syntactic forms:
+
+# First form
+
+test expression
+
+# Second form
+
+[ expression ]
+
+if [ -f .bash_profile ]; then
+  echo "You have a .bash_profile. Things are fine."
+else
+  echo "Yikes! You have no .bash_profile!"
+fi
+
+Here is a partial list of the conditions that test can evaluate.
+Since test is a shell builtin, use "help test" to see a complete list.
+
+-d file
+        True if file is a directory.
+
+-e file
+        True if file exists.
+
+-f file
+        True if file exists and is a regular file.
+
+-L file
+        True if file is a symbolic link.
+
+-r file
+        True if file is a file readable by you.
+
+-w file
+        True if file is a file writable by you.
+
+-x file
+        True if file is a file executable by you.
+
+file1 -nt file2
+                True if file1 is newer than (according to modification time) file2
+
+file1 -ot file2
+                True if file1 is older than file2
+
+-z string
+          True if string is empty.
+
+-n string
+          True if string is not empty.
+
+string1 = string2
+                True if string1 equals string2.
+
+string1 != string2
+                True if string1 does not equal string2.

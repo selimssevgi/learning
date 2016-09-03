@@ -1,0 +1,40 @@
+# One of the steps before my programs is executable
+# do not put semicolon at the end,
+# cus is not C Language, is a separate language for preprocessing.
+
+File Inclusion
+#include <stdio.h> 
+#include "preproc.h"      # paste all the file before compiling
+                          # must be in the same directory
+
+Macros
+#define CONSTANT 1        # basic substitution, typeless!
+#define CONSTANT (1)      # using paranthesis is safer!!
+#define MAX(a,b) (a > b  ? a : b)
+#define MUL(a,b) (a * b)
+
+Correct Usage of Constant
+const int iOne = 1;
+
+Conditional Processing
+#ifdef FOO
+#define NUMBER 47
+#else
+#define NUMBER 2
+#endif
+
+
+#ifndef _FOO
+#define _FOO 1
+
+class foo {
+  public:
+    int this;
+    char * that;
+};
+
+#endif // _FOO
+
+Line Contuniation
+printf("hell\
+        o World!\n"); # same is like putting in one line!!

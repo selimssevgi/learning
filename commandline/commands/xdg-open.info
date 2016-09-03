@@ -1,0 +1,9 @@
+open something in default applications
+
+xdg-open . # open current directory in GUI explorer
+
+xdg-open someimage.jpg #to check the image
+
+use C^C to contunie using terminal
+
+use an alias for this. 

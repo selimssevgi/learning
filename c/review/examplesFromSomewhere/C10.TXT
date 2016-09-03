@@ -1,0 +1,364 @@
+C Dili - 10. Konu
+
+BIR KUTUGE YAZMAK
+
+ONSATIR.C:
+================================================================
+#include <stdio.h>
+main()
+{
+FILE *fp;
+char ivir[25];
+int index;
+
+   fp = fopen("ONSATIR.TXT","w");   /* yazmak icin acalim */
+   strcpy(ivir,"Bu bir ornek satirdir.");
+
+   for (index = 1;index <= 10;index++)
+      fprintf(fp,"%s  Satir no: %d\n",ivir,index);
+
+   fclose(fp);    /* Kutugu kapayalim */
+}
+================================================================
+
+Bir kutuge yazan ilk programimiz. Herzamanki gibi, "stdio.h" i programa
+ekliyoruz, ve daha sonra cok tuhaf bir degisken tanimliyoruz.
+
+"FILE" tipi, bir kutuk degiskenidir, ve "stdio.h" in icinde
+tanimlanmistir. Kullanacagimiz kutuge erismek icin bir 'kutuk pointeri'
+tanimlamaktadir. 
+
+KUTUGUN ACILMASI
+
+Bir kutuge yazmadan once, onu acmamiz gereklidir. Acmak demek, sisteme o
+kutugun ismini bildirmek, ve yazmak istedigimizi belirtmektir. Bunu,
+"fopen" fonksiyonu ile yapiyoruz. "fp" isimli kutuk pointer'i, bu acilan
+kutuge ait bazi bilgileri tutar. "fopen" ise, iki parametre gerektirir.
+Birincisi, kutugun ismidir. Buyuk harf, kucuk harf, yada karisik fark
+etmez. 
+
+OKUMAK "r"
+
+"fopen" in ikinci parametresi ise, acilacak kutuk ile ne yapilacagini
+belirtir. Buraya, "r" "w" yada "a" yazabiliriz. "r" kullanildiginda, kutugun
+okuma icin acilacagini belirtir. "w", kutuge yazilacagini, ve "a" ise
+zaten var olan bir kutuge bilgi ekleyeceginizi belirtir. Bir kutugu okumak
+icin acmak icin, o kutugun diskte var olmasini geretirir. Sayet kutuk yok
+ise, "fopen", geriye NULL degerini dondurur.
+
+YAZMAK "w"
+
+Bir kutuk yazmak icin acilinca, sayet diskte yoksa yaratilir, sayet varsa,
+icindeki bilgiler silinir.
+
+EKLEMEK "a"
+
+Bir kutuk eklemek modunda acildiginda, sayet yoksa yaratilir, varsa, veri
+giris pointer'i bu kutugun sonuna ayarlanir. Bu sayede yeni bilgi
+yazilinca, kutugun sonuna yazilmis olur. 
+
+KUTUGE YAZMAK
+
+Bir kutuge yazmak, ekrana yazmak ile neredeyse aynidir. En onemli farklar,
+yeni fonksiyon isimleri, ve kutuk pointer'inin bu fonksiyonlara parametre
+olarak eklenmesidir. Ornek programda, "fprintf" komutu "printf" komutunun
+yerini alir. 
+
+KUTUGU KAPATMAK
+
+Bir kutugu kapatmak icin, sadece "fclose" komutunu kullanmak yeterlidir.
+Parametre olarak da kutugun pointer'ini gecirmek yeterlidir. DOS, program
+sona erince kullandigi kutukleri kapattigindan, "fclose" u kullanmak sart
+degildir, fakat bir aliskanlik yapmasi icin, kullandiginiz kutukleri
+kapatmanizi tavsiye ederim.
+
+Bu programi calistirdiginizda, ekranda hicbir sey cikarmaz. Program
+bittikten sonra, "ONSATIR.TXT" isimli kutugu inceleyin. Icinde programin
+yazdigi on satirlik ciktiyi goreceksiniz.
+
+KARAKTERLERI TEKER TEKER YAZMAK
+
+KAROUT.C:
+================================================================
+#include <stdio.h>
+main()
+{
+FILE *kutukpoint;
+char digerleri[35];
+int index,say;
+
+   strcpy(digerleri,"Ek satirlar.");
+   kutukpoint = fopen("onsatir.txt","a"); /* eklemek icin acmak */
+
+   for (say = 1;say <= 10;say++) {
+      for (index = 0;digerleri[index];index++)
+	 putc(digerleri[index],kutukpoint);  /* bir karakter yaz  */
+      putc('\n',kutukpoint);             /* bir de <RETURN>   */
+   }
+   fclose(point);
+}
+================================================================
+
+Normal "include" kutugumuzden sonra, "kutukpoint" isimli bir kutuk
+pointeri tanimliyoruz. Yazacagimiz bilgileri tutmasi icin, "digerleri"
+isminde bir karakter dizisi tanimliyoruz. Daha sonra bu actigimiz sahaya,
+"strcpy" fonksiyonu ile "Ek satirlar." sozcugunu yaziyoruz. Bundan sonra,
+yine ayni kutugu "append" yani eklemek icin aciyoruz. 
+
+Bu program iki tane ic ice donguden olusuyor. Distaki dongu, sadece birden
+ona kadar sayiyor.. Icindeki dongu ise, yazilan karakter sifir olmadigi
+surece, "putc" fonksiyonunu cagirir. 
+
+"putc" FONKSIYONU
+
+Bu programin ilgimizi ceken yonu, "putc" fonksiyonudur. Belirtilen kutuge
+bir karakter yazan bu fonksiyon, ilk parametre olarak yazilacak karakteri,
+ikinci olarak da kutuk pointer'ini veriyoruz. "Digerleri" isimli dizi
+bitince satirin sonuna bir <RETURN> karakteri koymak icin "putc" yi tekrar
+cagiriyoruz.
+
+Dis dongu on kere tekrarlandiktan sonra, program kutugu kapatip sona
+eriyor. Bu program calistiktan sonra kutugu incelerseniz, gercektende
+sonuna 10 satir eklendigini gorursunuz.
+
+BIR KUTUGU OKUMAK
+
+
+KAROKU.C:
+================================================================
+#include <stdio.h>
+
+main()
+{
+FILE *tuhaf;
+int c;
+
+   tuhaf = fopen("ONSATIR.TXT","r");
+
+   if (tuhaf == NULL) printf("Boyle bir kutuk yok\n");
+   else {
+      do {
+         c = getc(tuhaf);    /* Bir karakter oku  */
+         putchar(c);         /* ekranda goster    */
+      } while (c != EOF);    /* Kutuk sonuna (END OF FILE) a kadar devam */
+   }
+   fclose(tuhaf);
+}
+================================================================
+
+Bir kutuk okuyan ilk programimiz!  "stdio.h" ve iki degisken tanimindan
+sonra, "fopen" fonksiyonunda okumak icin "r" parametresini veriyoruz. Daha
+sonra, kutuk acmanin basarili olip olmadigini kontrol ediyoruz. Sayet
+basarili degilse, geriye NULL degeri donecektir.
+
+Program, bir "do while" dongusunun icinde tek bir karakter okuyup, ekrana
+yaziyor. Bu dongu, ta ki, "getc" fonksiyonu kutugun sonunu belirten EOF
+dondurene kadar surer. EOF donunce de, kutuk kapatilir, ve program sona
+erer. 
+
+DIKKAT DIKKAT DIKKAT
+
+Bu noktada, C nin en sasirtici ve en cok yapilan hatasina rastliyoruz.
+"getc" fonksiyonundan geri donen degisken bir karakterdir, dolayisi ile
+bunu "char" tipi bir degiskene atayabiliriz. Hatirlayalim ki, bir "char"
+degiskeni 0 ila 255 arasindaki degerleri alabilir.
+
+Fakat, cogu C derleyicilerinde EOF karakteri, -1 olarak tanimlanmistir -
+yani, "char" degiskeninin disinda - Bu nedenle sayet char kullanirsak,
+program kutugun sonunun geldigini bulamaz, ve sonsuz bir dongude takilir.
+Bunun onune gecmesi kolaydir: EOF karakteri donmesini beklediginiz
+durumlarda, daima "int" tipi bir degisken kullanin. 
+
+Sayet sizin derleyiciniz icin EOF karakterinin ne oldugunu ogrenmek
+isterseniz, "stdio.h" isimli header'i okuyabilirsiniz.
+
+
+KELIME KELIME OKUMAK
+
+TEXTOKU.C:
+================================================================
+#include "stdio.h"
+
+main()
+{
+FILE *fp1;
+char birkelime[100];
+int c;
+
+   fp1 = fopen("ONSATIR.TXT","r");
+
+   do {
+      c = fscanf(fp1,"%s",birkelime); /* kutukten bir kelime okuyalim */
+      printf("%s\n",birkelime);       /* ekrana yazalim               */
+   } while (c != EOF);              /* ta ki EOF olana kadar          */
+
+   fclose(fp1);
+}
+================================================================
+
+Bu program, nerdeyse bir oncekinin aynisidir. Burada, kelime kelime okumak
+icin "fscanf" fonksiyonunu kullaniyoruz, cunku "fscanf" fonksiyonu, bir
+bosluga gelince, okumayi birakir. 
+
+FAKAT BIR PROBLEM VAR
+
+Programi inceleyince, verinin kutukten okundugunu, ekrana yazildigini ve
+daha sonra EOF olup olmadiginin kontrol edildigini goruyoruz. Bu nedenle,
+istemedigimiz birsey ekrana yazilmis oluyor. Buyuk ihtimalle, programin
+sonunda, en son kelimeyi bir daha yaziyoruz - cunku zaten "birkelime" nin
+icinde idi o deger. 
+
+Buna mani olmak icin, bir baska program gorelim. Ismi IYIOKU.C olsun:
+
+IYIOKU.C:
+================================================================
+#include "stdio.h"
+
+main()
+{
+FILE *fp1;
+char birkelime[100];
+int c;
+
+   fp1 = fopen("onsatir.txt","r");
+
+   do {
+      c = fscanf(fp1,"%s",birkelime); /* kutukten bir kelime oku... */
+      if (c != EOF)
+         printf("%s\n",birkelime);    /* ekrana yaz...            */
+   } while (c != EOF);              /* ta ki EOF olana dek..      */
+
+   fclose(fp1);                      /* kutugu kapa       */
+}
+================================================================
+
+Gordugunuz gibi, bir "if" komutu ile, sayet kutugun sonuna gelip
+gelmedigimize bakiyoruz. Aslinda bu problem KAROKU.C da da vardi, fakat
+orada pek gorunmuyordu.
+
+SONUNDA, BUTUN BIR SATIR OKUYORUZ
+
+SATIROKU.C:
+================================================================
+
+#include "stdio.h"
+
+main()
+{
+FILE *fp1;
+char birkelime[100];
+char *c;
+
+   fp1 = fopen("ONSATIR.TXT","r");
+
+   do {
+      c = fgets(birkelime,100,fp1); /* bir satir okuyalim */
+      if (c != NULL)
+         printf("%s",birkelime);    /* ekrana yazalim   */
+   } while (c != NULL);          /* ta ki NULL olana kadar.. */
+
+   fclose(fp1);
+}
+
+================================================================
+
+Bu program, simdiye de gorduklerimize benziyor, fakat NULL isimli yeni bir
+nesne de katildi. 
+
+"fgets" fonksiyonu ile, bir butun satiri, ve sonundaki yeni satir
+karakterini (\n), bir diziye okur. Ilk parametre olarak, donen
+karakterleri koyacagimiz yerin adresi tanimlanir, ikinci parametrede en
+fazla kac karakter okunmasina izin verecegimizi belirtiyoruz, ve son
+olarak da kutuk degiskeninin ismini veriyoruz.
+
+ o Yani bu fonksiyon, ya bir yeni satir karakterine rastlayana kadar, yada
+izin verilen karakter sayisi eksi bir kadar okur. Eksi birin sebebi ise,
+katarin sonunu belirten (\0)  sifir degerine yer birakmasidir.
+
+Tabi sonunda, kutugu kapatiyoruz..
+
+DEGISKEN BIR KUTUK ISMI
+
+HERKUTUK.C:
+================================================================
+#include "stdio.h"
+
+main()
+{
+FILE *fp1;
+char birkelime[100],kutukismi[25];
+char *c;
+
+   printf("Kutuk ismini girin -> ");
+   scanf("%s",kutukismi);         /* istenilen kutuk ismini alalim */
+
+   fp1 = fopen(kutukismi,"r");
+
+   do {
+      c = fgets(birkelime,100,fp1); /* kutukten bir satir okuyalim */
+      if (c != NULL)
+         printf("%s",birkelime);    /* ekrana yazalim       */
+   } while (c != NULL);          /* ta ki NULL olana kadar  */
+
+   fclose(fp1);
+}
+================================================================
+
+Burada, ilk once kullanicidan "scanf" ile kutuk ismini kullanicidan
+aliyoruz, daha sonra kutugu acip, satir satir ekrana yaziyoruz.
+
+YAZICIYA NASIL BIRSEY YOLLAYABILIRIZ
+
+PRINTDAT.C:
+================================================================
+#include "stdio.h"
+
+main()
+{
+FILE *guzel,*printer;
+int c;
+
+   guzel = fopen("onsatir.txt","r"); /* kutugu acalim        */
+   printer = fopen("PRN","w");        /* printeri acalim     */
+
+   do {
+      c = getc(guzel);    /* kutukten bir karakter okuyoruz  */
+      if (c != EOF) {
+	 putchar(c);      /* ekranda goruntuleyelim          */
+	 putc(c,printer); /* ve yaziciya yollayalim          */
+      }
+   } while (c != EOF);    /* ta ki (End Of File) kutuk bitene kadar */
+
+   fclose(guzel);
+   fclose(printer);
+}
+================================================================
+
+Okumak icin, "onsatir.txt" yi actiktan sonra, yazmak icin "PRN" isimli
+kutugu aciyoruz. Printere bir bilgi yollamak, ayni bir kutuge yazmak
+gibidir, fakat standart bir kutuk ismi kullanmak zorundayiz. Bu konuda
+kesin standartlar yoktur, fakat genellikle bu isimler "PRN" , "LPT",
+"LPT1" yada "LPT2" dir. 
+
+Bazi yeni derleyicilerin, "stdprn" diye, onceden tanimli bir kutuk
+tanimliyicilari vardir. Bu sayede, siz printer'i bir kutuk gibi acmadan,
+ona veri yollayabilirsiniz.
+
+Program, birer birer butun kutugu okuyup, ekranda gosterir, ve printer'e
+yollar. EOF , kutuk sonu bulundugunda, kutukler kapanir, ve programv
+biter. 
+
+
+
+ODEVLER:
+
+1. Okunacak, yazilacak  kutuklerin isimlerini kullaniciya soran, daha
+sonra bu ikisini ve printer kutugunu acan bir program yazin. Program
+bunlari actiktan sonra, kutuk sonu gelinceye kadar okunacak kutugu harf
+harf okuyup, yazilacak kutuge ve yaziciya bu karakteri yollamalidir.
+
+2. Programiniz, kullaniciya bir kutuk ismi sorsun, cevabi alinca da, bu
+kutugu ekranda, satir numaralari ile birlikte gostersin..
+
+<EOF>
+

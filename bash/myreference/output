@@ -1,0 +1,32 @@
+greeting="hello"
+
+# no quotes
+echo $greeting, world \(planet\)! # shell interpreters what it sees
+
+# single quotes, strong quotes
+echo '$greeting, world \(planet\)!' #nothing gets interpretered.
+
+# double quotes, middle way
+Using double quotes the literal value of all characters enclosed is preserved,
+except for the dollar sign, the backticks (backward single quotes, ``) and the backslash.
+echo "$greeting, world \(planet\)!" 
+
+
+echo $VARIABLE
+
+echo \$VARIABLE # escaping
+
+echo -n hello #no newline
+
+echo -e "Inserting several blank lines\n\n\n" # enable backslash escape
+
+echo 'use "man echo"'
+
+
+echo "first line
+      second line
+      third line" #will be printed as it is
+
+echo >> <filename> #appends a new line !! dont use one > 
+
+echo # empty line

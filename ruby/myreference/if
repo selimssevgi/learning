@@ -1,0 +1,10 @@
+< > ! == != <= >=
+
+if insanity == "1" || insanity == "2"
+if cars > people || trucks < cars
+  # do something
+elsif int1 > int3
+  # do something else
+else
+  # do something else else
+end

@@ -1,0 +1,15 @@
+# Functions that don't have parameters do not need the () after them, be clearer and you write them anyway!
+def function_name(*args) # hold all the given argument as an array
+  arg1, arg2 = args
+  #do something
+  return res1,res2,res3
+end
+
+def f_name arg1, arg2 # also valid without (). calling : f_name selim, 22
+def f_name(arg1, arg2)
+  #do something
+end
+
+def method(arg1, arg2=5) # second argument has default value
+  # do smth 
+end

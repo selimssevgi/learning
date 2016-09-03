@@ -1,0 +1,26 @@
+           ##### she-bang nedir niye kullanılır?
+
+# Kelime Acıklaması : "#" işareti haSH ve SHarp diye bilinir.
+		      "!" ünlem işareti de bazen bang diye bilinir.sh-bang or she-bang.
+
+# Kullanım yeri : Bir scriptin ilk satiri olmak zorundadır.Daha sonraki satırlarda işe yaramaz.
+
+# Niye Kullanılır :  Yazdigimiz scriptin bir interpreter(yorumlayıcı) gerek duydugunu belirtmiş oluruz.
+		     Normalde executable programlar iki turlu olabiliyor.
+		     Compile(Derlenenler-Binary) edilenler, bir de yorumlananlar yani oldugu kalan ancak
+			 başka programlar tarafından yorumlanan/degerlendirilen programlardır. 	
+		     Scriptlerimizde bir program tarafından derlenmediği için,biz de işletim sistemine
+			 hangi programramla yorumlanması gerektigi soyluyoruz.
+
+# Önemli bir nokta : Aslında script içinde kullanılıyor olsa bile bu kullanım SHELL için değil,işletim sistemi içindir.
+		     SHELL in kendisi zaten scripti yorumlayan programdır.(interpreter)
+		     Ve başta kullandıgımız # işareti zaten SHELL için yorum niteligi taşır değerlendirilmez.
+		     Bu kullanım OS için KERNEL içindir.Scripti yorumlamak icin hangi programı kullanacagımızı soyluyoruz.
+
+# Taşınabilirlik : Farklı ortamlarda aynı scriptin sorun cıkarmadan çalışması için yorumlayıcısını belirtmek onemli bir mevzudur.
+		   Bunun icin farklı she-bang tanımlama satırları vardır.
+
+#!/bin/bash : Bu she-bang başlangıc için idealdir.Burda bir OS'e diyoruz ki: Aşagıdaki scripti bu programla yorumla.
+	      Bu program dedigimiz sey : /bin/bash yani root directory altındaki bin dosyasında BASH SHELL ini kullanacaktir.
+
+30/18/12.

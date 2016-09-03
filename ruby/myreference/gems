@@ -1,0 +1,6 @@
+gem = ruby library
+
+gem install rake # rake is impportant in ruby system
+
+gem install rspec # testing framework
+

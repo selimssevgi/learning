@@ -1,0 +1,38 @@
+# $ rails new <projectname>   # creates a new project in the current dir
+
+# Make changes in Gemfile if is necessary
+
+# $ bundle install --without production          # to install all gems
+
+# $ bundle update                               # make sure versions match
+
+# rails server              # to start the web server
+
+# rails generate controller welcome index          # controller called "welcome" with an action called "index" 
+
+# rails generate controller StaticPages home help 
+# rails destroy  controller StaticPages home help   # undo
+
+# rails generate model Article title:string text:text 
+# rails destroy  model Article # undo 
+
+# rails generate integration_test site_layout 
+
+# rake db:migrate 
+# rake db:rollback # undo
+# rake db:migrate VERSION=0   # rollback to beginning
+# rake db:migrate:reset       # reset the database
+# rake routes                 # complite list of routes of the application
+# rails generate scaffold User name:string email:string 
+
+# rails console
+# rails console --sandbox     # we dont want to make any changes to our database
+#
+# -----------------------------------------
+# Rails Shortcut
+# -----------------------------------------
+# rails server      # rails s
+# rails console     # rails c
+# rails generate    # rails g
+# bundle install    # bundle
+# rake test         # rake

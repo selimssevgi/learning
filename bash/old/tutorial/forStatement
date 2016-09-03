@@ -1,0 +1,92 @@
+#!/bin/bash
+
+# forStatement - Script Def : usinf of for loops, example
+
+### Usage : 
+#	FOR variable IN words; DO
+#		statements
+#	DONE
+
+# words : bu kısma bir kaç tane kelime,dosyaismi vs. geliyor.
+# for her donusunde bunların bir tanesini sırayla VARIABLE degiskeni deger olarak aktarıyor.
+
+###### FUNCTIONS
+
+function ilkOrnek 
+{
+	for word in selim sırrı sevgi; do
+		echo "$word"
+	done
+}
+
+function ikinciOrnek
+{
+	count=0
+	for i in $(cat ~/.profile); do
+		count=$((count + 1))
+		echo "Word $count ($i) contains $(echo -n $i | wc -c) characters."
+	done
+}
+
+function ucuncuOrnek
+{
+	for i in $@; do
+		echo $i
+	done
+}
+
+function dorduncuOrnek 
+{
+	for filename in $@; do
+		result=
+		if [ -f $filename ]; then
+			result="$filename is a regular file"
+		else
+			if [ -d $filename ]; then
+				result="$filename is a directory"
+			fi
+		fi		
+		if [ -w $filename ]; then
+			result="$result and it is writable"
+		else
+			result="$result and it is not writable"
+		fi
+		
+		echo "$result"
+	done
+}
+
+
+selection=
+
+while [ "$selection" != "0" ]; do
+	echo ""
+	echo "FOR LOOP EXAMPLES"
+	echo "1 - Normal Usage"
+	echo "2 - Komutla Olusturan for Degerleri"
+	echo "3 - $\@ kullanimi"
+	echo "4 - Karmasik bir örnek"
+	echo ""
+	echo "0 - exit"
+	
+	echo -n "Enter Selection > "
+	read selection
+
+	case $selection in 
+		1 ) ilkOrnek;;
+		2 ) ikinciOrnek;;
+		3 ) ucuncuOrnek;;
+		4 ) dorduncuOrnek;;
+		0 ) exit;;
+		* ) echo "Verilen sayilardan birini girin."
+	esac
+done
+
+
+
+
+
+
+
+
+

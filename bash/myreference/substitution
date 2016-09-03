@@ -1,0 +1,11 @@
+The characters "$( )" tell the shell, "substitute the results of the enclosed command."
+
+$(command) or 'command' #back quote
+
+$(date +"%x %r %Z")
+
+right_now=$(date +"%x %r %Z")
+
+time_stamp="Updated on $right_now by $USER"
+
+d=$(pwd)

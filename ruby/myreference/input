@@ -1,0 +1,12 @@
+
+print "How old are you? > " # wait on the same line
+age = gets.chomp
+age = $stdin.gets.chomp
+
+# chomp : chomp off the \n
+
+# input is always taken as string.
+# so sometimes it needs to be convert to int,float
+
+age = gets.chomp.to_i
+float = somestring.to_f

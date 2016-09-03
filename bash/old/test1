@@ -1,0 +1,7 @@
+# !/bin/bash
+
+# Test
+
+echo "My name is : \nSelim Sırrı Sevgi"
+
+## \n işe yaramadı.

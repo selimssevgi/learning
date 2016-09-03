@@ -1,0 +1,68 @@
+rails generate controller Users new 
+# controller names are plural
+
+rails generate model User name:string email:string
+# model names are singular
+# table name is plural
+# id, created_at, updated_at are automatically included.
+
+rake db:migrate
+# run the migrations
+# it creates a file called db/development.sqlite3
+
+rake db:rollback
+# undo the migrations
+
+User.new      # will create a user with all columns with value of nil
+user = User.new(name: "Michael Hartl", email: "mhartl@example.com")
+# user is avaliable just in the memory
+
+user.save  # return true or false based on validation rules!
+# now it was saved to database
+# after saving them, the id, created_at, updated_at fields will be filled auto.
+user.name, user.email, user.id is the way to access attributes.
+
+User.create(hash params)  # returns the object created.
+# this combines the two method above. user.new() + user.save
+foo = User.create(name: "Foo", email: "foo@bar.com")
+
+foo.destroy 
+# removes the user or entry
+
+User.find(1)
+# returns the user object with that id
+# if there is no user with that id, an exception will be raised.
+
+User.find_by(email: "example@example.com")
+User.first
+User.all # returns an array of all users
+
+# Updating entries
+user.email = "something@different.com"
+user.save
+user.update_attributes(name: "The Dude", email: "dude@abides.org")
+# on success performs both the update and the save in one step
+
+# Note that if any of the validations fail,
+# such as when a password is required to save a record,
+# the call to update_attributes will fail.
+# If we need to update only a single attribute,
+# using the singular update_attribute bypasses this restriction:
+user.update_attribute(:name, "The Dude")
+
+# Validating
+validates :name, presence: true  # last argument is hash, curly braces optional
+validates(:name, presence: true)
+valiates :name, presence: true, length: { maximum: 50  }
+user.valid? # return false if one or more validations fail
+
+# Secure Password
+has_secure_password
+# When included in a model as above, this one method adds the following functionality:
+
+The ability to save a securely hashed password_digest attribute to the database
+A pair of virtual attributes (password and password_confirmation),
+including presence validations upon object creation and a validation requiring that they match
+An authenticate method that returns the user when the password is correct (and false otherwise)
+
+# we need a field called password_digest for this moethod to do its magic

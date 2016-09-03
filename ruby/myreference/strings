@@ -1,0 +1,74 @@
+my_string = 'computer'    # Single quotes. ruby keeps them as it is.
+                          # just \\ and \' is escaped.
+
+# single quote makes it easy to include literal newline "\\n" and '\n'
+
+my_string = "Selim"       # Double quotes. More flexible. More escape characters
+                          # the expression in the string is evaluated,
+                          # converted to a string and inserted into the text in place of the expression.
+                          # This process is known as interpolation.
+
+# Building Strings
+my_string = "SSS"
+full_name = my_string + "elim"      # string concatenation
+full_name = "#{my_string}elim"      # string interpolation
+
+Check |heredoc|
+
+# Iteration
+each_byte         # iterates sequentially through the individual bytes that comprise a string;
+each_char         # iterates the characters and is more efficient than [] operator or character indexing;
+each_codepoint    # iterates over the ordinal values of characters in the string;
+each_line         # iterates the lines.
+
+
+# Methods
+my_string.chmop       # removes the new line character at the end if present
+my_string.chomp("?")  # removes ? 
+my_string.chop        # removes any last character
+
+my_string.strip       # Returns a new string with the leading and trailing whitespace removed.
+                      # do a chomp before removing white spaces
+
+my_string.include? "abc" # return true if string contains "abc"
+
+my_string.gsub(pattern, <hash|replacement>)     # Returns a new string with all the occurrences of the pattern substituted for the second argument:
+                                                # The pattern is typically a Regexp, but a string can also be used.
+
+"hello".gsub(/[aeiou]/, '*')              #=> "h*ll*"
+"hello".gsub(/([aeiou])/, '')             #=> "hll"
+
+my_string.reverse 
+
+my_string.downcase
+
+my_string.upcase
+
+my_string.downcase.capitalize
+
+my_string.length
+
+my_string.split # default space
+
+poem.lines.to_a       # lines component decides the way the string should be split
+
+my_string.split('a')
+
+
+my_string.encoding.name 
+
+my_string.size
+
+my_string.bytesize
+
+=======================================================
+def strike word
+  new_word = "<strike>"
+  new_word += word
+  new_word += "</strike>"
+  return new_word
+end
+
+def strike s
+  "<strike>#{s}</strike>"
+end

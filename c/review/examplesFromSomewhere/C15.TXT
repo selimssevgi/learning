@@ -1,0 +1,444 @@
+C-Dili 15. Konu
+
+C ve MS-DOS ile Ekran Duzeni
+
+Simdiye kadar kacindigim bir konu ise, ekrani silme, cursor'un yerini
+ogrenme yada degistirme, ekranin calisma modunu degistirme gibi konular
+iceren ekran duzenidir. Aslinda C nin bir parcasini olusturmamakla
+birlikte, bu konu programcilar icin cok onemlidir.
+
+C ye sonradan eklenen bir 'uzanti' oldugu, ve sadece MS yada PC-DOS ile
+calisan bilgisayarlarda kullanilabilecegi icin, burada gorecegimiz
+int86() fonksiyonu, su anda sadece Microsoft C, ve Turbo C tarafindan
+desteklenmektedir. Derleyiciniz baska ise, bu fonksiyon cagirilis
+metodunu degistirmeniz gerekebilir.
+
+Cok sayida degisik turde ekran tipleri ile kullanilabilecegi icin, C de
+tanimlanmis, hazir ekran fonksiyonlari yoktur. Bu fonksiyonlar,
+kullanilacak cihazin yapisina gore tanimlanabilir. Bu konu icerisinde,
+elimizdekinin bir IBM-PC yada uyumlu bilgisayar oldugunu kabul edecegiz.
+
+
+Ekrana Nasil Eriselim?
+
+Temelde, 3 cesit yoldan ekrana erisebiliriz:
+
+        1) bir BIOS interruptu ile,
+        2) DOS'un ANSI.SYS i ile,
+        3) Direk donanima 'karisarak'.
+
+Her bir metodun avantaj ve dezavantajlari vardir. Daha derine dalmadan
+once, dilerseniz bu 'interrupt' lafinin manasini cozelim:
+
+Interrupt
+
+IBM PC ailesi, donanim yada yazilim tarafindan yaratilabilecek
+interruptlar ile idare edilebilir. Bir interrupt olustugunda,
+bilgisayarin calismasi, bu interruptu halledebilecek bir rutine
+yollanir. Bu rutinlerin baslangic adresleri, 'interrupt vektor
+tablosu'nda saklanir. Bu tablo, bilgisayarin hafizasinin en alt
+kesiminde, ilk bir kilobytelik yerde bulunur. Bu sahada 255 ayri
+interrupt icin yer ayrilmistir.
+
+Ornegin, 5. interrupt olustugunda, sistem ilk olarak butun
+registerleri (birazdan anlatacagim) saklar, ve bu ilk 1K lik tablodan,
+5. "kutu" ya bakip buradaki adresi okur. Sonra, buradan ogrendigi
+adrese atlar ve orada ne islemler varsa yapar. Bunlar bitince, tekrar
+kaldigi isleme geri doner.
+
+Donanim Interruptlari (Hardware Interrupts): Bunlar, sistem tarafindan
+cagirilan rutinlerdir. Ornegin sistem, her saniyede 18.2 kere bir
+interrupt ile saatini ilerletmektedir. Bu cagirim, yada interrupt,
+donanim tarafindan yaratilmaktadir. Diger bir baska interrupt ise, 9.
+klavye interruptudur. Her tusa basildiginda, bu donanim interruptu
+olusur.
+
+Yazilim Interruptlari (Software Interrupts): Bunlar ise, herhangi bir
+programin cagirabilecegi bir rutinler kutuphanesidir. Ekrana birsey
+yazmak gerektigine, yada silmek gerektiginde, bunu bir interrupt
+cagirarak yapariz.
+
+BIOS nedir? (BIOS==Basic Input/Output System)
+
+BIOS'un gorevi, bilgisayarin yapmasi gereken temel servisleri yerine
+getirmektir. Genis anlamda, BIOS IBM'in icindeki yongalarda bulunan
+rutinler kutuphanesidir. BIOS, DOS ile donanim arasinda bir yerde
+bulunur. Bir taraftan, bir programdan yapilmasi gereken standart BIOS
+komutunu alir. Programimiz, BIOS a bu istegi, bir interrupt vasitasi
+ile bildirir. BIOS un diger tarafi ise, bilgisayarin donanim parcalari
+(ekran, disk drive, seri port, vs.) ile iliski kurar. BIOS'un bu
+tarafi ise, dikkati cekmek icin bir interrupt yaratan bir donanim ile
+konusur.
+
+DOS nedir?
+
+DOS ise, bir baska kutuphanedir. Ozellikle diske erisimde uzmanlasmis
+olan DOS, bundan baska ekrana yazma, yaziciya bilgi yollama, vs. gibi
+servisleri de kapsar.  DOS'un da ayni BIOS gibi interruptlari ve
+sagladigi bircok servis vardir. Aslinda DOS, cogu bu servisler icin
+BIOS'dan yardim gormektedir.
+
+Aklinizda bulunsun: BIOS yongalarda bulunur, DOS ise sonradan
+yuklenir.
+
+Simdi, BIOS ile nasil ekran kontrolu yapabilecegimizi gorelim. Bir
+kere, butun BIOS ekran fonksiyonlari, bir interrupt ile cagirilir,
+bunun da interrupt numarasi 16 dir. Herhangi bir BIOS fonksiyonunu
+kullanmak icin yapmamiz gerekenler, once bazi registerleri
+degistirmek, onaltinci interruptu cagirmak, ve sonuclari zevkle
+seyretmektir.
+
+Register?
+
+IBM-PC ailesinin kullandigi 8088 yongasinin, calismasinda kullandigi
+bazi ozel sahalar vardir. Bu sahalara "register" ismi verilir. IBM-PC
+de, toplam olarak ondort tane register vardir. PC bunlari, aritmetik
+islemler, karsilastirmalar gibi islerde kullanir. Bunlardan dort
+tanesini BIOS interruptlari ile kullanacagiz. Bu kullanacaklarimizin
+isimleri, AX,BX,CX ve DX dir. Bunlar ayni birer degisken gibi
+iclerinde degerler tasiyabilirler. Bu registerlerin bir ozelligi ise,
+ister tam olarak, yani butun AX'i birden, istersek de yarim yarim (AH
+ve AL yi) degerlerini degistirmemiz mumkundur.
+
+Yani, dilersek AX in icine bir 16 bitlik veri koyabiliriz, yada AL ve
+AH lerin iclerine sekizer bitlik veri koyabiliriz. Hep AX i
+kullandigima bakmayin, BX i BL ve BH, CX i CH ve CL diye, DX i DL ve
+DH diye ayirmamiz mumkun.
+
+Dilerseniz soyle dusunun: Sayet CX dersek, asagidaki butun yapiyi
+kastediyoruz:
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+ |                       |  |                       |
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+          CH                            CL
+Fakat, CH yada CL dersek yarisini kastediyoruz. Yani CX=5 desek,
+yukaridaki kutulara:
+
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+ | 0  0  0  0  0  0  0  0|  | 0  0  0  0  0  1  0  1|
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+          CH                            CL
+
+koymus oluruz.. (binary 101, 5 e esittir) Fakat CH=6 desek,
+
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+ | 0  0  0  0  0  1  1  0|  | 0  0  0  0  0  1  0  1|
+ +--+--+--+--+--+--+--+--+  +--+--+--+--+--+--+--+--+
+          CH                            CL
+
+CL nin eski degerine dokunmamis oluruz. Bir onceki ornekte icine '101'
+koydugumuz icin, CL hala o degerde kaldi. Aslinda butun bunlari
+bilmemize luzum yok, fakat ileride isinize yarayabilir.
+
+
+Cursor Pozisyonunu Ayarlamak:
+
+Dilerseniz ilk olarak ekranin istedigimiz bir yerine atlayip, oraya
+birseyler yazmayi deneyelim. Bunun icin cursor, yani, bundan sonra
+yazilacak noktanin degistirilmesi gereklidir. (Cursor, yanip sonen bir
+alt-cizgi gorumundedir, ve donanim ile kontrol edilir.)
+
+POSDEGIS.C:
+=========================================================
+#include <dos.h>
+
+void yerlestir(satir,kolon)     /* Bu fonksiyon, cursoru istedigimiz    */
+unsigned satir,kolon;           /* bir yere koyar */
+{
+    union REGS giris_register,cikis_register;
+
+    giris_register.h.ah = 2;        /* 2: set-cursor-position fonksiyonu*/
+    giris_register.h.dh = satir;
+    giris_register.h.dl = kolon;
+    giris_register.h.bh = 0;        /* hangi sayfayi degistirelim?      */
+
+    int86(16,&giris_register,&cikis_register);    /* cagiralim, yapsin  */
+}
+==========================================================
+
+Ilk satirda gordugunuz #include <dos.h>, bu programda sart. Cunku daha
+sonra gelen 'union' u tanimliyor. Bu union ile, iki tane degisken
+tanimliyoruz, bunlar giris_register ve cikis_register olarak. Daha
+sonra, bunlarin gereken elemanlarina verileri atiyoruz. Burada, hangi
+elemana hangi verinin konacagi, ve servis numarasi (bizde 2) gibi
+verileri, ya MS-DOS Technical Reference Manual'dan yada Peter
+Norton'un Programmer's Guide To the IBM-PC den bulabilirsiniz. En son
+olarak, int86 fonksiyonu ile, 16. interruptu cagiriyoruz. Sistem ilk
+olarak gidip o hafizanin ilk 1K sindaki tablodan 16. interruptun
+rutinlerinin baslangic adresini ogreniyor. Daha sonra o adrese
+atlayip, ikinci fonksiyonunun yerine geciyor, ve register degerlerine
+gore istedigimizi yerine getiriyor.
+
+Ozet:  Cursor'u Yerlestirme Fonksiyonu
+Interrupt no: 16    Servis No: 2
+Gereken Veriler:    AH=Servis numarasi, yani 2,
+                    DH=satir numarasi,
+                    DL=kolon numarasi,
+                    BH=Kullanilacak Sayfa Numarasi
+
+Bu sayfa numarasi parametresini merak edebilirsiniz. Normal bir
+monokrom ekranin, sadece bir sayfasi vardir. Fakat ornegin CGA (Color
+Graphics Adaptor), yani renkli adaptoru 'text' yada metin modunda
+calistiginda, sayet satira-40 karakter modundaysa 8 sayfa, sayet
+satira-80 karakter modundaysa, 4 sayfayi kullanabilir. Herhangi bir
+anda bu sayfalardan biri ekranda gosterilebilir. (Evet - sayfa
+degistirmek icin bir baska fonksiyon cagirmak gerekli.) Bazi
+programlar bu ozelligi, bir sayfayi kullaniciya gosterirken, bir
+digerini hazirlayarak, super-hizli ekran goruntuleri saglamakta
+kullanirlar. Ikinci merak edebileceginiz sey,
+
+Cursor Pozisyonunu Okumak
+
+olabilir. Bu da, yukaridaki yaziyi anladiysaniz, son derece kolaydir.
+Bu sefer, interrupt'u cagirdiktan sonra donen degerlerle de
+ilgilenmekteyiz:
+
+POSOGREN.C:
+=========================================================
+#include <dos.h>
+
+void posogren(satir, kolon)  /* Bu fonksiyon, cursorun yerini BIOS yardimi */
+unsigned *satir, *kolon;     /* ile ogrenir */
+{
+	union REGS giris,cikis;
+
+	giris.h.ah = 3;     /* fonksiyon 3 - cursorun yerini oku */
+	giris.h.bh = 0;     /* 0 inci sayfa.. */
+
+	int86(16,&giris,&cikis);
+
+    *satir = cikis.h.dh;    /* 3. fonksiyondan donen degerler:  */
+    *kolon = cikis.h.dl;    /* DH icinde, cursorun satir no su, */
+}                           /* ve DL icinde kolon numarasi..    */
+=================================================================
+
+Bu programi calistiran ana program, soyle olabilir:
+
+main()
+{
+	int a,b;
+	posogren(&a,&b);
+	printf(" Program calistiginda cursor %d. satir, %d. kolonda idi\n",a,b);
+}
+
+a ve b nin adreslerinin gecirildigine dikkatinizi cekerim.
+
+REGS Union'un Parcalari
+
+Iki programdir gordugunuz REGS isimli union'un parcalari, bize
+herhangi bir registerin herhangi bir parcasina erismemizi saglar.
+Sayet registerin yarisinin degerini degistirmek istiyorsak, yukaridaki
+gibi, degiskenden sonra 'h' koyariz, giris.h. gibi.. Bundan sonra ise,
+hangi registerin degismesini istedigimizi soyleriz: giris.h.cl gibi.
+Sayet bir registerin yarim yarim yerine tumden degistirmek istersek,
+'h' yerine 'x' kullanmamiz gerekir: giris.x.bx gibi..
+
+Ekran Tipini Ayarlamak
+
+Yazdiginiz program, sadece seksen kolonluk bir ekranda calismak icin
+duzenlenmis olabilir. Bilmeyen bir kullanici da, ekrani 40 kolona
+ayarli iken, programi calistirmayi deneyebilir. Bu tip olaylara mani
+olmak icin, programinizin basinda, ekrani istediginiz tipe
+ayarlayabilirsiniz. Bunun icin, sifirinci servisi kullanabilirsiniz:
+
+EKRANAYA.C:
+=============================================================
+#include <dos.h>
+
+ekranayar(tip)      /* Bu fonksiyon, ekrani istegimiz tipe ayarlar */
+short tip;
+{
+	union REGS giris,cikis;
+
+	giris.h.ah = 0;  /* 0 inci servis - mod degistirmek */
+    giris.h.al = tip;   /* CGA; 0: b/w text 40x25,  1: 16 renk 40x25
+                           2: b/w text 80x25        3: 16 renk 80x25
+                           4: 4 renk Gra 320x200    5: 4 gri Gra 320x200
+						   6: b/w Gra 640x200
+                     MONO: 7: b/w text 80x25    */
+
+	int86(16,&giris,&cikis); /* ayarlayalim */
+}
+==============================================================
+
+Burada, ekranin yeni tipini belirtmemiz gerekli. Bunun icin, 0 ila 15
+arasinda bir deger vermemiz gerekiyor. Bu degerlerin 0 ila 6
+arasindakiler, CGA (renkli) icin, 7, monokrom icin, ve 8-10 arasi PCJr
+icin, ve sonrasi EGA icindir. EGA, 8 ve 9 haric diger butun ekran
+modlarini destekler.
+
+
+Ekrani Silmek
+
+Gordunuz bile! Ekrani silmek, iki yoldan olabilir. Birincisi, ekranin
+modunu degistirmek. Degistirdiginiz mod, su anki mod bile olsa, yine
+de ekran silinir. Yegane dezavantaj, Compaq tipi makinelerde bu islem
+uzun zaman alir. Dolayisi ile, bu isi dogru yapmamiz gerekir:
+
+EKRANSIL.C:
+==============================================================
+
+
+#include <dos.h>
+void ekransil()          /* bu rutin, ekrani siler */
+{
+	union REGS gir;
+
+    gir.h.ah = 6;       /* ekrani yukari kaydir: servis no su 6
+                           ekrani asagi kaydir: servis no 7 dir. */
+    gir.h.al = 0;       /* kac satir scroll edecegi 'donecegi'
+                           sifir olunca, butun ekrani siler */
+	gir.h.ch = 0;       /* sol ust kosenin satir no su */
+	gir.h.cl = 0;       /* sol ust kosenin kolon no su */
+	gir.h.dh = 23;      /* sag alt kosenin satir no su */
+	gir.h.dl = 79;      /* sag alt kosenin kolon no su */
+	gir.h.bh = 7;       /* yeni yaratilacak satirlar icin renk degeri */
+
+	int86(16,&gir,&gir);
+}
+==============================================================
+
+Altinci BIOS servisi sayesinde, ekrani yukari kaydirma metodu ile
+silmekteyiz. Ayni servis sayesinde, CX ve DX de gordugunuz degerleri
+degistirerek, ekranin sadece bir parcasini 'scroll' etmek yani
+kaydirmak mumkundur. Kaydirma yonunu servis numarasini 6 yada 7
+yaparak degistirebilirsiniz. Burada gordugunu gir.h.bh deki deger ise,
+yeni acilacak satirlarin 'attribute' yani, rengi ve ozellikleri
+(parlak, yanip sonen, vs.) dir. Ayrica, yukaridaki ornekte,
+            gir.h.ch = 0;
+            gir.h.cl = 0;
+yerine, sadece
+            gir.x.cx = 0;
+diyebilirdik.
+
+
+Baska Interruptlar
+
+Bu orneklerde dikkat etmisinizdir - her int86() yi cagirisimizda, ilk
+parametre olarak 16 yi belirttik. Bu istedigimiz interrupt'un
+numarasidir. Daha once soyledigim gibi BIOS un ekran fonksiyonlarinin
+hepsi interrupt 16 ile cagirilir. Fakat tabi, programlarimiz bununla
+sinirli kalmak zorunda degildir, kullanabilecegimiz daha bircok
+interrupt vardir. Dilerseniz, su programa bir bakin:
+
+PRINTSCR.C:
+==========================================================
+#include <dos.h>
+main()
+{
+    union REGS in;      /* buna ihtiyacimiz yok, ama tanimlamamiz lazim */
+    int86(5,&in,&in);   /* print-screen yapalim */
+
+}
+==========================================================
+
+bu program, gorevi ekrani oldugu gibi yaziciya gondermek olan
+interrupt 5 i kullanmaktadir. Artik klavyeden PRINTSCREEN tusuna
+bastiginiza, sistemin ne yaptigini biliyorsunuz.
+
+DOS ve ANSI.SYS ile Ekran Duzeni
+
+Umarim simdi size tumuyle degisik bir ekrana erisme metodu gosterirsem
+bana kizmassiniz. Bu ikinci metodun birincisi ile neredeyse hicbir
+alakasi yok. Bu metod sayesinde, programiniz, modem ile bagli uzak bir
+terminalden calisabilir, DOS'un yonlendirme metodlarindan
+(TYPE A.TXT > PRN gibi) faydalanabilir. ANSI bir terminali olursa,
+herhangi bir Unix sisteminde calisabilir. Nasil mi? Cok kolay -
+yaptigimiz, DOS ekrana birsey gonderirken, ekran idarecisinin
+anlayabilecegi komutlari kullanmak. Yegane sorun, bu idarecinin siz
+yukleyinceye kadar calismaz olmasi. Peki, nasil yukleyebiliriz?
+Sistemi actiginiz diskte, CONFIG.SYS isimli bir kutuk olmasi lazim.
+Yoksa yaratin, ve icine:
+
+    DEVICE=ANSI.SYS
+
+satirini koyun.  Bundan sonra, DOS disketinde bulunan ANSI.SYS isimli
+kutugun, sistemi actiginiz diskte bulunmasini saglayin. Son olarak da,
+ANSI.SYS i yuklemek icin, CTRL-ALT-DEL e basin. Alet acildiginda, size
+fark ettirmeden bu idareci yuklenecektir. Bundan sonra, dilerseniz
+printf icinde, dilerseniz herhangi baska bir DOS u kullanan rutin ile
+ANSI yi kullanabilirsiniz. (Anafikir: printf, ekrana yazmak icin,
+diger bircok C fonksiyonu gibi, DOS'u kullanir.)
+
+ANSI ile cursorun yerini degistirmek:
+
+Ilk once, butun ANSI komutlari, bir ESC, yani ASCII 27 ile baslarlar.
+Ornegin, cursorun yerini degistirmek icin, gereken komut ESC [#;#h
+dir. Ilk # isaretinin yerine satir numarasi, ikincinin yerine de kolon
+konur. Bu, bir programda soyle gorunebilir:
+
+              printf("\x1b[%d;%dh",satir,kolon);
+
+(Ondalik 27 = Hex 1B )
+
+satiri dikkatle incelerseniz, ilk once \x1b ile ESC karakterini, daha
+sonra [, sonra ilk rakami, sonra ; ve ikinci rakami, ve son olarak da
+h isaretini gorebilirsiniz. ANSI nin komut yapisi son derece sabit
+oldugundan, araya bosluklar katarsaniz, programiniz calismayabilir.
+
+ANSI ile Ekrani Silmek
+
+Ekrani silmek kolay: ESC [2j  yi ekrana yollamaniz yeterli:
+        printf("\x1B[2j");
+araya bosluk koymamaya dikkat etmelisiniz. Ayrica kucuk ve buyuk
+harfler farklidir.
+
+Ekranin Rengini Ayarlamak
+
+Bunun icin ESC [#;#m komutunu vermeniz gerekiyor. Ilk #, ekrandaki
+yazilarin rengi, ikincisi ise arka planin rengidir. Bu renk kodlari
+sunlardir:
+
+30 siyah yazilar
+31 kirmizi yazilar
+32 yesil yazilar
+33 sari yazilar
+34 mavi yazilar
+35 magenta yazilar (kirmizimsi)
+36 cyan yazilar (mavimsi)
+37 Beyaz yazilar
+
+40 siyah arka plan
+41 kirmizi arka plan
+42 yesil arka plan
+43 sari arka plan
+44 mavi arka plan
+45 magenta arka plan
+46 cyan arka plan
+47 beyaz arka plan
+
+Diger ozellikler icin, ESC [#m girmeniz gerekli: # yerine,
+    0   normal
+    1   parlak
+    4   alt cizgi (monokrom da)
+    5   yanip sonen
+    7   ters renkler
+    8   gorunmez
+
+
+DOS mu, BIOS mu kullansak
+
+DOS, ve ekran idarecisi ANSI.SYS, BIOS a nazaran daha yavas calisir,
+fakat bircok ortamda kullanilabileceginden, kalici programlar icin
+daha uygun bir cozumdur. Ornegin oyunlar gibi yasam sureleri birkac ay
+olan urunler ise, BIOS yada hatta direk erisim metodlarini
+kullanabilirler. ANSI nin dezavantaji, kullanicinin ANSI.SYS i
+yuklemesinin gerektigidir. Bu da, yeni kullanicilari panige kaptiran
+bir durumdur.
+
+Diger Interruptlar
+
+Gordugunuz gibi BIOS ile ilgilenirken, sadece 2 interrupt kullandik.
+Ekran fonksiyonlarini saglayan 16. interrupt, ve ekranin kopyasini
+yaziciya gonderen 5. interrupt. Bunun gibi daha bircok interrupt
+vardir, ve bize cok cesitli servisler sunarlar.
+
+Ayrica, dilersek kendi interruptlarimizi da yazabiliriz. Bos olarak
+tanimlanmis bir interrupt vektorunu degistirip, kendi rutinimizin
+adresini ona verebiliriz. Yada, ornegin sidekick gibi programlarin
+yaptigi gibi klavyenin yarattigi interrupt sonucunda cagirilan rutini
+degistirebiliriz, ve diledigimiz baska birseyin yapilmasini
+saglayabiliriz. Bu tip programlar ilk olarak basilan tusun kendilerini
+harekete gecirecek tus olup olmadigini kontrol ederler, sayet degilse
+kontrolu eski interrupt rutinine gecirirler.
+

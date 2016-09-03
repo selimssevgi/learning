@@ -1,0 +1,17 @@
+numbers = [1,2,3,4]
+
+for number in numbers
+  puts number
+end
+
+fruits = [ 'apples', 'oranges', 'pears']
+
+fruits.each do |fruit|
+  puts fruit
+end
+
+fruits.each {|fruit| puts fruit}
+
+(0..5).each do |i|
+  puts i
+end

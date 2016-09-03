@@ -1,0 +1,7 @@
+remove files and directories!!!
+
+rm -i <filename> #interactive-conformation
+
+rm -f <filename> #use force!
+
+rm -r <directory> #recursively

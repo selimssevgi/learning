@@ -1,0 +1,32 @@
+# + : add
+  - : subtract
+  * : multiply
+  / : division
+
+# == 
+  equality -- they both have to be same type
+  5 == 5 -- true
+  "hello" == "hello" --true
+
+# /= 
+  not equal
+  5 /= 4 -- true
+
+# ++ 
+  concatenation operator
+
+# :
+  prepend operator
+
+# !!
+  index operator like [] in C
+
+# ::
+  has type of. 'a' :: Char
+
+# =>
+  everything before this symbol is called class constraint. 
+
+# @
+  xs@(x:y:ys)
+  keeping a reference to the whole thing, while using pattern matching

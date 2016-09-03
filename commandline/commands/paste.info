@@ -1,0 +1,19 @@
+is used to merge lines of files. It is very useful for merging a single file and also for merging set of files as well.
+
+paste <filename> # acts like cat command
+
+paste -s <filename> # joins all the lines in the file. Default delimitir is tab.
+
+paste -d, -s <filename> # joins all the lines using the comma delimiter.
+
+paste - - < <filename> # one - reads one line. two -- reads two lines and pastes them side by side
+
+paste - - - < <filename> # three lines into one line
+
+paste -d ':,' - - - < <filename> # three lines two different delimeters for three columns
+
+!! -d option can take more than one delimiters. 
+
+paste <filename> <filename> # paste the content of the two files side by side
+
+paste -d, <filename> <filename>

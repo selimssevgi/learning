@@ -1,0 +1,548 @@
+C Dili - Konu 11
+
+Structure ve Union'lar
+
+STRUCTURE NEDIR?
+
+Not: Structure'un tam tercumesi herhalde 'Yapi' olacak..
+
+Bir structure, kullanici tarafindan tanimlanmis bir veri tipidir. Su ana
+kadar kullandigimiz veri tiplerinden cok daha karmasik olanlari,
+tanimlayabilirsiniz. Bir structure, daha once tanimlanmis olan veri
+tiplerinin bir araya gelmis halidir - ki bu veri tiplerine, daha once
+tanimladigimiz structure'lar da dahildir. Bu tanimi rahat anlamanin bir
+yolu, structure'un, veriyi kullaniciya yada o programi kullanacak olan
+kisiye daha rahat bir sekilde gruplamak icin kullanildigini
+belirtebiliriz.  Her zamanki gibi, bir seyi anlamanin en iyi yolu,
+orneklere bakmaktir...
+
+STRUCT1.C:
+================================================================
+
+main()
+{
+
+struct {
+   char bas_harf;  /* Soyadin bas harfi   */
+   int yas;        /* cocugun yasi        */
+   int not;        /* okulda not ortalamasi (100 uzerinden) */
+   } oglan,kiz;
+
+   oglan.bas_harf = 'R';
+   oglan.yas = 15;
+   oglan.not = 75;
+
+   kiz.yas = oglan.yas - 1;  /* o, oglandan bir yas kucuk */
+   kiz.not = 82;
+   kiz.bas_harf = 'H';
+
+   printf("%d yasindaki %c'nin aldigi not, %d dir.\n",
+           kiz.yas, kiz.bas_harf, kiz.not);
+
+   printf("%d yasindaki %c'nin aldigi not, %d dir.\n",
+           oglan.yas, oglan.bas_harf, oglan.not);
+}
+================================================================
+
+Program, bir structure tanimi ile basliyor. "struct" kelimesinden sonra,
+kume isaretleri arasinda bazi basit degiskenler goruyorsunuz. Bu
+degiskenler, bu structure'i olusturan parcalardir. Kapanan kume
+isaretinden sonra, iki tane degisken ismi goruyorsunuz: "oglan" ve "kiz".
+Bu structure'un tanimina gore, "oglan" artik, 3 elemandan olusan bir
+degiskendir. Bunlar "bas_harf", "yas", ve "not" dur, ve herbiri, kendi
+tiplerinde bir veriyi saklayabilirler. "kiz" degiskeninin de ayni 3
+elemani vardir, fakat bu baska bir degiskendir. Yani, 6 tane basit
+degisken tanimlamis olduk..
+
+TEK BIR BIRLESIK DEGISKEN
+
+"oglan" degiskenini daha yakindan izleyelim. Daha once soyledigimiz gibi,
+"oglan" in her elemani, basit birer degiskendir, ve bu tip bir degiskenin
+kullanilabilecegi heryerde kullanilabilir. Ornegin, "yas" elemani, bir
+tamsayi degiskenidir, dolayisiyla, bir C programinda bir tamsayi
+degiskeninin kullanilabilecegi her yerde kullanilabilir. Hesaplamalarda,
+bir sayac olarak, I/O islemlerinde vs. Yegane problem, bu "yas" isimli
+basit degiskeni "oglan" ile beraber kullanmamiz gerekir. Bunu yapmak
+icinde, ikisini de yaziyoruz, ve arasina bir nokta isareti koyuyoruz.
+Oyleyse, tum degisken ismi olan "oglan.yas",  "oglan" degiskeninin "yas"
+sahasi oluyor.. Bu yapiyi, bu sahaya erismek istedigimiz heryerde
+kullanabiliriz. Hatta, sadece "oglan" yada "yas" dememiz, kabul
+edilmeyecektir. Tek baslarina, isimlerin bir manasi yoktur.
+
+
+DEGISKENLERE DEGER ATAMA
+
+Yukardaki tanimlamayi kullanarak, "oglan" ve "kiz" 'in her uc sahasina
+("bas_harf","yas","not") degerler ayabiliriz. Dikkat etmeniz gereken bir
+nokta, "oglan.bas_harf"'in bir "char" tipi oldugudur. Bu nedenle,
+programda karakter verisine atanmistir. "oglan" in geri kalan iki sahasi
+da, tanimlandiklari 'tiplerde', degerlere atanir.. Sonra, "kiz" isimli
+degiskenin 3 sahasi da, degerlere atanir. Burada atama sirasinin fark
+etmeyecegini gosterebilmek icin, farkli bir sira izlenmistir.
+
+BU DEGERLERI NASIL KULLANABILIRIZ??
+
+Alti basit degiskenimizin her elemanina veri atadiktan sonra, onlarla
+diledigimizi yapabiliriz. Bu ilk ornegi basit tutmak icin, biz sadece
+degerlerini ekrana yazdiriyoruz. "printf" satirinin alistigimizdan farkli
+olmadigini goreceksiniz.
+
+Structure'lar, programi daha kolay yazmak ve anlamak icin, cok faydali bir
+gruplama metodudur. Bu ilk ornek cok basit oldugundan, size structure'un
+gercek degerini gostermekten acizdir, fakat okumaya devam ederseniz,
+structure'un gercekten faydali oldugunu goreceksiniz..
+
+
+BIR STRUCTURE DIZISI
+
+STRUCT2.C:
+================================================================
+main()
+{
+struct {
+   char bas_harf;
+   int yas;
+   int not;
+   } cocuklar[12];
+
+int indeks;
+
+   for (indeks = 0;indeks < 12;indeks++) {
+      cocuklar[indeks].bas_harf = 'A' + indeks;
+      cocuklar[indeks].yas = 16;
+      cocuklar[indeks].not = 84;
+   }
+
+   cocuklar[3].yas = cocuklar[5].yas = 17;
+   cocuklar[2].not = cocuklar[6].not = 92;
+   cocuklar[4].not = 57;
+
+   for (indeks = 0;indeks < 12;indeks++)
+      printf("%c , %d yasindadir ve  notu %d dur.\n",
+             cocuklar[indeks].bas_harf, cocuklar[indeks].yas,
+             cocuklar[indeks].not);
+}
+================================================================
+
+Bu programda, bir oncekinin ayni structure tanimini kullaniyor. Fakat
+tanimladigi, 12 tane "cocuklar" isimli  degisken oluyor. Yani bu program
+12 * 3 = 36 tane basit degiskenden olusuyor. Bunlarin herbiri, kendi
+tiplerinde veri tasiyabilirler. Ayrica for dongulerinde kullanmak icin
+"indeks" isimli bir basit degisken de tanimliyoruz.
+
+Her sahaya bir deger atamak icin, bir for dongusu kullaniyoruz, ve
+donguden her gecis, bu 3 sahaya deger atanmasini sagliyor. Gercek hayatta
+bu metod, veri atanmasi icin pek uygun olmayacaktir. Ornegin veriler
+kutukten okunup, degerlerine atanabilir. Bunu basit bir veri tabani
+uygulamasi olarak gorebilirsiniz, gercekten de oyledir.
+
+Bundan sonra, birkac elemana, nasil atanacagini gostermek amaci ile,
+degerler atiyoruz. 
+
+PASCAL PROGRAMCILARINA NOT:
+
+Pascal dilinde bir butun RECORD'un tek bir komut ile kopyalayabilirsiniz. 
+Bu, C de mumkun degildir. Structure'un her elemanini tek tek kopyalamaniz
+lazimdir. Lisan gelismelere ugradikca, bu da degisecek bir noktadir.
+Hatta, bazi yeni derleyiciler, structure'un atanmasini yapabiliyor.
+Derleyicinizin kilavuzuna bir bakin..
+
+
+SONUNDA BUTUN NETICELERI GOSTERIYORUZ
+
+Son birkac satirda da, formatlanmis bir sekilde verilerin yazilmasini
+goruyorsunuz. 
+
+POINTER'LAR VE STRUCTURE'LARI BIR ARADA KULLANMAK
+
+STRUCT3.C:
+================================================================
+main()
+{
+struct {
+   char bas_harf;
+   int yas;
+   int not;
+   } cocuklar[12],*point;
+
+int index;
+
+   for (index = 0;index < 12;index++) {
+      point = cocuklar + index;
+      point->bas_harf = 'A' + index;
+      point->yas = 16;
+      point->not = 84;
+   }
+
+   cocuklar[3].yas = cocuklar[5].yas = 17;
+   cocuklar[2].not = cocuklar[6].not = 92;
+   cocuklar[4].not = 57;
+
+   for (index = 0;index < 12;index++) {
+      point = cocuklar + index;
+      printf("%c , %d yasindadir ve notu %d dur.\n",
+             (*point).bas_harf, cocuklar[index].yas,
+             point->not);
+   }
+}
+================================================================
+
+Bu program, bir once gordugumuz programin neredeyse aynisi, fakat bu, bazi
+islemler icin pointer'lardan yararlaniyor.
+
+Ilk fark, structure'un tanimlanmasindan sonraki degisken tanimlarinda goze
+carpiyor. Burada, "point" isimli bir pointer tanimliyoruz, ve tipine de,
+bu pointer'in tipi olarak veriyoruz. Bu pointer'in herhangi baska bir cins
+degisken tipini 'gostermesine' calismak, yalnis olur. C dilinde bu
+kisitlama icin cok yerinde bir neden vardir, ve bunu gelecek paragraflarda
+gorecegiz. 
+
+Daha sonraki degisiklik ise, veri sahalarina erismek icin pointer
+kullandigimiz dongude ortaya cikiyor. "cocuklar" kendi basina bir pointer
+gorevi yaptigindan, "point" i "kids" in adresine atayabiliriz. 
+
+POINTER ARITMETIGI
+
+"point" e bir ekledigimiz zaman, "cocuklar" dizisindeki ikinci elemanini
+gosteriyoruz. Sistem, bu structure'un 3 tane degiskenden olustugunu ve
+butun structure'u hafizada tutmak icin ne kadar yer gerektigini bilir. Bu
+sayede, "point"e bir ekle dedigimizde, dizideki bir sonraki elemana varmak
+icin kac hafiza elemani a$ilmasi gerekiyorsa, o kadar ekler. Ornegin,
+"point" e 4 ekleseydik, sistem, "point" e 4 kere structure'un boyu kadar
+yer adres atlatirdi. Bu sebeple, pointerlar, tanimlandiklari tipten baska
+bir tip icin kullanilamazlar.
+
+Simdi programimiza geri donelim. Bir onceki paragraftan da
+anlayabileceginiz gibi, dongunun icinde ilerledikce, pointer'in degeri
+artarak her dizi elemaninin baslangicini teker teker gosterecektir. Bu
+sayede, pointer ile bu structure'un degisik elemanlarina erisebiliriz. C
+dilinde bir structure'un elemanlarina pointer ile erismek o kadar cok
+kullanilir ki, bunu gostermek icin ozel bir metod gelistirilmistir.
+"point->bas_harf" metodunu kullanmak, "(*point).bas_harf" metodunu
+kullanmak ile ayni manadadir. "->" sembolu, bir eksi isareti ve bir
+buyuktur isareti ile elde edilir.
+
+Pointer, bir structure'u gosterdigine gore, kullanirken, o structure'un
+hangi degiskenine erismek istedigimizi belirtmemiz gereklidir. Gordugunuz
+gibi, bir structure'un elemanlarina erismek icin degisik yollar vardir, ve
+programin sonunda, ciktiyi saglayan "for" dongusunde, 3 degisik metod
+goruyorsunuz. Bu kotu bir programlama teknigi olarak kabul edilirdi, fakat
+burada size her ucunun de ayni neticeyi verdigini gostermek amaci ile
+yapilmistir. Bu program, tam olarak kavrayabilmeniz icin, herhalde bir
+sure incelemenizi gerektirecektir.
+
+IC ICE VE ISIMLI STRUCTURE'LAR
+
+ICICE.C:
+================================================================
+main()
+{
+struct insan {
+   char isim[25];
+   int yas;
+   char durum;        /* E = Evli , B = Bekar */
+} ;
+
+struct tumveri {
+   int not;
+   struct insan ozellikler;
+   char yemek[25];
+} ogrenci[53];
+
+struct tumveri hoca,asistan;
+
+hoca.not = 94;
+hoca.ozellikler.yas = 34;
+hoca.ozellikler.durum = 'E';
+strcpy(hoca.ozellikler.isim,"Mary Smith");
+strcpy(hoca.yemek,"Salamli sandvic");
+
+asistan.ozellikler.yas = 87;
+asistan.ozellikler.durum = 'E';
+strcpy(asistan.ozellikler.isim,"Old Lady Brown");
+asistan.not = 73;
+strcpy(asistan.yemek,"Yogurt ve ekmek");
+
+ogrenci[1].ozellikler.yas = 15;
+ogrenci[1].ozellikler.durum = 'B';
+strcpy(ogrenci[1].ozellikler.isim,"Billy Boston");
+strcpy(ogrenci[1].yemek,"Findik ezmesi");
+ogrenci[1].not = 77;
+
+ogrenci[7].ozellikler.yas = 14;
+ogrenci[12].not = 87;
+
+}
+================================================================
+
+Simdiye kadar gordugumuz structure'lar basit fakat kullanisli idi.
+Yuzlerce yada binlerce elemandan olusan structure'lar tanimlamak
+mumkundur, fakat butun hepsini siradan tanimlamak yerine hierarsik bir
+duzen kullanmak, programcinin lehine olur.
+
+Ilk structure'da 3 eleman vardir, fakat arkasindan bir degisken ismi
+gelmemektedir. Yani, biz sadece bir structure tanimladik, ve hicbir
+degisken tanimlamadik. Basina "insan" ismini koydugumuzdan, bu
+structure'un ismi de "insan" dir. Bu isim, bu structure duzenini kullanmak
+istedigimizde kullanilir, fakat bu structure degiskenlerinden biri, bu
+isimle kullanilamaz. Dolayisi ile, yeni bir tip tanimlamis olduk - ayni
+"char" yada "int" gibi, ve neredeyse ayni sekilde, bu yeni tipi
+kullanabiliriz. 
+
+Bundan sonraki structure tanimlamasi, 3 sahadan olusuyor. Ikinci sahasi,
+daha once tanimladigimiz "insan" structure'unu kullaniyor. "insan" tipi
+degiskenin ismine "ozellikler" ismini veriyoruz. Yeni structure, iki tane
+basit degisken de kullaniyor, "not" isimli tamsayi degiskeni, 
+"yemek[25]" isimli bir karakter dizisi, ve "ozellikler" isimli bir
+structure. "ozellikler" in icinde 3 degisken oldugu icin, bu structure 5
+degisken tanimlamis oluyor. Bu structure'a da, "tumveri" ismini veriyoruz,
+ki bu da bir baska tip tanimlanmasidir. Sonunda, 53 degiskenlik, ve
+"tumveri" tipinde bir dizi tanimliyoruz, ve buna "ogrenci" ismini
+veriyoruz. Sayet bunlar sizin icin anlasilir idi ise, her birine deger
+atanabilen toplam olarak 53 kere 5 degisken tanimladigimizi gorursunuz.
+
+IKI DEGISKEN DAHA
+
+Bir degisken tipi tanimimiz olduguna gore, onu iki degisken daha
+tanimlamada kullanabiliriz. "hoca" ve "assistan" isimli degiskenler de
+"tumveri" tipindedir, her birinin icine bilgi konulabilecegimiz , 5 er
+sahadan olusurlar.
+
+BU SAHALARIN BAZILARINI KULLANALIM
+
+Bundan sonraki bes satirda, "hoca" 'nin her sahasina bilgi yaziyoruz. Ilk
+saha olan "not", daha once gordugumuz diger structure'lar gibi kullanilir,
+cunku ic ice structure taniminda degildir. Daha sonra, bu hocanin yasini
+kaydetmek istiyoruz, ve bu ise ic ice structure'da bulunuyor. Bu sahaya
+erismek icin, "hoca" degiskeni ile baslayip, "ozellikler" grup ismini
+ekliyoruz, ve hangi sahasi ile ilgilendigimizi belirtmek icin, "yas"
+ismini de ekliyoruz. "durum" ise ayni "yas" gibi kullanilir, fakat son iki
+sahaya deger atama ise, karakter katari olduklarindan, "strcpy" fonksiyonu
+ile gerceklestirilir. 
+
+"strcpy" nin icindeki degisken isimlerinin, bircok parcadan olusmasina
+ragmen, hala degisken isimleri olduguna dikkat edin..
+
+"assistan" degiskeni ise, ayni sekilde rastgele bilgilere atanir, fakat
+degisik bir sirada. Son olarak bazi "ogrenci" degiskenlerine de atama
+yapilir, ve program sona erir. 
+
+Bu programi derlediginizde, "stack overflow" hatasi ile
+karsilasabilirsiniz. C dili, otomatik degiskenlikleri stack sahasina
+gecirerek kullanir, ve cogu derleyici (sayet belirtmezseniz) 2048 byte lik
+bir stack sahasi kullanir. Dolayisi ile, stack boyunu degistirmeniz
+gerekecektir. Nasil yapilacagi ise, derleyiciden derleyiciye degisir.
+
+
+STRUCTURE'LAR HAKKINDA DAHA BILGI
+
+Structure'lari, ta ki iyice kafaniz karisincaya kadar ic ice tanimlamak
+mumkundur. Duzgun bir sekilde tanimlarsaniz, bilgisayar karistirmaz -
+cunku C de buna bir SINIR yoktur. 
+
+Structure'lar, baska structure tanimlarindan olusabilir. Bu diger
+structure'lar ise, basit degiskenlerden olusmus olabilir. Structure
+kullanirken once tutucu, onlari kullanmaya alistikca, daha cesur davranin.
+ 
+UNION NEDIR?
+
+UNION1.C:
+================================================================
+main()
+{
+union {
+   int deger;     /* Union'un birinci parcasi   */
+   struct {
+      char ilk;   /* Bu iki deger ise, ikinci.. */
+      char ikinci;
+   } yarim;
+} rakam;
+
+long index;
+
+   for (index = 12;index < 300000;index += 35231) {
+      rakam.deger = index;
+      printf("%8x %6x %6x\n",rakam.deger, rakam.yarim.ilk,
+	      rakam.yarim.ikinci);
+   }
+}
+================================================================
+
+Basitce, bir union sayesinde ayni veriye degisik tipler ile, yada ayni
+veriye degisik isimlerle erismenize izin verir. 
+
+Bu ornekte, union'un iki parcasi var. Ilki, hafizada iki bytelik bir
+degisken olarak saklanan "deger" isimli bir tamsayidir. Ikinci eleman ise,
+"ilk" ve "ikinci" isimli iki karakter degiskeninden olusur. Bu iki
+degisken, "deger" in saklandigi ayni sahada tutulur - cunku union'un amaci
+budur. Bir union ile, hafizada ayni yerde, degisik tip veriler
+saklanabilmesini saglar. Bu durumda, "deger" in icine bir tamsayi
+koyabilirsiniz, ve bu degeri iki parca halinde "ilk" ve "ikinci" isimli
+degiskenler ile alabilirsiniz. Bu teknik genellikle veri bytelarini bir
+araya getirip beraber okumak icin kullanilir, ornegin, bir mikroislemcinin
+registerlerini beraber okumak icin.
+
+Bir union'daki sahalara erismek, bir structure'un sahalarina erismege cok
+benzer, ve bunu ornekten incelemeyi size birakiyoruz.
+
+Bu program calistiginda cogu derleyici, veriler iki tane f ile baslar
+gorunecektir. Bu da, heksadesimal ciktinin, karakter degiskeni integer'a
+degistirmesi ve +/- bitini sola kaydirmasi yuzunden olur. Ekrana
+gostermeden once "char" veri tiplerini "int" tiplerine degistirmek, "ff"
+lere mani olacaktir. Bunu yapmak icin, iki yeni "int" tipi degisken
+tanimlamaniz gerekecektir, ve onlara "char" tipi degisken degerleri
+atamaniz gerekecektir. 
+
+Calistirdiginizda, verinin "int" olarak ve iki tane "char" olarak
+yazildigini goreceksiniz. "char" tipi degiskenlerin sirasi
+degistirilmistir, cunku hafizada bu sekilde saklanmaktadir. Bu konuyu
+kendinize dert etmeyin, fakat incelemek isterseniz, cok ilginc bir konu
+olabilir.
+
+BIR UNION ORNEGI DAHA
+
+UNION2.C:
+================================================================
+#define OTO 1
+#define TEKNE 2
+#define UCAK 3
+#define GEMI 4
+
+main()
+{
+struct otomobil {  /* bir otomobil icin structure          */
+   int tekerlekler;
+   int camurluklar;
+   int kapilar;
+};
+
+typedef struct {     /* bir gemi yada tekne icin structure  */
+   int su_kesimi;
+   char boyu;
+} TEKNEDEF;
+
+struct {
+   char tasit;         /* ne cins tasit ?                   */
+   int agirlik;        /* tasitin gros agirligi             */
+   union {             /* tipe-bagimli bilgi                */
+      struct otomobil oto;      /* union'un birinci kismi   */
+      TEKNEDEF tekne;           /* union'un ikinci kismi    */
+      struct {
+	 char motorlar;
+	 int kanat_acikligi;
+      } ucak;                   /* union'un 3uncu kismi      */
+      TEKNEDEF ship;            /* union'un 4uncu kismi      */
+   } tasit_tip;
+   int deger;            /* tasitin bin TL olarak degeri     */
+   char sahibi[32];      /* sahibinin ismi                   */
+} ford, sun_fish, piper_cub;   /* 3 structure degiskeni      */
+
+       /* birkac sahayi tanimlayalim                         */
+
+   ford.tasit = OTO;
+   ford.agirlik = 2742;              /* deposu dolu iken      */
+   ford.tasit_tip.oto.tekerlekler = 5;  /* istepne dahil      */
+   ford.tasit_tip.oto.kapilar = 2;
+
+   sun_fish.deger = 3742;           /* trailer haric */
+   sun_fish.tasit_tip.tekne.boyu = 5;
+
+   piper_cub.tasit = UCAK;
+   piper_cub.tasit_tip.ucak.kanat_acikligi = 9;
+
+   if (ford.tasit == OTO) /* evet , oyle  */
+      printf("Ford'un %d tekerlegi var.\n",ford.tasit_tip.oto.tekerlekler);
+
+   if (piper_cub.tasit == OTO) /* hayir,degil */
+      printf("Ucagin %d tekerlegi var.\n",piper_cub.tasit_tip.
+	     oto.tekerlekler);
+}
+================================================================
+
+Bu ornekte, union'larin cok rastlanilan bir kullanim tarzini goruyorsunuz.
+Dusunun ki, bircok tip tasittan olusan bir veri bankasi (veri tabani)
+olusturmak istiyoruz. Bir arabadaki pervane sayisi yada bir teknedeki
+tekerlek sayisini koymak, komik olurdu. Verimli bir veri tabani olusturmak
+icin, bir kismi her cins tasit icin degisik, bir kismi ayni tip kalan
+verileri saklamaniz gerekecektir. 
+
+Burada, bir structure tanimliyoruz, ve bunun icine gidebilecek degisik
+tiplere karar veriyoruz. Ilk once #definelarla, bazi sabitler
+tanimliyoruz, daha sonra icindekilerin size hic te yabanci gelmeyecegi
+"otomobil" isimli bir structure tanimliyoruz, fakat degisken
+tanimlamiyoruz. 
+
+TYPEDEF KOMUTU
+
+Daha sonra, "typedef" ile yeni bir cins veri tanimliyoruz. Bu da, "int"
+yada "char" gibi kullanilabilecek tumuyle yeni bir tip tanimliyoruz.
+Structure'un ismi olmadigini, fakat degisken tanimlanacagi yerde,
+"TEKNEDEF" ismini goruyorsunuz. Artik, "TEKNEDEF" diye bir tipimiz vardir,
+ve bununla istedigimiz heryerde bir structure tanimlayabiliriz. Bu komut,
+degisken tanimlamasi yapmiyor, fakat sadece tipi tanimliyor.
+
+Buyuk harf kullanmak sadece sahsi tercih icindir, fakat bir C standarti
+degildir. Sadece, "typedef" i, bir degisken isiminden ayri tutmaktadir.
+
+Daha once yarattigimiz parcalari kullanan buyuk kesime geldik. Bu
+structure, 5 parcadan olusmustur, iki "tasit" ve "agirlik" isimli basit
+degisken, bir union, ve "deger" ve "sahibi" isimli iki basit degisken
+daha. Tabii ki, burada onemle bakmamiz gereken, union tanimlanmasidir. 
+
+Bakinca, bunun 4 parcadan olustugunu goreceksiniz. Ilk parcasi "oto"
+isimli, ve daha once tanimladigimiz bir tipte olan degiskendir. Ikinci
+kismi, "tekne" ismindedir, ve daha once tanimladigimiz "TEKNEDEF"
+tipindedir. Ucuncu kesimi ise, "ucak" isimli, ve union icinde tanimlanan
+bir structure'dur. Sonunda, union'un en son parcasi olan "gemi" isimli
+degisken de "TEKNEDEF" tipindedir. 
+
+Umarim bu dordunun gosterilen 3 mettoddan biri ile tanimlanabilecegi,
+sizin icin aciktir. Normalde, herhalde en "temiz" tanim, her birinin
+"typedef" ile tanimlanmasi sayesinde olacaktir. 
+
+SIMDI NE OLDU?
+
+Simdi, icine dort cins veri saklayabilecegimiz bir yapimiz var. Her
+kayitin uzunlugu, en buyuk union'u tasiyan kayitin uzunlugunda olacaktir.
+Bu durumda, birinci kesim, en buyugudur, cunku 3 tamsayi degiskeninden
+olusmaktadir. Digerleri ise, bir karakter ve bir tamsayidan
+olusmaktadirlar. Yani, bu union'un ilk parcasi, bu tipteki butun
+structure'larin boyunu belirleyecektir. Elde edilen structure, her dort
+tip veriden birini saklamasi icin kullanilabilir, fakat bu tip bir bir
+degiskenin icinde neler saklandigini kontrol etmek, programcinin isidir.
+"tasit" isimli degisken, orada ne tip bir tasit saklandigini belirtmek
+icin kullanilmistir. Programin basindaki dort #define satiri, "tasit" in
+icinde saklanabilecekleri belirtir. 
+
+Ortaya cikan yapinin kullanimini gostermek icin,  birkac ornek de vardir.
+Bazi degiskenlere degerler atanmis, birkac tanesinin degeri ekrana
+yazilmistir. 
+
+Union'lar, hele yeni programlamaya baslayanlar tarafindan, cok SIK
+kullanilmaz. Bazen rastlayabilirsiniz, ve ne ise yaradiklarini bilmenizde
+fayda vardir. Su an icin detaylarini ogrenmenize luzum yoktur, ve bu
+nedenle, bu ornekte fazla vakit harcamayin. Sayet bir gun saha tanimlari
+degisen bir yapiya ihtiyaciniz olursa, o zaman ogrenebilirsiniz. Fakat
+kendi igiliginiz icin, structure'lara alismaya bakin - onlar daha SIK
+kullanilirlar. 
+
+ODEV
+
+1. Icinde "isim" icin bir karakter dizisi, "ayaklar" icin bir tamsayi
+degiskeni, ve "kollar" icin bir baska tamsayi degiskeni olan ISIMLI bir
+structure tanimlayin. Bu structure ile, 6 elemanlik bir dizin tanimlayin.
+Bu sahanin icine, degisik bilgiler atayin, ve ekrana suna benzer bir cikti
+saglayin:
+
+Bir insanin 2 kolu ve 2 ayagi vardir.
+Bir kopegin 0 kolu ve 4 ayagi vardir.
+Bir televizyonun 0 kolu ve 4 ayagi vardir.
+Bir sandalyenin 2 kolu ve 4 ayagi vardir.
+vs.
+
+
+2. Birinci programi tekrar yazip, verileri ekrana yazmak icin bir
+pointer'dan yararlanin.
+
+<EOF>
+

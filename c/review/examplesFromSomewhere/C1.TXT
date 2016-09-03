@@ -1,0 +1,56 @@
+C Dili - 1. Konu
+
+C NEDIR ?
+C programlama dili, Dennis Ritchie tarafindan Bell laboratuarlarinda
+yaratilmistir. PDP-11 ile Unix altinda calismak icin yaratilmis olmasina
+ragmen, ilgi uzerine MS-DOS altinda calisacak hale getirilmistir.
+Basitligi, olusan kodun kucuklugu, ve her cesit programlamada
+kullanilabilmesi, C yi populer bir dil yapmistir.
+
+C, cok kestirme olmasi nedeni ile, yeni bilgisayarlara baslayanlar icin
+ogrenmesi zordur. Bir programci, C ile ust seviyelerden, assebly'ye
+yaklasan alt seviyelere kadar programlama yapabilir. C nin sagladigi bu
+rahatligin yaninda, tehlikeleride de vardir. Ornegin, makineyi
+kilitleyebilecek bir program yazmak, Pascal yada BASIC de yazmaktan cok
+daha kolaydir. Bir Pascal derleyicisinin fark edip uyaracagi bir hatayi, C
+derleyicileri fark etmeyebilir. C de, kendi basinizasiniz..
+
+NIYE C?
+
+Bu gun IBM-PC icin yazilan piyasadaki yeni programlarin yuzde 75'i, C ile
+yaziliyor. MicroSoft, Macro Assembler 4.0 i cikardiktan sonra, onu C ile
+yazdiklarini acikladi. Herhalde icinde birkac assembler rutin vardir ama,
+cogunlugu C ile yazilmistir.
+
+C, bir komite degilde, bir kisi tarafindan yazilmis oldugundan, cok
+kullanisli bir lisandir, fakat cok iyi tanimlanmamistir. C icin bir
+standart yoktur, ama ANSI grubu, bu konuda calismaktadir. Isin ilgincligi,
+bir standart olmamasina ragmen, degisiklikleri cok azdir. Halbuki iyi
+tanimi olan Pascal dilinin, derleyicileri birbirinden cok farklidir, ve
+bir Pascal programini bir bilgisayardan digerine gecirmek zordur..
+
+C nin Tasinabilirlik referanslari iyi olmasina ragmen, derleyiciler
+arasinda farkliliklar vardir. Bu degisiklikler genellikle BIOS
+fonksiyonlari gibi standart olmayan seyler kullanildiginda kendini
+gosterir.
+
+
+TANIMLAYICI ISIMLERI
+
+Fonksiyon ve degisken isimleri, harfler ve rakkamlardan olusabilir. Ilk
+harf ya bir harf yada alt-cizgi karakteri olmak zorundadir. geri kalanlar
+ise, harf, rakkam yada alt cizgi olabilir. Iki nokta onemlidir:
+
+(1) Buyuk ve kucuk harfler farklidir. Bir programda "ISIM", "iSiM" ve
+"isim", degisik tanimlayicilardir.
+
+(2) C'de, en fazla sekiz karakter onemlidir. Bir tanimlayici 8 karakterden
+uzun olabilir, fakat ilk sekizi sayilir. Bu derleyiciniz icin boyle
+olmayabilir. 
+
+DERLEYICI
+
+Bu derste bircok ornek program sunacagim. Bunlari istediginiz herhangi bir
+derleyici ile derleyebilirsiniz, fakat kullanim kolayligi bakimindan
+QuickC derleyicisini tercih etmenizi tavsiye ederim.
+

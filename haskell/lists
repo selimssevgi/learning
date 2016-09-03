@@ -1,0 +1,53 @@
+# lists in haskell must be homogeneous, same type
+
+# lists within a list can be different lengths but they cant be of different types.
+
+# x = [1,2,3]
+
+# empty = []
+
+# 1:[2] = [1,2]
+# [1] ++ [2] = [1,2]
+
+# [1,2,3] !! 2 -- list[2]
+
+# y = 0 : x -- [0,1,2,3] ':' prepend command
+
+# x' = 1 : (2 : (3 : []))
+
+# x'' = 1 : 2 : 3 : []
+
+## List Functions
+
+# head [1,2,3] -- returns 1
+
+# tail [1,2,3] -- return [2,3]
+
+# head (tail [1,2,3])
+
+# last [1,2,3] -- returns the last element. 3
+
+# init [1,2,3] -- returns everything except its last element. [1,2]
+
+# length [1,2] -- returns its length. 2
+
+# null [] -- true --Testing for empty list
+  null [2,3] -- false
+
+# reverse [1,2,3] -- [3,2,1]
+
+# take 3 [1,2,3,4] -- from the beginning. [1,2,3]
+
+# drop 3 [1,2,3,4] -- from the beginning. [4]
+
+# maximum [1,2,3] -- 3
+
+# minimum [1,2,3] -- 1
+
+# sum
+
+# product
+
+# 4 `elem` [3,4,5,6] -- True
+
+# elem 4 [1,2,3,4] -- True

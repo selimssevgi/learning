@@ -1,0 +1,18 @@
+embedded Ruby, also called ERb.
+ERb is the primary template system for including dynamic content in web pages.
+
+
+<% provide(:title, "Home") %>
+
+<title><%= yield(:title) %> | Ruby on Rails Tutorial Sample App</title>
+
+The distinction between the two types of embedded Ruby is
+that <% ... %> executes the code inside,
+while <%= ... %> executes it and inserts the result into the template.
+
+
+
+# Images
+<%= link_to image_tag("rails.png", alt: "Rails logo"),
+            'http://rubyonrails.org/' %>
+

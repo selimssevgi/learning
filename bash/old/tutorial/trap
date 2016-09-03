@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# trap - trap built-in komutunun kullanımı.
+
+# Senaryomuz şu : 
+
+# Bu parametre olarak aldıgımız dosyayı pr komutuyla yazıcı için hazırlayacaz.
+
+# Cıktıyı /temp/printfile.txt dosyasına yazdıracagız.
+
+# dosyayı yazdırmak isteyip istemedigini soracagız.
+
+# istiyorsa yazdıracagız.
+
+# En son da geçiçi olarak olusturdugumuz dosyayı silecegiz.
+
+# rm $TEMP_FILE
+
+TEMP_FILE="/tmp/printfile.txt"
+
+pr $1 > $TEMP_FILE
+
+echo -n "Print file ? [y/n] : "
+read # REPLY atamıs olduk.
+
+if [ "$REPLY" = "y" ]; then
+	lpr $TEMP_FILE # Yazdırdık.
+fi
+
+rm $TEMP_FILE
+
+# Buraya kadar her sey normal gibi ancak sorun şu ki tam y/s diye
+
+# sordugumuz nokta kullanici vazgeçmiş olsa / CTRL-C 
+
+# ne olacak.Gecici olusturdugumuz dosya orda kalacak.
+
+# Bu nokta trap komutunu kullanacagiz.
+
+# usage : trap "Komutlar" HANGI SINYALLERDE UYGULANACAGI
+
+TEMP_FILE=/tmp/printfile.txt
+
+trap "rm $TEMP_FILE; exit" SIGHUP SIGINT SIGTERM
+
+pr $1 > $TEMP_FILE
+
+echo -n "Print file [y/n] : "
+read
+
+if [ "$REPLY" = "y" ]; then
+	lpr $TEMP_FILE
+fi
+
+rm $TEMP_FILE # Sona kadar gelirsek!
+
+## trap kullanımı sırasında yapılacak islemleri yukarda yazdık
+
+## ancak daha karmasık islemlerin yapılması soz komusu olabilir
+
+## bunları ; ile ayırmak uzun ve kotu olabilir.
+
+## Ayrıca her script işi bittikten sonra arkasını temizlemeli!
+
+## Bunun icin bir fonksiyon olusturup kullanabiliriz.
+
+$TEMP_FILE=/tmp/printfile.txt
+
+function cleanUP
+{
+	# Perform program exit housekeeping
+	rm $TEMP_FILE
+	exit
+}
+
+trap cleanUp SIGHUP SIGINT SIGTERM
+
+pr $1 > $TEMP_FILE
+
+echo -n "Print file ? [y/s] : "
+read
+
+if [ "$REPLY" = "y" ]; then
+	lpr $TEMP_FILE
+fi
+
+cleanUp
+
+

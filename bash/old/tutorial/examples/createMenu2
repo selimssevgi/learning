@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# createMenu2 - Script Def : createMenu nin while ile yazilmis hali.
+
+###### Functions
+
+function pressEnter 
+{
+	echo ""
+	echo -n "Press enter to continue"
+	read   # Burda herhangi bir degisken yazmadıgımızda ontanımlı olarak REPLY degiskenine aktarılıyor.
+	clear
+}	
+
+selection=
+
+while [ "$selection" != "0" ]; do
+	echo ""
+	echo "PROGRAM MENU"
+	echo "1 - Display free disk space"
+	echo "2 - Display free memory"
+	echo ""
+	echo "0 -Exit"
+	echo -n "Enter Selection > "
+	read selection
+	
+	case $selection in
+		1 ) df ;;
+		2 ) free ;;
+		0 ) exit ;;
+		* ) echo "Please enter 1, 2, or 0"; 
+	esac
+	pressEnter
+done

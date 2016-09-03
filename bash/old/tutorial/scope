@@ -1,0 +1,15 @@
+		####### SCOPE
+
+# Scope un anlamı : Bir değişkenin geçerliği oldugu alandır.
+  Bazı programlama dillerinde degiskenler local ve global olabilir.
+
+# BASH scriptingde ise değişkenler default olarak scriptin her 
+  noktasında aksi belirtilmedikce gecerlidir.
+
+# LOCAL değişkenler.
+	myFunc() {
+		local degisken="deger"
+		
+		# Usteki kullanımla benzerdir.Ama fonksiyonların icersinde
+		declare degisken="deger"
+	}

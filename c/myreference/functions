@@ -1,0 +1,21 @@
+# functions in are call-by-value
+# making the copy of the value
+# and using it in the function
+<return-type> function_name(<arguments>) {
+  // do some stuff
+  return <somethingwithreturntime>
+}
+
+void sayhi(){
+  printf("Hello!!");
+  // nothing to return 
+}
+
+
+# call-by-reference
+int func(int *x){
+  //every operation will affect <variable>
+  // directly
+}
+
+func(&variable);

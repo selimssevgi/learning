@@ -1,0 +1,3 @@
+# add this at the bottom of the application.html
+
+<%= debug(params) if Rails.env.development? %>

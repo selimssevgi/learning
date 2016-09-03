@@ -1,0 +1,74 @@
+
+# Initialization
+array = Array.new # empty array
+array = [] # empty array
+
+array = Array.new(1) # one element with nil value
+array = [nil]
+
+array = Array.new(2,10) # two elements with value 10
+array = [10, 10]
+
+(0..3).each.to_a # [0.1,2,3]
+
+eyes = ['brown', 'blue', 'green']
+weights = [1, 2, 3, 4]
+mixed = [1, 'pennies', 2, 'dimes', 3, 'quarters']
+my_array = [ "selim", "ruby", 2016, 02, 26 ]
+
+# Accessing
+my_array[0]     # access first element
+my_array.at(0)  # access the first element
+my_array.first  # access the first element
+
+my_array[-1]    # last element
+my_array.last   # last element
+
+my_array[0..2]  # slice of 0,1,2
+my_array[0...2] # slice of 0,1
+
+my_array[1,4] # 1:startIndex, 4: length of the range
+
+my_array[outofrange] # nil
+
+my_array.take(3)  # take the first three elements
+my_array.drop(3)  # everything but the first 3 elements
+
+# Addition
+my_array.push("new item") # add to the end of the array
+my_array.insert(1,3,4)    # add 3 and 4 starting from index 1. shitfing other elements
+my_array.unshift(2,3)     # add one or more elements to the beginning
+
+# Deletion
+my_array.pop              # delete an element from the end
+my_array.shift            # delete an element from the beginning
+my_array.delete_at(3)     # delete an element at given position
+my_array.delete(5)        # delete all the occurrences of a given element
+
+# Selection 
+my_array.select {|element| element > 0}       # return new array containing element greater than 0
+my_array.reject {|element| element % 3 == 0}  # return new array containing number not divisible by 3
+
+my_array.delete_if {|element| element % 2 == 1}
+my_array.keep_if {|element| element % 2 == 0} # block returns boolean based on given condition
+
+# Methods 
+int_array.max             # returns max value in the array
+
+int_array.sort           
+my_array.length
+
+my_array.include? "Sirri"
+
+my_array.reverse
+
+my_array.empty?
+
+my_array.join " " # default is no character!
+
+my_array.pop # pops the last item in the array
+
+my_array << "python"  # add to the end of the array
+
+
+my_array[1..2].join('#')

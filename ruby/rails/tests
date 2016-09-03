@@ -1,0 +1,3 @@
+rake test:models 
+
+rake test:integration # to check layout links

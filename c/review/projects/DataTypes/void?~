@@ -1,0 +1,28 @@
+Bir data türü olarak void nedir ? 
+
+void olası kullanım alanları : 
+
+Bir fonksiyon bir çağrıldığı noktaya bir değer döndermeyeceği durumlar vardır.
+Mesela sadece ekrana merhaba yazdıran bir fonksiyon düşünün bunun bir değer döndürmediğini görüyoruz.Bu durumda bu fonksiyonun türü void dir.Bir deger döndermeyen fonksyionlara "procedures" denir.
+
+void yaz(){
+	printf("Merhaba\n");
+}
+
+Aslında geriye sistemi sonucun olumlu oldugunu bildirmek için bir int degeri dondermek mantıklıdır.
+
+İkinci bir kullanım alanı ise C programlamada tanımladıgımız fonksiyonun herhangi bir parametre almasına gerek olmayan durumlar vardır. Mesela sadece ekrana bir şeyler yazacak bir fonksiyonun bir parametre alması şart değildir.Bu durumda :
+
+void yaz( void ){
+	printf("Birseyleryaaz\n");
+}
+
+[!] Burda dikkat edilmesi gereken nokta C programlamada fonksiyonların alacagı parametreleri başta belirlerken birinci fonksiyondaki gibi boş bırakırsak, eğer amacımız parametre almayacagını göstermekse yanılmış oluruz.O durumda fonksiyon istediği kadar parametre alabilir anlamındadır.
+
+Amacımız hiç parametre almayacagını belirtmekse ikincideki gibi parantez içerisinde void kullanmalıyız.
+
+Üçüncü bir kullanım ise pointer olarak kullanılan void, bu void tuttugu adreste her turlu data turunde veri saklayabilir.[Daha sonra detaylı anlatım.]
+
+Kaynak :http://stackoverflow.com/questions/1043034/what-does-void-mean-in-c-c-and-c
+
+Wikipedia sayfasına da bakabilirsin.

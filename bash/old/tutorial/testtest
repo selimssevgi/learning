@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# testtest - practising about test command.
+
+
+# ekrana basarıyla selim yazildi. 0 dondu basarılı.True yazıldı.
+if echo "Selim" ; then
+	echo "True"
+else
+	echo "False"
+fi
+
+: << COMMENT
+if [ 5 = 3 ] || [ 5 = 5 ];then
+	echo -e "\nTrue"
+fi
+COMMENT
+
+if [ -e ~/Desktop ] && [ -e ~/aa ];then
+	echo "true"
+fi

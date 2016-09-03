@@ -1,0 +1,34 @@
+app/                        # contains the controllers, models, views, helpers, mailers, and assets for your app.
+
+bin/                        # Contains the rails script that starts your appi
+                              and can contain other scripts you use to setup, desploy or run the application.  
+
+config/                     # Configure your app's routes,db and more. 
+
+config.ru                   # Rack config for Rack based servers used to start application
+
+db/                         # Contains your current db schema, as well as the database migrations.
+
+Gemfile                     # These files allow you to specify what gem dependencies are needed
+Gemfile.lock                # Are used by the Bundler gem. 
+
+lib/                        # Extended modules for the application
+
+log/                        # Application log files
+
+public/                     # only folder seen by the world as-is. Contains static files and complied assets.
+
+Rakefile                    # this file locates and loads tasks that can be run from the command line. 
+                            # the task definitions are defined throughout the components of Rails.
+                            # Rather than changing Rakefile, you should add your own tasks
+                            # by adding files to the lib/tasks directory of your application.
+
+README.rdoc                 # This is a brief inst manual for your application. You should edit this file
+                            # to tell others what your application does, how to set it up, and so on.
+
+test/                       # Unit tests, fixtures, and other test apparatus, 
+
+tmp/                        # Temporary files like cache, pid and session files.
+
+vendor/                     # place for all third-party code, in a typical rails app this includes vendored gems.
+

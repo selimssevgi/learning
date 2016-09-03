@@ -1,0 +1,11 @@
+begin 
+  # do something might cause error
+  raise ArgumentError, "Forcing the exception to be raised."
+rescue NoMethodError => e # rescuing specific exceptions
+  puts "no method: #{e.class}"
+rescue ArgumentError => e # rescuing specific exceptions
+  puts "Missing argument: #{e.class}"
+rescue  => e # rescuing all kinds of  exceptions
+  puts "Oops something went wrong: #{e.class}"
+end
+

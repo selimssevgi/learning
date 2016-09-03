@@ -1,0 +1,5 @@
+const int MAX = 127;
+
+can be define as a macro
+
+#define ONE (1)

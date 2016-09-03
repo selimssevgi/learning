@@ -1,0 +1,22 @@
+# the useful inspect method,
+# which returns a string with a literal representation of the object it’s called on:
+
+>> puts (1..5).to_a            # Put an array as a string.
+1
+2
+3
+4
+5
+>> puts (1..5).to_a.inspect    # Put a literal array.
+[1, 2, 3, 4, 5]
+>> puts :name, :name.inspect
+name
+:name
+>> puts "It worked!", "It worked!".inspect
+It worked!
+"It worked!"
+
+
+# using inspect to print an object is common enough that there’s a shortcut for it, the p function:
+>> p :name             # Same output as 'puts :name.inspect'
+:name

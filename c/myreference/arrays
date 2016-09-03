@@ -1,0 +1,17 @@
+int ia[5];
+
+ia[0] = 1;
+
+int *ip = ia;     # name of the array holds the starting address
+                  # of the array. so holds the first elements address
+
+*ip = 2           # assign the first element
+
+++ip;             # now it points to the next element in the array
+
+*ip = 3;           # assign the second element
+
+*(++ip) = 4;      # increment the pointer 
+                  # which is by the size of type it points.
+                  # then assign a new value.
+                  # basically, gets the elements and assigns it.

@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# exitStatus - importance of using exit status
+
+# Check the exit status
+
+cd $someDirectory 
+
+# Usteki kod yorumlandıktan sonra exit status degerini tutan degisken $?, islem basarisiyla 0, degilse 1 olacak.
+
+if [ "$?" = "0" ]; then
+	# rm *
+	echo "Directory was changed."
+else 
+	echo "Cannot change directory"
+	exit 1 # Biz de ken scriptlerimizde kullanmaliyiz!
+fi
+
+# A better way
+
+if cd $someDirectory; then 
+	# rm *
+	echo "Changing is successful."
+else
+	echo "Could not change directory! Aborting." 1>&2
+	exit 1
+fi
+
+# Hata mesajlarını sureklı yazacagımız icin bir tane fonk. olusturalım.
+
+# An error exit function
+
+function errorExit
+{
+	echo "$1" 1>&2
+	exit 1
+}
+
+# Using errorExit
+
+if cd $someDirectory; then
+	# rm *
+else
+	errorExit "Cannot change directory! Aborting"
+fi
+
+# Simplest of all
+
+cd $someDirectory || errorExit "Cannot change directory!"
+#rm *
+

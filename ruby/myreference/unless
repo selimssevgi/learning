@@ -1,0 +1,11 @@
+
+unless user.is_admin?
+  user.update_score
+end
+
+user.update_score unless user.is_admin?
+
+
+unless gender == "M"
+  puts "It is not a boy!"
+end

@@ -1,0 +1,13 @@
+#!/bin/bash
+#
+#	My first shell script / 19.08.12
+#
+# 
+
+# Terminalde kendisinden onceki girileri siler.
+clear
+
+# echo komutu kendisine veriken degeri ekrana yazar.
+echo "Knowledge is Power"
+
+

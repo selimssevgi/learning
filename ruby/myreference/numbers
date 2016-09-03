@@ -1,0 +1,9 @@
+54.123456.round(2) # 54.12
+
+Commas are not allowed in numbers, but underscores are. So if you feel the need to
+mark your thousands so the numbers are more readable, use an underscore.
+population = 12_000_000_000
+
+rand # gives a number between 0.0 and 1.0
+
+rand(5) # gives a number 0 to 4

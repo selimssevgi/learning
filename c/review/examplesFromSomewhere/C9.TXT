@@ -1,0 +1,412 @@
+C Dili - 9. Konu
+
+Standart Input/Output
+
+BASITIO.C:
+================================================================
+#include <stdio.h>    /* input/output icin standard header */
+
+main()
+{
+char c;
+
+   printf("Herhangi bir tusa basin.  X = Programi durdurur. \n");
+
+   do {
+      c = getchar();    /* klavyeden bir tus okuyalim         */
+      putchar(c);       /* ekranda gosterelim.                */
+   } while (c != 'X');  /* ta ki okunan bir X oluncaya dek... */
+
+   printf("\nProgramin sonu.\n");
+}
+================================================================
+
+Standart I/O deyimi, verinin girildigi ve ciktigi en normal yerleri,
+klavyeyi ve ekrani kast eder.  Bu kutuge ilk baktiginizda, "#include
+<stdio.h>" komutunu goreceksiniz. Bu komut on-derleyiciye, kucuktur ve
+buyuktur isaretleri arasinda yer alan kutuk isminin programa eklenmesini
+soyler. Bazen, < > isaretleri yerine den-den " " isaretleri de
+gorebilirsiniz. Aralarindaki fark, <> isaretlerinin on-derleyiciye, su
+anda calistiginiz diskte / dizinde degil de, bu tip kutuklerin konuldugu
+yerde aramasini bildirir. Halbuki den-den isaretleri ile belirlenmis bir
+kutuk ismi, sizin su anda bulundugunuz disk / dizinde aranir. Genellikle,
+"bu tip kutuklerin konuldugu yer", derleyiciye daha onceden belirtilir.
+Ornegin, Quick C derleyicisinde, derleyiciye girmeden once:
+               SET INCLUDE=C:\INCLUDE
+yazmak, derleyicinin bundan sonra butun 'include' edilecek, yani eklenecek
+kutuklerin C: diskinin \INCLUDE dizininde aranmasini belirtir.
+
+Sonu .h ile biten kutuklerin, ozel bir fonksiyonu vardir. Bunlara header
+yada baslik kutukleri denir. Genellikle iclerinde, bazi fonksiyonlari
+kullanmak icin gereken tanimlamalar yer alir. Bu kullandigimiz "stdio.h"
+kutugu ise, bir suru "#define" komutundan olusur.
+
+C DE INPUT/OUTPUT ISLEMLERI
+
+C dilinde lisanin bir parcasi olarak tanimlanmis input/output komutlari
+yoktur, bu nedenle bu fonksiyonlarin kullanici tarafindan yazilmasi
+gereklidir. Her C kullanan kisi, kendi input/output komutlarini yazmak
+istemediginden, derleyici yazarlari bu konuda calisma yapmislar, ve bize
+bir suru input/output fonksiyonlari saglamislardir. Bu fonksiyonlar
+standart hale gelmislerdir, ve hemen her C derleyicisinde ayni
+input/output komutlarini bulabilirsiniz. C nin lisan tanimi, Kernigan ve
+Richie tarafindan yazilmis bir kitaptir, ve onlar bu gorecegimiz
+input/output fonksiyonlari bu kitaba katmislardir. 
+
+Bu "stdio.h" isimli kutugu incelemenizde fayda vardir. Icinde bircok
+anlamadiginiz nokta olacaktir, fakat bazi kisimlar tanidik olacaktir. 
+
+DIGER INCLUDE KUTUKLERI
+
+C de buyuk programlar yazmaya basladiginizda, programlari ufak parcalara
+ayirip ayri ayri derlemek isteyebilirsiniz. Bu degisik parcalarin ortak
+kisimlarini tek bir kutukte toplayip, bir degisiklik gerektiginde sadece o
+ortak kutukten yapmayi isteyebilirsiniz (ornegin global degisken
+tanimlari.) Bu gibi durumlarda "#include" kutukleri cok faydali olacaktir.
+
+"BASITIO" YA GERI DONELIM
+
+"c" isimli degisken tanimlanir, ve ekrana mesaj yazilir. Daha sonra,
+kendimizi "c", buyuk harf X e esit olmadigi surece devam eden bir dongunun
+icinde buluyoruz. Bu programdaki iki yeni fonksiyon, su an icin ilgi
+noktamiz. Bunlar klavyeden bir tus okumak, ve ekrana bir karakter yazmayi
+saglarlar. 
+
+"getchar()" isimli fonksiyon, klavyeden okudugu tusu dondurur, bu deger
+"c" ye atanir. "putchar()" fonksiyonu ise, bu degeri ekrana yansitir. 
+
+Bu programi derleyip calistirdiginizda, bir surpriz ile karsilasacaksiniz.
+Klavyeden yazdiginizda, ekrana herseyin iyi bir sekilde yansitildigini
+goreceksiniz. RETURN tusuna bastiginizda ise, butun satirin tekrar ekrana
+yazildigini goreceksiniz. Her karakteri teker teker ekrana getirmesini
+soyledigimiz halde, programimiz sanki butun satiri sakliyor gibi. 
+
+DOS BIZE YARDIMCI OLUYOR (YADA ISE KARISIYOR)
+
+Bu durumu anlayabilmek icin, DOS un nasil calistigini anlamamiz
+gereklidir. Klavyeden tuslar DOS kontrolu ile okundugu zaman, RETURN tusu
+basilana dek, basilan tuslar bir sahada saklanir. RETURN basilinca da,
+butun satir programa dondurulur. Tuslara basilirken, karakterler ekrana da
+yansitilir. Bu duruma da "eko" ismi verilir. 
+
+Simdi anlatilanlari goz onunde bulundurarak, programimiz calisirken ekrana
+eko edilenlerin, DOS tarafindan yapildigini anlayabilirsiniz. Siz RETURN e
+basinca da, bu saklanan tuslar, programa gonderilir. Bunu daha iyi anlamak
+icin, icinde buyuk harf X olan bir satir yazin. DOS, buyuk X in ozel bir
+tus oldugundan habersiz, siz RETURN e basana kadar tuslari kabul etmeye
+devam eder. RETURN e basinca ise, bu katar programa gecirilir, ve program
+X e rastlayincaya kadar ekrana karakterleri birer birer yazar.
+
+Isletim sisteminin bu tuhafliklari karsisinda yilmayin. Bazi
+programlarinizda, bu ozellik isinize yarayabilir. Fakat simdi biz, az once
+yazdigimiz programin, dusundugumuz gibi calismasini saglayalim.
+
+TEKIO.C:
+================================================================
+
+#include <stdio.h>
+
+main()
+{
+char c;
+
+   printf("Herhangi bir tusa basin.  X = Programi durdurur. \n");
+
+   do {
+      c = getch();                     /* bir tus oku          */
+      putchar(c);                  /* basilan tusu goster      */
+   } while (c != 'X');             /* ta ki c == 'X' olana dek */
+
+   printf("\nProgramin sonu.\n");
+}
+================================================================
+
+Bu programdaki yegane degisiklik olan yeni fonksiyon "getch()", yine
+klavyeden tek bir karakter okur. Farki, "getchar" gibi DOS'a
+takilmamasidir. Bir karakter okur, ve ekrana yansitmadan bu tusu programa
+dondurur. 
+
+Bu programi calistirdiginizda, bir oncekindeki gibi tekrarlanan satirlar
+olmadigini goreceksiniz. Ayrica program artik 'X' e basar basmaz
+durmaktadir. Burada baska bir problemimiz var. RETURN'e basinca cursor,
+ekranin soluna gitmektedir, ama bir alt satira inmemektedir. 
+
+SATIR ATLAMAMIZ LAZIM
+
+Cogu uygulama programi siz RETURN e basinca, program o RETURN e ek olarak
+bir de "Line Feed" yani satir atlama karakteri ilave eder. Satir atlama
+otomatik olarak yapilmaz. Bundan sonraki programda, bu sorunu da halletmis
+olacagiz. 
+
+IYIIO.C:
+================================================================
+#include "stdio.h"
+#define CR 13       /* CR sembolunu 13 olarak tanimlar */
+#define LF 10       /* LF sembolunu 10 olarak tanimlar */
+
+main()
+{
+char c;
+
+   printf("Tuslara basin. Durmak icin X e basin.\n");
+
+   do {
+      c = getch();                    /* Bir karakter oku        */
+      putchar(c);                     /* basilan tusu ekrana yaz */
+      if (c == CR) putchar(LF);       /* sayet basilan RETURN tusu ise,
+                                      bir SATIR ATLAMA karakteri yolla */
+   } while (c != 'X');
+
+   printf("\nProgramin sonu.\n");
+}
+================================================================
+Programin ilk basinda CR 'nin artik 13 e esit oldugunu ve LF nin de 10
+oldugunu belirtiyoruz. Sayet ASCII tablosundan bakarsaniz, RETURN tusuna
+karsilik gelen kodun 13 oldugunu gorursunuz. Ayni tabloda, satir atlama
+kodu da 10 dur.
+
+Ekrana basilan tusu yazdiktan sonra, sayet bu tus RETURN tusu ise, bir
+satir atlayabilmemiz icin, satir atlama kodunu ekrana yaziyoruz.
+
+Programin basindaki "#define" lar yerine "if (c == 13) putchar(10);"
+diyebilirdik, fakat ne yapmak istedigimiz pek belirgin olmazdi. 
+
+HANGI METOD DAHA IYI?
+
+Burada ekrandan bir harf okumanin iki yolunu inceledik. Her ikisinin de
+avantajlari ve dezavantajlari var. Bunlara bir bakalim.
+
+Ilk metodda, butun isi DOS ustlenmektedir. Programimiz baska islerle
+ugrasirken, DOS bizim icin satiri hazirlayabilir, ve RETURN'e basilinca bu
+satiri programa dondurebilir. Fakat, bu metodda karakterleri basildiklari
+anda fark etmemiz imkansizdir.
+
+Ikinci metodda, tuslari teker teker fark etmemiz mumkundur. Fakat,
+program bu okuma sirasinda butun zamanini okumaya harcar ve baska bir is
+yapamaz, ve bilgisayarin tum zamanini bu isle almis oluruz. 
+
+Hangi metodun uzerinde calistiginiz program icin daha uygun oldugunu
+programci olarak siz karar vereceksiniz.
+
+Burada, "getch()" fonksiyonun tersi olan "ungetch()" isimli bir fonksiyon
+daha oldugunu da belirtmeliyim. Sayet bir karakteri "getch()" le okuduktan
+sonra fazla okudugunuzu fark ederseniz, bu fonksiyon ile okunan tusu geri
+koyabilirsiniz. Bu bazi programlarin yazilimini kolaylastirmaktadir cunku
+bir tusu istemediginizi onu okuyuncaya kadar bilemezsiniz. Sadece bir tek
+tusu "ungetch" edebilirsiniz, fakat genellikle bu yeterlidir. 
+
+BIRAZ TAMSAYI OKUYALIM
+
+TAMOKU.C:
+================================================================
+#include <stdio.h>
+
+main()
+{
+int deger;
+
+   printf("0 ila 32767 arasinda bir rakam yazin, durmak icin 100 girin.\n");
+
+   do {
+      scanf("%d",&deger);   /* bir tamsayi oku (adresi ile) */
+      printf("Okunan deger %d idi. \n",deger);
+   } while (deger != 100);
+
+   printf("Programin sonu\n");
+}
+================================================================
+
+Alistigimiz tip bir program olan TAMOKU'da, "scanf" isimli yeni bir
+fonksiyon goruyoruz. Cok kullandigimiz "printf" fonksiyonuna cok benzeyen
+bu fonksiyonun gorevi, istenilen tip verileri okuyup, degiskenlere atamak.
+
+"printf" den en buyuk farki, "scanf" in degisken degerleri yerine,
+adreslerini kullanmasidir. Hatirlayacaginiz gibi, bir fonksiyonun
+parametrelerinin degerlerini degistirebilmesi icin, degiskenin adresine
+ihtiyaci vardir. "scanf" fonksiyonuna adres yerine deger gecirmek, C
+dilinde en SIK rastlanan hatalardan biridir. 
+
+"scanf" fonksiyonu, girilen satiri, satirdaki bosluklara bakmadan, ve bu
+sekilde kullanildiginda, rakam olmayan bir karakter bulana kadar bir
+tamsayi okur.
+
+Sayet 32766 den buyuk bir rakam girerseniz, programin hata yaptigini
+gorursunuz. Ornegin 65536 girerseniz, programin 0 degerini dondurdugunu
+gorursunuz. Buna sebep, tamsayilarin hafizada saklanisinda onlara 16
+bitlik bir saha ayrilmasindandir. Programinizda daha buyuk rakamlar
+kullanacaksaniz, 'long' yada 'float' tiplerini secebilirsiniz.
+
+KARAKTER KATARI GIRISI
+
+KATARIN.C:
+================================================================
+#include <stdio.h>
+
+main()
+{
+char big[25];
+
+    printf("Karakter katari girin, en fazla 25 karakter.\n");
+    printf("Birinci kolonda X yazarak programi bitirin.\n");
+
+    do {
+       scanf("%s",big);
+       printf("Yazdiginiz katar -> %s\n",big);
+    } while (big[0] != 'X');
+
+    printf("Programin sonu.\n");
+}
+================================================================
+
+Bu program bir oncekine cok benzer, fakat bu sefer bir kelime katari
+giriyoruz. 25 elemanli bir dizi tanimlanmistir, fakat en son deger bir '0'
+olmasi gerektiginden, kullanilabilen kisimi 24 dur. "scanf" deki
+degiskenin onune & ampersand isareti gerekmez cunku, koseli parantezleri
+olmayan bir dizi degiskeni, C dilinde o dizinin baslangicini gosteren
+bir adrestir. 
+
+Calistiginizda, sizi bir supriz bekliyor. Yazdiginiz cumleyi, program ayri
+satirlarda gosterir. Bunun sebebi, "scanf" bir katar okurken, satirin
+sonuna yada bir bosluga rastlayincaya kadar okumasina devam eder. Bir
+dongu icinde oldugumuzdan, program tekrar tekrar "scanf" i cagirarak,
+DOS'un giris sahasinda kalan butun karakterleri okur. Cumleleri kelimelere
+boldugunden, X ile baslayan herhangi bir kelimeye rastlayinca, bu program
+durur.
+
+24 karakterden daha fazlasini girmeye calisin. Ne olduguna bakin. Size bir
+hata mesaji verebilir, yada programiniz aleti kilitleyebilir. Gercek bir
+programda, boyle seylerin sorumlulugu sizlerin omuzlarinizdadir. C dilinde
+yazdiginiza size cok sey duser, fakat ayni zamanda bircok kolaylik da
+saglar. 
+
+C DE INPUT/OUTPUT PROGRAMLAMA
+
+C dili cok miktarda input/output yapan programlar icin degil de, bir
+bircok icsel islemler yapan sistem programlari icin yazilmistir.
+Klavye'den bilgi alma rutinleri cok kullanislidir, fakat C size az 
+yardimci olur. Yani, yapmaniz gereken I/O islemlerinde sorun cikmasini
+onlemek icin detaylarla sizin ugrasmaniz lazimdir. Fakat genellikle
+herhangi bir program icin bu tip fonksiyonlari bir defa tanimlamaniz
+yeterlidir. 
+
+HAFIZADA.C:
+================================================================
+main()
+{
+int rakam[5], sonuc[5], index;
+char satir[80];
+
+   rakam[0] = 5;
+   rakam[1] = 10;
+   rakam[2] = 15;
+   rakam[3] = 20;
+   rakam[4] = 25;
+
+   sprintf(satir,"%d %d      %d %d %d\n",rakam[0],rakam[1],
+           rakam[2],rakam[3],rakam[4]);
+
+   printf("%s",satir);
+
+   sscanf(satir,"%d %d %d %d      %d",&sonuc[4],&sonuc[3],
+	   (sonuc+2),(sonuc+1),sonuc);
+
+
+   for (index = 0;index < 5;index++)
+      printf("Sonuc %d dir. \n",sonuc[index]);
+
+}
+================================================================
+
+Bu programda, birkac tane degisken tanimliyoruz, ve "rakamlar" isimli
+diziye de, "sprintf" fonksiyonunu incelemek icin rastgele sayilar
+atiyoruz. Bu fonksiyon, "printf" e cok benzer. Yegane farki, ciktisini
+ekrana yazmak yerine, bir karakter dizisine yazmasidir. Bunu da, ilk
+parametresi olarak veriyoruz. Yani program bu fonksiyondan dondukten
+sonra, "satir" dizisinin icinde, bes tane rakam olacaktir. Ikinci ile
+ucuncu rakamlar arasindaki bosluk, "sscanf" fonksiyonunun bunlarin
+uzerinden atlamasini gormek icindir. 
+
+Bunun altinda "printf" i kullanarak bu hazirladigimiz satiri yaziyoruz.
+Daha sonra gordugunuz, "sscanf" fonksiyonu ise, "scanf" gibi ekrandan
+okumak yerine, bizim "satir" dizimizden degerleri okur. Gordugunuz gibi,
+"sscanf" e rakamlarin konacagi dizinin adreslerini cok degisik sekillerde
+verebiliyoruz. Ilk ikisi, sadece dizideki 5. ve 4. elemanlarin adreslerini
+index vererek tanimliyorlar, sonraki ikisi ise, dizinin baslangic adresine
+bir offset (bir rakam) ekleyerek buluyorlar. Sonuncusu ise, koseli
+parantezi olmayan bir dizinin, o dizinin baslangic elemaninin adresini
+gostereceginden, hicbir sey gerektirmiyor. 
+
+Bazen, bir programin ciktilarini, standart ciktidan (ekrandan), bir baska
+kutuge yoneltmek istenir. Fakat, hata mesajlarini gibi bazi mesajlari hala
+ekrana yollamak isteyebilirsiniz:
+
+OZEL.C:
+================================================================
+#include <stdio.h>
+
+main()
+{
+int index;
+
+   for (index = 0;index < 6;index++) {
+      printf("Bu satir, standart ciktiya gidiyor.\n");
+      fprintf(stderr,"Bu satir ise standart hataya gidiyor.\n");
+   }
+
+   exit(4);  /* Bu komut, DOS 'un ERRORLEVEL komutu ile bir batch file'da
+		(yigit kutugunde) kontrol edilebilir. Bu programin
+		d”nd£rd£g£ deger, soyle kontrol edilebilir:
+
+		A> COPY CON: DENE.BAT   <RETURN>
+
+		OZEL
+		IF ERRORLEVEL 4 GOTO DORT
+		(Dortten kucukse, buraya devam eder..)
+                .
+                .
+		GOTO BITTI
+		:DORT
+		(dort yada buyukse, buraya devam eder)
+                .
+                .
+		:BITTI
+
+		<F6> <RETURN>
+
+								  */
+}
+================================================================
+
+Bu program, bir dongu, ve icinde iki satirdan olusur. Bu satirlardan bir
+tanesi standart ciktiya, bir tanesi de standart hataya gider. Burada
+gordugunuz "fprintf" komutu, "printf" e cok benzer, fakat ciktinin nereye
+gidecegini de belirtmenizi saglar. Bu alanda bir sonraki konuda daha uzun
+duracagiz. 
+
+Program calisinca, ekranda on iki tane satir goreceksiniz. Sayet bu
+programi:
+
+A>  OZEL > CIKTI
+
+seklinde calistirirsaniz, ekranda sadece alti tane standart hataya giden
+mesajlari goreceksiniz. Geri kalan (standart ciktiya giden) alti tanesi
+ise, "cikti" isimli kutukte yer alacaktir.
+
+YA exit(4) KOMUTU ?
+
+Bu programdaki en son satir olan "exit(4)" komutu, programi sona erdirir,
+ve dort degerini DOS a dondurur. Parantezlerin arasinda 0 ila 9 degerleri
+kullanilabilir. Sayet bir "batch" (yigit) kutugu icinde bu programi
+calistiriyorsaniz, bu degeri ERRORLEVEL komutu ile kontrol edebilirsiniz.
+
+ODEV
+
+1. Bir dongu icinde bir harf okuyun ve ekrana bu harfi normal "char"
+tipinde gosterin. Bu harfi bir rakam olarak da gosterin. Programi
+durdurmak icin, dolar sembolunu bekleyin. "getch" fonksiyonunu kullanarak
+programin tusa basilir basilmaz islemesini saglayin. F tuslari gibi ozel
+tuslara basarak ne oldugunu kaydedin. Her fonksiyon tusundan iki tane
+deger donecektir. Birincisi sifir olup, ozel bir tusa basildigini haber
+verecektir. 
+
+

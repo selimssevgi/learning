@@ -1,0 +1,10 @@
+# ruby -v
+
+# sqlite3 -version
+
+# gem install rails
+# gem install rails -v 4.2.2 
+
+# rails --version
+
+# sudo apt-get install nodejs     # in case of getting an error with JS runtime

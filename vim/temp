@@ -1,0 +1,10 @@
+this is a temp file opened in a horizontal split
+with :sp temp
+
+Now i am in this file again in vertical split
+with :vs temp
+
+i am here again,
+i want to try move to other split
+i successfuly did. by control-w and l,h keys!
+

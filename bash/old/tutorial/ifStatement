@@ -1,0 +1,63 @@
+#!/bin/bash
+
+# Script Def : if statement larda if-ifelse-else-then-fi ifadesinin kullanımı 
+
+
+			#########
+
+#			Normal parantez yerine köşeli parantez kullanilir.
+#			Köşeli parantezlerin icerisindeki ifade ile parantezler arasında en az bir bosluk bulunmali.
+#			Statement kısmında esitlik sorgulanırken atama işaretiyle ayni işaret kullanilir.
+#			Ancak bir fark vardır.Degiskenleri arada bosluk bırakmadan atıyorken, bunun karsilastirma ifadesi
+#				oldugunu belirtmek icin operandlar ve = işareti arasına en az bir bosluk birakiyoruz.
+
+#			STRUCTURE : 
+#				If komutunun 3 farklı kullanım yapısı vardır.Bunlar
+#				
+#				# First form
+#				if condition ; then 
+#					commands
+#				fi
+#
+#				# Second Form
+#				if condition ; then
+#					commands
+#				else
+#					commands
+#				fi
+#
+#				# Third Form
+#				if condition ; then
+#					commands
+#				elif condition ; then
+#					commands
+#				fi
+#				
+#			IF yapisinda ifademizi iki farkli sekilde sorgulayabiliriz.
+#				# First Form
+#				test expression / Burdaki test bir komuttur ve expression kısmını sorgular.
+#					
+#				# Second Form
+#				[ expression ] / Burdaki test komutunun islevi koseli parantezler yuklenır, yapı olarak.
+		
+			#########
+
+
+
+
+if test elma = elma ; then
+	echo "OlduOldu.."
+fi
+
+read -p "Please enter a fruit : " fruit
+
+if [ $fruit = apple ]
+	then echo  "Good,I like apples."
+elif [ $fruit = pear ]
+	then echo "Good, I like pear."
+elif [ $fruit = orange ]
+	then echo "Good, I like oranges"
+	else echo "Oh no, I hate those."
+fi
+
+

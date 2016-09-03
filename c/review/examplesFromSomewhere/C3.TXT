@@ -1,0 +1,285 @@
+C Dili -  3. Konu
+
+'WHILE' DONGUSU
+
+C dilinde, bircok tip dongu vardir. While dongusu, herhangi bir test,
+dogru kaldigi surece, bir program parcasini tekrarlar. Bu testin sonucu
+yalnis cikarsa, while dongusu sona erer, ve program normal akisina devam
+eder. 
+
+main()	/* while dongusunun bir ornegi */
+{
+	int count;
+	
+	count = 0;
+	while (count<6)
+	{
+		printf("count'un degeri: %d oldu. ",count);
+		count = count + 1;
+	}
+}
+
+Bu programda, count isimli bir degiskeni tanimliyoruz, ve sifira
+esitliyoruz. while dongusunun kullanimi, gorundugu gibi, 'while' sozcugu,
+ve parantez icinde bir test'den olusur.  Parantezlerin icindeki deyim
+dogru kaldigi surece, bu program tekrarlar. Bu programda, degiskenin
+degeri teker teker arttirildigindan, eninde sonunda degeri altiya
+varacaktir, ve bu durumda program donguden cikacaktir. 
+
+Parantezlerin icinde yer alan deyimleri, bundan sonraki konuda
+isleyecegiz. O zamana kadar, bunlarin dusundugunuz seyleri yaptigini kabul
+ediniz. 
+
+Birkac onemli nokta: 
+
+  1. Sayet 'count' un baslangic degeri 5 den buyuk birseye atanmis olsa
+  idi, dongunun icindekiler hic yapilmayacakti.  
+  2. Eger 'count = count + 1' komutu ile degerini bir arttirmasa idik, bu
+  program hic durmazdi.  
+  3. Son olarak, eger dongude tek bir komut varsa, kume isaretlerine gerek
+  yoktur.
+
+
+DO-WHILE DONGUSU
+
+Buna benzeyen bir baska komut ise, 'do-while' komutudur. Su program, daha
+once gordugumuz programa cok benzer:
+
+main()	/* Do-While dongusu ornegi */
+{
+	int i;
+	
+	i=0;
+	do
+	{
+		printf("I nin degeri simdi: %d oldu.\n",i);
+		i = i + 1;
+	} while (i<5);
+}
+
+Yegane farkin, dongunun bir 'do' komutu ile yapilmasi ve denkligin
+kontrolunun sona birakilmasidir. Bu durumda, parantezlerin arasinda deyim
+dogru kaldigi surece, dongu tekrarlanir. 
+
+Burada onemli noktalar: Kontrol, dongunun sonunda yapildigindan, kume
+isaretlerinin arasindaki deyimler daima en az bir kere islenir. Ayrica
+yine, sayet i nin degeri degismez ise, program donguden cikmaz. Son
+olarak, sayet dongunun icinde bir tek komut varsa, kume isaretlerine gerek
+yoktur. 
+
+Ayrica, dilediginiz miktarda donguyu ic ice de koymaniz mumkundur.
+
+FOR DONGUSU
+
+For dongusu, yeni birsey degildir. Sadece, 'while' dongusunun bir baska
+seklidir:
+
+main()	/* Bir for dongusu */
+{
+	int index;
+	
+	for(index=0;index<6;index = index + 1)
+		printf("index'in degeri simdi %d oldu.\n",index);
+}
+
+'For' dongusu, uc parcadan olusmustur. Her kesim birbirinden ; ile
+ayrilir. Ilk kesimi, baslangic kesimi (initalization) dir. Burada bulunan
+islemler, dongu baslamadan once, ve bir kere yapilir. Aslinda buraya
+yazilacak seyler icin bir sinir yoktur, fakat basit tutmakta fayda vardir.
+Bu kesime birden fazla islem yazilabilir, bunlari da birbirinden ','
+virgul ile ayirmak gerekir. 
+
+Ikinci kesimde, "index<6" diyen parcada, bu dongunun her turunda kontrol
+edilmesi gereken deyim yer alir. Bu deyim dogru oldugu surece, dongu devam
+eder. Dogru yada yalnis sonuc veren herhangi bir deyim, bu kesimde yer
+alabilir. 
+
+Ucuncu kesimde yer alan islemler ise, yine dongunun her turunda yapilir,
+fakat isleme baslamasi, dongunun icinde yer alan komutlarin islenmesinden
+sonra yapilir. 
+
+'For' komutundan sonra, ya tek bir komut gelir, yada kume isaretleri
+icinde, bir komut bloku.. C de hemen heryerde, tek bir komut yerine, bir
+komut bloku koymaniz mumkundur. 
+
+
+IF KOMUTU
+
+/* Bu, if-else komutunun bir ornegidir */
+
+main()
+{
+	int data;
+	
+	for (data=0;data<10;data = data + 1)
+	{
+		if (data==2)
+			printf("Data simdi %d ye esit.\n",data);
+		
+		if (data<5)
+			printf("Data simdi %d. Bu da, 5 den azdir. \n",data);
+		else
+			printf("Data simdi %d. Bu da, 4 den buyuktur.\n",data);
+	}
+}
+
+Bu programda, ilk once, icinde iki tane if komutu olan bir for dongusu
+gorunuyor. Bu dongunun on kere tekrarlanacagi, acik bir sekilde goruluyor.
+
+Ilk if satirina bakin: "if" kelimesi ile basliyor, ve sonra bir parantez
+icinde, sarti goruluyor. Sayet bu parantezin icindeki islemin sonucu dogru
+(evet) ise, if'den hemen sonra gelen satir islenir. Sayet cevap yalnis
+ise, if'den sonra gelen komut, atlanir. Burada da, tek bir komut, kume
+isaretleri ile, bir komut bloku haline getirilebilir.
+
+Burada data==2 islemi, data degiskeninin degerinin ikiye esit olup
+olmadigini kontrol eder. (Sayet data = 2 olsa idi, tumuyle ayri birsey
+gerceklesirdi.) 
+
+IF-ELSE
+
+Ikinci "if", yine birincisine benziyor. Fakat, ek olarak "else" isimli bir
+kesimi de iceriyor. Bu da, sayet parantezlerin icindeki islem dogru (EVET)
+sonuc verirse, "if" den sonra gelen satir islenecektir, sayet yalnis
+(HAYIR) sonucu verirse, "else" den sonra gelen komut islenecektir. Bu
+nedenle, iki satirdan biri muhakkak islenecektir. 
+
+BREAK ve CONTINUE 
+
+main()
+{
+	int xx;
+	
+	for (xx=5;xx<15; xx=xx+1)
+	{
+		if (xx==8)
+			break;
+		printf("Break dongusunun icinde, xx in degeri simdi %d\n",xx);
+	}
+	
+	for (xx=5;xx<15;xx=xx+1)
+	{
+		if (xx==8)
+			continue;
+		printf("Continue dongusunun icinde, xx in degeri simdi %d\n",xx);
+	}
+}
+
+
+Bu programda gordugunuz gibi, sayet xx in degeri 8 e esit ise, break
+isimli komutu cagiran bir if komutu goruyorsunuz. Break komutu, bizi
+donguden cikarip, programi dongunun hemen altindaki satirdan devam
+etmesini saglar. 
+
+Bu komut, ornegin dongunun icinde hesaplanan bir degere gore, donguden
+cikmak istediginizde cok ise yarar. Ornekte, xx in degeri sekize ulasinca,
+program donguden cikar, ve ekrana yazilmis en son deger, yedi olur.
+
+Programin ikinci parcasindaki dongude ise, Continue komutunu goruyoruz.
+Burada ise, deger 8 e ulasinca, program donguden cikmaz, fakat program
+dongunun en son satirina atlayip, aradaki printf satirini islemez.
+
+ SWITCH
+
+main()
+{
+	int kamyon;
+	
+	for (kamyon = 3;kamyon<13;kamyon = kamyon + 1)
+	{
+		switch (kamyon)
+		{
+			case 3:	printf("Degeri simdi uc.\n");
+					break;
+			case 4: printf("Degeri simdi dort.\n");
+					break;
+			case 5:
+			case 6:
+			case 7:
+			case 8:	printf("Degeri simdi 5 le 8 arasinda.\n");
+					break;
+			case 11:printf("Degeri simdi onbir.\n");
+					break;
+			default:printf("Tanimsiz degerlerden biri.\n");
+					break;
+		}
+	}
+}
+
+Simdiye kadar gordugumuz en buyuk komut olan "switch", aslinda kullanimi
+kolaydir. Ilk once, "switch" kelimesi ile baslar. Bunun arkasindan,
+parantez icinde bir deyim gelir. Bundan sonra, dilediginiz kadar 'case'
+komutlari, kume isaretleri arasinda yer alir. Her degeri sembolize eden
+'case' satirlari, degiskenin degeri, iki nokta ust uste, ve bununla ilgili
+komutlardan olusur. 
+
+Bizim ornegimizde, "kamyon" degiskeninin degeri 3 oldugunda, printf
+satiri, 'Degeri simdi uc' satirinin ekrana yazilmasini, saglar. Daha sonra
+yer alan 'break' komutu ise, switch in icinde yer alan diger komutlari
+islenmeden, switch den cikilmasini saglar. 
+
+Bir giris noktasi bulunduktan sonra, satirlar bir 'break' komutuna
+rastlayincaya kadar, yada switch'in son kume isaretine varincaya
+kadar komutlar siradan islenir. 
+
+"Kamyon" un degeri 5 e esit ise, program, case 5,6,7 den gecerek 8'de
+bulunan printf ve break komutlarini isler. Break komutu da, programi son
+kume isaretine getirir.  Sayet degiskenin bir degerine karsilik gelen bir
+case yoksa, 'default:' isimli secenek secilir. 
+
+GOTO KOMUTU
+
+main()
+{
+	goto leave
+	printf("Bu satir hic yazilmayacak.\n");
+leave:
+}
+
+
+Goto komutunu kullanmak icin, "goto" isminin yanina, atlamak istediginiz
+yerin sembolik ismini yazmaniz yeterlidir. "goto" ile bir dongunun icine
+atlamaniza izin yoktur, fakat bir dongunun disina atlayabilirsiniz. Ayrica
+bir fonksiyondan otekine de "goto" ile gecemezsiniz. 
+
+Bazi kimseler, goto nun hicbir yerde kullanilmamasi gerektigini
+belirtiyorlar. Sayet, goto kullanimi ile, diger metodlara gore daha anlasilir
+bir program olusacaksa, goto yu kullanmaktan cekinmeyin.
+
+SONUNDA - ISE YARAYAN BIR PROGRAM
+
+main()	/* Santigrad'dan Fahrenheite */
+{
+	int count;	/* for degiskeni */
+	int fahr;	/* fahrenheit degerini tutar */
+	int cen;	/* Santigrat degerini tutar */
+	
+	printf("Santigrad -> Fahrenheit karsilik tablosu\n\n");
+	
+	for (count=-2;count<=12;count=count+1)
+	{
+		cen = 10 * count;
+		fahr = 32 + (cen * 9) / 5;
+		printf(" C = %4d  F = %4d  ",cen,fahr);
+		if (cen == 0)
+			printf(" Suyun donma noktasi");
+		if (cen == 100)
+			printf(" Suyun kaynama noktasi");
+		printf("\n");
+	}
+}
+
+Bu program, santigrad ve fahrenheit derecelerin tablosunu yaratmaktadir.
+Birden fazla degisken kullanilan ilk programimizdir bu.  Degisken
+taniminda, uc ayri satir kullanilmasi sayesinde, degiskenlerin yanina ne
+ise yaradiklarini da yazabiliriz.
+
+Odev:
+
+1.	Isminizi ekrana 10 kere yazan bir program yaziniz. Bu programi 3 kere
+	yaziniz. Her seferinde ayri bir dongu metodu kullanarak..
+2.	Birden ona kadar sayan ve bu degerleri her satira bir tane olmak uzere
+	ekranda gosteren bir program yazin. Bu deger 3 e ve 7 ye esit olunca,
+	dilediginiz bir mesaji yazsin.
+
+

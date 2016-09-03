@@ -1,0 +1,14 @@
+switch(variable){
+  case 1:
+    puts("one");
+    break;
+  case 2:
+    puts("two");
+    break;
+  default:
+    puts("defaultvalue")
+    break;
+}
+
+
+# case values are literal values, not variables!!

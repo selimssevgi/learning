@@ -1,0 +1,11 @@
+a block is a group of code within {} that accepts a variable and returns a value.
+
+Blocks are always attached to methods.
+
+5.times { print "Hello World!" }
+
+If block will have more than one line, use do ... end 
+array.each do |value|
+  value += 1
+  puts value
+end

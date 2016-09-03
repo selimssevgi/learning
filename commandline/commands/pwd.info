@@ -1,0 +1,7 @@
+print working directory
+
+use it if you ever lost yourself in the filesystem
+
+-L # with symlinks
+
+-P # physical without symlinks

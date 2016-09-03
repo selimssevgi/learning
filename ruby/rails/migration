@@ -1,0 +1,16 @@
+# rails generate model creates a database migration file inside the db/migrate directory.
+  Migrations are Ruby classes that are designed to make it simple to create and modify database tables.
+  Rails uses rake commands to run migrations,
+  and it's possible to undo a migration after it's been applied to your database.
+  Migration filenames include a timestamp to ensure that they're processed in the order that they were created.
+
+$ rails generate model Article title:string text:text
+
+$ rake db:migrate
+
+
+!!Because you're working in the development environment by default, this
+  command will apply to the database defined in the development section of your
+  config/database.yml file. If you would like to execute migrations in another
+  environment, for instance in production, you must explicitly pass it when
+  invoking the command: bin/rake db:migrate RAILS_ENV=production.

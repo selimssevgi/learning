@@ -1,0 +1,5 @@
+You need at least gcc/g++ 4.7 for C11 and C++11
+
+$gcc --version
+
+$g++ --version 

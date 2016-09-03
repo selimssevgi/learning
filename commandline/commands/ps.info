@@ -1,0 +1,23 @@
+Understanding what the processes running on our computers are doing is important.
+Which processes are using the most memory? Which are using the most CPU?
+These are important questions, along with how to find a particular process.
+
+PID   The process ID of the process.
+TTY1  The controlling terminal for the process.
+TIME  The cumulative CPU time the process has used since the process started. The format for this time is [ dd-]hh:mm:ss.
+CMD   The name of the command that is running
+
+ps  # When the ps command is run without any arguments,
+      it will return results for the processes that belong to the current user
+
+ps u # display common useful information. user-oriented.
+
+ps -e # display all processes. almost same as "ps ax"
+
+ps -U root # display processes by user ID
+
+ps -m -O %mem -u root # -m sort by memory usage. -O %mem usage memory field
+
+ps -r -O %cpu -u root # -r sort by cpu usage. -O %mem cpu field
+
+

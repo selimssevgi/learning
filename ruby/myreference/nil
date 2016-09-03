@@ -1,0 +1,29 @@
+Since everything in Ruby is an object,
+it follows that nil is an object, so it too can respond to methods.
+One example is the to_s method that can convert virtually any object to a string
+
+>> nil.to_s
+=> ""
+
+>> nil.empty?
+NoMethodError: undefined method `empty?' for nil:NilClass
+>> nil.to_s.empty?      # Message chaining
+=> true '`
+
+
+# Testing for nil
+>> "foo".nil?
+=> false
+>> "".nil?
+=> false
+>> nil.nil?
+=> true
+
+# the nil object is special,
+# in that it is the only Ruby object that is false in a boolean context, apart from false itself.
+# We can see this using !! (read “bang bang”), which negates an object twice, thereby coercing it to its boolean value:
+>> !!nil
+=> false
+
+>> !!0
+=> true

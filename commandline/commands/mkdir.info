@@ -1,0 +1,5 @@
+create a new directory
+
+mkdir commands # creates a directory named commands
+
+mkdir -p commands/beginner # create both commands and beginner inside of commands

@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# indexle : Bir dizindeki dosya ve klasörleri indexleyecek
+
+# Arguman gonderilmiş mi?
+if [ "$1" = "" ]; then 
+	echo "Usage : $0 dizi_ismi"
+	exit 1
+fi
+
+
+# Verilen argüman bir dizin mi?
+if [ ! -d "$1" ]; then
+	echo "$1 : Boyle bir dizin bulnumadi."
+	exit 1	
+fi
+
+dir="$1"
+
+# Verilen dizin bos mu?
+topDosya=0
+for i in $dir/*; do
+	if [ -e "$i" ]; then
+		topDosya=$((topDosya + 1))
+	fi
+done
+
+# Boş değil ise dosyayı olusturacagiz.
+fileName="index.txt"
+if [ $topDosya -gt 0 ]; then
+	# O dizine gidelim
+	if cd $dir; then
+		$(ls > $dir/$fileName)
+	else 
+		echo "Bilinmeyen bir hataysa olustu."
+	fi
+else
+	echo "$dir : Verilen dizin bos!"
+fi
+

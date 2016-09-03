@@ -1,0 +1,10 @@
+if(){
+
+}else if(){
+
+}else{
+  
+}
+
+
+(condition) ? (true) : (false)

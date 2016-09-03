@@ -1,0 +1,5 @@
+print countings for lines, words, bytes
+
+wc <filename>
+
+<some output> | wc

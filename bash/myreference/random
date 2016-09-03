@@ -1,0 +1,12 @@
+
+TEMP_FILE=$TEMP_DIR/printfile.$$.$RANDOM
+
+The $TEMP_DIR variable contains either /tmp or ~/tmp depending on the availability of the directory.
+It is common practice to embed the name of the program into the file name.
+We have done that with the string "printfile".
+Next, we use the $$ shell variable to embed the process id (pid) of the program.
+This further helps identify what process is responsible for the file.
+Surprisingly, the process id alone is not unpredictable enough to make the file safe,
+so we add the $RANDOM shell variable to append a random number to the file name.
+With this technique, we create a file name that is both easily identifiable and unpredictable.
+

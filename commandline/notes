@@ -1,0 +1,21 @@
+Symbolic links are a special type of file that points to another file. With symbolic links, it is possible for a single file to have multiple names. Here's how it works: Whenever the system is given a file name that is a symbolic link, it transparently maps it to the file it is pointing to.
+
+Just what is this good for? This is a very handy feature. Let's consider the directory listing above (which is the /boot directory of an old Red Hat 5.2 system). This system has had multiple versions of the Linux kernel installed. We can see this from the files vmlinuz-2.0.36-0.7 and vmlinuz-2.0.36-3. These file names suggest that both version 2.0.36-0.7 and 2.0.36-3 are installed. Because the file names contain the version it is easy to see the differences in the directory listing. However, this would be confusing to programs that rely on a fixed name for the kernel file. These programs might expect the kernel to simply be called "vmlinuz". Here is where the beauty of the symbolic link comes in. By creating a symbolic link called vmlinuz that points to vmlinuz-2.0.36-3, we have solved the problem.
+
+To create symbolic links, use the ln command.
+
+# TYPE COMMAND
+
+--An executable program like all those files we saw in /usr/bin. Within this category, programs can be compiled binaries such as programs written in C and C++, or programs written in scripting languages such as the shell, Perl, Python, Ruby, etc.
+
+--A command built into the shell itself. bash provides a number of commands internally called shell builtins. The cd command, for example, is a shell builtin.
+
+--A shell function. These are miniature shell scripts incorporated into the environment. 
+
+--An alias. Commands that you can define yourselves, built from other commands.
+
+# EXPANSION 
+echo *
+Desktop Documents ls-output.txt Music Pictures Public Templates Videos
+
+So what just happened? Why didn't echo print “*”? As you recall from our work with wildcards, the “*” character means match any characters in a filename, but what we didn't see in our original discussion was how the shell does that. The simple answer is that the shell expands the “*” into something else (in this instance, the names of the files in the current working directory) before the echo command is executed. When the enter key is pressed, the shell automatically expands any qualifying characters on the command line before the command is carried out, so the echo command never saw the “*”, only its expanded result. Knowing this, we can see that echo behaved as expected.

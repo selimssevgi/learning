@@ -1,0 +1,14 @@
+A resource is the term used for a collection of similar objects, such as articles, people or animals.
+You can create, read, update and destroy items for a resource and these operations are referred to as CRUD operations.
+
+Rails provides a resources method which can be used to declare a standard REST resource.
+You need to add the article resource to the config/routes.rb as follows:
+
+Rails.application.routes.draw do
+ 
+  resources :articles
+
+  root 'welcome#index'
+end
+
+$ rake routes       # to check all standart RESTful actions

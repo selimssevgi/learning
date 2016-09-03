@@ -1,0 +1,10 @@
+::    Colon access                        Module::Class
+<=>   Comparison                          4 <=> 4 == 0
+===   Equality                            4 === 4 == true
+&&    Logical and (higher precedenc       true && false == false
+||    Logical or (higher precedence)      true || false == true
+..    Range inclusive                     (0..3).to_a == [0, 1, 2, 3]
+...   Range non-inclusive                 (0...3).to_a == [0, 1, 2]
+@     Object scope                        @var ; @@classvar
+@@    Class scope                         @var ; @@classvar
+$     Global scope                        $stdin

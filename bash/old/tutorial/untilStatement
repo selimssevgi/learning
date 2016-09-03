@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# untilStatement - Script Def : until dongusunun kullanımı
+
+number=0
+
+
+# until sartı yanlis oldugu surece donecek
+# sayı 10 dan buyuk veya esit olmadıgında kod blogu casısacak
+until [ $number -ge 10 ]; do
+	echo "Number = $number"
+	number=$((number + 1))
+done

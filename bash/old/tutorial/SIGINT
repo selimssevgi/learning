@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# SIGINT - Sonsuz dongu olusturmak
+
+# Bazen programlar donar,hiç bir şey yapmadan dururlar.
+
+# Bu durumda büyük ihtimal sonsuz dongunun içine girmistir.
+
+# Eger bir sinyal gonderilmezse bu sekilde devam edecektir.
+
+# Bash te bu sinyali gondermek icin CTRL-C kullanılır.
+
+# SIGINT : SIGnal INTerrupt
+
+echo "This script will endlessly loop until you stop it."
+
+while true; do
+	: # Do nothing
+done
+

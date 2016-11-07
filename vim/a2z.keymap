@@ -3,9 +3,9 @@ A -> append text. start to insert to the end of the line
 b -> move one word backward
 B -> move one word backward - blank separated
 c -> change operator. ce cw c$
-C -> change to the end of the line
+C -> change to the end of the line, short cut of c$
 d -> delete operator. de dw d$
-D -> delete to the end of the line 
+D -> delete to the end of the line, shortcut of d$
 e -> move to the end of the word
 E -> move to the end of the word - blank separated
 f -> jump and land on the next <character> f; f" f<
@@ -17,7 +17,7 @@ H -> move the first line in the window. 2H
 i -> insert text before the cursor
 I -> insert text before the first non-blank in the line
 j -> move the cursor down
-J -> join lines
+J -> join lines space btw them, use gJ to join them without space
 k -> move the cursor up
 K -> Run the word under the cursor in shell as a command
 l -> move the cursor to the left
@@ -27,14 +27,14 @@ M -> move to the middle line of the window
 n -> next match for search term
 N -> previous match
 o -> open a new line below the cursor and place you in Insert mode
-O -> open a new line abowe the cursor and place you in Insert mode
+O -> open a new line above the cursor and place you in Insert mode
 p -> put a register after the cursor
 P -> put a register before the cursor
 q -> record a macro. qa records in a. then play it by @a
 Q -> enter in ex mode
 r -> replace a character. rx, replaces the character under the cursor with x. see also 'ce'
 R -> replace more than one character
-s -> DELETE THE CHARACTER UNDER THE CURSOR AND MOVE TO INSERT MODE {N}
+s -> delete the character under the cursor and move to insert mode {n}
 S -> change the line
 t -> jump to right before the next <character> t' t: 
 T -> jump before the previous character. T- 
@@ -47,6 +47,6 @@ W -> move one word forward - blank separated
 x -> delete one character under the cursor and after the cursor
 X -> delete N character before the cursor 
 y -> yank-copy operator. visually selected text. yw ye y$
-Y -> yank N lines in a register
+Y -> yank the line in a register
 z -> useful for fold operation. zf, zo, zc, zd 
 Z -> 

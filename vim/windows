@@ -1,0 +1,23 @@
+- :split 
+  easiest way to open a new window, it will start open same file in the new window
+  so you can view different parts of the same file.
+
+- :split file :opens the file in a new window
+
+- :10split file :opens a file 10 lines below the above
+
+- :new :opens a empty file in a new window
+
+- ctrl-ww to jump from one window another (or ctrl-w ctrl-w) 
+
+- ctrl-wj to go down a window
+
+- ctrl-wk to go up a window
+
+- crtl-wc to close a window ( or ZZ or :q )
+
+- ctrl-w+ to increase the window size one line
+
+- ctrl-w- to decrease the window size one line
+
+- ctrl-w= to make all windows the same size

@@ -1,6 +1,10 @@
 zf{motion}        - create a fold zfap for paragraph folding
+{visual}
 zF {N}            - Fold N lines
 
 zd                - Delete the fold under the cursor
 zo                - Open the fold under the cursor
 zc                - Close the fold under the cursor
+
+
+

@@ -1,8 +1,12 @@
 @a -> play the macro which was recorded a   
 
+! -> filtering operations
+
+'a -> go to place marked with a
+
 % -> goto the match ),],}
 
-. -> repeat the last commad. dw then 5.
+. -> repeat the last change commad. dw then 5, or cw
 
 ~ -> changing case. letter under the cursor or on a SELECTION
 
@@ -12,7 +16,7 @@
 
 $ -> move to the end of the line
 
-( -> move to the beginning of sentence
+( -> move to the beginning of sentence 
 
 ) -> move to the end of the sentence
 
@@ -33,6 +37,7 @@ $ -> move to the end of the line
 # -> search for the word under the cursor backward
 
 '. jump back to last edited line.
+
 g; jump back to last edited position.
 
 ^ -> move to first non-white space column

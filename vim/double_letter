@@ -1,0 +1,4 @@
+dd : deletes the line that the cursor is on
+cc : deletes the line and move to insert mode
+ZZ : writes the file and exits
+yy : yanks the line

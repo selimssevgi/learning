@@ -1,0 +1,13 @@
+- case classes are standard classes with a special modifier: case
+
+- case modifier signals the compiler to assume certain things about 
+  the class and to define certain boilrt-plate based on those assumptions.
+
+- Constructor parameters become public 'fields'
+
+- Methods toString(), equals() and hashCode() are defined
+  based on the constructor fields
+
+- A companion object containing:
+  An apply() constructor based on the class constructor 
+  An extractor based on constuctor fields

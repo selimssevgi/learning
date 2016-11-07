@@ -1,0 +1,130 @@
+
+
+# Three types of testing
+  - System
+  - Aggregate
+  - Unit
+
+## Unit Testing
+Test just a single unit of functionality
+Ex: Math.min(1,0) == 0
+Only one method or a method of a class
+No non-trivial dependencies == no database calls etc
+Fast but possible brittle
+
+## Aggregate Test
+Does a component do its job?
+Ex: Persistence repository can list saved albums for an artist
+Slower, less brittle
+
+## System or 'End to End' Test
+Check that the application meets its requirements
+Ex: We can buy widgets from our e-commerce website
+Slowest, least brittle
+Requires the ability to run the application
+
+# Three things to get it right
+
+## Given
+The preconditions for the test
+What should the world look like when the behaviour happens?
+
+## When
+The behaviour
+What is being tested?
+
+## Then
+The post conditions for the test
+What are the changes that happened?
+
+# Checking for Exceptions
+@Test(expected = IllegalArgumentException.class)
+
+# Good Practices
+- Well named
+- Behaviour not implementation
+- DRY
+- Diagnostics
+
+## Well named
+- Executable documentation
+- Maintenance
+- Readability
+
+## Behaviour not implementation
+- Dont test private parts of the class
+- So you can change the implementation of class, still the tests will pass
+
+## Dont repeat yourself
+- Duplication anti-pattern
+
+## Diagnostics
+- Good tests should fail
+- If it is not failing, is not testing well enough
+- While comparing values, use assertEquals so it will give feedback about actual and expected value.
+
+!! assertEquals("Wrong quantity of coffee", 1, order.size());
+!! Replace magic number with the constant variables.
+
+# Before and After Annotations
+@Before // before each test method runs
+public void before() {}
+
+@After  // after  each test method runs
+public void after() {}
+
+@BeforeClass // before all the test in the class
+public static void beforeClass() {}
+
+@AfterClass  // after  all the test in the class
+public static void afterClass() {}
+
+!! BeforeClass and AfterClass are static, because before each method test a new testing object is created.
+
+# Hamcrest
+A compositional matcher library
+Helps us avoid repetition and improve diagnostics
+
+## Matcher
+A simple and general blob of logic used in assertions.
+Ex: A map contains 'this' key.
+
+## Compositional
+Matchers can combine multiple matchers.
+Ex : a number is 5 or 7.
+
+# Test Driven Development
+- Encourage people writing test first
+- help better design of software
+- The incremental production of well designed and tested code.
+- Do not implement things you dont need
+
+Fail - write code - pass - refactor
+
+# Dependencies
+- Dependencies
+- Dependency injection
+- Stubs
+- Mocks
+
+## Dependency
+A relationship between two components where the functionality of one component relies on another component.
+
+## Dependency injection
+- pattern for decoupling 
+- injection new dependency through constructors
+- dont use embedded dependencies instead use injection
+
+## Fake Testing
+Working implementation but much simpler than a real one,
+Ex : In memory database
+
+## Stubs
+A ready-made answer to method calls
+Only what is required for a test
+Ex: size() always returns 1
+
+## Mocks - Mockito
+Tests the interactions with the object
+may also stub out return values 
+Ex: must invoke size() once

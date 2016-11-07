@@ -1,0 +1,33 @@
+By convention, tests written with RSpec are called "specs" (short for "specifications")
+and are stored in the project's 'spec' directory. 
+
+With RSpec, we are always describing the behavior of classes, modules and their methods.
+The 'describe' block is always used at the top to put specs in a context.
+It can accept either a class name, in which case the class needs to exis, or any string.
+
+describe StringCalculator do
+end
+
+By convention, class methods are prefixed with a dot(".add"), 
+and instance methods with a dash ("#add").
+
+describe ".add" do
+end
+
+We are using a context block to describe the context, 
+is technically the same as 'describe', but is used in different places,
+to aid reading of the code.
+
+context "given an empty string" do
+end
+
+'it' block to describe a specific 'example', which is RSpecs way to say "test case".
+Generally, every example should be descriptive, and together with the contxt should form an understandable sentence.
+
+To run the specs:
+$ bundle exec rspec
+
+
+To run rspec for documentation format
+bundle exec rspec --format documentation
+

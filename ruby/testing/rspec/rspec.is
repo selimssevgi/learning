@@ -1,0 +1,9 @@
+a testing tool for ruby. created for BDD.
+
+it is the most frequently used testing library for Ruby in production apps.
+
+Even though it has very rick and powerful DSL, at its core it is a simple tool
+which you can start using rather quickly. 
+
+
+

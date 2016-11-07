@@ -21,7 +21,7 @@ Phase 1: Edit Editor - Disk - .java
 Phase 2: Compile Compiler  - Disk - .class
 Phase 3: Load    Class Loader - from disk to memory
 Phase 4: Verify  Bytecode Verifier - confirms that do not violate javas security
-Phase 5: Execute JVM - reads bytecodes and JIT compiles then into machines lang
+Phase 5: Execute JVM - reads bytecodes and JIT compiles them into machines lang
 
 # Compile a java program : javac ClassName.java
 # Run a java program : java ClassName
@@ -91,7 +91,6 @@ CHAPTER 3 - Control Statements - Part 1 - 26 July 2016
 
 # Refinement of an algorithm, going in details. 
   - initialize variables (first refinement)
-
   - initialize total to zero
   - initialize counter to zero (second refinement)
 
@@ -150,7 +149,7 @@ CHAPTER 5 - Methods - 29 July 2016
   - rand.nextInt();
   - rand.nextInt(2); // returns 0 or 1
   - rand.nextInt(6); // returns 0..5
-  - rand.nextInt(6); + 1 // return 1..6, shifting by one
+  - rand.nextInt(6) + 1; // return 1..6, shifting by one
 
 # To repeat the same random number, normally it takes systems time
   - new Random(seedValue);
@@ -271,7 +270,7 @@ CHAPTER 8 - Classes and Objects: A Deeper Look - 4 Aug 2016
 # Static method cannot use 'this' keyword, cus it doesnt know which object it is operating on.
 
 # Dont access variables in a class direclty even in the class, use get method. 
-  representation of the field coudl change.
+  representation of the field could change.
 
 # When implementing a method of a class, use the class’s set and get methods to access the class’s
   private data. This simplifies code maintenance and reduces the likelihood of errors.
@@ -282,9 +281,9 @@ CHAPTER 8 - Classes and Objects: A Deeper Look - 4 Aug 2016
 
 # accessor methods = query methods = get methods
 
-# although set and
-  get methods provide access to private data, the access is restricted by the implementation
-  of the methods. This helps promote good software engineering.
+# although set and get methods provide access to private data,
+  the access is restricted by the implementation of the methods.
+  This helps promote good software engineering.
 
 # predicate methods : another common use for accessor methods is to test whether a condition is true or false
 
@@ -341,7 +340,7 @@ CHAPTER 9 - OOP: Inheritance - 04 Aug 2016
 # use the protected a.m. when a superclass should provide a method only 
   to its subclasses and other classes in the same package, but not to other clients.
 
-# When you create an object, the chain of calling cinstructor starts up to Object class
+# When you create an object, the chain of calling constructor starts up to Object class
 
 CHAPTER 10 - OOP - Polymorphism - 04 Aug 2016
 
@@ -628,3 +627,122 @@ CHAPTER 20 - Generic Collections - 09 Aug 2016
   iterator.forEachRemaining();
 
 # Any changes made to a sublist are also made to the original List.
+
+CHAPTER 26 - Multithreading - 24 Sep 2016
+- Thread States: Life Cycle of a Thread
+  - New : A new thread begins its life cycle in the new state.
+          It remains in this state until the program starts the thread.
+
+  - Runnable : A thread remains in the new state until the program starts it.
+               When the thread is start, it is in runnable state.
+               In this state is considered that it is exectuting its task.
+
+  - Waiting  : Sometimes a runnable thread transitions to the waiting state
+               while it wait for another thread to perform a task.
+               A waiting thread transitions back to the runnable state only
+               when another thread notifies it to continue executing.
+
+  - Timed Waiting :  A runnable thread can enter the timed waiting state for a specified interval of time.
+                     Sleeping thread, optional waiting time,
+                     Word backup thread goes to sleep, not to check if it should do backup, consuming processor time.
+
+  - Blocked : When a thread do IO operation, it has to wait until that operation
+              is compelete. goes to blocked state, cannot use processor even if one is available.
+
+  - Terminated : When it successfully completes its task, or cus of an error.
+
+!! OS has also ready state between new and runnable state of the JVM. 
+But it hides this details from JVM, and JVM just sees them as runnable state.
+New state - ready state (dispatching the thread->) runnable state(running)
+
+preemptie scheduling: when a higher-priority thread comes in, OS takes out the running thread.
+Such operation could cause 'starvation'.
+'aging' technique solves the problem.
+
+## Executer Framework
+- Runnable Interface : just contains the run method. (java.lang)
+  public abstract void run();
+
+- Callable Interface : just contains the call method. (java.util.concurrent)
+  - returns result, difference from Runnable
+  - may throw exception if cannot compute the result
+  V call() throws Exception;
+
+- Executor Interface :  just contains the execute method. (java.util.concurrent)
+  void execute(Runnable command);
+
+- an executor object executes Runnables. An Executer does this by creating and
+managing a group of threads called 'thread pool'.
+
+- Advantage : Executors can reuse existing threads to eliminate the overhead
+of creating a new thread for each task, and can improve performance 
+by optimizing the number of threads to ensure that the processor stays busy, 
+without creating so many threads that the application runs out of resources.
+
+## Thread Synchronization
+When multiple threads share an object and it's modified by one or more of them
+indeterminate results may occur unless access to the shared object is managed 
+properly.
+
+Above problem can be solved by giving only one thread at a time 'exclusive access'
+to the code that manipulates the shared object. During that time other threads
+desiring to manipulate the object are kept waiting.
+When the thread with exclusive access finishes manipulating the shared object,
+other waiting object are allowed to process. This is called 'thread synchronization'.
+Thread synchronization coordinates access to shared data by multiple concurrent threads.
+
+By synchronizing threads in this manner, you can unsure that each thread accessing
+a shared object excludes all other threads from doing so simultaneously.
+This is called 'mutual exclusion'.
+
+# Monitors
+A common way to perform synchronization is to use Java's built-in 'monitors'.
+Every object has a monitor and a monitor lock(or intrinsic lock).
+The monitor ensure that its object's monitor lock is held by a maximum of only
+one thread at a time.
+Monitor and monitor lock can thus be used to enforce mutual exclusion.
+
+If a thread has the monitor lock, the others thread must wait, and check if
+they can acquire the monitor lock. 
+
+To specify that a thread must hold a monitor lock to execute a block of code, 
+the code should be palced in a 'synchronized' statement. 
+Such code is said to be guarded by the monitor lock.
+
+synchronized(object){
+  statements;
+}
+
+Where ibject is the object whose monitor lock will be acquired, object is normally
+'this' if it's the object in which the synchronized statement appears.
+
+!! One of the challenges of multithreaded programming is spotting the errors.
+They may occure so infrequently that a broken program does not produce incorrect
+result during testing, creating the illusion that the program is correct.
+
+!! In real life : 
+I/O should not be performed in synchronized blocks, because it's important
+to minimize the amount of time that an object is 'locked'. 
+Also never call sleep on a thread in synchronized blocks. 
+
+!! Always declare data fields that you not expect to change as 'final'.
+Primitie variable that are declared as final can safely be shared across threads.
+An object reference that's declared as final ensures that the object it refers
+to will be fully constructed and initialized before it's used by the program,
+and prevents the reference from pointing to another object.
+
+## Producer/Consumer Relationship without Synchronization
+Producer : generates data and stores it in a shared object
+Consumer : reads data from the shared object.
+
+Examples : Printer. Producer : generates pages/documents to be printed, stores on disk
+                    Consumer : printer prints these documentes when it is available
+
+           DVD.     Producer : puts the data in a fixed-size buffer
+                    Consumer : burns the data in the buffer to the DVD.
+
+This relationship is 'state dependent'. The operations should proceed only if
+the buffer is in the correct state. 
+If the buffer is in a not-full state, the producer may produce,
+If the buffer is in a not-empty state, the consumer may consume.
+

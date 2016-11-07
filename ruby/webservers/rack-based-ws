@@ -1,0 +1,48 @@
+https://www.digitalocean.com/community/tutorials/a-comparison-of-rack-web-servers-for-ruby-web-applications
+# A comparasion of Rack based Web Servers
+
+## Rack
+applications developed using Ruby can be exposed to the WWW through one of the many
+available web servers. There is one thing in common these servers share:
+a way (an interface) to talk with your application called 'Rack'.
+
+A modular Ruby webserver interface
+
+Rack is not only a specification but a middleware application as well.
+
+Rack middleware, implementing the 'Rack specification', works by dividing incoming
+HTTP requests into different pipelined stages and handles them in pieces
+until it sends back a response coming from your web application(controller).
+
+It has two distinct components: a Handler and an Adapter, used for communicating
+with web servers and applications(frameworks) respectively.
+
+## Web Servers
+
+### Phusion Passenger: Fast web server & app server
+Passenger is a little unique, In "standalone mode," it can act just like an app server.
+But it can also be built right into a web server,
+so there wont be need for a separate app server to run Rails apps.
+This can be really convenient, especially if there are plans for running a bunch of apps
+and dont want to spend time setting up an app server for each one.
+
+Passenger today has become the recommended server for RoR applications.
+
+Passenger provides the ability to work with 'multiple' applications hosted on the same server.
+
+### Puma: A Modern, Concurrent Web Server for Ruby
+Puma is a Rack exclusive Ruby web application serser.
+
+Puma has quite a small foot print, both in size and execution resources comsumption.
+
+### Thin: Tiny, Fast, & Funny HTTP Server
+Thin is a very popular application server which claims itself to be the most
+'secure, stable, fast and extensivle Ruby web server'.
+
+Being an Event/Machine based application server, Thin is capable of handling long running
+requests unlike some other choices without the help of a front facing reverse-proxy solution.
+
+### Unicorn: Rack HTTP Server for Fast Clients and Unix
+Unicors is a very mature web application server.
+
+It is fully-featured, however, it denies by design trying to do everything.

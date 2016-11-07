@@ -1,0 +1,10 @@
+- Only one SparkContext may be active per JVM.
+  You must the stop() the active one before creating a new one.
+
+- When running on a cluster, you wont want to hardcode 'master' in the program,
+  but rather launch the application with 'spark-submit'.
+
+- sc.parallelize(data)
+
+- sc.textFile(<PATH>); 
+  Path can be local file path or storage source supported by Hadoop

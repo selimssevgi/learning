@@ -1,0 +1,24 @@
+# Better resource utilization
+5 seconds reading file A
+2 seconds processing file A
+5 seconds reading file B
+2 seconds processing file B
+-----------------------
+14 seconds total
+
+!! CPU is idle during IO, so we can take advantage of that !!
+
+5 seconds reading file A
+5 seconds reading file B + 2 seconds processing file A
+2 seconds processing file B
+-----------------------
+12 seconds total
+
+# Simpler program design in some situations
+Handling each file in its own thread is easier to do it in order. During IO
+other threads can use the cpu time.
+
+# More responsive programs
+A server can listen for incoming request, if it was singlethread, it had to wait
+until request is processed. However, if the processing is done on another thread
+server can be responsive and keep listening for incoming requests.

@@ -1,0 +1,28 @@
+## Parallel Workers Model
+
+           |- Worker
+Delegator --- Worker 
+           |- Worker
+
+If the parallel worker model was implemented in a car factory, each car would be
+produced by one worker. The worker would get the specification of the car to build,
+and would build everything from start to end.
+
+!! Utilities in java.util.concurrent are designed for use with this model.
+
+### Advantages
+- Easir to understand
+- Add more workers to increase parallelization of the application
+- web crawler, IO instensive add more worker to keep CPU busy
+
+### Disadvantages
+- Shared resources is a big problems. Need to be sure data retrieve is fresh.
+- If threads wait for accessing shared resources, some of the parallelization would be lost.
+- Above problem could be solved with non-blocking algorithms, but they are hard to implement.
+- Linked list are not a good way to store data, as they are spread on the computer memory
+  a list implemented using array is much better for current CPU, as array is sequential data.
+- If a worker is stateless, and doesnt keep state internally but re-reading data every time can make it slow.
+- Job ordering is nondeterministic. Even a job given before another one, doesnt mean it is executed first.
+  It makes it hard to reason about the state of the system at any given point in time.
+
+!! If your jobs are naturally parallel, independent and with no shared state necessary

@@ -1,0 +1,37 @@
+#TODO: session name could be parameterized
+
+# create the session if is already not running
+tmux has-session -t development
+if [ $? != 0 ]
+then
+  # create a session named development
+  # also a window named editor
+  # in the background
+  tmux new-session -s development -n editor -d
+
+  # change dir in the session
+  # C-m sends carriage return
+  tmux send-keys -t development 'cd devproject' C-m
+
+  # open vim
+  tmux send-keys -t development 'vim' C-m
+
+  # split the main editor window
+  # to have a small terminal window at the bottom
+  tmux split-window -v -t development
+
+  # select one of the default tmux layouts
+  tmux select-layout -t development main-horizontal
+
+  # send command to a pane
+  # [session]:[window].pane
+  tmux send-keys -t development:1.2 'cd devproject' C-m
+
+  # creating a new window and sending a command
+  tmux new-window -n console -t development
+  tmux send-keys -t development:2 'cd devproject' C-m
+
+  # show first window on start
+  tmux select-window -t development:1
+fi
+tmux attach -t development

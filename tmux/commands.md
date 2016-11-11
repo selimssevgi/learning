@@ -29,6 +29,9 @@ $ tmux attach # if there is only one session
 # to end/kill a session
 $ tmux kill-session -t 0
 
+# start tmux with a different conf file
+$ tmux -f app.conf attach
+
 # tmux version
 $ tmux -V
 ```

@@ -1,0 +1,32 @@
+# Behaviors of Keys with CTRL
+* get help(default normal mode) for each combination :help CTRL-A
+- :help i_CTRL-H (help for insert mode)
+- no need to hold shift key, a or A are same.
+
+- C^A -> add one to the number under the cursor
+- C^B -> move one page backward at a time
+- C^C -> change mode. acts like <ESC>
+- C^D -> scroll half of the window Down
+- C^E -> scroll the window one line down
+- C^F -> move one page forward at a time
+- C^G -> show your location in the file and the file status at the bottom
+- C^H ->
+- C^I -> go forward location in the file, opposite of C^O
+- C^J -> |:help| means a hyperling, between the bars, ctrl+j jumps you to indicated subject.
+- C^K ->
+- C^L ->
+- C^M ->
+- C^N -> completion of the word being typed
+- C^O -> go back where u came from, opposite of C^I
+- C^P -> prev auto-complete list
+- C^Q ->
+- C^R -> undo the undo
+- C^S ->
+- C^T -> after ctrl-j jumpes, you can go back by ctrl-t, pop tag
+- C^U -> scroll half of the window Up
+- C^V -> visual selection blockwise
+- C^W -> double, ctrl-w ctrl-w jumps between windows.
+- C^X -> subsract one from the number under the cursor, opposite of C^A
+- C^Y -> scroll the window one line up
+- C^Z -> suspend the vim
+

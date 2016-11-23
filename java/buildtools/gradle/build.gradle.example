@@ -1,0 +1,25 @@
+group 'com.selimssevgi.gradle'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'hello.HelloWorld'
+
+
+repositories {
+  mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+  compile "joda-time:joda-time:2.2"
+  testCompile "junit:junit:4.12"
+}
+
+jar {
+  baseName = 'hw'
+  version = '0.1.0'
+}

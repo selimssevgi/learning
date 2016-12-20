@@ -1,0 +1,2058 @@
+# java.lang Package Notes
+
+- Introduction
+- Object Class
+- String Class
+- StringBuffer Class
+- StringBuilder Class
+- Wrapper Classes
+- Autoboxing & Autounboxing
+
+## Introduction
+For writing any java program whether it is simple or complex, the most commonly
+required classes and interfaces are grouped into a separate package which is
+nothing but java.lang package.
+
+We are not required to import java.lang package explicitly because all classes
+and interfaces present in lang package are by default available for every java
+program.
+
+## java.lang.Object Class
+The most commonly required methods for every java class(whether it is predefined
+or customized class) are defined in a separate class which is nothing but Object
+class.
+
+Every class in java is a child class of Object either directly or indirectly. So
+that Object class methods are by default available to every java class. Hence
+Object class is considered as root of all java classes.
+
+**NOT:**
+- If our class does not extend any other class, then only our class is
+the direct child class of Object.
+
+```java
+public class A {
+
+}
+```
+
+- If our class exnteds any other class, then our class is indirect child class of
+Object.
+
+```java
+public class A exteds B {
+
+}
+```
+
+WRONG: A extends B, A extends Object -> Multiple Inherintance
+
+CORRECT: A extends B, B extends Object -> Multi-level Inherintance
+
+**Conclusion:**
+Either directly or indirectly Java wont provide support for multiple
+inherintance with the respected to classes.
+
+### Object Class Methods
+Object class defines the following 11 methods.
+
+- public String toString()
+- public native int hashCode()
+- public boolean equals(Object o)
+- protected native Object clone() throws CloneNotSupportedException
+- protected void finalize() throws Throwable
+- public final Class getClass()
+- public final void wait() throws InterruptedException
+- public final native void wait(long ms) throws InterruptedException
+- public final void wait(long ms, int ns) throws InterruptedException
+- public native final void notify()
+- public native final void notifyAll()
+
+**NOT:** Strictly speaking Object class contains 12 methods, the extra method is
+registerNatives. This method is internally required for Object class, and not
+available for child classes. Hence we are not required to considered this
+method.
+
+- private static native void registerNatives();
+
+```java
+import java.lang.reflect.*;
+public class Test {
+  public static void main(String[] args) throws Exception {
+    int count = 0;
+    Class class = Class.forName("java.lang.Object");
+    Method[] methods = class.getDeclaredMethods();
+    for(Method method : methods) {
+      count++;
+      System.out.println(method.getName());
+    }
+    System.out.println("# of method in Object class: " + count);
+  }
+}
+```
+
+#### toString()
+We can use toString method to get String representation of an Object. Whenever
+we are trying to print Object reference internally toString method will be
+called.
+
+```java
+Student s = new Student();
+System.out.println(s); // internally sout(s.toString());
+```
+
+If our class does not contain toString method, then Object class toString method
+will be executed.
+
+```java
+public class Student {
+  String name;
+  int rollno;
+
+  public Student(String name, int rollno) {
+    this.name = name;
+    this.rollno = rollno;
+  }
+
+  public static void main(String[] args) {
+    Student s1 = new Student("Durga", 101);
+    Student s2 = new Student("Ravi", 102);
+    System.out.println(s1); // Student@[somehex]
+    System.out.println(s1.toString()); // Student@[samehexwithabove]
+    System.out.println(s2); // Student@[someotherhex]
+  }
+}
+```
+
+In the above example, Object class toString method got executed, which is
+implemented as follows:
+
+```java
+// Object class toString method
+public String toString() {
+  return getClass.getName() + "@" + Integer.toHexString(hashCode());
+}
+```
+
+Based on our requirement we can override toString method to provide our own
+string representation. For example, whenever we are trying to student object
+reference to print his name and rollno, we have to override toString method as
+follows:
+
+```java
+public class Student {
+  String name;
+  int rollno;
+
+  public Student(String name, int rollno) {
+    this.name = name;
+    this.rollno = rollno;
+  }
+
+  @Override
+  public String toString() {
+    return "This is student with name: " + name + " and rollno: " + rollno
+  }
+
+  public static void main(String[] args) {
+    Student s1 = new Student("Durga", 101);
+    Student s2 = new Student("Ravi", 102);
+    System.out.println(s1); //
+    System.out.println(s1.toString());
+    System.out.println(s2); //
+  }
+}
+```
+
+In all wrapper classes, collection classes, String class, StringBuffer and
+StringBuilder classes, toString method is overridden for meaningful string
+representation. Hence it is highly recommended to override toString method in
+our class also.
+
+### hashCode() Method
+For every object a unique number is generated by JVM which is nothing but
+hashcode. Hashcode wont represent the address of object. JVM will use hashcode
+while saving objects into hashing related data structures like hashtable,
+hashmap, hashset etc. The main advantage of saving objects based on hashcode
+is search operation will become easy(the most powerful search algorithm up to
+today is hashing.)
+
+If we are giving the chance to object class hashcode method, it will generate
+hashcode based on the address of the object. It doesnt mean hashcode represent
+the address of the object. Based on our requirement, we can override hashcode
+method to generate our own hashcode.
+
+Overridding hashcode method is said to be proper if only if for every object we
+have to generate a unique number as hashcode.
+
+```java
+// improper way
+public int hashCode() {
+  return 100;
+}
+```
+
+Above is improper way of writing hashcode method, because for all object we are
+generating same number as hashcode.
+
+```java
+// proper way
+public int hashCode() {
+  return rollno;
+}
+```
+
+Above is proper way of writing hashcode method, because we are generating a
+different number as hashcode for every object.
+
+#### toString vs hashCode
+- If we are giving the chance to object class toString method, it will
+  internally call hashCode method.
+- If we are overridding toString method, then our toString method may not call
+  hashCode method.
+
+```java
+public class Test {
+  int i;
+
+  public Test(int i) {
+    this.i = i;
+  }
+
+  public static void main(String[] args) {
+    Test t1 = new Test(10);
+    Test t2 = new Test(100);
+    System.out.println(t1); // Test@somehexnumber
+    System.out.println(t2); // Test@somehexnumber
+  }
+}
+```
+
+== Object.toString() => Object.hashCode()
+
+```java
+public class Test {
+  int i;
+
+  public Test(int i) {
+    this.i = i;
+  }
+
+  public int hashCode() {
+    return i;
+  }
+
+  public static void main(String[] args) {
+    Test t1 = new Test(10);
+    Test t2 = new Test(100);
+    System.out.println(t1); // Test@a
+    System.out.println(t2); // Test@64
+  }
+}
+```
+
+== Object.toString() => Test.hashCode()
+
+```java
+public class Test {
+  int i;
+
+  public Test(int i) {
+    this.i = i;
+  }
+
+  public int hashCode() {
+    return i;
+  }
+
+  public String toString() {
+    return i + "" ;
+  }
+
+  public static void main(String[] args) {
+    Test t1 = new Test(10);
+    Test t2 = new Test(100);
+    System.out.println(t1); // 10
+    System.out.println(t2); // 100
+  }
+}
+```
+
+== Test.toString()
+
+### equals() Method: public boolean equals(Object obj)
+We can use equals method to check equality of two objects. If our class does not
+contain equals method, then Object class equals method will executed.
+
+```java
+public class Student {
+  String name;
+  int rollno;
+
+  public Student(String name, int rollno) {
+    this.name = name;
+    this.rollno = rollno;
+  }
+
+  public static void main(String[] args) {
+    Student s1 = new Student("Durga", 101);
+    Student s2 = new Student("Ravi", 102);
+    Student s3 = new Student("Durga", 101);
+    Student s4 = s1;
+    System.out.println(s1.equals(s2)); // false
+    System.out.println(s1.equals(s3)); // false
+    System.out.println(s1.equals(s4)); // true
+  }
+}
+```
+
+In the above example Object class equals method got executed, which is meant for
+reference comparison(address) that is if two references are pointing to the same
+object, then only equals method returns true.
+
+Based on our requirement we can override equals method for content comparision.
+
+While overridding equals method for content comparision, we have to take care
+about the following:
+
+- What is the meaning of equality(that is whether we have to check only names or
+  only rollno or both)?
+- If we are passing different type of object, our equals method should not rise
+  ClassCastException. That we have to handle CCE to return false.
+- If we are passing null argument, then our equals method should not rise NPE.
+  That is we have to handle NPE to return false.
+
+The following is a proper way of overriding equals method for Student class for
+content comparison.
+
+```java
+public class Student {
+  String name;
+  int rollno;
+
+  public Student(String name, int rollno) {
+    this.name = name;
+    this.rollno = rollno;
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    try{
+      String name1 = this.name;
+      int rollno1  = this.rollno;
+      // What if o is an object of another class, not Student?
+      // what if o is null?
+      // o instanceof Student
+      Student s    = (Student) obj; // if o is String, RE: CCE
+      String name2 = s.name; // if o is null, RE: NPE
+      int rollno2  = s.rollno;
+
+      return name1.equals(name2) && rollno1 = rollno2;
+    } catch(ClassCastException e) { return false; }
+    } catch(NullPointerException e) { return false; }
+  }
+
+  public static void main(String[] args) {
+    Student s1 = new Student("Durga", 101);
+    Student s2 = new Student("Ravi", 102);
+    Student s3 = new Student("Durga", 101);
+    Student s4 = s1;
+    System.out.println(s1.equals(s2)); // false
+    System.out.println(s1.equals(s3)); // true
+    System.out.println(s1.equals(s4)); // true
+    System.out.println(s1.equals("durga")); // false
+    System.out.println(s1.equals(null)); // false
+  }
+}
+```
+**NOT:** To make equals method more efficient we have to add this == obj line to
+method. According to this, if both references pointing to the same object, then
+without performing any comparison that equals method returns true directly.
+
+```java
+@Override
+public boolean equals(Object obj) {
+  if (this == obj)
+    return true; // increase performance
+
+  if (obj instanceof Student) { // null returns false
+    Student s = (Student) obj;
+    return name.equals(s.name) && rollno == s.rollno;
+  } else {
+    return false;
+  }
+}
+```
+
+##### Question
+
+```java
+String s1 = new String("durga");
+String s2 = new String("durga");
+System.out.println(s1 == s2); // false
+System.out.println(s1.equals(s2)); // true
+
+StringBuffer sb1 = new StringBuffer("durga");
+StringBuffer sb2 = new StringBuffer("durga");
+System.out.println(sb1 == sb2); // false
+System.out.println(sb1.equals(sb2)); // false. It doesnt provide equals for
+content comparison.
+```
+
+In String class .equals method is overridden for content comparison. Hence, even
+though objects are different if the content is same, then .equals method returns
+true.
+
+In StringBuffer .equals method is not overriddent for content comparison. Hence,
+if objects are different, .equals method returns false, even content is the
+same.
+
+### getClass() Method
+We can use getClass method to get runtime class definition of an object.
+
+- public final Class getClass()
+
+By using this Class class object we can access class level properties like fully
+qualified class name, methods informations, constructors information etc.
+
+To display database vendor specific connection interface implemented class name:
+
+```java
+Connection conn = DriverManager.getConnection(...);
+System.out.println(conn.getClass.getName());
+```
+
+**NOT:** After loading every .class file, JVM will create an object of type
+java.lang.Class in the heap area. Programmer can use this class object to get
+class level information.
+
+**NOT:** We can use getClass method frequently in reflections. java.lang.reflect
+
+### finalize() Method
+Just before destroying object, GC call finalize method to perform cleanup
+activities. Once finalize method completes, GC destroyes that object.
+
+### wait(), notify(), notifyAll() Methods
+We can use these methods for inter-thread communication. Thread which is
+expecting updation is responsible to call wait method, then thread will
+immediately enter into waiting state. Thread which is responsible to perform
+updation, after performing updation, thread can call notify method. Waiting
+thread will get that notification and contunie with its execution with those
+updates.
+
+## java.lang.String Class
+
+
+### Case 1
+### Mutability vs Immutability
+
+Once we create a String object, we cannot perform any chances in the existing
+object. If we are trying to perform any change, with those changes a new object
+will be created. This non-changable behaviour is nothing but immutability of
+String object.
+
+Once we create a StringBuffer object, we can perform any change in the existing
+object. This changable behaviour is nothing but mutability of StringBuffer
+object.
+
+```java
+String s = new String("durga");
+s.concat("software"); // returns new String object
+System.out.println(s); // durga
+
+StringBuffer sb = new StringBuffer("durga");
+sb.append("software");
+System.out.println(sb); // durgasoftware
+```
+
+**NOT:** The difference between String and StringBuffer is that String is
+immutable and StringBuffer is mutable.
+
+### Case 2
+In String class .equals method is overridden for content comparison, hence even
+though the objects are different if the contents are same, .equals method
+returns true.
+
+In StringBuffer class .equals method is NOT overridden for content comparison.
+Hence object class .equals method get eecuted, which is meant for reference
+comparison(address). Due to this, if objects are different, .equals returns
+false even though contents are same.
+
+```java
+String s1 = new String("durga");
+String s2 = new String("durga");
+System.out.println(s1 == s2); // false
+System.out.println(s1.equals(s2)); // true
+
+StringBuffer sb1 = new StringBuffer("durga");
+StringBuffer sb2 = new StringBuffer("durga");
+System.out.println(sb1 == sb2); // false
+System.out.println(sb1.equals(sb2)); // false
+```
+
+### Case 3
+
+```
+String s = new String("durga");
+```
+
+In the above case two objects will be created, one is in the heap area and the
+other one is in the scp(string constant pool). And s is always pointing to the
+heap object.
+
+```
+String s = "durga";
+```
+
+In the abo case, only one object will be created in scp, and s is always
+pointing to that object.
+
+**NOT:** Object creation in SCP is optional. First JVM will check if there is
+any object already present in SCP with required content. If object is already
+present, then existing object will be reused. If object is not already avaiable,
+then only a new object will be created. But this rule is applicable only for SCP
+not for heap.
+
+**NOT:** GC is not allowed to access SPC area. Hence even though object doesnt contain
+reference variable, it is not eligible for GC If it is present.
+
+All SCP objects will be destroyed automatically at the time of JVM shutdown.
+
+###### Example 2
+```
+String s1 = new String("durga"); // one object in heap, one is scp
+String s2 = new String("durga"); // one object in heap, already in scp
+String s3 = "durga"; // already in scp, reference that one
+String s4 = "durga"; // already in scp, reference that one
+```
+
+**NOT:** Whenever we are using 'new' operator, compalsary a new object will be
+created in the heap area. Hence, there may be a chance of existing two objects
+with the same content in the heap area but not in scp. That is duplicate objects
+are possible in the heap area but not in SCP.
+
+###### Example 3
+```
+String s1 = new String("durga"); // one in the heap, one is scp
+s1.concat("software"); // one in heap, one in scp
+String s2 = s1.concat("solutions"); // one in heap, one in scp
+s1 = s1.concat("soft"); // one in heap, one in scp
+System.out.println(s1); // durgasoft
+System.out.println(s2); // durgasolution
+```
+
+For every string constant one object will placed in SCP area.
+("durga", "software", "solutions", "soft")
+
+Because of some runtime operations if an object is required to be created, then
+that object will be placed only in the heap area but not in the SCP area.
+(s1.concat("software")==> "durgasoftware", s1.concat("solutions")=>>
+"durgasolution", s1.concat("soft")==> "durgasoft")
+
+### Constructors of String Class
+
+```
+// creates an empty string
+String s = new String(); // empty string
+String s = ""; // empty string. zero length
+
+// creates a string object in the heap for the given string literal
+String s = new String("durga"); // "durga": string literal
+
+// creates equivalent for the given string buffer
+String s = new String(StringBuffer sb);
+
+// creates equivalent a string object for the given char array
+String s = new String(char[] ch);
+char[] ch = {'a', 'b', 'c', 'd'};
+String s = new String(ch);
+System.out.println(s); // abcd
+
+// creates equivalent string object for the given byte array
+String s = new String(byte[] b);
+byte[] b = {100, 101, 102, 103}; // 'a' -> 97
+String s = new String(b);
+System.out.println(s); // defg
+```
+
+
+### Important Methods of String Class
+
+- public char charAt(int index);
+
+Returns the character locating at the specified location.
+
+```java
+String s = "durga";
+System.out.println(s.charAt(3)); // g
+System.out.println(s.charAt(30)); // RE: StringIndexOutOfBoundsExceptions
+```
+
+- public String concat(String s)
+
+The overloaded + and += operators also meant for concatenation purpose only.
+
+```java
+String s = "durga";
+s = s.concat("software");
+// s = s + "software";
+// s += "software";
+System.out.println(s); // durgasoftware
+```
+
+- public boolean equals(String s)
+
+To perform content comparison where case is important.
+
+- public boolean equalsIgnoreCase(String s)
+
+To perform content comparison where case is not important.
+
+```java
+String s = "java";
+System.out.println(s.equals("JAVA")); // false
+System.out.println(s.equalsIgnoreCase("JAVA")); // true
+```
+
+**NOTE:** In general we can use .equalsIgnoreCase method to validate usernames, where case
+is not important. Whereas we can use equals methods to validate password, where
+case is important.
+
+- public String substring(int begin)
+
+returns substring from begin index to end of the string.
+
+- public String substring(int begin, int end)
+
+returns substring from begin index to end-1 index
+
+```java
+String s = "abcdefg";
+System.out.println(s.substring(3)); // defg
+System.out.println(s.substring(2,6)); // cdef
+```
+
+- public int length()
+
+returns the number of characters present in the string
+
+```java
+String s = "durga";
+System.out.println(s.length); // CE: cannot find symbol. s: variable length
+System.out.println(s.length()); // 5
+```
+
+**NOTE:** length variable applicable for arrays but not for String object,
+whereas length() applicable for String objects, but not for arrays.
+
+- public String replace(char oldCh, char newCh)
+
+replaces every oldCh with the newCh
+
+```java
+String s = "ababa";
+System.out.println(s.replace('a', 'b')); // bbbbb
+```
+
+- public String toLowerCase()
+
+returns this if there is no change
+
+- public String toUpperCase()
+
+returns this if there is no change
+
+- public String trim()
+
+To remove blank spaces present at the beginning and at the end of String but not
+middle blank spaces.
+
+- public int indexOf(char ch)
+
+returns index of first occurrence of specified character
+
+- public int lastIndexOf(char ch)
+
+returns index of last occurrence of specified character
+
+```java
+String s = "ababa";
+System.out.println(s.indexOf('a')); // 0
+System.out.println(s.lastIndexOf('a')); // 4
+```
+
+Because of runtime operation if there is a chance in the content, then with
+those changes a new object will be created in the heap. If there is no change in
+the content, then existing object will be reused, and a new object wont be
+created. Whether the object present in the heap or scp, the rule is same.
+
+```java
+String s1 = new String("durga"); // "durga" in heap and scp
+s2 = s1.toUpperCase(); // "durga" -> "DURGA", chagne create in heap, runtime no scp
+s3 = s1.toLowerCase(); // "durga" -> "durga", no change on string, reuse from heap
+s4 = s2.toLowerCase(); // "DURGA" -> "durga", change create in heap
+s5 = s4.toUpperCase(); // "durga" -> "DURGA", cahgge, create in heap
+System.out.println(s1 == s2); // false
+System.out.println(s1 == s3); // true
+```
+
+```java
+String s1 = "durga"; // "durga" in scp
+String s2 = s1.toString(); // reuse of "durga" in scp
+System.out.println(s1 == s2); // true
+String s3 = s1.toLowerCase(); // durga -> durga, no change reuse from scp
+String s4 = s1.toUpperCase(); // durga -> DURGA, change, create in heap
+String s5 = s4.toLowerCase(); // DURGA -> durga, change, create in heap
+```
+
+#### How to Create Our own Immutable Class
+Once we create an object, we cannot perform any perform in that object. If we
+are trying to perform any change and if there is a change in the content, then
+with the those changes a new object will be created. If there is no change in
+the content, then existing object will be reused. This behaviour is nothing but
+immutability.
+
+```java
+String s1 = new String("durga");
+String s2 = s1.toUpperCase(); // durga -> DURGA, change, create new object
+String s3 = s1.toLowerCase(); // durga -> durga, no change reuse existing one
+System.out.println(s1 == s3); // true
+```
+
+We can create our own immutable class.
+
+```java
+public final class Test {
+  private int i;
+
+  public Test(int i) {
+    this.i = i;
+  }
+
+  public Test modify(int i) {
+    if (this.i == i) {
+      return this;
+    } else {
+      return new Test(i);
+    }
+  }
+
+  public static void main(String[] args) {
+    Test t1 = new Test(10); // create a new object
+    Test t2 = t1.modify(100); // return a new object
+    Test t3 = t1.modify(10); // reuse existing object
+    System.out.println(t1 == t2); // false
+    System.out.println(t1 == t3); // true
+  }
+}
+```
+
+Once we create a Test object, we cannot perform any change in the existing
+object. If we are trying to perform any change and if there is a change in the
+content, then with those changes a new object will be created. If there is no
+cahnge in content, then existing object will be reused.
+
+Test class has to be final, so noone will override over methods that gives
+immutability to our class.
+
+#### final vs immutability
+final applicable for variables but not for object, whereas immutability
+applicable for objects but not for variables.
+
+By declaring a reference variable as final, we wont get any immutability nature.
+Even though reference variable is final,
+we can perform any type of change in the corresponding object.
+But we cannot perform reassigment for that variable.
+
+Hence final and immutability are both are difference concept.
+
+```java
+final StringBuffer sb = new StringBuffer("durga");
+sb.append("software");
+System.out.println(sb); // durgasoftware
+sb = new StringBuffer("solutions"); // CE: cannot assign a value to final variable sb
+```
+
+###### Question
+Which of the following are meaningful?
+
+- final variable      // valid
+- immutable variable  // invalid
+- final object        // invalid
+- immutable object    // valid
+
+## StringBuffer Class
+If the content is fixed, and will not change frequently, then it is recommended
+to go for String.
+
+If the content is not fixed, and keep on changing, then it is not recommended to
+use a String. Because for every change a new object will be created, which
+affects the performance of the system. To handle this requirement, we should go
+for StringBuffer.
+
+The main advantage of StringBuffer over String is all required changes will be
+performed in the existing object only.
+
+### Constructors of StringBuffer
+
+- StringBuffer()
+
+```java
+// default initial capacity 16
+// newCapacity = (currentCapacity + 1) * 2; // 34, 70
+StringBuffer sb = new StringBuffer();
+System.out.println(sb.capacity()); // 16
+sb.append("abcdefghijklmnop");
+System.out.println(sb.capacity()); // 16
+sb.append("q");
+System.out.println(sb.capacity()); // 34
+```
+
+Creates an empty StringBuffer object with the default initial capacity 16. Once
+StringBuffer reaches its max capacity, a new StringBuffer object will be created
+as follows:
+
+newCapacity = (currentCapacity + 1) * 2; // 34, 70
+
+- StringBuffer(int initialcapacity)
+
+```java
+StringBuffer sb = new StringBuffer(1000);
+```
+
+Creates an empty StringBuffer object with the specified initial capacity.
+
+- StringBuffer(String str)
+
+```java
+StringBuffer sb = new StringBuffer("durga");
+System.out.println(sb.capacity()); // 5 + 16 = 21
+```
+
+Creates an equivalent StringBuffer for the given string with the capacity equals
+to : capacity = str.length() + 16;
+
+### Important Methods of StringBuffer
+
+- public int length()
+- public int capacity()
+- public char charAt(int index)
+
+
+```java
+StringBuffer sb = new StringBuffer("durga");
+System.out.println(sb.charAt(3)); // g
+System.out.println(sb.charAt(30)); // RE: StringIndexOutOfBoundsException
+```
+
+- public void setCharAt(int index, char ch)
+
+To replace the character located at the specified index with provided character.
+
+- public StringBuffer append(String s)
+- public StringBuffer append(int i)
+- public StringBuffer append(double d)
+- public StringBuffer append(boolean b)
+
+```java
+StringBuffer sb = new StringBuffer();
+sb.append("PI value is: ");
+sb.append(3.14);
+sb.append(" It is exactly : ");
+sb.append(true);
+System.out.println(sb); // PI value is: 3.14 It is exactly : true
+System.out.println(sb.charAt(3)); // g
+System.out.println(sb.charAt(30)); // RE: StringIndexOutOfBoundsException
+```
+
+- public StringBuffer insert(int index, String s)
+- public StringBuffer insert(int index, int i)
+- public StringBuffer insert(int index, double d)
+- public StringBuffer insert(int index, char ch)
+- public StringBuffer insert(int index, boolean b)
+
+```java
+StringBuffer sb = new StringBuffer("abcdefgh");
+sb.insert(2, "xyz");
+System.out.println(sb); // abxyzcdefgh
+```
+
+- public StringBuffer delete(int begin, int end)
+
+To delete characters located from begin index to end-1 index
+
+- public StringBuffer deleteCharAt(int index)
+
+To delete the character located at the specified index
+
+- public StringBuffer reverse()
+
+```java
+StringBuffer sb = new StringBuffer("durga");
+sb.reverse();
+System.out.println(sb); // agrud
+```
+
+- public void setLength(int length)
+
+```java
+StringBuffer sb = new StringBuffer("aiswaryaabhi");
+sb.setLength(8);
+System.out.println(sb); // aiswarya
+```
+
+- public void ensureCapacity(int capacity)
+
+To increase capacity on fly based on our requirement
+
+```java
+StringBuffer sb = new StringBuffer();
+sb.setLength(sb.capacity()); // 16
+sb.ensureCapacity(1000);
+sb.setLength(sb.capacity()); // 1000
+```
+
+- public void trimToSize()
+
+Tol deallocate extra allocated free memory
+
+```java
+StringBuffer sb = new StringBuffer(1000);
+sb.append("abc");
+sb.trimToSize();
+System.out.println(sb.capacity()); // 3
+```
+
+## StringBuilder Class
+Every method present in StringBuffer is synchronized, and hence only one thread
+is allowed to operate which may create performance problems. To handle this
+requirement, Sun people introduced StringBuilder concept in 1.5V.
+
+StringBuilder is exactly same as StringBuffer except the following differences:
+
+StringBuffer | StringBuilder
+-------------|---------------
+synchronized | non-synchronized
+thread-safe | not thread-safe
+performance low | performance high
+1.0V | 1.5V
+
+- Every method present in StringBuffer is synchronized. Every method present in
+  StringBuilder is non-synchronized.
+
+- At a time only one thread is allowed to operate on StringBuffer object, hence
+  StringBuffer object is thread-safe. At a time multiple threads are allowed to
+  operate on StringBuilder object, hence StringBuilder object is NOT thread-safe.
+
+- Threads are required to wait to operate on StringBuffer object, hence
+  relatively performance is low. Threads are not required to wait to operate on
+  StringBuilder object, hence relatively performance is high.
+
+**NOTE:** Except the above differences everything is the same in StringBuffer
+and StringBuilder.(including methods and constructors)
+
+#### String vs StringBuffer vs StringBuilder
+- If the content is fixed, and wont change frequently then we should go for
+  String.
+
+- If the content is not fixed, and keep on changing but thread-safety required.
+  Then we should go for StringBuffer
+
+- If the content is not fixed, and keep on changing but thread-safety is not
+  required. Then we should go for StringBuilder.
+
+##### Method Chaining
+For most of the methods in String, StringBuffer and StringBuilder returs type
+are same type, hence after applying a method on the result we can call another
+method, which forms method chaining.
+
+sb.m1().m2().m4().m5();
+
+In method chaining method calls will be executed from left to right.
+
+```java
+StringBuffer sb = new StringBuffer("durga");
+sb.append("software").append("solutions").insert(2,
+"xyz").reverse().delete(2,5);
+System.out.println(sb);
+```
+
+## Wrapper Classes
+The main objectives wrapper classes are :
+
+- To wrap primitive into object form so that we can handle primitives also just
+  like objects.
+
+- To define several utility methods which are required for primitives.
+
+### Constructors
+Almost all wrapper classes contains two constructors:
+- One can take corresponding primitive as argument
+- Other can take string as argument
+
+```java
+Integer I = new Integer(10);
+Integer I = new Integer("10");
+
+Double D = new Double(10.5);
+Double D = new Double("10.5");
+```
+
+If the string argument is not representing a number, then we will get runtime
+Exception saying NumberFormatException.
+
+```java
+Integer I = new Integer("ten"); // RE: NumberFormatException
+```
+
+Float class contains three constructors with float, double and string arguments.
+
+```java
+Float f = new Float(10.5f);
+Float f = new Float("10.5f");
+Float f = new Float(10.5); // 10.5 -> double
+Float f = new Float("10.5");
+```
+
+Character class contains only one constructor which can take char argument.
+
+```java
+Character ch = new Character('a');
+Character ch = new Character("a"); // compile time error
+```
+
+Boolean class contains two constructors: one can take primitive as argument and
+other can take string argument. If we pass boolean primitive as argument, only
+allowed values are true, false, where case is important, and content is also
+important.
+
+```java
+Boolean b = new Boolean(true);
+Boolean b = new Boolean(false);
+Boolean b = new Boolean(True); // CE
+Boolean b = new Boolean(durga);// CE
+```
+
+If we are passing String type as argument, then case and content both are not
+important. If the content is case-insensitive string of "true" then it is treat
+as true, otherwise treat as false.
+
+```java
+public static boolean parseBoolean(String s) {
+  return (s != null)  && s.equalsIgnoreCase("true");
+}
+
+Boolean b = new Boolean("true"); // true
+Boolean b = new Boolean("True"); // true
+Boolean b = new Boolean("TRUE"); // true
+Boolean b = new Boolean("YES");  // false
+Boolean b = new Boolean("no");   // false
+
+Boolean X = new Boolean("yes");
+Boolean Y = new Boolean("no");
+System.out.println(X); // false
+System.out.println(Y); // false
+System.out.println(X.equals(Y)); // true
+```
+
+Wrapper Class | Correspending Constructor Arguments
+------------- | -----------------------------------
+Byte        | byte or String
+Short       | short or String
+Integer     | int or String
+Long        | long or String
+\*Float     | float or String or double
+Double      | double or String
+\*Character | char
+\*Boolean   | boolean or String
+
+**NOTE:** In all wrapper classes, toString is overridden to return content
+directly, also .equals method is overridden for content comparison.
+
+### Utility Methods
+
+- valueOf()
+- xxxValue()
+- parseXXX()
+- toString()
+
+#### valueOf() Method
+We can use valueOf methods to create wrapper object for the given primitive or
+string.
+
+##### Form 1
+Every wrapper class except Character class contains a static valueOf method to
+create wrapper object for the given string.
+
+public static <wrapper> valueOf(String s)
+
+```java
+Integer I = Integer.valueOf("10");
+Double  D = Double.valueOf("10.5");
+Boolean B = Boolean.valueOf("true");
+```
+
+##### Form 2
+Every integral type wrapper class(Byte,Short,Integer,Long) contains the
+following valueOf method to create wrapper object for the given speficied radix
+and string.
+
+public static <wrapper> valueOf(String s, int radix)
+
+The allowed range of radix is 2 to 36(0-9, a-z)
+
+```java
+Integer I = Integer.valueOf("1111");
+System.out.println(I); // 1111
+Integer I = Integer.valueOf("1111", 2);
+System.out.println(I); // 15
+Integer I = Integer.valueOf("101", 4);
+System.out.println(I); // 17
+```
+
+##### Form 3
+Every wrapper class including Character class contains the static valueOf method
+to create a wrapper object for the given primitive.
+
+public static wrapper valueOf(primitive p)
+
+
+```java
+Integer I = Integer.valueOf(10);
+Character ch = Character.valueOf('a');
+Boolean b = Boolean.valueOf(true);
+```
+
+(primitive/String) -- valueOf ---> (wrapper object)
+
+####  xxxValue()
+We can use xxxValue methods to get primitive for the given wrapper object.
+
+Every number type wrapper classes(Byte,Short,Integer,Long,Float,Double) contains
+the following six methods to get primitive for the given wrapper object.
+
+- public byte byteValue()
+- public short shortValue()
+- public int intValue()
+- public long longValue()
+- public float floatValue()
+- public double doubleValue()
+
+```java
+Integer I = new Integer(130);
+System.out.println(I.byteValue());  // -126
+System.out.println(I.shortValue()); // 130
+System.out.println(I.intValue());   // 130
+System.out.println(I.longValue());  // 130
+System.out.println(I.floatValue()); // 130.0
+System.out.println(I.doubleValue());// 130.0
+```
+
+###### charValue()
+Character class contains charValue method to get primitive for the given
+Character object.
+
+public char charValue()
+
+```java
+Character ch = new Character('a');
+char c = ch.charValue();
+System.out.println(c); // a
+```
+
+###### booleanValue()
+Boolean class contains booleanValue method to get boolean primitive for the
+given Boolean object.
+
+public boolean booleanValue()
+
+```java
+Boolean B = Boolean.valueOf("durga"); // false
+boolean b = B.booleanValue();
+System.out.println(b); // false
+char c = ch.charValue();
+System.out.println(c); // a
+```
+
+In total 38(6x6+1+1) xxxValue methods are possible.
+
+(wrapper object) ---- xxxValue() ---> (primitive)
+
+
+####  parseXXX()
+We can use parseXXX() methods to convert string to primitive.
+
+##### Form 1
+Every wrapper class except Character class contains the following parseXXX()
+method to find primitive for the given string object.
+
+public static primitive parseXXX(String s)
+
+```java
+int     i = Integer.parseInt("10");
+boolean b = Boolean.parseBoolean("true");
+double  d = Double.parseDouble("10.5")
+```
+
+##### Form 2
+Every integral type wrapper class(Byte, Short, Integer, Long) contains the
+following parseXXX() method to convert specified radix string to primitive.
+
+public static primitive parseXXX(String s, int radix)
+the allowed range of radix is 2 to 36
+
+```java
+int     i = Integer.parseInt("1111", 2);
+System.out.println(i); // 15
+```
+
+(String) ---- parseXXX() --> (primitive)
+
+####  toString()
+We can use toString() method to convert wrapper object or primitive to String.
+
+##### Form 1
+- Every wrapper class contains the following toString() method to convert wrapper
+object to String type.
+
+- It is overridden version of Object class toString().
+
+- Whenever we are trying to print wrapper object reference internally toString()
+method will be called.
+
+public String toString()
+
+```java
+Integer i = new Integer("10");
+String  s = I.toString();
+System.out.println(s); // 10
+System.out.println(I); // 10
+```
+
+##### Form 2
+Every wrapper class including Character class contains the following toString
+method to convert primitive to String.
+
+public static String toString(primitive p)
+
+```java
+String s = Integer.toString(10);
+String s = Boolean.toString(true);
+String s = Character.toString('a');
+```
+
+##### Form 3
+Integer and Long classes contain the following toString() method to convert
+primitive to speficied radix string.
+
+public static String toString(primitive p, int radix)
+
+```java
+String s = Integer.toString(15, 2);
+System.out.println(s); // 1111
+```
+
+##### Form 4 : toXXXString()
+Integer and Long classes contain the following toXXXString() method.
+
+- public static String toBinaryString(primitive p)
+- public static String toOctalString(primitive p)
+- public static String toHexString(primitive p)
+
+```java
+String s = Integer.toBinaryString(10);
+System.out.println(s); // 1010
+
+String s = Integer.toOctalString(10);
+System.out.println(s); // 12
+
+String s = Integer.toHexString(10);
+System.out.println(s); // a
+```
+
+(Wrapper Object or Primitive) --- toString() ---> String
+
+###### Dancing b/w String,Wrapper Object and Primitive
+
+- Wrapper   -> String    = toString()
+- Wrapper   -> primitive = xxxValue()
+- Primitive -> String    = toString()
+- Primitive -> Wrapper   = valueOf()
+- String    -> Primitive = parsexxx()
+- String    -> Wrapper   = valueOf()
+
+## Partial Hierarchy of java.lang Package
+
+- Object
+  - String
+  - StringBuffer
+  - StringBuilder
+  - Boolean
+  - Character
+  - Void
+  - Number
+    - Byte
+    - Short
+    - Integer
+    - Long
+    - Float
+    - Double
+
+* The wrapper classes which are not child class of Number are Boolean, Character
+* The wrapper classes which are not direct child class of Object(B,S,I,L,F,D)
+* String, StringBuffer, StringBuilder and all wrapper classes are **final**.
+* In addition to String objects, all wrapper class are also immutable.
+* Sometimes Void class is also considired as wrapper class.
+
+### Void Class
+- It is a final class and direct child class of Object.
+- It doesnt contain any methods, and it contains only one variable Void.TYPE.
+- Void is class representation of void keyword in Java.
+- In general we can use Void class in reflections to check whether the method
+return type is Void or not.
+
+```java
+if (getMethod("m1").getReturnType() == Void.TYPE) {}
+```
+## AutoBoxing
+Automatic conversion of primitive to wrapper object by compiler is called
+autoboxing.
+
+After compilation the first line will become like the second one. Internally
+autoboxing concept is implemented by using valueOf() methods.
+
+```java
+Integer I = 10; // Compiler converts int to Integer automatically
+Integer I = Integer.valueOf(10); // after complilation
+```
+
+## Auto-unboxing
+Automatic conversion of wrapper object to primitive by compiler is called
+autounboxing.
+
+Internally autounboxing concept is implemented by using xxxValue() methods.
+
+```java
+Integer I = new Integer(10);
+int i = I; // compiler will turn it into the following line after compilation
+int i = I.intValue();
+```
+
+
+```java
+public class Test {
+  static Integer I = 10; // autoboxing. Integer.valueOf(10)
+  public static void main(String[] args) {
+    int i = I; // autounboxing
+    m1(i); // autoboxing 10
+  }
+
+  public void m1(Integer K) {
+    int m = K; // autounboxing
+    System.out.println(m);
+  }
+}
+```
+
+javac -source 1.4 Test.java # gives error
+javac -source 1.5 Test.java # no error
+
+**NOTE:** Just because of autoboxing and autounboxing we can use primitives and
+wrapper objects interchangebly from 1.5V onwards.
+
+```java
+public class Test {
+  static Integer I = 0;
+  public static void main(String[] args) {
+    int m = I;
+    System.out.println(m); // 0
+  }
+}
+```
+
+```java
+public class Test {
+  static Integer I; // default value null because it is reference variable
+  public static void main(String[] args) {
+    int m = I; // I.intValue(); RE: NullPointerException
+    System.out.println(m);
+  }
+}
+```
+
+**NOTE:** On null reference if we are trying to perform autounboxing then we
+will get RE: NullPointerException.
+
+
+
+```java
+public class Test {
+  public static void main(String[] args) {
+    Integer x = 10; // Integer object <- 10
+    Integer y = x;  // y pointing above object
+    x++; // value in the object changed. a new object created <- x pointing
+    System.out.println(x); // 11
+    System.out.println(y); // 10
+    System.out.println(x == y); // false
+  }
+}
+```
+
+**NOTE:** All wrapper class objects are immutable. That is once we create a
+wrapper object, we cannot perform any changes in that object. If we are trying
+to perform any changes, with those changes a new object will be created.
+
+```java
+Integer x = new Integer(10); // a new object
+Integer y = new Integer(10); // a new object
+System.out.println(x == y); // false
+
+Integer x = new Integer(10); // a new object
+Integer y = 10; // autoboxing: a new object
+System.out.println(x == y); // false
+
+Integer x = 10; // autoboxing: a new object,
+Integer y = 10; // autoboxing, checks if already created one for that value
+System.out.println(x == y); // true
+
+Integer x = 100; // autoboxing: a new object,
+Integer y = 100; // autoboxing, checks if already created one for that value
+System.out.println(x == y); // true
+
+Integer x = 1000; // autoboxing: a new object,
+Integer y = 1000; // autoboxing, checks if already created one for that value
+System.out.println(x == y); // false
+```
+
+Internally to provide support for autoboxing a buffer of wrapper objects will be
+created at the time of wrapper class loading. If an object is required to
+create, first JVM will check whether this object already present in the buffer
+ot not, If is already present in the buffer, then existing buffer object will be
+used. If it is not already available in the buffer, then JVM will create a new
+object.
+
+```java
+class Integer {
+  static {
+    // { -128, -127,..., 10, ..., 100,..., 127 }
+  }
+}
+```
+
+Buffer concept is available only in the following ranges:
+
+- Byte      --> always
+- Short     --> -128 to 127
+- Integer   --> -128 to 127
+- Long      --> -128 to 127
+- Character -->    0 to 127
+- Boolean   --> always
+
+Except these ranges all the remaining case a new object will be created.
+
+Even between 0 to 1 there are lots of float and double.
+
+```java
+Integer x = 127;
+Integer y = 127;
+System.out.println(x == y); // true : using objects from buffers. same objects
+
+Integer x = 128;
+Integer y = 128;
+System.out.println(x == y); // false : out of buffer range, creating
+
+Boolean x = false;
+Boolean y = false;
+System.out.println(x == y); // using objects from the buffers: same objects
+
+Double x = 10.0
+Double y = 10.0
+System.out.println(x == y); // false. no buffer usage
+```
+
+**NOTE:** Internally autoboxing concept is implemented by using valueOf()
+method, hence buffer concept is applicable valueOf() method also.
+
+```java
+Integer x = new Integer(10); // no buffer concept
+Integer y = new Integer(10); // no buffer concept
+System.out.println(x == y); // false
+
+Integer x = 10; // internally using valueOf, buffer concept
+Integer y = 10;
+System.out.println(x == y); // true , same object from buffer
+
+Integer x = Integer.valueOf(10);
+Integer y = Integer.valueOf(10);
+System.out.println(x == y); // true : same object from the buffer
+
+Integer x = 10; // internally using valueOf, object from buffer
+Integer y = Integer.valueOf(10); // object from buffer
+System.out.println(x == y); // true
+```
+
+#### Overloading with Autoboxing, Widening & var-args methods
+
+Widening: byte -> short (promotion)
+
+##### Case 1: Autoboxing(1.5V) vs Widening(1.0V)
+Widening dominates autoboxing.
+
+```java
+public class Test {
+  public static void m1(Integer I) {
+    System.out.println("Autoboxing");
+  }
+
+  public static void m1(long l) {
+    System.out.println("widening");
+  }
+
+  public static void main(String[] args) {
+    int i = 10;
+    m1(i); // widening
+  }
+}
+```
+
+##### Case 2: Var-args(1.5V) vs Widening(1.0V)
+Widening dominates var-args.  Old concept wins over new concept.
+
+```java
+public class Test {
+  public static void m1(int... x) {
+    System.out.println("var-args");
+  }
+
+  public static void m1(long l) {
+    System.out.println("widening");
+  }
+
+  public static void main(String[] args) {
+    int i = 10;
+    m1(i); // widening
+  }
+}
+```
+
+##### Case 3: Autoboxing(1.5V) vs Var-args(1.5V)
+Autoboxing dominates var-args methods.
+
+In general var-arg method will get least priority, that is if no other method
+matches, then only var-arg method will get the change. It is exactly same as
+default case inside switch.
+
+```java
+public class Test {
+  public static void m1(int... x) {
+    System.out.println("var-args method");
+  }
+
+  public static void m1(Integer I) {
+    System.out.println("autoboxing");
+  }
+
+  public static void main(String[] args) {
+    int i = 10;
+    m1(i); // autoboxing
+  }
+}
+```
+**NOTE:** While resolving overloaded memthods, compiler will always give
+precedence in the following order:
+
+1. Widening
+2. Autoboxing
+3. Var-arg methods
+
+##### Case 4
+
+```java
+public class Test {
+  public static void m1(Long l) {
+    System.out.println("Long");
+  }
+
+  public static void main(String[] args) {
+    int x = 10;
+    m1(x); // CE: m1(j.l.Long) in Test cannot be applied to (int)
+  }
+}
+```
+
+Widening followed by autoboxing(int->long->Long) is not allowed in Java.
+Whereas autoboxing followed by widening is allowed.
+
+
+Long l = 10; // CE: incompatible type. found: int required: j.l.Long
+long l = 10; // valid. widening
+
+##### Case 5
+
+```java
+public class Test {
+  public static void m1(Object o) {
+    System.out.println("object version");
+  }
+
+  public static void main(String[] args) {
+    int x = 10;
+    m1(x); // int -> Integer -> Object, autoboxing -> widening(child to parent)
+  }
+}
+```
+
+Object o = 10; // valid
+
+Number n = 10; // valid
+
+###### Questions
+Which of the following assignments are legal?
+
+```java
+int     i = 10;   // valid, integer literal
+Integer i = 10;   // valid, autoboxing. Integer.valueOf(10);
+int     i = 10L;  // CE: possible loss of precision. f: long, r: int
+Long    l = 10L;  // valid, autoboxing. Long.valueIf(10L);
+Long    l = 10;   // CE: incompatible type. f: int r: j.l.Long
+long    l = 10;   // valid, widening
+Object  o = 10;   // valid, autoboxing. Integer.valueOf(10) -> widening
+double  d = 10;   // valid, widening
+Double  d = 10;   // CE: incompatible type. f:int r: j.l.Double
+Number  n = 10;   // valid, autoboxing, Integer -> Number. widening
+```
+
+#### Relation b/w == operator and .equals() method
+
+1. If two ibjects are equal by == operator, then these objects are always equal
+   by .equals() method. That is if r1 == r2 is true, then r1.equals(r2) is
+   always true.
+
+2. If two objects are not equal by == operator, then we can not conclude
+   anything about .equals() method. It may return true or false. That is r1 ==
+   r2 is false, then r1.equals(r2) may return true or false. And we cannot
+   expect exactly.
+
+3. If two objects are equals by .equals() method, then we cannot conclude
+   anything about == operator. It may return true or false. That is
+   r1.equals(r2) is true, then we cannot conclude anything about r1 == r2. It
+   may return true or false.
+
+4. If two objects are not equal by .equals() method, then these object always
+   are not equal by == operator. That is if r1.equals(r2) is false, then r1 ==
+   r2 is always false.
+
+### Difference b/w == operator and .equals() method
+To use == operator compalsry there should be some relation between argument
+types(either child to parent or parent to child or same type), otherwise we will
+get CE: incomparable types.
+
+If there is no relation between argument types, then .equals() method wont rise
+any CE or RE. Simply it returns false.
+
+```java
+String s1 = new String("durga");
+String s2 = new String("durga");
+StringBuffer sb1 = new StringBuffer("durga");
+StringBuffer sb2 = new StringBuffer("durga");
+System.out.println(s1 == s2);         // false, different objects
+System.out.println(s1.equals(s2));    // true, same content
+System.out.println(sb1 == sb2);       // false, different objects
+System.out.println(sb1.equals(sb2));  // false, not overridden for content comp
+System.out.println(s1 == sb2);        // CE: incomparable types. String and SB
+System.out.println(s1.equals(sb2));   // false, even different types, no CE, RE
+```
+
+== operator | .equals()
+----------- | ----------
+primitives and objects | just objects
+reference comparison only | reference and content comparison
+cannot be overridden | can be overridden
+CE: incomparable types | false
+
+== is an operator in Java applicable for both primitives and object types.
+It is a method applicable only for object types, but not for primitives.
+
+In the case of object references, == operator meant for reference comparison
+By default .equals() in Object class also meant for reference comparison.
+
+We cannot override == operator for content comparison.
+We can override .equals() for content comparison.
+
+To use == operator, compalsary there should be some relation b/w argument types.
+If there is no relation b/w argument types, then .equals() returns false.
+
+In general, we can use == operator for reference comparison, .equals() for
+content comparison.
+
+**NOTE:** For any object reference are:
+- s2 == null
+- s2.equals(null)
+always return false.
+
+
+### Contract between .equals() and .hashCode()
+Hashing related data structures following the fundamental rule:
+
+Two equivalent objects should be placed in same bucket, but all objects present
+in the same bucket need not be equal.
+
+If two objects are equal by .equals() method, then their hashcodes must be
+equal. That is two equivalent objects should have same hashcode. That is
+r1.equals(r2) is true, then r1.hashCode() == r2.hashCode() is always true.
+
+Object class .equals() and hashCode() methods follows above contact. Hence
+whenever we are overridding .equals method, compalsry we should override
+hashCode() method to statisfy above contract.(that is two equivalent objects
+should have same hashcode.)
+
+If two objects are not equal by .equals() method, then there is no restriction
+on hashcodes, may be equal or may no be equal.
+
+If hashcodes of two objects are equal, then we cannot conclude anything about
+.equals() method. It may return true or false.
+
+If hashcodes of two objects are not equal, then these objects are always not
+equal by .equals().
+
+**NOTE:** To satisfy contract between equals and hashcode methods, whenever we
+are overridding .equals method, compalsry we have to override hashcode method.
+Otherwise we wont get any CE or RE, but it is not a good programming practice.
+
+In String class .equals() method is overridden for content comparision, and
+hence hashCode() method is also overridden to generate hashcode based on
+content.
+
+```java
+String s1 = new String("durga");
+String s2 = new String("durga");
+System.out.println(s1.equals(s2)); // true
+System.out.println(s1.hashCode()); // 95950491
+System.out.println(s2.hashCode()); // 95950491
+```
+
+In StringBuffer class .equals() method is not overridden for content
+comparision, hence .hashCode() is also not overridden.
+
+```java
+StringBuffer sb1 = new StringBuffer("durga");
+StringBuffer sb2 = new StringBuffer("durga");
+System.out.println(sb1.equals(sb2)); // false
+System.out.println(sb1.hashCode()); // 19621457 : depends on the machine
+System.out.println(sb2.hashCode()); // 4872882 : depends on the machine
+```
+
+###### Example
+Consider the following Person class:
+
+```java
+
+public class Person {
+  public boolean equals(Object obj) {
+    if (obj instanceof Person) {
+      Person p = (Person) obj;
+      return name.equals(p.name) && age == age;
+    }
+  }
+}
+```
+
+Which of the following hashcode methods are appropriate for Person class?
+
+```java
+public int hashCode() {
+  return 100;
+}
+
+public int hashCode() {
+  return age + ssno;
+}
+
+public int hashCode() {
+  return name.hashCode() + age;
+}
+```
+
+**NOTE:** Based on which parameters we override, it is highly recommended to use
+same parameters while overridding hashCode() method also.
+
+**NOTE:** In all collection classes, all wrapper classes, String class .equals
+method is overridden for content comparision. Hence it is highly recommended to
+override .equals() method in our classes also for content comparision.
+
+### clone() Method
+The process of creating exactly duplicate object is called cloning.
+
+The main purpose of cloning is to maintain backup copy and to preserve state of
+a object.
+
+We can perform cloning by using clone() method of Object class.
+
+```java
+protected native Object clone throws CloneNotSupportedException;
+```
+
+
+```java
+// public class Test { // RE: CloneNotSupportedException
+public class Test implements Cloneable { // mark interface
+  int i = 10;
+  int j = 20;
+
+  // public static void main(String[] args) { // CE: unreported or uncaught ex
+  public static void main(String[] args) throws CloneNotSupportedException {
+    Test t1 = new Test();
+    // Test t2 = t1; // same object, referencing same object, not cloning
+    // Test t2 = t1.clone(); // CE: incompatible types. f: Object r: Test
+    Test t2 = (Test) t1.clone();
+    t2.i = 888;
+    t2.j = 999;
+    System.out.println(t1.i + "..." + t1.j); // 10...20
+  }
+}
+```
+
+We can perform cloning only for Cloneable Objects.
+
+An Object is said to be Cloneable if only if the corresponding class implements
+Cloneable Interface.
+
+Cloneable(I) present in java.lang package. And it does not contain any methods.
+It is a marker interface.
+
+If we are trying to perform cloning for non-cloneable objects, then we will get
+RE: CloneNotSupportedException.
+
+#### Shallow Cloning vs Deep Cloning
+The process of creating bitwise copy of an object is called shallow cloning. If
+the main object contains primitive variables, then exactly duplicate copies will
+be created in the cloned object. If the main object contains any reference
+variable, then corresponding object wont be created, just duplicate reference
+variable will be created pointing to old contained object. Object Class clone
+method meant for shallow cloning.
+
+```java
+public class Cat {
+  int j;
+
+  public Cat(int j) {
+    this.j = j;
+  }
+}
+
+public class Dog implements Cloneable {
+  Cat c;
+  int i;
+
+  public Dog(Cat c, int i) {
+    this.cat = c;
+    this.i = i;
+  }
+
+  public Object clone() throws CloneNotSupportedException {
+    return super.clone();
+  }
+
+  public static void main(String[] args) {
+    Cat c = new Cat(20);
+    Dog d1 = new Dog(c, 10);
+    System.out.println(d1.i + "..." + d1.c.j); // 10...20
+    Dog d2 = (Dog) d1.clone();
+
+    d2.i = 888; // making chances on shallow copy
+    d2.c.j = 999; // making chances on shallow copy
+
+    System.out.println(d1.i + "..." + d1.c.j); // 10...999, affects original
+  }
+}
+```
+
+In shallow cloning by using cloned object reference if we perform any chance to
+the contained object, then those changes will be reflected to main object. To
+overcome this problem, we should go for deep cloning.
+
+#### Deep Cloning
+The process of creating exactly duplicate independent copy including contained
+object is called deep cloning.
+
+In deep cloning if the main object contains any primitive variables, then in the
+cloned object duplicate copies will be created. If the main object contains any
+reference variable, then corresponding contained object will also be created in
+the cloned copy. By default Object class clone() method meant for shallow
+cloning but we can implement deep cloning explicitly by overridding clone()
+method in our class.
+
+```java
+public class Cat {
+  int j;
+
+  public Cat(int j) {
+    this.j = j;
+  }
+}
+
+public class Dog implements Cloneable {
+  Cat c;
+  int i;
+
+  public Dog(Cat c, int i) {
+    this.cat = c;
+    this.i = i;
+  }
+
+  // programmer has to provide this method
+  public Object clone() throws CloneNotSupportedException {
+    Cat c1 = new Cat(c.j);
+    Dog d1 = new Dog(c1, i);
+    return d1;
+  }
+
+  public static void main(String[] args) {
+    Cat c = new Cat(20);
+    Dog d1 = new Dog(c, 10);
+    System.out.println(d1.i + "..." + d1.c.j); // 10...20
+    Dog d2 = (Dog) d1.clone(); // deep cloning
+
+    d2.i = 888; // making chances on deep copy
+    d2.c.j = 999; // making chances on deep copy
+
+    System.out.println(d1.i + "..." + d1.c.j); // 10...20
+  }
+}
+```
+
+By using cloned object reference, if we perform any change to contained object,
+then those wont be reflected to main object.
+
+##### Which cloning is the best?
+If the object contains only primitive variables, then shallow cloning is the
+best choice.
+
+If object contains reference variables, then deep cloning is the best choice.
+
+### More on SCP
+
+```java
+String s1 = new String("you cannot change me!"); // one in heap, one in scp
+String s2 = new String("you cannot change me!"); // one in heap
+System.out.println(s1 == s2); // false
+String s3 = "you cannot change me!"; // pointing to object in scp
+System.out.println(s1 == s3); // false
+String s4 = "you cannot change me!"; // pointing to object in scp
+System.out.println(s3 == s4); // true
+String s5 = "you cannot " + "change me!"; // at compile time, it becomes one str
+System.out.println(s3 == s5); // true
+String s6 = "you cannot "; // creating an object in scp
+String s7 = s6 + "change me!"; // at least one variable, runtime operation
+System.out.println(s3 == s7); // false
+final String s8 = "you cannot "; // pointing to object in scp
+String s9 = s8 + "change me!"; // variable is contanst, compile time
+System.out.println(s3 == s9); // true
+System.out.println(s6 == s8); // true
+```
+
+- String s5 = "you cannot " + "change me!"
+
+This operation will be performed at compile time only because both arguments are
+compile-time constants.
+
+- String s6 = "you cannot "; // creating an object in scp
+- String s7 = s6 + "change me!"; // at least one variable, runtime operation
+
+This operation will be performed at runtime only because at least one argument
+is normal variable.
+
+- final String s8 = "you cannot "; // pointing to object in scp
+- String s9 = s8 + "change me!"; // variable is contanst, compile time
+
+This operation will be performed at compile-time only because both arguments are
+compile-time constants.
+
+### Interning of String Objects
+We can use intern() method to get corresponding scp object reference by using
+heap object reference. 
+
+By using heap object reference, if we want to get scp object reference then we
+should go for intern() method.
+
+```java
+String s1 = new String("durga"); // one object in heap, one in scp
+String s2 = s1.intern(); // pointing to object in scp
+System.out.println(s1 == s2); // false
+String s3 = "durga"; // pointing to object in scp
+System.out.println(s2 == s3); // true
+```
+
+If the corresponding scp object is not available, then intern() method itself
+will create the corresponding scp object.
+
+```java
+String s1 = new String("durga"); // one object in heap, one in scp
+String s2 = s1.concat("software"); // runtime, in heap
+String s3 = s2.intern(); // force object to be created in scp
+System.out.println(s2 == s3); // false
+String s4 = "durgasoftware"; // pointing to object in scp
+System.out.println(s3 == s4); // true
+```
+
+### Importance of String Constant Pool
+In our program, if a string object is repeatly required then it is not
+recommended to create a separate object for every requirement. Because it
+creates performance and memory problems.
+
+Instead of creating a separate object for every requirement, we have to create
+only one object, and we can reuse the same object for every requirement. So that
+performance and memory Utilization will be improved. This is possible because of
+SCP. 
+
+Hence, the main advantages of SCP are memory Utilization and performance
+will be improved.
+
+The main problem with SCP is, it has several references pointing to the same
+object, by using one reference if we are trying to change the content, then
+remaining references will be affected. To overcome this problems, Sun people
+implemented String object as immutable. That is once we create a string object,
+we cannot perform any changes in the existing object. If we are trying to
+perform any changes, with those changes a new object will be created.
+
+Hence, SCP is the only reason for the immutability of string objects.
+
+#### FAQ
+1. What is the difference b/w String and StringBuffer?
+String -> immutable. StringBuffer -> mutable
+2. Explain immutability and mutability with an example.(String, StringBuffer)
+3. What is the difference b/w:
+   - String s = new String("durga"); // one object in heap, one in scp
+   - String s = "durga"; // only in scp
+
+4. Other than immutability and mutability is any difference b/w String and SB?
+.equals method.
+5. What is SCP?
+It is a specially designed memory area for string objects.
+6. What is advantage of SCP?
+7. What is disadvantage of SCP?
+Immutability of String objects.
+8. Why SCP concept is only available for String but not StringBuffer?
+String is most commonly used object and hence Sun people provided special memory
+management for String object. But StringBuffer is not commonly used object.
+9. Why String objects are Immutable where StringBuffer objects are mutable?
+In the case of String because of SCP a single object can be referenced by
+multiple references. By using one reference if we are allowed to change the
+content in the existing object, then remaining references will be affected. To
+overcome this problem, Sun poeple implemented String object as immutable.
+According to this, once we create a string object, we cannot perform any changes
+in the existing object, if we are trying to perform any changes, with those
+changes a new object will be created.
+
+In StringBuffer there is no concept as SCP. Hence for every requirement a
+separate object will be created. By using one reference if we are trying to
+change the content, then there is no affect on remaining references. Hence
+immutability concept is not required for StringBuffer.
+
+10. In addition to String objects, any other objects are immutable in Java?
+All wrapper classes.
+11. Is it possible to create our own immutable class?
+yes.
+12. How to create our own immutable class ? explain with an example.
+13. Immutable means non-changeable. Whereas  final means also non-changable.
+    Then what is the difference between final and immutable?

@@ -1,0 +1,10 @@
+# More complex design
+Hard to detect problems, dealing with shared resources.
+
+# Context Switching Overhead
+CPU has to save the current threads properties before taking another thread.
+The switch, load and save cause some performance overhead. Is NOT cheap.
+
+# Increased Resource Consumption
+Each thread has its own local stack in the memory, also take up some resources
+inside the operating system. More threads more resource consumption

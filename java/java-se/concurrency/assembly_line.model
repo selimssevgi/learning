@@ -1,0 +1,47 @@
+- Other names for this model are 'reactive systems', or 'event driven systems'.
+
+Delegator -> Worker -> Worker -> Worker
+
+Each worker only performs a part of the full job.
+When that part is finished, the worker forwards the job to the next worker.
+
+Each worker is running in its own thread, and shared no state with other workers.
+This is also sometimes referred to as as a 'shared nothing' concurrency model.
+
+System using this model are usually designed to use non-blocking IO.
+Worker does as much as it can before IO operation, then gives up, when the IO
+operation is done, the other worker contunies with the job.
+
+In reality a delegator can have multiple assembly line, can workers in different
+lines can interact with each other.
+
+The system's workers react to event occuring in the system, either received from outside world,
+or emitted by other workers. Example of events, incoming HTTP request, file finished loading into memory.
+
+## Some reactive/event driven platforms
+- Vert.x -> Java
+- Akka
+- Node.JS
+
+## Actor vs Channels
+Actors can send messages directly to each other. 
+Messages are sent and processed asynchronously. 
+Actors can be used to implement one or more job processing assembly lines.
+
+In the channel model, workers do not communicate directly.
+Instead they publish messages(events) on different channels. 
+Other workers can then listen for messages on these channels w/o sender knowing who is listening.
+Channel model is more flexible.
+
+## ADVANTAGES
+- No Shared State - Easir to implements, without so much concern
+- Stateful Workers - Faster, can keep its state
+- Better Hardware Conformity - Singlethread alike. Better usage of CPU, cache
+- Job ordering is possible - rebuilding the state of the system from logs in case of fail. The jobs are written to the log in a certain order.
+
+## DISADVANTAGES
+- A job is often spread out over multiple workers, and thus over multiple classes
+  it becomes harder to see exactly what code is being executed for a given job.
+- Creating callback hell
+
+!! Many jobs are not naturally parallel and independent though, so is better than parallel worker model

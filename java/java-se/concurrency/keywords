@@ -1,0 +1,18 @@
+# RACE CONDITIONS
+
+# DEADLOCK
+
+# STATELESS
+A worker that doesnot keep state internally
+(but re-reads it every time it is needed) is called 'stateless'.
+
+# NON-BLOCKING IO
+
+# Stale Data/State
+Stale state is information in an object that does not reflect reality. Invalid data
+
+Example: an object's members are filled with information from a database,
+but the underlying data in the database has changed since the object was filled.
+
+Dangerously stale state is stale state that might adversely affect the operation
+of a program, i.e. causing it to perform incorrectly due to invalid assumptions about the data's integrity.

@@ -8,9 +8,24 @@ Item 5: Avoid creating unnecessary objects
 Item 6: Eliminate obsolete object references
 Item 7: Avoid finalizers
 
+Item 8: Obey the general contract when overriding equals
+Item 9: Always override hashCode when you override equals
+Item10: Always override toString
+Item11: Override clone juduciously
+Item12: Consider implementing Comparable
+
+Item13: Minimize the accessibility of classes and members
+Item14: In public classes, use accessor methods, not public fields
+Item15: Minimize mutability
+Item16: Favor composition over inheritance
+Item17: Design and document for inheritance or else prohibit it
+Item18: Prefer interface to abstract classes
+Item19: Use interfaces only to define types
+Item20: Prefer class hierarchies to tagged classes
+Item21: Use function objects to represent strategies
+Item22: Favor static member classes over nonstatic
 
 ### Chapter 1
-
 - A few fundamental principles:
   - Clarity and simplicity are of paramount importance.
   - The user of a module should never be surprised by its behavior.
@@ -99,7 +114,7 @@ public class Elvis {
 ```
 
 ```java
-// Signleton with public final field
+// Signleton with private final field
 public class Elvis {
   private static final Elvis INSTANCE = new Elvis();
   private Elvis() { //... }
@@ -111,7 +126,7 @@ public class Elvis {
 - Above two approaches have security flaw(invoking even private constructor) and
   have problems with serialization(extra programmer effort needed)
 
-- Enum singleton approach both problems. A single-element enum type is the best
+- Enum singleton approach solves both problems. A single-element enum type is the best
   way to implement a singletion.
 
 ```java
@@ -175,7 +190,7 @@ public Object pop() {
 
 - Nulling out object references should be the exception rather than the norm.
 
-- The besy way to eliminate an obsolete reference is to let the variable that
+- The best way to eliminate an obsolete reference is to let the variable that
   contained reference fall out of scope. This occurs naturally if you define
   each variable in the narrowest possible scope.
 
@@ -235,3 +250,216 @@ try {
   }
 }
 ```
+
+### Chapter 3: Methods Common to All Objects
+- Although Object is concrete class, it is designed primarily for extension.
+
+- All non-final methods (equals, hashCode, toString, clone, finalize) have
+  explicit general contracts because they are designed to be overridden.
+
+#### Item 8: Obey the general contract when overriding *equals*
+
+- The easiest way to avoid problems is not to override the equals method, in
+  whic case each instance of the classs is equal only itself. Conditions:
+
+- *Each instance of the class is inherently unique*.
+- *You dont care whether the class provides a "logical equality" test*.
+- *A superclass has already overridden equals, and the superclass behaviour is appropriate for this class*.
+- *The class is private or package-private and you are certain that its equals method will never be called*.
+
+- It is a good idea to override equals method for value classes(Integer, Date).
+
+##### Conract of Object#equals()
+- Reflexive: x.equals(x) must return true.
+- Symmetric: x.equals(y) return true if and only if y.equals(x) returns true.
+- Transitive: x.equals(y) and y.equals(z) then x.equals(z)
+- Consistent: multiple invocations must return same result.
+- x not null, x.equals(null) must return false.
+
+[Too long and important, refer back!]
+
+#### Item 9: Always override hashCode when you override equals
+
+- You must override hashCode in every class that overrides equals. Failure to do
+  so will result in a violation of the general contract for Object.hashCode.
+
+- The key provision that is violated when you failt to override hashCode is the
+  second one: equal objects must have equal hash codes.
+
+- If a class is immutable and the cost of computing the hash code is
+  significant, you might consider caching the hash code in the object rather
+  than recalculating it each time it is requested.
+
+```java
+// Lazily initialized, cached hashCode
+private volatile int hashCode; // (See Item 71)
+@Override public int hashCode() {
+  int result = hashCode;
+  if (result == 0) {
+    result = 17;
+    result = 31 * result + areaCode;
+    result = 31 * result + prefix;
+    result = 31 * result + lineNumber;
+    hashCode = result;
+  }
+  return result;
+}
+```
+
+#### Item 10: Always override toString
+- Providing a good toString implementation makes your class much more pleasant
+  to use.
+
+- When practical, the toString method should return all of the interesting
+  information contained in the object.
+
+- Whether or not you decide to specify the format, you should clearly document
+  your intentions.
+
+- Provide programmatic access to all the information contained in the value
+  returned by toString.(so others wont parse the string)
+
+#### Item 11: Override clone judiciously
+[read it again!]
+
+#### Item 12: Consider implementing Comparable
+
+- It is similar in character to Object's equals method, except that it permits
+  order comparisons in addition to simple equality comparisons, and it is generic.
+
+- By implementing Comparable(I), a class indicates that its instances have a
+  natural ordering.
+
+- If you are writing a value class with an obvious natural ordering, such as
+  alphabetical order, numerical order, or chronological order, you should
+  strongly consider implementing the interface:
+
+```java
+public interface Comparable<T> {
+  int compareTo(T t);
+}
+```
+
+- Just as a class that violates the hashCode contract can break other classes
+  that depend on hashing, a class that violates the compareTo contract can break
+  other classes that depend on comparison.
+
+### Chapter 4: Classes and Interfaces
+
+#### Item 13: Minimize the accessibility of classes and members
+
+- Make each class or member as inaccessible as possible.
+
+- By making a class package-private, you make it part of the implementation
+  rather than the exported API.
+
+- Instance fields should never be public. Just final primitives or final
+  immutable reference variables might be public.
+
+- Classes with public mutable fields are not thread-safe.
+
+#### Item 14: In public classes, use accessor methods, not public fields
+
+- If a class is accessible outside of its package, provide accessor methods, to
+  preserve the flexibility to change the class's internal representation.
+
+- If a class is package-private or is a private nested class, there is nothing
+  inherently wrong with exposing its data fields.
+
+#### Item 15: Minimize mutability
+To make a class immutable, follow these five rules:
+
+- Don't provide any methods that modify the object's state(mutators)
+- Ensure that the class can't be extended.(final class)
+- Make all fields final.
+- Make all fields private.
+- Ensure exclusive access to any mutable components.(defensive copies)
+
+- In functional approach, methods return the result of applying a function to
+  their operand without modifying it. In procedural or imperative approach,
+  methods return apply a procedure to their operand, causing its state to change.
+
+- Immutable objects are simple.
+
+- Immutable objects are inherently thread-safe; they require no synchronization.
+
+- Immutable objects can be shared freely.
+
+- Immutable objects make great building blocks for other objects.
+
+- The only real disadvantage of immutable classes is that they require a
+  separate object for each distinct value.
+
+- Classes should be immutable unless there is a very good reason to make them mutable.
+
+- If a class cannot be made immutable, limit its mutability as much as possible.
+
+- Make every field final unless there is a compelling reason to make it nonfinal.
+
+#### Item 16: Favor composition over inheritance
+
+- Forwarding: In composition, there may be referenced field to instance of an
+  existing class. Each instance method in the new class invokes the
+  corresponding method on the contained instance of the existing class and
+  returns the results. And methods in the new class are known as *forwarding methods*.
+
+- *Decorator pattern*: the InstrumentedSet class "decorates" a set by adding
+  instrumentation.
+
+- Sometimes the combination of composition and forwarding is loosely refered to
+  as *delegation*.
+
+#### Item 17: Design and document for inheritance or else prohibit it
+#### Item 18: Prefer interface to abstract classes
+
+- Interfaces are ideal for defining mixins.
+
+- a *mixin* is a type that a class can implement in addition to its "primary
+  type" to declare that it provides some optional behavior. For example,
+  Comparable is a mixin interface. It allows the optional functionality to be
+  "mixed in" to the type's primary functionality.
+
+- Interfaces allow the construction of nonhierarchial type frameworks.
+
+- Interfaces enable safe, powerful functionality enhancements via the wrapper idiom.
+
+- You can combine the virtues of interfaces and abstract classes by providing
+  an abstract *skeletal implementation* class to go with each nontrivial interface.
+
+- Skeletal implementations(AbstractInterface): AbstractCollection, AbstractSet, 
+  AbstractList, AbstractMap.
+
+#### Item 19: Use interfaces only to define types
+
+- They should be used to define "types".
+
+- *Constant interface:* contains no methods; it consists solely of static final
+  fields, each exporting a constant.
+
+- The constant interface pattern is a poor use of interfaces.
+
+#### Item 20: Prefer class hierarchies to tagged classes
+
+- Tagged classes are verbose, error-prone, and inefficient.
+
+- A tagged class is just a pallid imitation of a class hierarchy.
+
+#### Item 21: Use function objects to represent strategies
+
+- Strategy Pattern: the comparator function represents a strategy for sorting
+  elements.
+
+- It is possible to define an object whose methods perform operations on other
+  objects, passed explicitly to the methods. An instance of a class that exports
+  exactly one such method is effectively a pointer to that method. Such
+  instances are known as *function objects*.
+
+- java.util.Comparator
+
+#### Item 22: Favor static member classes over nonstatic
+
+- A nested class should exist only to serve its enclosing class.
+
+- If you declare a member class that does not require access to an enclosing
+  instance, always put the static modifier in its declaration.
+

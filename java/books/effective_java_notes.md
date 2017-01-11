@@ -25,6 +25,14 @@ Item20: Prefer class hierarchies to tagged classes
 Item21: Use function objects to represent strategies
 Item22: Favor static member classes over nonstatic
 
+Item23: Don't use raw types in new code
+Item24: Eliminate unchecked warnings
+Item25: Prefer lists to arrays
+Item26: Favor generic types
+Item27: Favor generic methods
+Item28: Use bounded wildcards to increase API flexibility
+Item29: Consider typesafe heterogeneous containers
+
 ### Chapter 1
 - A few fundamental principles:
   - Clarity and simplicity are of paramount importance.
@@ -92,7 +100,7 @@ Map<String, List<String>> m = HashMap.newInstance();
 
 - JavaBeans Pattern precludes the possibility of making a class immutable.
 
-- Builder Pattern combines the safety of the telescoping constructor pattern 
+- Builder Pattern combines the safety of the telescoping constructor pattern
   with the readability of the JavaBeans pattern.
 
 - The Builder Pattern simulates named optional parameters as found in Ada and Python.
@@ -216,7 +224,7 @@ public Object pop() {
 - So what should you do instead of writing a finalizer for a class whose objects
 encapsulate resources that require termination, such as files or threads? Just
 provide an explicit termination method, and require clients of the class to invoke
-this method on each instance when it is no longer needed. One detail worth 
+this method on each instance when it is no longer needed. One detail worth
 mentioning is that the instance must keep track of whether it has been terminated:
 the explicit termination method must record in a private field that the object is no
 longer valid, and other methods must check this field and throw an
@@ -426,7 +434,7 @@ To make a class immutable, follow these five rules:
 - You can combine the virtues of interfaces and abstract classes by providing
   an abstract *skeletal implementation* class to go with each nontrivial interface.
 
-- Skeletal implementations(AbstractInterface): AbstractCollection, AbstractSet, 
+- Skeletal implementations(AbstractInterface): AbstractCollection, AbstractSet,
   AbstractList, AbstractMap.
 
 #### Item 19: Use interfaces only to define types
@@ -463,3 +471,116 @@ To make a class immutable, follow these five rules:
 - If you declare a member class that does not require access to an enclosing
   instance, always put the static modifier in its declaration.
 
+### Chapter 5: Generics
+- Before generics you had to cast every object you read from a collection. If
+  someone accidently inserted an object of wrong type, cast could failt at runtime.
+
+- With generics, you tell the compiler what types of objects are permitted in
+  ach collection. The compiler inserts casts for you automatically.
+
+#### Item 23: Don't use raw types in new code
+
+- If you use raw types, you lose all the safety and expressivenes benefits of generics.
+
+- You cannot put any element(other than null) into a Collection<?>.
+
+- Two exception to this rule:(because of generic type info is erased at runtime)
+  1. You must use raw types in class literals. List.class, String[].class,
+     int.class are all legal, but List<String>.class and List<?>.class are not legal.
+  2. The prefered way to use 'instanceof' operater with generics types:
+
+```java
+// Legimate use of raw type - instanceof operator
+if (o instanceof Set) {  // Raw type
+  Set<?> m = (Set<?>) o; // Wildcard type
+}
+```
+
+Term                    | Example |
+------------------------|---------|
+Parameterized Type      | List\<String\>
+Actual Type Parameter   | String
+Generic Type            | List\<E\>
+Formal Type Parameter   | E
+Unbounded wildcard type | List\<?\>
+Raw Type                | List
+Bounded type parameter  | \<E extends Number\>
+Recursive type bound    | \<T extends Comparable\<T\>\>
+Bounded wildcard type   | List\<? extends Number\>
+Generic method          | static \<E\> List\<E\> asList(E[] a)
+Type token              | String.class
+
+#### Item 24: Eliminate unchecked warnings
+
+- Eliminate every unchecked warning that you can.
+
+- If you can't eliminate a warning, and you can prove that the code that
+  provoked the warning is typesafe, then (and only then) suppress the warning
+  with and @SuppressWarnings("unchecked") annotation.
+
+- Always use the SuppressWarnings annotation on the smallest scope
+  possible.(local variable, method, class)
+
+- Every time you use an @SuppressWarnings("unchecked") annotation, add a comment
+  saying why it's safe to do so.
+
+- Every unchecked warning represents the potential for a ClassCastException at runtime.
+
+#### Item 25: Prefer lists to arrays
+
+- Arrays are covarient. 
+- Generics are invariant.
+
+- If Sub(Long) is a subtype of Super(Object), then the array type Sub[] is a
+  subtype of Super[].
+
+- T1 and T2 are distinct types, List<\T1\> is neither a subtype nor a supertype of
+  List<\T2\>.
+
+```java
+// Fails at runtime
+Object[] objectArr = new Long[1];
+objectArr[0] = "I dont fit in";  // RE: ArrayStoreException
+
+// Wont compile
+List<Object> ol = new ArrayList<Long>(); // incompatible types
+ol.add("I dont fit in");
+```
+
+- Arrays know and enforce their element types at runtime.
+- Generics are implemented by erasure, they enforce their type constraints only
+  at compile time and erase their element type information at runtime.
+
+- Arrays and generics do not mix well. List<\E\>[], new E[], new
+  List<\String\>[] are all illegal.
+
+- A *non-reifiable type* is one whose runtime representation contains less
+  information than its compile-time representation.
+
+#### Item 26: Favor generic types
+
+- Generic types are safer and easier to use than types that require casts client
+  code.
+
+- When you design new types, make sure that they can be used without such casts.
+
+#### Item 27: Favor generic methods
+
+- Static utility methods are particularly good candidates for generification.
+
+- The type parameter list, which declares the type parameter, goes between
+  method's modifiers and its return type.
+
+```java
+// Generic method
+public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
+  Set<E> newSet = new HashSet<>(s1);
+  newSet.addAll(s2);
+  return newSet;
+}
+```
+
+#### Item 28: Use bounded wildcards to increase API flexibility
+#### Item 29: Consider typesafe heterogeneous containers
+
+- Favorites.

@@ -33,6 +33,15 @@ Item27: Favor generic methods
 Item28: Use bounded wildcards to increase API flexibility
 Item29: Consider typesafe heterogeneous containers
 
+Item30: Use enums instead of int constants
+Item31: Use instance fields instead of ordinals
+Item32: Use EnumSet instead of bit fields
+Item33: Use EnumMap instead of ordinal indexing
+Item34: Emulate extensible enums with interfaces
+Item35: Prefer annotations to naming patterns
+Item36: Consistly use Override annotation
+Item37: Use marker interfaces to define types
+
 ### Chapter 1
 - A few fundamental principles:
   - Clarity and simplicity are of paramount importance.
@@ -584,3 +593,80 @@ public static <E> Set<E> union(Set<E> s1, Set<E> s2) {
 #### Item 29: Consider typesafe heterogeneous containers
 
 - Favorites.
+
+### Chapter 6: Enums and Annotations
+- A new kind of class enum type and a new kind of interface annotation type
+  added in Java 1.5.
+
+#### Item 30: Use enums instead of int constants
+
+- int enum pattern:
+
+```java
+public static final int APPLE_FUJI         = 0;
+public static final int APPLE_PIPPIN       = 1;
+public static final int APPLE_GRANNY_SMITH = 2; 
+```
+
+- Namespace problem.
+- int enums are compile-time constants. Recompiling or unexpected behavior in
+  case of value change.
+- Printing, to see just a number.
+- Iterating over int enum constants?
+- String enum pattern: printing yes, comparison no:performance.
+
+- There is enum type to overcome above shortcomings.
+
+```java
+public enum Apple { FUJI, PIPPIN, GRANNY_SMITH }
+```
+
+- Enum types are effectively final, by virtue of having no accessible constructor.
+
+- Enums provide compile-time type safety.
+
+- Enum types let you add arbitrary methods and fields and implement arbitrary interfaces.
+
+- To associate data with enum constants, declare instance fields and write
+  constructor that takes the data and stores it in the fields.
+
+- Enums are by their nature immutable, so all fields should be final.
+
+- Constant-specific method implementation(Operation).
+
+#### Item 31: Use instance fields instead of ordinals
+
+- Never drive a value associated with an enum from its ordinal; store it in an
+  instance field instead.
+
+- Ordinal method is mostly used for data structures such as EnumSet and EnumMap.
+
+#### Item 32: Use EnumSet instead of bit fields
+#### Item 33: Use EnumMap instead of ordinal indexing
+#### Item 34: Emulate extensible enums with interfaces
+
+#### Item 35: Prefer annotations to naming patterns
+
+- Naming Pattern: JUnit required its users to designate tests methods by
+  beginning their names with the characters "test".
+
+- Marker Annotation has no parameters but simply marks the annotated element.
+
+- (Try examples in that item)
+
+#### Item 36: Consistly use Override annotation
+
+- Use the Override annotation on every method declaration that you believe to
+  override a superclass declaration.
+
+- Even it is not necessary to use Override annotation for abstract and interface
+  methods, anyway it will bring good not bad.
+
+#### Item 37: Use marker interfaces to define types
+
+- A marker interface is an interface that contains no method declarations.
+
+- Marker annotation vs marker interface
+
+- Marker interface: only for classes and interfaces, method parameters(as type),
+  brings better compile-time checking.

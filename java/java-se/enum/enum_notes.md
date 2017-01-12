@@ -7,7 +7,6 @@ enum Month {
 }
 ```
 
-
 ```java
 enum Beer {
   KF, KO, RC, FO;
@@ -19,18 +18,14 @@ Semicolon is optional.
 The main objective of enum is, to define our own data types(enumarated data
 type,EDT).
 
-
 Enum concept introduced in 1.5V. When compared with old languages enum, Java
 Enum is more powerful.
 
 ## Internal Implementation of Enum
 
 1. Every enum is internally implemented by using class concept.
-
 2. Every enum constant is always public static final.
-
 3. Every enum constant represents an object of type enum.
-
 
 ```java
 enum Beer {
@@ -67,7 +62,6 @@ name of the constant.
 We can declare enum either within the class or outside of the class but not
 inside a method.(no static declaration(static inner class) inside method).
 If we are trying to declare inside a method, we will get CE: Enum types must not be local.
-
 
 ```java
 // outside of class : valid

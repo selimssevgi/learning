@@ -38,6 +38,7 @@ mysql> USE mydb; # in order to work with a db, we must first select it
 mysql> SHOW TABLES;
 mysql> source cars.sql; # full path of sql file
 mysql> SELECT * FROM Cars; # table name is case-sensitive
+mysql> DESC Cars; # show fields and types
 ```
 
 ```shell

@@ -1,46 +1,54 @@
 # Effective Java Notes
 
-Item 1: Consider static factory methods instead of constructors
-Item 2: Consider a builder when faced with many constructor parameters
-Item 3: Enforce the singleton property with a private constructor or an enum type
-Item 4: Enforce noninstantiability with a private constructor
-Item 5: Avoid creating unnecessary objects
-Item 6: Eliminate obsolete object references
-Item 7: Avoid finalizers
+- Item 1: Consider static factory methods instead of constructors
+- Item 2: Consider a builder when faced with many constructor parameters
+- Item 3: Enforce the singleton property with a private constructor or an enum type
+- Item 4: Enforce noninstantiability with a private constructor
+- Item 5: Avoid creating unnecessary objects
+- Item 6: Eliminate obsolete object references
+- Item 7: Avoid finalizers
 
-Item 8: Obey the general contract when overriding equals
-Item 9: Always override hashCode when you override equals
-Item10: Always override toString
-Item11: Override clone juduciously
-Item12: Consider implementing Comparable
+- Item 8: Obey the general contract when overriding equals
+- Item 9: Always override hashCode when you override equals
+- Item10: Always override toString
+- Item11: Override clone juduciously
+- Item12: Consider implementing Comparable
 
-Item13: Minimize the accessibility of classes and members
-Item14: In public classes, use accessor methods, not public fields
-Item15: Minimize mutability
-Item16: Favor composition over inheritance
-Item17: Design and document for inheritance or else prohibit it
-Item18: Prefer interface to abstract classes
-Item19: Use interfaces only to define types
-Item20: Prefer class hierarchies to tagged classes
-Item21: Use function objects to represent strategies
-Item22: Favor static member classes over nonstatic
+- Item13: Minimize the accessibility of classes and members
+- Item14: In public classes, use accessor methods, not public fields
+- Item15: Minimize mutability
+- Item16: Favor composition over inheritance
+- Item17: Design and document for inheritance or else prohibit it
+- Item18: Prefer interface to abstract classes
+- Item19: Use interfaces only to define types
+- Item20: Prefer class hierarchies to tagged classes
+- Item21: Use function objects to represent strategies
+- Item22: Favor static member classes over nonstatic
 
-Item23: Don't use raw types in new code
-Item24: Eliminate unchecked warnings
-Item25: Prefer lists to arrays
-Item26: Favor generic types
-Item27: Favor generic methods
-Item28: Use bounded wildcards to increase API flexibility
-Item29: Consider typesafe heterogeneous containers
+- Item23: Don't use raw types in new code
+- Item24: Eliminate unchecked warnings
+- Item25: Prefer lists to arrays
+- Item26: Favor generic types
+- Item27: Favor generic methods
+- Item28: Use bounded wildcards to increase API flexibility
+- Item29: Consider typesafe heterogeneous containers
 
-Item30: Use enums instead of int constants
-Item31: Use instance fields instead of ordinals
-Item32: Use EnumSet instead of bit fields
-Item33: Use EnumMap instead of ordinal indexing
-Item34: Emulate extensible enums with interfaces
-Item35: Prefer annotations to naming patterns
-Item36: Consistly use Override annotation
-Item37: Use marker interfaces to define types
+- Item30: Use enums instead of int constants
+- Item31: Use instance fields instead of ordinals
+- Item32: Use EnumSet instead of bit fields
+- Item33: Use EnumMap instead of ordinal indexing
+- Item34: Emulate extensible enums with interfaces
+- Item35: Prefer annotations to naming patterns
+- Item36: Consistly use Override annotation
+- Item37: Use marker interfaces to define types
+
+- Item 38: Check parameters for validity
+- Item 39: Make defensive copies when needed
+- Item 40: Design method signatures carefully
+- Item 41: Use overloading judiciously (important)
+- Item 42: Use varargs judiciously
+- Item 43: Return empty arrays or collections, not nulls
+- Item 44: Write doc comments for all exposed API elements
 
 ### Chapter 1
 - A few fundamental principles:
@@ -670,3 +678,84 @@ public enum Apple { FUJI, PIPPIN, GRANNY_SMITH }
 
 - Marker interface: only for classes and interfaces, method parameters(as type),
   brings better compile-time checking.
+
+### Chapter 7 - Methods
+
+#### Item 38: Check parameters for validity
+
+- For public methods, use Javadoc @throws tag to document the exception that
+  will be thrown if a restriction on parameter values is violated.
+
+- Nonpublic methods should generally check their parameters using assertions.
+
+#### Item 39: Make defensive copies when needed
+
+- You must program defensively, with the assumption that clients of your class
+  will do their best to destroy its invariants.
+
+- Defensive copies are made before checking the validity of the parameters, and
+  the validity check is performed on the copies rather than on the originals.
+
+- Do not use the clone method to make a defensive copy of a parameter whose type
+  is subclassable by untrusted parties.
+
+- Return defensive copies of mutable internal fields.
+
+#### Item 40: Design method signatures carefully
+
+- Choose method names carefully.
+- Don't go overboard in providing convenience methods.
+- Avoid long parameter lists.(split methods, parameter holding classes, builder)
+- For parameter types, favor interfaces over classes.
+- Prefer two-element enum types to boolean parameters.
+
+#### Item 41: Use overloading judiciously
+
+- the choice of which overloading to invoke is made at compile time.
+
+- Selection among overloaded methods is static, while selection among overridden
+  methods is dynamic.
+
+- Runtime type of an object has no effect on which overloading executed; the
+  selection is made at compile time, based entirely on the compile-time types of
+  parameters.
+
+- A safe, conservative policy is never to export two overloadings with the same
+  number of parameters.
+
+- write(int), write(long), write(boolean)
+- writeInt(int), writeLong(long), writeBoolean(boolean)
+
+#### Item 42: Use varargs judiciously
+
+#### Item 43: Return empty arrays or collections, not nulls
+
+- zero-length arrays are immutable and immutable objects may be shared freely.
+
+```java
+private final Cheese[] EMPTY_CHEESE_ARRAY = new Cheese[0];
+
+public Cheese[] getCheeses() {
+  return cheesesInStock.toArray(EMPTY_CHEESE_ARRAY);
+}
+```
+
+- Collections.emptySet(), Collections.emptyList(), Collections.empty();
+
+```java
+// right way to return a copy of a collection
+public List<Cheese> getCheeseList() {
+  if (cheesesInStock.isEmpty())
+    return Collections.emptyList(); // Always returns same list
+  else
+    return new ArrayList<Cheese>(cheesesInStock);
+}
+```
+
+#### Item 44: Write doc comments for all exposed API elements
+
+- To document your API properly, you must precede every exported class,
+  interface, constructor, method and field declaration with a doc comment.
+
+- The doc comment for a method should describe succinctly the contract between
+  the method and its client.

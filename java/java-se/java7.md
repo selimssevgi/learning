@@ -1,4 +1,16 @@
-# Java 7
+# Java 7 (2011)
+
+- First from Oracle
+- Borught a lot of syntactic sugar
+- invokeDynamic
+- forkJoin
+- Better file IO
+- Switch for String
+- Diamon operator without type
+- Binary integer literals(0b0101010)
+- Underscores(1_000_000)
+- Try with resources
+- Multiple catches
 
 ## nio
 

@@ -1,4 +1,12 @@
-# Java 8
+# Java 8 (2014)
+
+- Lambda
+- New Date/Time API
+- Default methods
+- Metaspace
+- Nashorn
+- JavaFx
+- CompletableFuture
 
 ## Interfaces
 

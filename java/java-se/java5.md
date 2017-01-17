@@ -1,13 +1,13 @@
-# Java 5 Features
+# Java 5 Features (2004)
 
 - Foreach
 - Var-args methods
 - Auto-boxing and auto-unboxing
 - Generics
 - Co-varient return types
-- Queue
+- Concurrent collections
 - Annotations
-- Enum
+- Enum types
 - Static Import
 
 

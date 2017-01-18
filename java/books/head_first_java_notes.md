@@ -77,4 +77,10 @@ view.forward(request, response);
   work. URL on the browser doesnot change.
 
 ## Chapter 5 - Attributes and Listeners - Being a Web App
-## Chapter 5 - Session Management - Conversational State
+## Chapter 6 - Session Management - Conversational State
+## Chapter 7 - Being a JSP
+## Chapter 8 - Scriptless JSP - Script-free pages
+## Chapter 9 - Using JSTL
+## Chapter10 - Custom tag development
+## Chapter11 - Web application deployment
+

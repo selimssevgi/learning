@@ -759,3 +759,59 @@ public List<Cheese> getCheeseList() {
 
 - The doc comment for a method should describe succinctly the contract between
   the method and its client.
+
+### Chapter 8 - General Programming
+
+#### Item 45: Minimize the scope of local variables
+
+- The most powerful technique for minimizin the scope of a local variable is to
+  declare it where it is first used.
+
+- Nearly every local variable declaration should contain an initializer.
+
+- Prefer for loops to while loops.
+
+#### Item 46: Prefer for-each loops to traditional for loops
+
+Where you can't you for-each loop:
+
+1. Filtering: If you need to traverse a collection and remove selected elements,
+   then you need to use an explicit iterator so that you can call its remove method.
+
+2. Transforming: traversing and replacing some elements
+
+3. Parallel Iteration: 
+
+#### Item 47: Know and use the libraries
+
+- By using a standard library, you take advantage of the knowledge of the
+  experts who wrote it and the experience of those who used it before you.
+
+- Numerous features are added to the libraries in every major release, and it
+  pays to keep abreast of the additions.
+
+#### Item 48: Avoid float and double if exact answers are required
+
+- The float and double types are particularly ill-suited for monetary
+  calculations.
+
+- Use BigDecimal, int, or long for monetary calculations.
+
+#### Item 49: Prefer primitive types to boxed primitives
+
+- Three differences between primitives and boxed:
+
+1. Primitives have only their values, whereas boxed primitive have identities
+   distinct from their values. Values can be same but identity different.
+
+2. Primitive types have only fully functional values, whereas each boxed
+   primitive type has one nonfunctional value, which is null.
+
+3. Primitives are generally more time and space efficient than boxed primitives.
+
+- Applying the == operator to boxed primitives is almost always wrong.
+
+- When you mix primitives and boxed primitives in a single operation, the boxed
+  primitive is auto-unboxed.
+
+#### Item 50: Avoid strings where other types are more appropriate

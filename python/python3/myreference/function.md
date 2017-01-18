@@ -7,6 +7,7 @@ def testfunc():
 
 ```
 We cannot leave like this it will give intentition error for the following line.
+
 ```python
 def testfunc():
   pass # place holder, NOOP

@@ -13,8 +13,7 @@ $ gradle
 - Select Gradle
 - Use auto-import 
 - Create directories for empty content roots automatically
-- Use local gradle distibution
-  - Gradle home: ~/.sdkman/candidates/gradle/current
+- Use local gradle distibution - Gradle home: ~/.sdkman/candidates/gradle/current
 
 ## Gradle 
 

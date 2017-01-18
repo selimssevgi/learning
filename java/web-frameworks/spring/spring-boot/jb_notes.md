@@ -1,43 +1,55 @@
+## What is Spring?
+- Application framework
+- Programming and configuration model
+- Infrastructure support(databases etc.)
+
+## Problems with Spring
+- Huge framework
+- Multiple setup steps
+- Multiple configuration steps
+- Multiple build and deploy steps
+
+- *Can we abstract these steps?*
 
 ## What is Spring Boot?
 
 - SB makes it easy to create stand-alone, production-grade Spring based
   Applications that you can "just run".
 
-- Opinionated
+- Spring Boot is a framework designed to make Spring development easier
+- Reduces the complexity of working with Spring through automatic configuration
+- Unlocks projects under the Spring portfolio
+- Eliminates barriers to entry
+
+## Boot Principles
+- Reduce the amount of work for Spring developers
+- Opinionated - reasonable defaults that are easily customized
 - Convention over configuration
+- Dependency management without names and versions
+- No code generation or XML
 - Stand alone(embedded container)
   - Convenience
   - Servlet container config is now application config
   - Useful for microservices architecture
 - Production ready
 
+## Technical Approach
+- Automatic configuration
+- Starter POMs and dependencies
+- Executable jars
+- Embedded containers
+- Build tool integration
+
 
 ## Ways to Booting Spring Boot
-- Start as a Maven project
-- Spring Initializr(start.spring.io -> import, IDE)
-- Spring Boot CLI(Groovy)
 - STS IDE(Idea -> Spring Initialzr)
+- Spring Initializr(start.spring.io -> import into IDE)
+- Spring Boot CLI(Groovy)
 
 ## Customizing Spring Boot(application.properties)
-
 - resources/application.properties
 - "Spring Common application properties" for full list
 
-## What is Spring?
-
-- Application framework
-- Programming and configuration model
-- Infrastructure support(databases etc.)
-
-## Problems with Spring
-
-- Huge framework
-- Multiple setup steps
-- Multiple configuration steps
-- Multiple build and deploy steps
-
-- Can we abstract these steps?
 
 ## Steps
 

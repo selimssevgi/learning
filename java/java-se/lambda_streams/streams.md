@@ -34,6 +34,9 @@
 
 [DataSource] --> Intermediate Op1 --> Intermediate Op2 --> Terminator
 
+- All intermediate operations will be pipelined(do nothing) until terminal
+  operation applied(side effect requested).
+
 ## Stream Methods
 
 *Intermediate Operations:*
@@ -42,29 +45,29 @@
 *Intermediate:stateful Operations:*
 - may incorporate previously seen elements when processing new elements.
 
-- Stream distinct() : removes duplicates
-- Stream skip(long n) : skips first n elements
-
-- ?Stream limit(long maxSize) : .limit(3)
+- Stream distinct()           : removes duplicates
+- Stream skip(long n)         : skips first n elements
+- Stream limit(long maxSize)  : .limit(3)
 
 *Intermediate:stateless Operations:*
-- retain no state from previously seen element when processing new element
-- each element can be processed independently of operations on other elements
+- Retain no state from previously seen elements when processing new element.
+- Each element can be processed independently of operations on other elements.
 
 - Stream filter(Predicate predicate) : .filter(u -> u.getAge > 18)
-- Stream map(Function mapper) : .map(User::getName)
+- Stream map(Function mapper)        : .map(User::getName)
 
-*Terminal Operations*
+*Terminal Operations:*
 
 - Produce a result or a side-effect
 - Stream pipeline is considered consumed, create a new stream
 - are eager,(except iterator() and spliterator())
 
-- long count() : terminal operation
-- collect(Collectors.toList()) : toSet(), toMap(keyMapper, valueMapper)
+- long count()                    : terminal operation
+- collect(Collectors.toList())    : toSet(), toMap(keyMapper, valueMapper)
 - Optional reduce(BinaryOperator) : reduce(Integer::sum), reduce((a,b) -> a + "," + b)
-- T reduce(T, BinaryOperator) : int total = stream.reduce(10, (i,j) -> i + j)
+- T reduce(T, BinaryOperator)     : int total = stream.reduce(10, (i,j) -> i + j)
 - forEach(System.out::println)
+- forEachOrdered(System.out::println)
 
 *Short-circuiting terminal operations:*
 

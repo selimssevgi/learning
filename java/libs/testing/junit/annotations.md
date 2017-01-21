@@ -11,6 +11,8 @@
 - Before each test method runs
 - setUp()
 - Used when several tests need similar objects created before they can run
+- Each test runs with a fresh resources created in @Before method.
+- Create EntityManager
 
 ## @After
 
@@ -25,6 +27,7 @@
 - Runs before constructor is called
 - public static void beforeClass()
 - Open sources(database)
+- Create EntityManagerFactory
 
 ### @AfterClass
 
@@ -34,6 +37,9 @@
 - Close sources(database)
 
 ## @RunWith(Suite.class)
+
+- JUnit will invoke the class it references(Suite.class) to run the tests in
+  that class instead of runner built into JUnit.
 
 ## @SuiteClasses({ClassTest1.class, ClassTest2.class})
 

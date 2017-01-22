@@ -47,3 +47,19 @@
 ## @Parameters
 
 - public static Collection testConditions()
+
+## @Ignore
+
+- failing test blocks you to check-in in a mission critical code
+- instead of waiting to be fixed, commenting out
+- JUnit will not run @Ignore tests.
+- @Ignore("reason of ignoring the test")
+
+## @FixMethodOrder
+
+- JUnit depends on reflection to execute tests, randomness comes from JVM
+- We can specify an order
+- Class level annotation
+- @FixMethodOrder(MethodSorters.JVM)
+- @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+- @FixMethodOrder(MethodSorters.DEFAULT)

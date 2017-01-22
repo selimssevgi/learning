@@ -5,15 +5,6 @@
 - Each method in test class should public, void, no-arg.
 - Annotate methods with @Test
 
+- Reading a file from the test is not recommended as I/O operations are
+  unpredictable and slow. Use mocks.
 
-```java
-public class StringHelperTest {
-
-  @Test
-  public void test() {
-    String expected = "test";
-    String actual   = "test";
-    assertEquals(expected, actual);
-  }
-}
-```

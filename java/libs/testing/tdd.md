@@ -1,7 +1,18 @@
 # Test Driven Development
 
-- TFD : Test First Development
 - TDD : Test Driven Development
+- TFD : Test First Development
+
+- Automated tests are safety nets.
+- They run and notify the user if system is broken, so offending code can be fixed very quickly.
+- If a test suite runs for an hours, the purpose of quick feedback is compromised.
+- Unit tests should act as a safety net and provide quick feedback; *this is the main principle of tdd.*
+
+- Write a test to add a new cpability(automate tests)
+- Write code only satisfy tests
+- Re-ren the tests if any test is broken, revert the change
+- Refactor and make sure all tests are green
+- Continue with step 1
 
 ## Why TDD?
 

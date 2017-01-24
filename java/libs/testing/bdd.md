@@ -1,5 +1,17 @@
 # BDD : Behavior Driven Development
 
+- BDD is a sw enginnering process based on TDD.
+- BDD combines the best practises of TDD, DDD and OOP.
+- DDD is Domain-Driven Development.
+
+- Dan North developed BDD.
+- Created the JBehave framework for BDD.
+- Proposed following best practises:
+  - Unit test names should start with 'should/be'
+  - Acceptance test(AT) should be written in a user story manner.
+  - Acceptance criteria should be written in term of scenarios and implemented
+    as Given-When-Then.
+
 - Cucumber.io
 
 1. Describe behavior in plain text

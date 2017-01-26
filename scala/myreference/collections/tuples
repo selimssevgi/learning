@@ -1,0 +1,16 @@
+- Another useful container object, like lists, tuples are also immutable.
+
+- Difference from the List is that they can contain different types of elements.
+
+- They are useful when u want to return multiple object from a method.
+
+-!Tuples are one based
+
+> val pair = (99, "Balls")
+> println(pair._1)
+> println(pair._2)
+
+- Accessing tuples is different than Lists, cus list apply method returns the same
+  type. But tuples has to return different types for different elements in it.
+
+- Tuples are 1 based cus of a tradition set by other languages. Haskell and ML.

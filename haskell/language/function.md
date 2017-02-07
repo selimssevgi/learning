@@ -1,5 +1,10 @@
 # Functions in Haskell
 
+- All Haskell functions are pure.
+  - Cannot modify state.
+  - Cannot depend on state.
+  - Given the same arguments, always returns the same output.
+
 - Function names cannot begin with uppercase letters.
 
 - Functions in Haskell dont have to be in any particular order.
@@ -57,4 +62,77 @@ whatAge 16 = "You can drive"
 whatAge 18 = "You can vote"
 whatAge 21 = "You are an adult"
 whatAge x  = "Nothing important" -- or whatAge _ = "Nothing important"
+```
+
+## Function Operators
+- (.) - function composition
+- ($) - function application
+
+#### Function Composition (.)
+
+- Order is important, right to left
+- Both functions should have only one argument
+
+```haskell
+stringLength = length . show  -- applied right to left
+stringLength 120 -- 3
+
+stringLength' x = length (show x)
+
+notNull = not . null
+notNull' xs = not (null xs)
+```
+
+#### Function Application ($)
+
+- Takes a function and value, and applies the function to the value
+- Common usage is to replace parenthesis
+- Can be used in highorder functions
+
+```haskell
+f $ x = f x
+
+f $ g x = f (g x)
+
+f $ g $ h $ k x = f (g (h (k x)))
+
+-- apply functions to a value
+map (\f -> f 3) [(+1), (\x -> 2*x + 3), (*2)] -- [4,9,6]
+map ($3) [(+1), (\x -> 2*x + 3), (*2)] -- [4,9,6]
+
+-- a list of function zip list of values
+zipWith ($) [(+1), (\x -> 2*x + 3), (*2)] [1,2,3] -- [2, 7, 6]
+
+
+```
+
+## Polymorphic Functions
+
+- A function with a type variable
+- Not object-oriented polymorphism
+- Similar to C#/Java generics or C++ templates
+- Type variables always start with lower case; a, b, x, foo, hello_124
+- Concrete types start Upper case; Int, Integer, Char, Double
+- Repeated type variables always represent the same type
+
+```haskell
+length_ints :: [Int] -> Int
+length_ints [] = 0
+length_ints (x:xs) = length_ints xs + 1
+
+length_chars :: [Char] -> Int
+length_chars [] = 0
+length_chars (x:xs) = length_chars xs + 1
+
+-- polymorphic version
+-- length function for any type
+-- infers: length :: [a] -> Int
+length [] = 0
+length (x:xs) = length xs + 1
+
+empty_list :: [a]
+empty_list = []
+
+head :: [a] -> a
+head (x:xs) = x
 ```

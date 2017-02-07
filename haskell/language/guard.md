@@ -13,6 +13,11 @@ isEven n = mod n 2 == 0
 
 isEven' n = not (isOdd n)
 
+removeOdd [] = []
+removeOdd (x : xs)
+  | mod x 2 == 0 = x : (removeOdd xs)
+  | otherwise    = removeOdd xs
+
 ---------------------------------------------------------------
 whatGrade :: Int -> String
 whatGrade age

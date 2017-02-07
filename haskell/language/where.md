@@ -1,4 +1,16 @@
-# where
+# Where Binding in Haskell
+
+- Use for local variable defining like 'let binding'
+
+
+```haskell
+fancySeven = 2 * a + 1
+  where a = 3
+
+fancyNine = x + y
+  where x = 4
+        y = 5
+```
 
 ```haskell
 bmiTell :: (RealFloat a) => a -> a -> String

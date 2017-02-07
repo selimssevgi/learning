@@ -1,5 +1,21 @@
 # Pattern Matching in Haskell
 
+
+```haskell
+fst' (a,b) = a
+snd' (a,b) = b
+
+null' [] = True
+null' (x:xs) = False
+
+head' (x:xs) = x
+head' [] =       -- ERROR: use (x:xs)
+head' [] = error "head of empty list" -- runtime error
+
+doubleEachItem [] = []
+doubleEachItem (x:xs) = (x*2) : (doubleEachItem xs)
+```
+
 ```haskell
 lucky :: (Integral a) => a -> String
 lucky 7 = "LUCKY NUMBER SEVEN!"

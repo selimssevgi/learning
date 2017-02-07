@@ -1,10 +1,18 @@
 # Scala Singleton
 
-- 'object' keywords tell compiler to make this class a signleton
+- Objects are singletons
+- Objects are Scala's replacement for the keyword 'static'
 - Initial entry points to Scala applications are always contained in an 'object'
-- Signleton class is referred to as a 'companion object'
-- A companion object has a privileged relationship to its class.
-- It can access private methods of its class
+
+- Object classes cannot be extended
+- Object classes can extend(useful?)
+
+- Need a signleton
+- Need a factory pattern
+- Need to implement pattern matching logic
+- Need a utility method that doesnt require an instance or state
+- Need default values
+- Need a main method
 
 
 ```scala
@@ -14,5 +22,11 @@ object HelloWorld {
 
     println(hello)
   }
+}
+```
+
+```scala
+object Runner extends App {
+  println("Hello World!")
 }
 ```

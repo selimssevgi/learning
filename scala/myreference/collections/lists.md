@@ -1,37 +1,38 @@
 # List
 
-- Scala list are immutable
+- Scala lists are immutable, duplicates allowed
 - Operations dont change the values or list, but creates and returns a new list
+- 'Nil' is an empty list
+- Lists have many of the same functional properties as other collections
 
 
 ```scala
-val oneTwoThree = List(1, 2, 3)  // immutable reference: val
+object Lists extends App {
 
-// ::: list concationation operator
-val oneTwo = List(1, 2)
-val threeFour = List(3, 4)
-val OneTwoThreeFour = oneTwo ::: threeFour
+  val a = List(1, 2, 3)
+  val b = List.apply(1, 2, 3) // companion object
+  val c = 1 :: 2 :: 3 :: Nil
 
-// :: cons operator. prepends a new element to the beginning of an existing list
-val twoThree = List(2, 3)
-val oneTwoThree = 1 :: twoThree
+  // emtpy list
+  val emptyList = Nil
+  val emptyList = List()
 
-// Another way to create a list
-// :: is right associative. right side has to be a list
-val oneTwoThree = 1 :: 2 :: 3 :: Nil
+  print(a.head) // 1
+  print(a.tail) // 2, 3
+  print(a.last) // 3
+  print(a.init) // 1, 2
 
-// emtpy list
-val emptyList = Nil
-val emptyList = List()
+  println(a(2));
+  println(a.apply(2)) // class object
+  println(a.min)
+  println(a.max)
+  println(a.isEmpty)
+  println(a.nonEmpty)
 
-// If a operator ends with colon, it is called on its right operand.
-thoTree.::(1)
+  println(a.mkString(","))
+  println(a.mkString("[", ",", "]"))
+}
 ```
-
-
-
-
-
 
 - List doesnt offer an append operation. Cus it takes more time to add an element
   to the end, prepending an element is contant time. Either call reverse on a list

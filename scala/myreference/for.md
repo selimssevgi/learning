@@ -8,9 +8,25 @@
 ```scala
 for (i <- 0 to 10) println(i)
 
-for (i <- 0 to 2) {
-  println(array(i))
+for (i <- 0 to 2) { println(array(i)) }
+```
+
+
+```scala
+val xs = List(1,2,3,4)
+var result = List[Int]() // (2,3,4,5) : no var!!
+for (a <- xs) {
+  result = result :+ (a+1)
 }
+
+println(result)
+```
+
+```scala
+// functional for loops
+val xs = List(1,2,3,4)
+val result = for (a <- xs) yield (a+1)
+println(result)
 ```
 
 ## Conditional for loop

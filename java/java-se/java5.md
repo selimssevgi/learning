@@ -5,7 +5,8 @@
 - Auto-boxing and auto-unboxing
 - Generics
 - Co-varient return types
-- Concurrent collections
+- Concurrent collections(ConcurrentHashMap, CopyOnArrayList, Queue, BlockingQueue)
+- java.util.concurrent
 - Annotations
 - Enum types
 - Static Import

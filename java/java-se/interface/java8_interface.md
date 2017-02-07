@@ -39,6 +39,33 @@ public interface Employee {
 
 ### Default and Static Methods
  
+#### Default Methods
+
+- Adding new methods to existing interfaces
+  - Use new types and provide new functionality
+- For every declared interface method there must be an implementation
+  - Normally it is required to provide those method in implementation
+- Methods added to interfaces would be missing in implementations
+  - You couldnt write a method you didnt know would be needed
+- What if new method declarations came with default implementations
+  - "If you cannot afford a method one will be provided for you"
+
+- Use new default method attribute
+- Can call other interface methods, public static methods and constructors
+- Throw exceptions
+
+```java
+public default boolean isEmpty() { return size() == 0; }
+public default Rectangle makeRect() { return new Square(); }
+public default forEach(Consumer<? extends E> consumer) {
+  for (E e : this) { consumer.consume(e); }
+}
+```
+
+- Cannot be any of the Object methods(toString)
+- Cannot access directly access instance state
+- Has no knowledge of synchronozation protocol
+- Luckily(much) less efficient than possible implementations
 
 ### Inheriting Behavior
 

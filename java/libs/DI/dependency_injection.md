@@ -7,7 +7,8 @@
 - A form of Inversion of Control(IoC)
 - Is a technique in which object gets its dependencies given to it, as opposed
   to having to construct them itself.
-- Some benefits to using DI:
+
+* Some benefits to using DI:
   - loosely coupled codebase
   - easier to test codebase
   - easier to read codebase
@@ -29,6 +30,8 @@
 
 #### Dependency Injection
 
+- IoC is too generic, "what aspect of the control are they inverting?"
+
 - The process of finding your dependencies is outside the direct control of
   currently executing code.
 
@@ -38,6 +41,9 @@
 
 - Many developers used variations on the 'Factory and Service Locator' patterns.
   All of which were a type of IoC.
+
+- Injection is not the only way to break dependency, 'service locatar' is
+  another way.
 
 ```java
 public static List<Agent> getFriendlyAgents() {

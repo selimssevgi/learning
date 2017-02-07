@@ -1,6 +1,5 @@
 $ sudo -u postgres psql
 
-# hiddenslate info
 postgres=# create user "myappusr" with password '_password_';
 postgres=# create database "myapp_development" owner "myappusr";
 
@@ -11,7 +10,7 @@ local   all             hiddenslate                               trust
 
 $ sudo service postgresql restart
 
-$ psql -d hslate -U hiddenslate
+$ psql -d myapp_development -U myappusr
 
 
 ===========================================

@@ -1,9 +1,0 @@
-- start scala repl with color hightligts
-  $scala -Dscala.color # add alias as scala
-
-- exit scala interpreter
-  > :q or :quite
-
-- if line is too long, you can put it on multiline, just enter and continue.
-  following line will be shown with a vertical bar on the next lines.
-  Enter twice two escape multiline mode if smth goes wrong.

@@ -17,7 +17,8 @@
 - Passed around but never used
 - Used to fill parameter list of a method
 - IDE generated implementations
-- Dummy objects are passed to avoid NPException for mandatory parameters
+- Dummy objects are passed to avoid NPException for mandatory parameters and to
+  get code run
 
 #### Fake
 

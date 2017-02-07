@@ -3,6 +3,8 @@
 - TDD : Test Driven Development
 - TFD : Test First Development
 
+- TDD is about eliminating or reducing fear in the development process
+
 - Automated tests are safety nets.
 - They run and notify the user if system is broken, so offending code can be fixed very quickly.
 - If a test suite runs for an hours, the purpose of quick feedback is compromised.
@@ -34,12 +36,12 @@ never when you foresee that you need them."
 - Refactor
 - Pas(Green)
 
-## Triangulation
+## Levels of TDD
 
-- Slowly generalizing from examples
-
-## Types
-
-- Classic TDD
-- Mockist TDD
+Level          | Description
+---------------|-------------
+Unit           | Tests to verify code contained in a class
+Integration    | Tests to verify interaction between classes
+System         | Tests to verify a running system
+System-Integ   | TEsts to verify a running system, including 3rd party components
 

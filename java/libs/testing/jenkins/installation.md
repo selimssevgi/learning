@@ -12,6 +12,11 @@ $ sudo apt-get install jenkins
 $ sudo service jenkins restart
 
 $ sudo service jenkins status
+
+// 27Jan17: Jenkins doesnt start with Java 9
+// use java 8
+// admin
+// sa
 ```
 
 ## Unlock Jenkins

@@ -22,7 +22,7 @@
 - Allow a functional style while continuing to work with a language based on mutation
 - Designed for composition
 - Flexible and powerful programming tool
-- 
+
 
 * To define a collector, you need to provide:
 

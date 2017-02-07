@@ -3,6 +3,7 @@
 - First from Oracle
 - Brought a lot of syntactic sugar
 - invokeDynamic
+- java.lang.invoke
 - forkJoin
 - Better file IO
 

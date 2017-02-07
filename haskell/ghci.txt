@@ -1,7 +1,0 @@
-# :set prompt "ghci>"
-
-# let a = 1 -- defining a variable in ghci
-
-# :load filename
-
-# :type varialbe

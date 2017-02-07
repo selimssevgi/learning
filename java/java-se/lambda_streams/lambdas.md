@@ -171,10 +171,38 @@ public interface greeting {
 
 - Shorthand for delegating
 - Can be used for static and instance methods
-- Class::method
-- (p) -> System.out.println(p)
-- System.out::println
-- collection.forEach()
+- It is just in case of pass-through call
+- If order of the parameters are not same, method references cannot be used
+- If there are more than one possible candidate for compiler, it will be error
+  of unambiguaty
+
+- Method reference cannot be used while manipulating data
+
+```java
+List<Integer> numbers = Arrays.asList(1,2,3,4,5);
+
+numbers.forEach(value -> System.out.println(value));
+numbers.forEach(System.out::println);
+
+numbers.stream()
+     //.map(e -> String.valueOf(e))
+       .map(String::valueOf)          // static method
+     //.map(e -> e.toString())        // as a target
+       .map(String::toString)
+       .forEach(System.out::println); // instance method
+
+numbers.stream()
+       .reduce(0, (total, e) -> Integer.sum(total, e)); // pmeter order same
+
+numbers.stream()
+       .reduce(0, Integer::sum); // method reference on two parameters
+
+numbers.stream()
+       .reduce("", (carry, str) -> carry.concat(str)); // same order
+
+numbers.stream()
+       .reduce("", String::concat)
+```
 
 
 ## Constructor Referencing

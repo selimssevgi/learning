@@ -1,5 +1,0 @@
-# after installing haskell-platform
-
-# save haskell codes in files with .hs extension
-
-$runhaskell ./hello.hs

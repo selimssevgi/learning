@@ -55,6 +55,7 @@
 
 - Stream filter(Predicate predicate) : .filter(u -> u.getAge > 18)
 - Stream map(Function mapper)        : .map(User::getName)
+- S unordered() : performance gain in some operations
 
 *Terminal Operations:*
 
@@ -77,6 +78,25 @@
 - boolean  allMatch(Predicate) : if all elements matches, true if stream is empty
 - boolean noneMatch(Predicate)
 
+## Stream Properties
+
+- sized    : bounded, unbounded
+- ordered  : list elements are ordered, get(0), first, second, third element
+- distinct : uniqueness of the elements, set
+- sorted   : 1,2,3,4
+
+- Depends on how stream constructed(from list?set?)
+- Or operations it is applied(distinct(), sorted())
+
+```java
+List<Integer> numbers = Arrays.asList(1,2,3,3,4,5,5)
+// sized, ordered, non-distinct, non-sorted
+numbers.stream().distinct().forEach(System.out::println)
+// sized, ordered, distinct, non-sorted
+numbers.stream().distinct().sorted().forEach(System.out::println)
+// sized, ordered, distinct, sorted
+```
+
 ## Creating Streams
 
 - From collection : Collection.stream();
@@ -98,9 +118,16 @@ String[] arr = {"Selim", "Ahmet"};
 Stream<String> names2 = Stream.of(arr);
 System.out.println(names2.count()); // 2
 
-Stream<Double> s = Stream.generate(Math::random);
+Stream<Double>  s         = Stream.generate(Math::random);
 Stream<Integer> intStream = Stream.iterate(1, i -> i + 1);
-Stream<String> lines = Files.lines(Paths.get("/a/file/path"));
+Stream<String>  lines     = Files.lines(Paths.get("/a/file/path"));
+
+// iterative generators behave like linked list, spliting is more costly
+IntStream.iterate(0, i -> i + 1).limit(n).sum();
+Stream.iterate(100, e -> e + 1); // infinite stream
+
+// stateless generators behave like arrays, splitting is cheap
+IntStream.range(0, n).sum();
 ```
 
 ## Iterating Strategies

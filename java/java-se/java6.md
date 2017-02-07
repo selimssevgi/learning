@@ -5,3 +5,5 @@
 - Performance improvements
 - Better xml parsing
 - The first scripting API
+
+- ConcurrrentSkipListMap, ConcurrentSkipListSet(replacement for SortedMap, SortedSet)

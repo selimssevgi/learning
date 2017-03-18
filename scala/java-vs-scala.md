@@ -3,7 +3,7 @@
 Feature           | Java                  | Scala
 ------------------|-----------------------|------------------------------------
 Type system       | Static, quite verbose | Static, heavily type-inferred
-Polyglot layear   | Stable                | Stable, dynamic
+Polyglot layer    | Stable                | Stable, dynamic
 Concurrency model | Lock-based            | Actor-based
 FP                | Add-on                | Built-in support, natural part of lan
 Surface area      | Small/medium          | Large/very large
@@ -15,3 +15,14 @@ Syntax style      | Smple, rqlr, r. vrbse | Flexible, concise, many special case
   block evaluates to a value.
 
 - In Scala there is no need for return statements.
+
+## In Scala
+
+- All types are objects.
+- Type inference
+- Nested functions
+- Functions are objects.
+- DSL support
+- Traits
+- Closures (Java8 has it)
+- Concurrency support inspired by Erlang

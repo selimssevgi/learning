@@ -2,7 +2,10 @@
 
 - while/do-while statements exist like other languages
 - while/do-while are underused
+- var and while are not good constructs for functional programming
 - There usually is a functional equivalent to using while/do-while
+- Instead recursive functions can be used
+- There are times some solutions better expressed in while loops.
 
 
 ```scala

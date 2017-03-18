@@ -7,16 +7,38 @@
 - Mutable and immutable. Default version is immutable.
 - Provides HashMap as the standard mutable form
 
+## Immutable Map
+
+- Default map, no import necessary
+
+```scala
+val romanNumeral = Map(1-> "I", 5 -> "V", 10 -> "X")
+```
+
+## Mutable Map
+
+```scala
+// explicit type parameteration([Int, String]) is required
+// compiler doesnt have values to infer the type
+
+val tasks = scala.collection.mutable.Map[Int, String]()
+tasks += (1 -> "Go home")   // 1.->("Go home")
+tasks += (2 -> "Come back")
+tasks += (3 -> "What are you doing?")
+print(tasks(1)) // "Go home"
+```
 
 ```scala
 object Maps extends App {
 
+  // with tuples
   val m  = Map.apply((1, "One"), (2, "Two"), (3, "Three"))
   val m2 = Map((1, "One"), (2, "Two"), (3, "Three"))
 
   val t:(Int, String) = 3 -> "Three"   // (3, Three)
   println(t)
 
+  // a better way
   val m3 = Map(1 -> "One", 2 -> "Two", 3 -> "Three")
 
   println(m3.get(1))     // Some(one)

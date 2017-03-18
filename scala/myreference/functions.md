@@ -1,8 +1,19 @@
 # Scala Functions
 
+- Functions Call-by-Name             // dont evaluate arguments
+- Functions with Named Arguments     // different order
+- Functions with Variable Arguments  // java varargs, args: String\*,
+- Recursion Functions                //
+- Default Parameter Values           // print(name: String = "World")
+- High-Order Functions               // function as parameters or result types
+- Nested Functions                   // local functions
+- Anonymous Functions                // (x:Int) => x + 1
+- Partially Applied Functions        // logWithDate(date, \_: String)
+- Currying Functions
+
 - Functions are a trait(pure abstract) that is instantiated anonymously
 - 'apply' method in the function means that you dont have to call it explicitly
-- 
+- Functions defined in a class called method.
 
 
 ```scala
@@ -95,6 +106,7 @@ println(f4("Scala"))  // ("Scala", 5)
 - Methods can be converted to functions using partially applied functions
 - Use an underscore to turn method parameters into function parameters
 - If an underscore is the last character in a method parameter, you can remove it
+
 ```scala
 class Foo(x:Int) {
   def bar(y:Int) = x + y

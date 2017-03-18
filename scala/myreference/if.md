@@ -5,6 +5,35 @@
 - If statements can be used in a functional fashion and assigned to a val or var
 
 
+```shell
+scala> val res = if (5 < 9) 4
+res: AnyVal = 4
+
+scala> val res = if (5 > 9) 4 // scalac adds "else ()"
+res: AnyVal = ()
+
+# common parent of Int and Unit is AnyVal
+
+scala> val res = if (5 > 9) "hi"
+res: Any = hi
+
+# common parent of String and Unit is Any
+
+```
+
+```scala
+// normal if statement with mutable variable
+var filename = "default.txt"
+if (!args.isEmpty)
+  filename = args(0)
+```
+
+```java
+val filename =
+  if (!args.isEmpty) args(0)
+  else "default.txt"
+```
+
 ```scala
 // old IF statement
 val a = 10

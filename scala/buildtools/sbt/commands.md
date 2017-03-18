@@ -20,6 +20,16 @@ $ sbt         # start sbt shell in project directory
 > exit        # or CTRL+D
 ```
 
+## Run main method
+```shell
+$ sbt run arg1 arg2
+
+# or
+
+$ sbt
+> run arg1 arg2
+```
+
 ## sbt Shell
 
 - Has TAB completion and history

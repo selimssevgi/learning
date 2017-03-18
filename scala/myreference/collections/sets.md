@@ -6,15 +6,29 @@
 - Sets typically are more mathematically powerful than Lists
 
 - There are both mutable and immutable sets in scala.
-- By default, scala gives you immutable version. If u want otherwise, u need to
-  import mutable set.
+- By default, scala gives you immutable version.
+- If u want mutable version, u need to import mutable set.
 
+```shell
+                                scala.collection
+                                     Set
+                                  <<trait>>
+                                      ^
+                                      |
+                  -----------------------------------------
+                  |                                       |
+        scala.collection.immutable            scala.collection.mutable
+                 Set                                     Set
+              <<trait>>                               <<trait>>
+                 ^                                        ^
+                 |                                        |
+        scala.collection.immutable            scala.collection.mutable
+             HashSet                                   HashSet
+```
 
 ```scala
 object Sets extends App {
-
-  val s = Set(1,2,3,4)
-  val o = Set.apply(1,2,3,4)
+  val s = Set(1,2,3,4)  // Set.apply(1,2,3,4)
 
   println(o) // order is not preserved
 
@@ -38,7 +52,7 @@ object Sets extends App {
   println(set2.apply(4))                  // true
   println(set3(20))                       // false
 
-  var jetSet = Set("Boeing", "Airbus",)
-  jetSet += "Lear"
+  var jetSet = Set("Boeing", "Airbus",)   // it is var
+  jetSet += "Lear"                        // shorthand: jetSet = jetSet + "Lear"
 }
 ```

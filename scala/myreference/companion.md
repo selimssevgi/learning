@@ -2,14 +2,15 @@
 
 - They are also singleton but serve to a class, abstract class or trait
 - Companion Objects have the same name as the class they represent
-- Companion Objects must be in the same file as the class they represent
+- Companion Objects must be in the same file as the class they represent(companion class)
 - Companion Objects have access to their representative class's private information
 - Classes have access to the companion object's private information
 
-- Signleton class is referred to as a 'companion object'
+- Singleton class is referred to as a 'companion object'
 - A companion object has a privileged relationship to its class.
 - It can access private methods of its class
 
+- Defining a singleton object doesnot define a type.
 
 ```scala
 class ScreetAgent(val name:String) {

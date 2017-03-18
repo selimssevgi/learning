@@ -1,6 +1,5 @@
 # Scala String
 
-
 ```scala
 // java static string method
 val str = String.format("This is a %s", "test")
@@ -8,6 +7,31 @@ println(str)
 
 val str2 = "This is a %s".format("test")
 println(str2)
+```
+
+## Raw Strings
+
+
+```scala
+val escapes = "\\\"\'" // \'"
+```
+
+Because this syntax is awkward for strings that contain a lot of espace
+sequences or strings that span multiple lines, Scala includes a special syntax
+for raw strings.
+
+- You start and end a raw string with three double quotation marks(""")
+
+```scala
+println("""Welcome to Ultamix 3000.
+           Type "HELP" for help.""")
+```
+
+*PROBLEM:* Spaces are added for readability but it also shows up in output.
+
+```scala
+println("""|Welcome to Ultamix 3000.
+           |Type "HELP" for help.""".stripMargin)
 ```
 
 

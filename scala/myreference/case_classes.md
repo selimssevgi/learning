@@ -17,6 +17,13 @@
 However, in case of any change in class, those methods have to be regenerated.
 But this is not an issue in case classes.
 
+## Provided Conveniences
+
+- It adds a factory method with the name of the class.(Person("Selim"))
+- All argumnets in the parameter list of a case class implicitly get a val prefix.
+- It add natural implementations of methods toString, hashCode, equals.
+- It add a copy method for making modified copies.
+
 ```scala
 case class TemperatureAlarm(temp : Double)
 

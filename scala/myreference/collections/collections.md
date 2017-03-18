@@ -12,3 +12,9 @@
 - Scala has both immutable and mutable version of its collections
 - Immutable versions are default(and always available to every Scala source
   file)
+
+- Arrays are mutable, List are immutable by default.
+
+- For sets and maps, Scala provides both mutable and immutable versions.
+- But both versions use the same simple names.
+- Scala models mutability in class hierarchy.

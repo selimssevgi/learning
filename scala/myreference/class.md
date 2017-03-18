@@ -2,11 +2,11 @@
 
 - Classes are public by default
 - A class may have auxiliary constructors, denoted using this()
-- Auxiliary constructos act like provides of default parameters to the primary constructor
+- Auxiliary constructos act like providers of default parameters to the primary constructor
 - Class name doesnt have to be same with file name
-- Multiple classes in a files is allowed
+- Multiple classes in a file is allowed
 
-- val creates accessort, access to the inner state
+- val creates accessors, access to the inner state
 - var creates mutators, allowing change to inner state
 - use javap -p, to see what scala is creating
 
@@ -47,9 +47,10 @@ class Employee(@BeanProperty val firstName: String, // getFirstName()
 ## Constructors
 
 - Primary constructors are designed for all information up front
-- Ancillary constructors need to find a way to invoke the primary(default values)
+- Auxiliary constructors need to find a way to invoke the primary(default values)
 - Named argumenets can be used for constructors too
-- Default arguments can be used for constructors too(instead of ancillary constructors)
+- Default arguments can be used for constructors too(instead of auxiliary constructors)
+- class Emp(id: Int = 0, name: String = "no-name") {}
 
 - require checks for quality of parameters in a method or constructor
 - require will throw an IllegalArgumentException
@@ -128,7 +129,7 @@ val cis:Couple[Int, String] = new Couple(5, "String")
 - If a type is known at the class level, then it does not need to be declared at
   the method level
 
-```java
+```scala
 case class Box[T](t:T) {
   def coupleWith[U](u:U):Box[Couple[T, U]]  = new Box(new Couple(t, u))
 }

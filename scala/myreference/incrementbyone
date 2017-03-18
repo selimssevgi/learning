@@ -1,3 +1,0 @@
-- in scala i++ and ++i stuff dont work. 
-  > i += 1 
-  > i = i + 1

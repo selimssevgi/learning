@@ -2,7 +2,7 @@
 
 ### Types of Multitasking
 * Process based: separate tasks, no dependencies on each other,
-                   OS level, not programmatic level
+                 OS level, not programmatic level
     - writing code in editor
     - listening some music
     - downloading some file
@@ -19,13 +19,13 @@
 ## Multithreading in Java
 Java has built-in support for multithreading with the rich API.
 
-**Thread** : a flow of execution of a job.
+*Thread:* a flow of execution of a job.
 
 * There are two ways of defining a thread:
   - by extending Thread class
   - by implementing Runnable interface
 
-**Job** : the code block in the run method is the job that thread will execute.
+*Job:* the code block in the run method is the job that thread will execute.
 
 ### by extending Thread class
 
@@ -66,10 +66,12 @@ It will use the one in subclass, so it will NOT do what it has to do. There will
 The code after super.start will be executed by main method.
 
 #### Case 8 : Thread life cycle
-new -> new Thread
-ready/runnable -> t1.start()
-running -> tread scheduler allocates processor
-dead/terminate -> preemptying or finishes job
+Status          | Description
+----------------|--------------------------------
+new             | new Thread
+ready/runnable  | t1.start()
+running         | tread scheduler allocates processor
+dead/terminate  | preemptying or finishes job
 
 #### Case 9 : Restarting a thread
 Throws illegalThreadStateException. RuntimeException
@@ -119,9 +121,10 @@ Thread t = new Thread(ThreadGroup g, Runnable target, String name, long stackSiz
 ```
 
 ## Thread Methods
+
 ```java
 Thread.currentThread(); // native method, returns current thread object
-t1.getName(); // returns the name of the thread, if not set, internally created one. (Thread-0)
+t1.getName();           // internally created one (Thread-XXX)
 t2.setName("athreadname");
 ```
 
@@ -149,6 +152,7 @@ if there is no thread, same thread can continue its execution.
 
 * Running thread calls yield, goes into ready/runnable state.
 * Some platforms do not provide proper support for yield method.
+* Normally, it is only used for debug purposes.
 
 ### join() method - waiting friend analogy
 The thread wanting to wait for another thread must call join method on that thread.

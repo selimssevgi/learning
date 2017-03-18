@@ -90,6 +90,8 @@ biggerThan5 = filter (>5) [3,5,6,7] -- [6,7]
 evensUpTo20 = takeWhile (<=20) [2,4..]
 
 mulOfList = foldr (*) 1 [1,2,3]
+
+reserve [1,2,3] -- [3,2,1]
 ```
 
 ## Custom List Functions

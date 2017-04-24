@@ -40,7 +40,7 @@ println("""|Welcome to Ultamix 3000.
 - Performs variable replacement
 - Requires an s before a String
 - Braces may be required for evalution
-- Use f interpolator to use C/Java-style formatting
+- Use f interpolator to use C/Java-style formatting: printf
 - Works great with Scala Smart Strings
 
 ```scala
@@ -59,4 +59,23 @@ println(f"The cost is $$$cost%1.2f")
 
 val percent = 20
 pritnln(f"percent is %n on a new line $percent%%")
+```
+
+## Smart Strings
+
+- Scala String object is nothing but a representative of a java.lang.String
+- Where did we get this new stripMargin method?
+- scala.collection.immutable.StringLike
+- Treating string as an immutable collection
+- RichInt, RichBoolean, so on.
+
+```scala
+val multilineString = "line number 1, \n" +
+                      "line number 2, \n" +
+                      "line number 3, \n"
+println(multilineString)
+
+val smartMulti = """line number 1,
+                   |line number 2,
+                   |line number 3,""".stripMargin('|')
 ```

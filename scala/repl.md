@@ -3,6 +3,7 @@
 
 ```shell
 $ scala
+> :help
 > :paste                     # paste chunk of code
 > :reset                     # reset
 > :q or :quite               # exit scala interpreter

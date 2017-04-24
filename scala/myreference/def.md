@@ -23,6 +23,10 @@ def add(b: Byte): Unit = { sum += b}
   equals sign, and enclose the body of the method in curly braces. In this way,
   method looks like a procedure, which is executed only for its side effects.
 
+- The significance of = after the method signature isn’t only to separate the
+  signature from the method body but also to tell the Scala compiler to infer the return
+  type of your function. If you omit that, Scala won’t infer your return type
+
 ```scala
 // no equals sign always mean that the result type is Unit.
 def add(b: Byte) {sum += b }

@@ -1,10 +1,18 @@
 # Learn
 
-- a flexible mixin-based composition mechanism as a clean replacement for
-  multiple inheritance.
-
+## Classes
+- Numeric class
+- Orderin Class
 - java.lang.Integer vs scala.Int
 - RichWrappers
+- Any class methods / object methods comes from where? object one
+- Vector, trie
+
+
+
+## Concepts
+- a flexible mixin-based composition mechanism as a clean replacement for
+  multiple inheritance.
 
 - Inheritance
 
@@ -14,13 +22,23 @@
 
 - Array defininition
 
-- Any class methods / object methods comes from where? object one
-
 - unapply method
 
 - private constructor / apply
 
 - trait
+- modular mixin composition
+
+- self-type
+
+- type-abstraction
+
+- compile macros (scala 2.10)
+
+- Hindley–Milner type system
+- Type inference
+
+- algebratic data types
 
 - visitor pattern - pattern matching
 

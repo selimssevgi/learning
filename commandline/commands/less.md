@@ -1,4 +1,6 @@
-read-scan long texts in a better format
+# less
+
+- read-scan long texts in a better format
 
 less <filename>
 

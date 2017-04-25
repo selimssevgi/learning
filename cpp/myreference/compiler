@@ -1,8 +1,0 @@
-# compile a c program
-gcc -o <outputfile> <inputfile>
-gcc -o hello hello.c
-
-
-# compile a c++ program
-g++ -o <outputfile> <inputfile>
-g++ -o hello hello.c

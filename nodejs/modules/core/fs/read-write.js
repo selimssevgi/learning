@@ -16,7 +16,7 @@ fs.readFile(path, 'utf8', function(err, data) {
 
 console.log('This sentence logs first, and then file content')
 
-fs.writeFile(writeFile, content);
+fs.writeFile(writePath, content);
 
 fs.unlink('to-be-deleted.txt'); // deleting files
 

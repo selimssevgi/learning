@@ -26,4 +26,23 @@ user["likes bird"] = false;
 
 // remove a property
 delete user.age;
+
+let Car = {
+  maxSpeed: 70;
+  drive: function () { console.log("driving"); }
+};
+```
+
+## Constructor Function
+
+```javascript
+let Car = function (maxSpeed, driver) {
+  this.maxSpeed: maxSpeed;
+  this.driver: driver;
+  this.drive: function () {
+    console.log("driving..");
+  }
+}
+
+let aCar = new Car(70, "abc");
 ```

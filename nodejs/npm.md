@@ -39,4 +39,8 @@ npm list --depth 0             # just installed packages
 npm list --global true --depth 0
 
 npm prune                      # remove unused extra packages
+
+
+// npm update
+sudo npm update -g npm
 ```

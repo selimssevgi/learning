@@ -9,6 +9,8 @@
   3. Integrates with many templating engines
 
 
+## Init
+
 ```javascript
 let express = require('express');
 
@@ -32,6 +34,22 @@ app.get('/', (req, res) => console.log("GET /"));
 
 app.get('/:id', (q, s) => console.log(q.params.id));
 
+app.post('/', (q, s) => console.log("POST /"));
+
+app.delete('/', (q, s) => console.log("DELETE /"));
+```
+
+## Query Strings (GET method)
+
+- key-value pairs after ?
+
+```javascript
+app.get('/news', (req, res) => {
+  // news?page=2
+  console.log(req.query.page); // {page: 2}
+  res.render('news', {qs : query});
+});
+
 app.get('/', (req, res) => {
   // extracting values from GET form
   let name = req.query.name;
@@ -40,12 +58,20 @@ app.get('/', (req, res) => {
 
   res.end(JSON.stringify({name: name, age: age}));
 });
+```
 
-app.post('/', (q, s) => console.log("POST /"));
+## POST Request
 
-app.delete('/', (q, s) => console.log("DELETE /"));
+- npm install body-parser
 
+```javascript
+let bodyParser = require('bodyParser');
 
+let urlencodedParser = bodyParser.urlencoded({ extends: false });
+
+app.post('/contact', urlencodedParser, (req, res) => {
+  console.log(req.body); // {username: 'express', password: 'asdasd'}
+});
 ```
 
 ## Serving Static Files
@@ -53,5 +79,7 @@ app.delete('/', (q, s) => console.log("DELETE /"));
 - Pass the name of directory of static assets,
 
 ```javascript
-app.use(express.static('public'));
+app.use(express.static('public')); // serve assert under public directory
+
+app.use(express.static(path.join(__dirname, 'public')));
 ```

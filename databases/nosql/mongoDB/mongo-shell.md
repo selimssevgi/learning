@@ -9,6 +9,8 @@
 ```shell
 $ mongo
 
+$ mongo host:25481/db-name -u <dbuser> -p <dbpassword>
+
 > help
 
 > show databases

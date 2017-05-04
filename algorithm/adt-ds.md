@@ -1,6 +1,7 @@
 ## ADT vs DT
 
 - Abstract Data Type vs Data Structure
+- Algebraic data types?
 
 - ADT is a logical description and data structure is concrete.
 

@@ -1,9 +1,11 @@
 # Bash for Loop
+
 - There are two types of bash for loops available.
   1. One using the “in” keyword with list of values,
   2. Another using the C programming like syntax.
 
 ## Syntax
+
 In essence, for assigns a word from the list of words to the specified variable,
 executes the commands, and repeats this over and over until all the words have been used up.
 
@@ -14,6 +16,7 @@ done
 ```
 
 ### Examples
+
 ```shell
 for num in {1..10}
 
@@ -69,6 +72,7 @@ done
 ```
 
 ### Usage of $@ with for loop
+
 The shell variable "$@" contains the list of command line arguments.
 This technique is often used to process a list of files on the command line.
 

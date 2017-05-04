@@ -1,6 +1,8 @@
+# Shell Option
 
-set -o # displaying bash options 
+```shell
+bash -x script.sh    # executes script with debug option on
 
-bash -x script.sh # executes script with debug option on
-
-set -o vi # turn on vi keybing temporarily 
+set -o               # displaying bash options 
+set -o vi            # turn on vi keybing temporarily 
+```

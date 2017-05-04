@@ -1,19 +1,23 @@
+# Shell Variables
 
-Global variables or environment variables are available in all shells.
-The env or printenv commands can be used to display environment variables.
+- Global variables or environment variables are available in all shells
+- The env or printenv commands can be used to display environment variables
 
-$SHELL # ex -> /bin/bash
 
-$HOME # The current user's home directory; the default for the cd built-in. is also used by tilde expansion.
+```shell
+$SHELL    # /bin/bash
 
-$TERM # terminal type
+$HOME     # The current user's home directory
 
-$CDPATH # A colon-separated list of directories used as a search path for the cd built-in command.
+$TERM     # terminal type
 
-$IFS # A list of characters that separate fields; used when the shell splits words as part of expansion.
+$CDPATH   # A colon-separated list of directories used as a search path for the cd built-in command
 
-$PATH # A colon-separated list of directories in which the shell looks for commands.
+$IFS      # A list of characters that separate fields; used when the shell splits words as part of expansion
 
-$PS1 # The primary prompt string. The default value is "'\s-\v\$ '".
+$PATH     # A colon-separated list of directories in which the shell looks for commands
 
-$PS2 # The secondary prompt string. The default value is "'> '".
+$PS1      # The primary Prompt String. The default value is "'\s-\v\$ '"
+
+$PS2      # The secondary prompt string. The default value is "'> '"
+```

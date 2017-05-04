@@ -1,5 +1,7 @@
 # JSON
 
+- They are analogous to the dict and hashmaps of other programming languages.
+
 - The file type for JSON files is ".json"
 - MIME type for JSON text is "application/json"
 

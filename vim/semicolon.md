@@ -1,27 +1,31 @@
-:!<shellcommand> -> execute shell command
+# Semicolon
 
-:ls -> list of open buffers
+```shell
+:!<shellcommand> # execute shell command
 
-:r <filename> -> paste the content of the file in current file
+:ls              # list of open buffers
 
-:r !ls -> paste the output of ls command
+:r <filename>    # paste the content of the file in current file
 
-:w <filename> -> save the file. filename is optional. think as "save as"
+:r !ls           # paste the output of ls command
 
-:wq -> save and quit
+:w <filename>    # save the file. filename is optional. think as "save as"
 
-:q! -> quit without saving
+:wq              # save and quit
 
-:q -> quit when there is no change
+:q!              # quit without saving
 
-:s/old/new -> only changes the first occurence of the old with new in line
+:q               # quit when there is no change
 
-:s/old/new/g -> changs occurences of the old with new in line globally
+:s/old/new       # only changes the first occurence of the old with new in line
 
-:%s/old/new/g -> change every occurence of the old with new in whole file globally
+:s/old/new/g     # changs occurences of the old with new in line globally
 
-:%s/old/new/gc -> find and prompt to change every occurence of the old with new in whole file globally
+:%s/old/new/g    # change every occurence of the old with new in whole file globally
 
-:gui -> switch to gui
+:%s/old/new/gc   # find and prompt to change every occurence of the old with new in whole file globally
 
-:grep # find all accourences and use :cn for the next. changing arguments of a func
+:gui             # switch to gui
+
+:grep            # find all accourences and use :cn for the next
+```

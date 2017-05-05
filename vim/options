@@ -1,3 +1,0 @@
-incsearch       # show the first match for the pattern, while you are still typing it. This quickly shows a typo in the pattern.
-hlsearch        # highlight all matches for the pattern with a yellow background.
-:abbr hw Hello World        # hw will expand to full version

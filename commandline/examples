@@ -1,9 +1,0 @@
-ls -lt | head # the 10 newest files in the current directory
-
-du | sort -nr # a list of dirs and and their size, sorted from l2s
-
-find . -type f -print | wc -l # the total num of files in current dir and all of its subdirs
-
-echo {A..Z} 
-
-mkdir {2007..2009}-0{1..9} {2007..2009}-{10..12}

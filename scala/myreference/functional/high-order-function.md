@@ -1,5 +1,36 @@
 # High Order Methods
 
+- takes a functions as an argument or returns a function as a result
+
+* a function takes another function as an argument
+
+```scala
+class List[+A] ... {
+  def map[B](f: A => B): List[B]
+}
+```
+
+* a function returns another function as a result
+
+```scala
+def addOne(num: Int) = {
+  def ++ = (x: Int) => x + 1
+  ++(num)
+}
+```
+
+```scala
+val xs = List(1, 2, 3)
+
+xs map { (x: Int) => x + 1 }           // anonymous function
+
+xs map { _ + 1 }                       // function literal
+
+def addOne(num: Int) = num + 1
+
+xs map addOne
+```
+
 
 ```scala
 val arr  = Array(1,2,3,4,5)

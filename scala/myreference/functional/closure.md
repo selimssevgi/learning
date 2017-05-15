@@ -16,3 +16,15 @@ object Closures extends App {
   println(foo.bar(f))   // 250
 }
 ```
+
+## Lambda vs Closure
+
+```scala
+List(100, 200, 300) map { _ * 10/100 }          // a lambda
+
+var percentage = 10
+val applyPercentage = (amount: Int) =>          // a closure
+  amount * percentage/100
+percentage = 20
+List(100, 200, 300) map { applyPercentage }
+```

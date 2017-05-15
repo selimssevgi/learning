@@ -1,46 +1,30 @@
 # Recursion in Scala
 
+- One of the main benefits is that it lets you create solutions without mutation
 - Result type must be specified for recursion methods
 - Recursive methods have a limited stack space
 
+- imperative, using an mutable variable. BAD!
 
 ```scala
-def fact(base : Int) : Int = {
-  if (base <= 0)
-    return 1
-  else
-    return base * fact(base - 1)
+var sum = 0
+for (e <- List(1, 2, 3)) { sum += e }
+```
+
+- a typical way to implement recursive functions is to use pattern matching
+
+```scala
+def sum(xs: List[Int]): Int = xs match {
+  case Nil => 0
+  case x :: ys => x + sum(ys)
 }
 
-println(fact(100)) // overflows
-
-// Int can be simply replaced with BigInt
-def fact(base: BigInt): BigInt = {
-  if (base <= 0) 1
-  else base * fact(base - 1)
+// remove duplicates
+def removeDups(xs: List[Int]): List[Int] = xs match {
+  case Nil => Nil
+  case x :: ys if (ys.contains(x)) => removeDups(ys)
+  case x :: ys => removeDups(ys) :+ x
 }
 ```
 
-## Tail Optimized Recursivon
-
-- Recursive methods may run out of stack memory
-- Tails recursive methods after evaluation must be returned
-- @scala.annotation.tailrec can be used for assistance
-
-```scala
-@tailrec
-def fact(base: BigInt, acc: BigInt): BigInt = {
-  if (base <= 0) 1
-  else fac(base - 1, base * acc)
-}
-
-println(fact(10, 1))
-println(fact(1000, 1))
-println(fact(100000, 1))
-
-def factorial(n:Int) = fact(n, 1)
-
-println(factorial(10))
-println(factorial(1000))
-println(factorial(100000))
-```
+- see tail-recursion

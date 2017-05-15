@@ -22,6 +22,14 @@ setxkbmap -option caps:ctrl_modifier
   - search "start" on dash: Start Application
   - add a new one
 
+## External Keyboard
+
+
+```shell
+xinput -list | grep key
+setxkbmap -option caps:ctrl_modifier -device <device-id>
+```
+
 ## CAPS LOCK STUCK
 
 -  https://askubuntu.com/questions/80254/how-do-i-turn-off-caps-lock-the-lock-not-the-key-by-command-line

@@ -12,6 +12,8 @@
 - tuple pattern
 - typed pattern
 
+- guarded pattern
+
 
 ```scala
 def listLength(xs: List[Int]):Int = xs match {
@@ -86,6 +88,14 @@ def storageSize(obj: Any) = obj match {
   case i: Int    => 4
   case _         => -1
 }
+
+
+def printType(obj: AnyRef) = obj match {
+  case s: String => println("This is a string")
+  case l: List[_] => println("This is a List")
+  case a: Array[_] => println("This is an array")
+  case d: java.util.Date => println("This is a date")
+}
 ```
 
 * Exception Handling
@@ -104,6 +114,16 @@ catch {
     iae.initCause(e)
     throw iae
   }
+}
+```
+
+* Guarded Pattern Matching
+
+```scala
+def rangeMatcher(num: Int) = num match {
+ case within10  if within10  <= 10 => println("with in 0 to 10")
+ case within100 if within100 <= 100 => println("with in 11 to 100")
+ case beyond100 if beyond100 <= Integer.MAX_VALUE => println("beyond 100")
 }
 ```
 

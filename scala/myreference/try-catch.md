@@ -8,7 +8,7 @@
 try {
   new Employee("", "lastName")
 } catch {
-  case iae: IllegalArgumentException => println(iae.getMessage
+  case iae: IllegalArgumentException => println(iae.getMessage)
 }
 
 try {

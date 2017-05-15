@@ -1,33 +1,37 @@
 # Sbt Commands
 
+- sbt batch mode: slow starting jvm each time
+- sbt shell mode: faster, ~testQuick for edit-compile-test cycle
+
 ```shell
 $ sbt about   # first initialization and version control
 
 $ sbt         # start sbt shell in project directory
 
-> console     # scala repl, loaded project, :quit
+> help
 
+> console         # loads scala repl with project classes
+> console-project # loads scala repl with build definition, debugging
+
+> set name := "test project"
+> show name | scalaVersion | version
+> name | scalaVersion | version
+
+> session list
+> session save
+
+> reload      # in case of change in build files, resolve new dependencies
+
+> test        # run scala unit test
 > ~testQuick  # run test during files changes, enter to stop
 
-> reload      # in case of change in build files
-
-> clean       # 
+> clean       # cleans generated files in target/
 > compile     # compiles the source code
-> test        # run scala unit test
+> run         # run the main class, shows them if there are more than one
+> run arg1    # run main class with arguments
 > package     # creates jar
-> run         # run the main methods, shows them if there are more than one
 
 > exit        # or CTRL+D
-```
-
-## Run main method
-```shell
-$ sbt run arg1 arg2
-
-# or
-
-$ sbt
-> run arg1 arg2
 ```
 
 ## sbt Shell

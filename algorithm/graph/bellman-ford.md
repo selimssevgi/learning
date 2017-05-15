@@ -24,6 +24,9 @@ Repeat: select edge [somehow]
 2. Will not even terminate  if there is a negative weight cycle reachable from
    the source.
 
+- Dijsktra solves the problem number 1
+- Bellman-ford solves also the problem number 2
+
 ## PseudoCode
 
 ```shell

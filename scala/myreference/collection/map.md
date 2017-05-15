@@ -3,7 +3,7 @@
 - Maps are a table-like collection that stores keys and values
 - Internally, maps are a collection of tuples, and can be operated on as such
 - Symbols, are like Strings, but guaranteed to be interned, perfect for maps
-- The structure is same as sets.
+- The structure is same as sets
 - Mutable and immutable. Default version is immutable.
 - Provides HashMap as the standard mutable form
 
@@ -12,7 +12,16 @@
 - Default map, no import necessary
 
 ```scala
-val romanNumeral = Map(1-> "I", 5 -> "V", 10 -> "X")
+val m = Map(1 -> "1st", 2 -> "2nd")
+val romanNumeral = Map(1 -> "I", 5 -> "V", 10 -> "X")
+
+m(1)    // "1st"
+m(5)    // NoSuchElementException
+
+m.get(5)   // return option
+
+m.keys
+m.values
 ```
 
 ## Mutable Map

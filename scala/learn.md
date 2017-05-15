@@ -7,52 +7,33 @@
 - RichWrappers
 - Any class methods / object methods comes from where? object one
 - Vector, trie
-
-
-
-## Concepts
-- a flexible mixin-based composition mechanism as a clean replacement for
-  multiple inheritance.
-
-- Inheritance
-
-- Implicit classes
-
-- Case class/object/pattern-matching
-
 - Array defininition
 
-- unapply method
+## Concepts
+- a flexible mixin-based composition mechanism as a clean replacement for multiple inheritance.
 
-- private constructor / apply
-
-- trait
 - modular mixin composition
 
 - self-type
 
 - type-abstraction
 
+- Case class/object/pattern-matching
+- unapply method
+- extractor / pattern matching
+- visitor pattern - pattern matching
+
 - compile macros (scala 2.10)
+
+- scala annotations: throws
 
 - Hindley–Milner type system
 - Type inference
 
-- algebratic data types
-
-- visitor pattern - pattern matching
-
-- mongodb
-
 - scala 2.12 changelog
 
-- option/some/none
 - search about orm frameworks
-- Spec2
-- ScalaTest
-- ScalaCheck
 - Mokito
-
+- mongodb
 - SCoverage
 
-- extractor / pattern matching

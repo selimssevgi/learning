@@ -241,3 +241,182 @@ transparently loaded by the compiler and executed during compilation. This
 realizes the notion of compile-time metaprogramming for Scala.
 
 ### Chapter 2 - Getting Started
+
+#### Basic Types
+
+- Byte, Short, Int, Long, Float, Double, Char, Boolean
+
+- scala.Predef implicitly being import into every scala app:
+  - java.lang.\_
+  - scala.\_
+  - scala.Predef.\_
+
+- lazy keywords can be used with vals when it should be initialized later
+
+- lazy val b = a + 1
+
+- val first :: rest = List(1, 2, 3)
+
+#### Defining Functions
+
+- In Scala if the last argument of a functions is of a function type, you can
+  pass it as closure. This syntax sugar is useful in creating DSLs.
+
+
+```scala
+def breakable(op: => Unit) {
+  try {
+    op
+  } catch { case _ => }
+}
+
+def install = {
+  val env = System.getenv("SCALA_HOME")
+  if (env == null) break
+  printn("found scala home")
+}
+
+breakable(install)
+
+// pass it as a closure
+breakable {
+  val env = System.getenv("SCALA_HOME")
+  if (env == null) break
+  printn("found scala home")
+}
+```
+
+### Chapter 3 - OOP in Scala
+
+- An object is always evaluated lazily, which means that an object will be
+  created when its first memmer is accessed.
+
+
+### Chapter 5: Functional programming
+
+- FP is a programming paradigm that models computation as the evaluation of expressions
+
+- Expressions are built using functions that dont have mutable state and side effects
+
+- FP started around 1930 when Alonzo Church introduced lambda calculus
+
+- A lambda calculus is a formal mathematical system to investigate functions,
+  function application, and function recursion
+
+- In lambda calculus all the functions are anonymous and reprepsented by the
+  lambda symbol (hence the name lambda)
+
+- Lambda calculus is the main inspiration behind FP
+- FP languages implement lambda calculus with some constraints and types
+
+#### What is FP?
+
+- A function provides the predictability that for a given input you will always
+  get the same output
+
+```scala
+def add(a: Int, b: Int): Int = a + b
+```
+
+- There are functions that depend on some external state and dont return the
+  same result all the time
+
+- They are functions but they are not pure functions
+- A pure function doesnt have side effects
+
+- Any observal behavior change after the function finishes is considered a side
+  effect
+
+- Some side effects:
+  - Updating global or static variables
+  - writing data to the filesystem
+  - displays on screen
+  - calling other "side-effecting" functions
+  - throwing exceptions
+
+- You are also not allowed to mutate the arguments to the function
+
+- What is the value of programming with pure functions?
+- The value is "referential transparency"
+- Referantial transparency is a property whereby an expression could be replaced
+  by its value without aaffecting the program
+
+
+```scala
+val v = add(10, 10) + add(5, 5)
+```
+
+- Because add is a pure function, can replace the function call add(10, 10) with
+  its result, which is 20, without changing the behavior of the program
+
+#### The benefits of referential transparency
+
+- RT provides the ability to reason about your code
+
+- You can provide proof that your program works correctly by replacing pure
+  functions with their values and reducing a complex expression to a simpler ex
+
+- This ability to reason about code helps programmers to debug and solve complex
+  problems easily
+
+- The essence of FP is RT
+
+- It is safety net that allows you to easily find and fix problems
+
+- A pure function program is a single referentially transparent expression
+
+- An expression is constructed with a combination of subexpressions
+
+- If you can start thinking about your program as a collection of subexpressions
+  combined into one signle referentially transparent expression, you have
+  achieved a purely functional program
+
+- Referential transparency is a criterion of a good desing
+
+#### Moving from OOP to FP
+
+##### Pure vs impure programming
+
+- Typically, OO-style applications are built around the idea of mutable
+  state(produces side effects), managed by various objects inside the application
+
+- OO solutions are modeled around classes and objects where data tends to carry
+  collections of methods, and these methods share and at times mutate the data
+
+- A FP style only deals with values where problems are solved by the application
+  of functions to data
+
+- data is only represented by value, each application of a function results in a
+  new value without any side effects
+
+- FP raises abstraction level over OOP
+- OOP sometimes feels machine-dependent
+- if you only work with values, then how function program is interpreted and
+  executed becomes irrelevant
+- You can compute the result of a purely FProgram using pen and paper
+
+- Unlike Haskell and Clojure, in Scala it is your responsibility as a developer to make
+  sure you dont rely on mutable data defined inside the class
+
+
+```scala
+class Square(var side: Int) {
+  def area = side * side
+}
+```
+
+- side property is mutable. area function depends on some external state
+
+- Succersor Value pattern, or functional object
+- each change of state returns a copy of itself with the new state
+
+```scala
+class PureSquare(val side: Int) {
+  def newSide(s: Int): PureSquare = new PureSquare(s)
+  def area = side * side
+}
+```
+
+- Java String class is an example of a Functional Object pattern
+
+CHECK: 5.2.2 and 5.2.3 again

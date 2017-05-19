@@ -6,6 +6,7 @@
 - Case classes are standard classes with a special modifier: case
 
 - case classes can extend other classes, including trait and case classes
+- why not make all classes case classes if they too awesome?
 - case classes cannot be subclassed
 
 - One of the most common reason for creating case classes is the
@@ -21,7 +22,7 @@ But this is not an issue in case classes.
 
 - natural implementations of methods toString, hashCode, equals
 
-- a copy() method for making modified copies
+- a copy() method for making modified copies, a better alternatives to setter
 - use named arguments to modified parameters u want
 - obj.copy(age = 18) // other parameters are copied as it is
 
@@ -29,6 +30,17 @@ But this is not an issue in case classes.
 - an unapply method to be used as an extractor for pattern matching
 
 - default implementation for serialization
+
+- tupled method: case class Person(name: String, age: Int)
+- val me = ("selim", 25); Person.tupled(me)
+
+- curried method
+```scala
+val p = Person.curried
+val pWithName = p("selim")
+val pWithNameAndWithAge = p(25)
+val person = p("selim")(25)
+```
 
 - case modifier signals the compiler to assume certain things about 
   the class and to define certain boilerplate based on those assumptions.

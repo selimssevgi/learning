@@ -23,6 +23,10 @@ val msg = "Hello World!"
 val msg: String = "Hello World!"
 ```
 
+- assignment operator return Unit type
+- assigments cannot be changed
+- val a = y = 1 // not what you want
+
 ## lazy val
 
 - 'lazy val' will not be evaluated until referenced

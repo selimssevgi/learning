@@ -37,3 +37,20 @@ val (first, second, third) = t
 
 val (fst, snd, _) = t // not interested in the third value
 ```
+
+## Zipping
+
+- to bundle together values so that they can processed together
+- commonly done with zip method
+
+```scala
+val symbols = Array("<", "-", ">")
+val counts = Array(2, 10, 2)
+val pairs = symbols.zip(counts) // Array((<,2), (-,10), (>,2))
+
+for ((s, n) <- pairs) print(s * n)
+
+// keys.zip(values).toMap
+symbols.zip(counts).toMap // Map(< -> 2, - -> 10, > -> 2)
+
+```

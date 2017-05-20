@@ -1,26 +1,38 @@
 # Scala Maps
 
-- Maps are a table-like collection that stores keys and values
 - Internally, maps are a collection of tuples, and can be operated on as such
 - Symbols, are like Strings, but guaranteed to be interned, perfect for maps
-- The structure is same as sets
 - Mutable and immutable. Default version is immutable.
-- Provides HashMap as the standard mutable form
+- by default it gives a hash map, you can also get a tree map
 
 ## Immutable Map
 
 - Default map, no import necessary
+- cus of immutability, sharing structure, not as inefficient as it seems
 
 ```scala
-val m = Map(1 -> "1st", 2 -> "2nd")
-val romanNumeral = Map(1 -> "I", 5 -> "V", 10 -> "X")
+val m1 = Map.apply((1, "One"), (2, "Two"), (3, "Three"))
 
-m(1)    // "1st"
-m(5)    // NoSuchElementException
+val m2 = Map((1, "One"), (2, "Two"), (3, "Three"))
 
-m.get(5)   // return option
+val m  = Map(1 -> "One", 2 -> "Two", 3 -> "Three")
+
+m(1)                       // "1st"
+m(5)                       // NoSuchElementException
+m.get(5)                   // return Option
+m.getOrElse(5, "Five")
+
+// cannot update an immutable map
+val newM = m + (3 -> "3rd", "4" -> "4rh")  // new values added
+val corM = newM + ("4" -> "4th")           // updated a value
+val delM = corM - 4                        // remove a pair by key
+
+// iteration
+for ((k, v) <- m) println(k ": ", v)  // pattern matching on tuples
+for ((k, v) <- m) yield (v, k)        // reverse: same values overwrite eachother
 
 m.keys
+m.keySet
 m.values
 ```
 
@@ -35,32 +47,17 @@ tasks += (1 -> "Go home")   // 1.->("Go home")
 tasks += (2 -> "Come back")
 tasks += (3 -> "What are you doing?")
 print(tasks(1)) // "Go home"
+
+val scores = collection.mutable.Map("Alice" -> 30, "Bob" -> 10, "Cindy" -> 50)
+scores("Bob") = 10  // updates
+scores("Cin") = 25  // add a new pair
+scores -= "Alice"   // remove a key and its value
+scores -= "Alice"   // doesnt nothing, no error
 ```
 
+- using symbols
+
 ```scala
-object Maps extends App {
-
-  // with tuples
-  val m  = Map.apply((1, "One"), (2, "Two"), (3, "Three"))
-  val m2 = Map((1, "One"), (2, "Two"), (3, "Three"))
-
-  val t:(Int, String) = 3 -> "Three"   // (3, Three)
-  println(t)
-
-  // a better way
-  val m3 = Map(1 -> "One", 2 -> "Two", 3 -> "Three")
-
-  println(m3.get(1))     // Some(one)
-  println(m3.apply(1))   // One
-  println(m3(1))         // One
-  println(m3.get(4))     // None
-  // println(m3(4)) // Exception
-
-  println(m3.toList) // List((1,One), (2,Two), (3,Three))
-  println(m3.keys)   // Set
-  println(m3.keySet) // Set
-  println(m3.values.toList)
-
   val s  = new String("Key")
   val s2 = "Key"   // interned. SCP
   println(s == s2) // true
@@ -74,11 +71,21 @@ object Maps extends App {
   val elements:Map[Symbol, String] = Map('TR -> "Turkish", 'EN -> "Englisj")
   println(elements.get('TR)) // Some(Turkish)
 
-  for ((k, v) <- x) println(k + ": " v)
-  val hm = HashMap(1 -> "hi", 2 -> "There")
-  hm += (3 -> "bye")
-  println(hm)
-}
 ```
 
 *NOTE:* + is defined differently for mutable and immutable maps.
+
+## TreeMap - SortedMap
+
+- if you need to visit the keys in sorted order
+- you may want to have a tree map if you don't have a good hash func for the keys
+
+```scala
+val score = scala.collection.immutable.SortedMap("Alice" -> 10, "Fred" -> 7, "Cindy" -> 8)
+```
+
+- if you want to visit keys in insertion order, use LinkedHashMap
+
+```scala
+val score = scala.collection.mutable.LinkedHashMap("Jan" -> 1, "Feb" -> 2)
+```

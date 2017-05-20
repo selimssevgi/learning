@@ -12,3 +12,6 @@
 val g = () //  g: Unit
 def greet() = println("Hello!")
 ```
+
+**NOTE:** void has no value whereas Unit has a value that signifies "no value".
+An empty wallet and a wallet with a bill labeled "no dollars"

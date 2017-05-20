@@ -12,7 +12,7 @@
 - use `{ s }` instead of `( s )` to use multiple lines without requiring semicolons
 - `e` is an element of the resulting collection
 
-- for (arg <- args){ println(arg) }
+- for (arg <- args){ println(arg) } // for-loop, no yield no comprehension
 - arg is implicitly val, not a var.
 - its value is changing for each iteration, but a new val is created each time.
 
@@ -104,6 +104,16 @@ for {
 - The type of the resulting collection is based on the kind of collections processed.
 - for clauses yield body
 - for (clauses) yield { body }
+
+- the generated collection is compatible with the first generator
+
+```scala
+for (c <- "Hello"; i <- 0 to 10) yield (c + i).toChar
+// yields  String = HIeflmlmop
+
+for (i <- 0 to 1; c <- "Hello") yield (c + i).toChar
+// yields IndexedSeq[Char] = Vector(H, e, l, l, o, I, f, m, m, p)
+```
 
 ```scala
 def scalaFiles =

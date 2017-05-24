@@ -23,3 +23,24 @@ log("The error message is " + popErrorMessage)
 ```scala
 def log(m: => String) = if (logEnabled) println(m)     // call-by-name
 ```
+
+- If we would define a funct without by-name parameters
+
+```scala
+def myAssert(p: () => Boolean) = {
+   if (assertionsEnabled && !predicate()) throw new AssertionError
+}
+
+myAssert(() => 5 > 3)
+myAssert(5 > 3)         // wont work, missing () =>
+```
+
+- by-name parameters exist for this very reason
+
+```scala
+def byNameAssert(p: => Boolean) = {
+   if (assertionsEnabled && !predicate) throw new AssertionError
+}
+
+byNameAssert(5 > 3)     // now it works
+```

@@ -15,6 +15,9 @@ echo(names) // ERROR: f: Array[String] r: String
 echo(names: _*)
 ```
 
+- above notation tells the compiler to pass each element of arr as an its own
+  argument, rather than all of it as a single element
+
 ## Named Arguments
 
 ```scala

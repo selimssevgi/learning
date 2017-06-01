@@ -64,9 +64,31 @@ letterCount.map(e => e._1.toString + e._2.toString).mkString("") // a3b1c2
 
 ## Word Count
 
+- total word count
+
 ```scala
 def countWords(fileName: String) = {
   val dataFile = new File(fileName)
   Source.fromFile(dataFile).getLines.foldRight(0) (_.split(" ").size + _)
 }
+```
+
+- word-count map
+
+```scala
+import java.io._
+
+val days = Vector("monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday")
+val rand = new util.Random()
+val file = "/tmp/days.txt"
+val content = (1 to 20).map(i => days(rand.nextInt(7))).mkString("\n")
+val pw = new PrintWriter(new File(file))
+pw.write(content)
+pw.close
+
+val words = io.Source.fromFile(file).getLines.flatMap(_.split(" "))
+words.foldLeft(Map[String, Int]) { (map, word) =>
+  (word -> (map.getOrElse(word, 0) + 1)) }
+
+// collection.immutable.TreeMap for sorted keys
 ```

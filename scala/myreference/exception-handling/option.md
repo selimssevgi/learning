@@ -1,5 +1,6 @@
 # Options
 
+- https://Ww.youtube.com/watch?v=ol2AB5UN1IA
 - Option is a collection type in Scala
 - Unlike other collection types, an Option contains a maximum of one element
 - It represents one of two possible values: None and Some
@@ -20,6 +21,23 @@
   * Some[T]
   * None[T]
 
+- Pattern matching on Option is almost never necessary
+- the most idiomatic way to use Option instance is to threat it as a collection
+  or monad and use map, flatMap or foreach...
+- a less-idiomatic way to use Option values is via pattern matching
+
+```scala
+someOption match {
+   case Some(a) => foo(a)
+   case None => bar
+}
+
+// can be written
+someOption map foo getOrElse bar
+
+// or even after 2.10
+someOption.fold(bar)(foo) // more type-strict
+```
 ```scala
 val m = Map(1 -> "a", 2 -> "b")
 m.get(1) // Some(1)

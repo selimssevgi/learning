@@ -6,6 +6,7 @@
   assignment container: assign once, then just can read
 
 - Promise is the one which sets a value for the Future
+- is a writable, single-assignment container which completes a Future
 
 ```scala
 // minimal
@@ -19,6 +20,15 @@ trait Promise[T] {
 
   def future: Future[T]
 }
+```
+
+```scala
+val p = Promise[Int]
+val f = p.future
+
+assert(!f.isCompleted)
+p success 42
+assert(f.isCompleted)
 ```
 
 ```scala

@@ -1,18 +1,23 @@
-# Future
+# Future (2.10)
+
+- is a way to perform many operations in parallel in an efficient and
+  non-blocking (asynchly) way
 
 - scala.concurrent.Future, is container type
 
-- is an object that hold a value that may become available at a later time
+- is a placeholder for a result that doesnot yet exist, but which may become
+  available at some point
+
+- callbacks are executed eventually
+
+- the order in which callbacks are executed is not deterministic
 
 - is a write-once container, after being completed, it is effectively immutable
 
-- it is read-only
+- it is read-only placeholder for a result which doesnot yet exist
 
-- is executed asynchronously
+- Future.sequence converts a Seq[Future[T]] to a Future[Seq[T]]
 
-- the simplest way to create a Future by using apply method
-
-- computation to be computated asyncly is passed in as body by-name parameter
 
 ```scala
 object Future {
@@ -53,6 +58,33 @@ val tempOkay: Future[Boolean] = heatWater(Water(25)).map { water =>
   println("we are in the future")
   (80 to 85).contains(water.temp)
 }
+```
+
+```scala
+import concurrent.Future
+import scala.concurrent.ExecutionContext.Implicits.global
+def f(tag: String, ms: Int) = Future {
+   println(s"$tag started")
+   Thread.sleep(ms)
+   println(s"$tag ended")
+   tag
+}
+
+for {                 // this kind of usage ends in seq execution
+  a <- f("a", 500)
+  b <- f("b", 300)
+  c <- f("c", 200)
+} yield a + b + c
+
+val fa = f("a", 500)  // starting parallel execution
+val fb = f("b", 300)
+val fc = f("c", 200)
+
+for {
+   a <- fa
+   b <- fb
+   c <- fc
+} yield a + b + c
 ```
 
 ## Future vs Actor

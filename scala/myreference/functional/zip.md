@@ -22,3 +22,24 @@ languages.iterator zip versions.iterator map {
   case (language, version) => language + " : " + version
 } foreach println
 ```
+
+```scala
+// check if list is ascending order
+val L = List(1 to 10:_*)
+L zip L.tail forall { p => p._1 <= p._2 }
+```
+
+```scala
+// zipwithindex
+"selim" zip List(0 to 5:_*)
+"selim".zipWithIndex
+```
+
+
+```scala
+// find all position of a char
+for {
+  (c, i) <- "scala".zipWithIndex
+  if c == 'a'
+} yield i
+```

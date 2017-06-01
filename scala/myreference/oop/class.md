@@ -20,7 +20,7 @@
 - Variables and parameterless methods should be accessed using the same syntax
 
 ```scala
-class Employee(firstName: String, lastName: String)
+class Employee(firstName: String, lastName: String) // object-private fields
 
 val aperson = new Employee("Selim", "Melim")
 println(aperson.firstName)  // ERROR
@@ -47,6 +47,7 @@ class Employee(@BeanProperty val firstName: String, // getFirstName()
 ## Constructors
 
 - Primary constructors are designed for all information up front
+- if there are no parameters after the class name, then it will have a no-args constructor
 - Auxiliary constructors need to find a way to invoke the primary(default values)
 - Named argumenets can be used for constructors too
 - Default arguments can be used for constructors too(instead of auxiliary constructors)
@@ -55,8 +56,15 @@ class Employee(@BeanProperty val firstName: String, // getFirstName()
 - require checks for quality of parameters in a method or constructor
 - require will throw an IllegalArgumentException
 
+- auxiliary constructors are called this. it wont be naming problem even if
+  class name changes in the future
+
+- auxiliary constructors must start with a call to a previously defined constructors
+- auxiliary constructors can be eliminated by using default args in primary constructor
+
 ```scala
 // primary constructor
+// class Employee private(...){} // private primary constructor
 class Employee(val firstName: String,
                val lastName : String,
                val title    : String) {
@@ -133,4 +141,34 @@ val cis:Couple[Int, String] = new Couple(5, "String")
 case class Box[T](t:T) {
   def coupleWith[U](u:U):Box[Couple[T, U]]  = new Box(new Couple(t, u))
 }
+```
+
+## Object-Private Fields
+
+```scala
+class Counter {
+   private var value = 0
+   
+   def isLess(other: Counter) = value < other.value
+   // can access private field of other object, cus both are objects of Counter
+}
+
+val a = new Counter
+a.isLess(new Counter) // false
+```
+
+- scala provides a mechanism to restrict the access
+- for class private fields: private getter and setter
+- object privde fields: no getters and setters generated
+
+```scala
+class Counter {
+   private[this] var value = 0
+   
+   def isLess(other: Counter) = value < other.value
+   // ERROR: another object of Counter cannot access value of this object
+}
+
+val a = new Counter
+a.isLess(new Counter)
 ```

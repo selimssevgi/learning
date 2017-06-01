@@ -14,3 +14,21 @@ buf(2)  // 3
 
 buf.update(2, 20)   // [2] = 20
 ```
+
+## Array Buffer
+
+- variable-length arrays
+- ArrayList in Java, Vector in C++
+
+```scala
+import scala.collection.mutable.ArrayBuffer
+val b = ArrayBuffer[Int]()
+
+b += 1
+
+b += (1,2,3)  // add multiple elements
+
+b ++= ArrayBuffer(1,2,3)  // append any collection
+
+b.trimEnd(5) // removes last five elements b
+```

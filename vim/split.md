@@ -17,9 +17,12 @@ ctrl-ww           # to jump from one window another (or ctrl-w ctrl-w)
 ctrl-wj           # to go down a window
 ctrl-wk           # to go up a window
 crtl-wc           # to close a window ( or ZZ or :q )
+
 ctrl-w+           # to increase the window size one line
 ctrl-w-           # to decrease the window size one line
 ctrl-w=           # to make all windows the same size
+ctrl-w_           # maximise the height of active window
+ctrl-w|           # maximise the width of active window
 
 C^W[h|j|k|l]      # move between splits
 ```

@@ -9,8 +9,8 @@
 
 ## What are Annotations?
 
-- Metadate: data about the code
-- Does not directly effect code
+- Metadata: data about the code
+- Does not directly affect code
 
 ## Annotations in Java
 

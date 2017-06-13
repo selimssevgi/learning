@@ -2,6 +2,8 @@
 
 - http://maven.apache.org/
 
+- sdk man
+
 ## Steps
 
 ```shell

@@ -1,6 +1,8 @@
 # Functions in JS
 
-- A function can access an outer variable
+- A function can access an outer variable (global scope)
+
+* Anonymous function
 
 ```javascript
 function sayHello() {
@@ -123,3 +125,26 @@ let multiLine = () => {
   alert(result);
 };
 ```
+
+## Function Details
+
+- Values are passed-by-value
+
+* What happens when we don't pass enough arguments?
+
+```javascript
+function f(a, b) {
+  console.log(a, b);
+}
+
+f(5); // 5 undefined
+```
+
+* What happens when we pass too many arguments? // just ignores the extra
+
+* A function without a return statement returns 'undefined'
+
+* JS does not care if functions are declared before or after you use them
+
+* JS makes two passes over the page: in the first pass it reads all the function
+  definitions, in the second it begins executing your code

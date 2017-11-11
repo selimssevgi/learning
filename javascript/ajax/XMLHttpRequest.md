@@ -1,8 +1,20 @@
 # XMLHttpRequest
 
+- invented by Microsoft in the late of 1990s
 - The keystone of AJAX is the XMLHttpRequest object
 - All modern browsers have a built-in XMLHttpRequest object
 
+
+```javascript
+var request = new XMLHttpRequest();
+request.open('GET', url);
+request.responseType = 'text'; // 'json', text by default
+request.onload = function() {
+  var resp = request.response;
+  // do something with request.response
+}
+request.send();
+```
 
 ```javascript
 let xh = new XMLHttpRequest();

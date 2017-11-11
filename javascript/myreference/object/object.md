@@ -1,7 +1,7 @@
 # Objects in JS
 
-- 6 other primitive types + object
-- Objects are used to store keyed collections of various data and more complex
+- 6 other primitive types + object(reference type)
+- An object is a collection of properties
   entities.
 
 - object > properties > key + value
@@ -31,6 +31,14 @@ let Car = {
   maxSpeed: 70;
   drive: function () { console.log("driving"); }
 };
+```
+
+* Iterating over properties of a function
+
+```javascript
+for (var prop in obj) {
+  console.log(prop + ': ' + obj[prop]);
+}
 ```
 
 ## Constructor Function

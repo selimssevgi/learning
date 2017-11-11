@@ -5,7 +5,7 @@
 - name must contains only letters, digits, symbols $ and _
 - First character must not be a number
 
-- camelCase
+- camelCase (lower camelCase)
 - case-sensitive
 - non-english letter are allowed, not recommended
 

@@ -7,7 +7,7 @@
 - Delete content from a HTML document
 - Change content on a HTML document
 
-- Document is just the web page
+- is the browser's internal representation of the page
 
 ## Objects are Elements
 
@@ -25,7 +25,20 @@
   - Text within elements
   - HTML attributes
 
-## Traversing the DOM
+## Terms
+
+- Element node
+- Root node
+- Child node
+- Parent node
+- Descendant node
+- Sibling nodes
+- Text node - a node containing a text string
+
+
+## Older Methods
+
+### Traversing the DOM
 
 - Can reach in at any node
 - Once we have that node, we can traverse the DOM to access other nodes

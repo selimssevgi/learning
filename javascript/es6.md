@@ -20,6 +20,7 @@
 * Arrow Functions - Fat Functions
 * Sets
 * Generators
+* Destructing Assignment
 
 ### Constants
 
@@ -43,7 +44,7 @@ console.log("outside x: " + x); // 10
 ```javascript
 var items = document.getElementsByTagName('li');
 
-for (var x = 0; x < items.length; x++) {
+for (var x = 0; x < items.length; x++) { // use let to have usual behavior
   items[x].onclick = function() {
     console.log(x); // always prints 4
   }
@@ -99,6 +100,11 @@ add(...nums);
 
 ### Template Strings
 
+- Template strings honor whitespace, making it easier to draft up email
+  templates, code examples, or anything else that contains whitespace.
+
+- You can have a string that spans multiple lines without breaking your code
+
 ```javascript
 
 let temp = `hello`; // doesnt ignore new line or white space
@@ -112,6 +118,14 @@ console.log(`5 + 10 is ${5 + 10}`);
 ```
 
 ### Object Literal Enhancements
+
+- Is the opposite of descructuring
+
+- We can grab variables from the global scope and turn them into an object
+
+- When defining object methods, it is no longer necessary to use the 'function'
+  keyword
+
 
 ```javascript
 let name = "John";
@@ -134,6 +148,18 @@ let person2 = {
 };
 
 console.log(person2.name); // John
+```
+
+```javascript
+var name = "Tallect"
+var elevation = 9876
+var pring = function() {
+  console.log(`Mt. ${this.name} is ${this.elevation} feet tall`)
+}
+
+var funHike = {name, elevation, print}
+
+funHike.print() // Mt. Tallect is 9876 feet tall
 ```
 
 ### New String Methods
@@ -237,5 +263,65 @@ console.log(gen.next());   // {value: "pear", done: false}
 console.log(gen.next(5));  // {value: "banana", done: false}
 console.log(gen.next(10)); // {value: "apple", done: false}
 console.log(gen.next(15)); // 30
+
+```
+
+### Destructing Assignment
+
+- Allows to locally scope fields within an object and to declare which values
+  will be used.
+
+- Object literal enhancement is the opposite of destructuring
+
+
+```javascript
+var sandwich = {
+  bread: "dutch crunch",
+  meat: "tuna",
+  cheese: "swiss",
+  toppings: ["lettuce", "tomato", "mustard"]
+}
+
+var {bread, meat} = sandwich
+
+console.log(bread, meat) // dutch crunch tuna
+```
+
+- The code pulls 'bread' and 'meat' out of the object and creates local
+  variables for them
+
+- We can also destructure incoming function arguments
+
+
+```javascript
+var lordify = regularPerson => {
+  console.log(`${regularPerson.firstname} of Canterbury`)
+}
+
+var regularPerson = {
+  firstname: "Bill",
+  lastname: "Wilson"
+}
+
+lordify(regularPerson)
+```
+
+- Instead of using dot notation syntax to dig into objects, we can destructure
+  the values that we need out of regularPerson
+
+```javascript
+var lordify = ({firstname}) => {
+  console.log(`${firstname} of Canterbury`)
+}
+```
+
+```javascript
+var [firstResort] = ["Kirkwood", "Squaw", "Alpine"]
+
+console.log(firstResort) // Kirkwood
+
+var [,,thirdResort] = ["Kirkwood", "Squaw", "Alpine"]
+
+console.log(thirdResort) // Alpine
 
 ```

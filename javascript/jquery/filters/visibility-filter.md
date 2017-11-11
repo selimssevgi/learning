@@ -1,0 +1,4 @@
+# Visibility Filters
+
+- :visible
+- :hidden

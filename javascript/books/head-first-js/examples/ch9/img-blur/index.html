@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Images</title>
+    <script charset="utf-8">
+      window.onload = init;
+
+      function init() {
+        var imgs = document.querySelector('img');
+        for (var i = 0; i < imgs.length; i++) {
+          imgs[i].onclick = showImg;
+        }
+      }
+
+      function showImg(event) {
+         var image = event.target;
+         var oldSrc = image.src;
+         image.src = "blur" + oldSrc;
+         setTimeout(hideImg(image), 5000);
+      }
+
+      function hideImg(img) {
+         img.src = img.src.substring(4);
+      }
+    </script>
+  </head>
+  <body>
+  <img src="zero.jpg" alt="image zero">
+  <img src="one.jpg" alt="image one">
+  <img src="two.jpg" alt="image two">
+  </body>
+</html>

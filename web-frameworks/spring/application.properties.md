@@ -1,7 +1,10 @@
 # application.properties
 
+- resources/application.properties
 
 ```shell
+server.port=8081
+
 # JPA
 spring.jpa.hibernate.ddl-auto=create-drop
 spring.jpa.show-sql=true

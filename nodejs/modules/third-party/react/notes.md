@@ -1,6 +1,6 @@
 # React
 
-- Javascript framework for creating user interfaces
+- Javascript library for creating user interfaces
   - Full single web applications
   - Just certain parts of a website (like a search form)
 

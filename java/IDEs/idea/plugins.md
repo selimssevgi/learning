@@ -5,3 +5,7 @@
 
 * Lombok Project
   - https://projectlombok.org/setup/intellij
+
+* CheckStyle
+
+* SonarLint

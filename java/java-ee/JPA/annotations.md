@@ -119,3 +119,25 @@ public class Course3 {
 }
 ```
 
+## @Version
+
+- Enable versioning for 'first commit wins'
+- To handle isolation level problem: last commit wins
+
+- Hibernate changes the version value automatically
+- it is a simple counter without any useful semantic value beyond concurrency control
+
+- wraps and starts from 0 if value reach the max number of Long
+
+- version column is used in WHERE clause during updating, throws
+  OptimisticLockException if cannot find that version(means it changed somewhere else)
+
+- Use db trigger and procedures in a shared-db if some arenot using hibernate
+- check to find version value, if not there, means not hibernate and update it
+
+- Hibernate can use lastupdated timestamp to do the same thing
+
+```java
+@Version
+protected Long version; // just a getter, not setter
+```

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:derby:memory:JH;create=true</property>
+    <property name="connection.driver_class">org.apache.derby.jdbc.EmbeddedDriver</property>
+    <property name="connection.username">root</property>
+    <property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+    <mapping resource="Trade.hbm.xml" />
+
+    <!-- annotated classes -->
+    <mapping class="com.selimssevgi.entity.Employee" />
+  </session-factory>
+</hibernate-configuration>

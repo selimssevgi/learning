@@ -1,5 +1,10 @@
 # Bash if Statements
-It makes a decision based on the exit status of a command.
+
+- It makes a decision based on the exit status of a command.
+
+- [ ] is old way, better for portability
+
+- [[ ]] is new way
 
 ### Syntax
 
@@ -63,15 +68,3 @@ if [ $first -eq 0 ] && [ $second -eq 0 ]
 
 if [ ! -z $ip ] # if not empty
 ```
-
-
-
-
-
-
-Notice the ">&2" at the end of the echo command. This is another form of I/O direction.
-You will often notice this in routines that display error messages.
-If this redirection were not done, the error message would go to standard output.
-With this redirection, the message is sent to standard error.
-Since we are executing our script and redirecting its standard output to a file,
-we want the error messages separated from the normal output.

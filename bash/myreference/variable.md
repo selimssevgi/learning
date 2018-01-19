@@ -12,6 +12,8 @@
 FILE=/tmp/abc.out
 
 VARIABLENAME="variableValue" #no spaces are allowed
+
+myvar = "shell would think myvar is a command like echo or smth"
 ```
 
 - The shell essentially sees the command line as a pile of commands
@@ -32,6 +34,8 @@ X="hello world" # OK
 ## Using value of variable
 
 - use $ sign
+
+- default value of a previously defined variable value is ""
 
 ```bash
 echo $VARIABLENAME

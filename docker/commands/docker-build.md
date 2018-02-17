@@ -1,5 +1,7 @@
 # docker build
 
+- legacy, use docker image build
+
 ```shell
 # Dockerfile in current working directory
 docker build --tag ubuntu:git:auto .

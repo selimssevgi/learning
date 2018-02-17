@@ -1,5 +1,7 @@
 # docker run
 
+- legacy command, use docker container run
+
 ```shell
 docker run hello-world
 ```

@@ -23,7 +23,8 @@ ENTRYPOINT ["git"]
 
 ## Dockerfile Instructions
 
-- FROM, MAINTAINER
+- FROM
+- MAINTAINER # DEPRECATED
 - RUN
 - ENV
 - LABEL
@@ -31,11 +32,20 @@ ENTRYPOINT ["git"]
 - EXPOSE
 - ENTRYPOINT
 - COPY
-- ADD
+- ADD (copy + tar auto-extraction)
 - VOLUME
 - CMD
 - USER
 - ONBUILD
+- HEALTCHECK: one of the recent
+
+#### RUN vs CMD vs ENTRYPOINT
+
+- RUN: used for installing software package (apt-get), executed only once
+
+- CMD: defaults for executing container; can be overridden from CLI
+
+- ENTRYPOINT: configures the container executable; override --entrypoint
 
 #### ENV
 
@@ -108,8 +118,12 @@ ENTRYPOINT ["git"]
 - better to delay any RUN instructions to change file ownership until all the
   files that you need to update have been copied into the image
 
+- paths are resolved from current directory
+
 ```shell
 COPY ["./log-impl", "${APPROOT}"]
+
+COPY webapp.war /opt/jboss/wildfly/standalone/deployments/webapp.war
 ```
 
 #### VOLUME
@@ -133,9 +147,14 @@ VOLUME ["/var/log"]
 
 - the default entrypoint for a container is /bin/sh
 
+- only one CMD is effective, if your Dockerfile does not define, the one in
+  parent will be used
+
 
 ```shell
 CMD ["/var/log/mailer.log"]
+
+CMD java -jar /deployments/my-jar.jar
 ```
 
 #### ADD
@@ -192,4 +211,14 @@ RUN ls -al .
 ```shell
 docker build -t dia/ch8_onbuild -f base.df .
 docker build -t dia/ch8_onbuild_down -f down.df .
+```
+
+#### HEALTCHECK
+
+- performs a healtcheck on the application inside the container
+
+- container may be running, but application may not
+
+```shell
+HEALTHCHECK --interval=5s --timeout=3s CMD curl --fail http://localhost:8091/pools || exit 1
 ```

@@ -21,3 +21,13 @@ public class XyzService {
 ```
 
 - May need to enable "annotation pre-processor" in Idea Settings -> Compiler
+
+## Troubles
+
+- While using springfox:swagger with mapstruct: cannot retrieve @Mapper annotation
+
+- The problem is that springfox:swagger brings older version of mapstruct
+
+- excluding maptstuct in swagger dependency solves the problem
+
+- https://github.com/mapstruct/mapstruct/issues/841

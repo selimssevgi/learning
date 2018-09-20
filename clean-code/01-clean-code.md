@@ -37,3 +37,6 @@
 
 - So it is unprofessional for programmers to bend to the will of managers who
   dont understand the risks of making messes.
+
+- Boy Scout Rule: Leave the campground cleaner than you found it.
+

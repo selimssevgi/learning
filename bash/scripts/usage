@@ -1,0 +1,8 @@
+#!/bin/bash
+
+NUM_REQUIRED_ARGS=2
+
+if [[ $# -lt NUM_REQUIRED_ARGS ]]; then
+  echo "${0} <name> <number>"
+  exit 1
+fi

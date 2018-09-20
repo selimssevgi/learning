@@ -46,3 +46,12 @@ mysql> DESC Cars; # show fields and types
 $ mysqladmin -u root -p ping
 $ mysqladmin -u root -p shutdown
 ```
+
+# Single Quote Problem
+
+- if prompt hang and show '>, it means that unmatches quotes
+
+```sql
+'>
+'> ';  -- to terminate statement
+```

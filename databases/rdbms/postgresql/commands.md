@@ -16,3 +16,9 @@ postgres=# ALTER USER springtest WITH password 'test';
 $ sudo -u postgres createdb tododb --owner springtest
 
 ```
+
+
+```shell
+# list all databases
+sudo -u postgres psql -l
+```

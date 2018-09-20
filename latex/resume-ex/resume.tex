@@ -1,0 +1,65 @@
+\documentclass{article}
+
+
+\usepackage{titlesec}
+\usepackage{titling}
+\usepackage[margin=1in]{geometry}
+
+\titleformat{\section}
+{\huge\bfseries\lowercase} % formatting: huge, bfseries
+{} % numbering
+{0em} % distance between number and text
+{}[\titlerule]    % anything between number and title
+
+\titleformat{\subsection}
+{\bfseries\Large}
+{$\bullet$}
+{0em}
+{}
+
+%[runin]: put subsection elements on the same line with heading
+\titleformat{\subsubsection}[runin]
+{\bfseries\Large}
+{$\bullet$}
+{0em}
+{}[---]
+
+\titlespacing{\subsubsection}
+{0em} % left margin
+{.25em} % space before
+{1em} % space after
+
+% change title
+\renewcommand{\maketitle}{
+\begin{center}
+
+{\huge\bfseries
+\theauthor}
+
+\vspace{.25em}
+
+selimssevgi@gmail.com --- http://selimssevgi.com
+
+\end{center}
+}
+
+% Do not do anything for apperance down there, just structure
+\begin{document}
+
+\title{Resume}
+\author{Selim Sevgi}
+
+\maketitle
+
+\section{Personal Projects}
+\section{Qualifications}
+\section{Education}
+\section{Work Experience}
+\section{Technical Skills}
+\subsection{Languages}
+\subsubsection{Programming}
+C, C++, Haskell, List
+\subsubsection{Markup}
+{\LaTeX}, HTML, CSS
+
+\end{document}

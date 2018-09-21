@@ -1,5 +1,7 @@
 # Spring Cloud
 
+- built on top of spring boot
+
 - helps you build cloud-native applications.
 
 - Cloud native is a software application that is specially built for cloud computing

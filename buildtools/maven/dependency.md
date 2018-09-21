@@ -18,9 +18,3 @@
   </dependency>
 </dependencies>
 ```
-
-
-## Scopes
-
-- Default scope is compile
-- test, compile, provided, runtime, system

@@ -1,4 +1,4 @@
-# Cuncurrent Mark-Sweep(CMS)
+# Properties of GCs
 
 - A Concurrent Collector performs garbage collection work concurrently with the
   application's own execution.

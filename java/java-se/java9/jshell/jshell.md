@@ -1,6 +1,6 @@
 # jshell Notes
 
-- 
+- TAB complication, and documentation
 
 ```shell
 $ jshell
@@ -25,7 +25,7 @@ jshell> /help
 - method( SHIFT-TAB to see overloaded method signatures
 - ALT-V to assign the snippet to a variable, interfere the type
 
-### Commands 
+### Commands
 
 #### /list
 

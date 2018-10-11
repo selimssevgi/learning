@@ -22,3 +22,10 @@ $ sudo -u postgres createdb tododb --owner springtest
 # list all databases
 sudo -u postgres psql -l
 ```
+
+- connect to a database with username and password
+
+```shell
+# asks password
+psql --host=localhost --dbname=todarchtd --username=dbuser
+```

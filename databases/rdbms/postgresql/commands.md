@@ -28,4 +28,29 @@ sudo -u postgres psql -l
 ```shell
 # asks password
 psql --host=localhost --dbname=todarchtd --username=dbuser
+psql \
+  --host=localhost \
+  --port=5445 \
+  --dbname=todarchtd \
+  --username=dbuser
+```
+
+
+```shell
+# list databases
+postgres=# \l
+
+# list all tables in current db
+postgres=# \dt *.
+
+```
+
+### Without Password Prompt
+
+- Can have PGPASSWORD environment variable
+- Or provide it while running the command
+- it is deprecated, but useful
+
+```shell
+PGPASSWORD=postgres psql ...
 ```

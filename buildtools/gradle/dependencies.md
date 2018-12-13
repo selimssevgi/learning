@@ -1,4 +1,12 @@
-# Declare Dependencies
+# Dependencies
+
+
+```shell
+# listing dependencies
+gradle -q dependencies
+```
+
+## Declare Dependencies
 
 - Add a source for 3rd party libraries
 
@@ -18,3 +26,8 @@ dependencies {
 }
 ```
 
+### Cache
+
+```shell
+ls ~/.gradle/caches/module-2/files-2.1
+```

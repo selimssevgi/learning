@@ -1,6 +1,6 @@
 # Gradle Plugins
 
-## Adding Plugins 
+## Adding Plugins
 
 - Brings new tasks like building the project, creating JavaDoc, and running tests.
 

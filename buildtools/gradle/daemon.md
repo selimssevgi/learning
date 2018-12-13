@@ -1,5 +1,26 @@
 # Gradle Daemon
 
+### gradle.properties
+
+```shell
+vim ~/.gradle/gradle.properties
+org.gradle.deamon=true
+```
+
+```shell
+gradle --no-deamon clean build
+```
+
+### GRADLE_OPTS
+
+### With Flag
+
+```shell
+gradle --deamon build
+gradle --deamon clean
+gradle --deamon build
+```
+
 - !! Check if is not outdated!
 
 - Each time gradle is invoked, a new process is started.

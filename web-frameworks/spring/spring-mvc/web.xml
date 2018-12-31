@@ -1,0 +1,40 @@
+<web-app version="2.5"
+  xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>/WEB-INF/spring/root-context.xml</param-value>
+  </context-param>
+
+  <!-- ContextLoaderListener loads it context with beans defined in /WEB-INF/spring/root-context.xml -->
+  <listener>
+    <listener-class>
+      org.springframework.web.context.ContextLoaderListener
+    </listener-class>
+  </listener>
+
+  <!-- DispatcherServlet loads its context with beans defined in appServlet-context.xml -->
+  <servlet>
+    <servlet-name>appServlet</servlet-name>
+    <servlet-class>
+      org.springframework.web.servlet.DispatcherServlet
+    </servlet-class>
+    <!-- if you want to set a different location for config file -->
+    <!-- <init&#45;param> -->
+    <!--   <param&#45;name>contextConfigLocation</param&#45;name> -->
+    <!--   <param&#45;value> -->
+    <!--     /WEB&#45;INF/spring/appServlet/servlet&#45;context.xml -->
+    <!--   </param&#45;value> -->
+    <!-- </init&#45;param> -->
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>appServlet</servlet-name>
+    <url-pattern>/</url-pattern>
+  </servlet-mapping>
+
+</web-app>

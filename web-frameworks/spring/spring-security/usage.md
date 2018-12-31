@@ -13,23 +13,6 @@
   - provides basic support for accessing security info and applying security constraints in JSP
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ```xml
 <dependency>
     <groupId>org.springframework.security</groupId>

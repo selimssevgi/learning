@@ -5,9 +5,19 @@
 - ofNullable()
 - iterate(seed, hasNext, next)
 
+## takeWhile and dropWhile
+
+Haskell              | Java
+------------------------------
+take(n)              | limit(n)
+drop(n)              | skip(n)
+takeWhile(Predicate) | takeWhile(Predicate)
+dropWhile(Predicate) | dropWhile(Predicate)
+
 ## takeWhile
 
 - takes elements until predicates is satisfied, drops afterwards
+- correspondens to 'break' in imperative programming
 
 - blue, blue, blue, red, orange, blue
 - takeWhile(isBlue): takes only the first 3 blues

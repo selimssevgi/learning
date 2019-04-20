@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.5.0
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - discovery.type=single-node
+      - cluster.name=todarch-es
+      - node.name=first-node
+      - cluster.routing.allocation.disk.threshold_enabled=false

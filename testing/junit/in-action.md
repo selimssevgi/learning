@@ -21,3 +21,14 @@
 - when you need to run several test classes at once, you create another object called a test suite
 
 - JUnitCore is a facade, operates with any of the test runners
+
+## ch03 - masterin junit
+
+- don't try to share the setup code by testing more than one operation in a test method
+  - use @Before and its friends to share fixtures between tests without combining test methods
+
+## ch04 - software testing principles
+
+- types of tests, white and black box testing
+
+## ch05 - test coverage and development

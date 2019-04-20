@@ -1,8 +1,9 @@
 # nvm - node version manager
 
-- install and use LTS version
+- install and use latest LTS version
 
 ```shell
+nvm ls-remote --lts | grep Latest
 nvm install --lts
 nvm use --lts
 ```

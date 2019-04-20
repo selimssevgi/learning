@@ -31,3 +31,18 @@ public void resetForTesting() {
 2. if two of these things are created, we could have a serios problem(two nuclear controls)
 
 3. if someone creates two of these things, we will be using too many resources
+
+## from Misko Hevery
+
+You can live in a society where everyone (every class) declares who their friends
+(collaborators) are. If I know that Joe knows Mary but neither Mary nor Joe knows Tim,
+then it is safe for me to assume that if I give some information to Joe he may give it to Mary,
+but under no circumstances will Tim get hold of it. Now, imagine that everyone (every
+class) declares some of their friends (collaborators), but other friends (collaborators which
+are singletons) are kept secret. Now you are left wondering how in the world did Tim got
+hold of the information you gave to Joe.
+
+Here is the interesting part. If you are the person who built the relationships (code)
+originally, you know the true dependencies, but anyone who comes after you is baffled, since
+the friends which are declared are not the sole friends of objects, and information flows in
+some secret paths which are not clear to you. You live in a society full of liars.

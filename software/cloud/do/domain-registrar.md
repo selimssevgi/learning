@@ -19,3 +19,7 @@ ns3.digitalocean.com
 - Add three of them and click green check at the right up
 
 - On digitalocean, on the left panel, networking, add new domain
+
+### A records
+
+- * secip karsinda dropleti sececegiz

@@ -424,3 +424,160 @@
 
 - trust is the highest form of human motivation
 - it brings out the very best in people
+
+## part 3: public victory
+
+- you have to like yourself before you can like others
+
+- if you dont know yourself, if you dont control yourself, if you dont have
+  mastery over yourself, it is very hard to like yourself, except in some
+  short-term, psych-up, superficial way
+
+### the emotional bank account
+
+- describes the amount of trust that's been built up in a relationship
+
+- it is the feeling of safeness you have with another human being
+
+- if i make deposits into an Emotional Bank Account with you throught
+  - courtesy,
+  - kindness,
+  - honesty,
+  - keeping my commitments to you
+  - i build up a reserve
+
+- our most constant relationships require our most constant deposits
+- with continuing expectations, old deposits evaporate
+
+- your accounts with people you interact with on a regular basis require some constant investment
+
+- building and repairing relationships are long-term investments
+
+### six major deposits
+
+**understanding the individual**
+
+- really seeking to understand another person is probably one of the most
+  important deposits you can make, it is the key to every other deposit
+
+- what might be a deposit for you, might not be perceived by someone else as a deposit at all
+
+- one person's mission is another person's minutia
+
+- to make a deposit, what is important to another person must be as important to
+  you as the other person is to you.
+
+> "do you like baseball that much?"
+> "no, but i like my son that much"
+
+- we project our intentions on the behavior of others
+
+> do unto others as you would have others do unto you
+
+**attending to the little things**
+
+- the little kindnesses and courtesies are so important
+
+- small discourtesies, little unkindnesses, little forms of disrespect make large withdrawals
+
+**keeping commitments**
+
+- keeping a commitment or a promise is a major deposit
+- breaking one is a major withdrawal
+
+**clarifying expectations**
+
+- the cause of almost all relationship difficulties is rooted in conflicting or
+  ambiguous expectations around roles and goals
+
+**showing personal integrity**
+
+- one of the most important ways to manifest integrity is to be loyal to those who are not present
+
+- it is the love and the discipline of the one student, the one child, that
+  communicates love for the others
+
+**apologizing sincerely when you make a withdrawal**
+
+> it is the weak who are cruel. Gentleness can only be expected from the strong
+
+- sincere apologies make deposits
+- repeated apologies interpreted as insincere make withdrawals
+
+**the laws of love and the laws of life**
+
+- unconditional love
+
+> it is more onble to give yourself completely to one individual than to labor
+> diligently for the salvation of the masses
+
+### habit 4: think win-win -- principles of interpersonal leadership
+
+- trying to get the fruits of cooperation from a paradigm of competition
+
+* six paradigms of human interaction
+  - win-lose
+  - lose-win
+  - lose-lose
+  - Win-Win or No deal
+
+#### win-win
+
+- win-win sees life as a cooperative, not a competitive arena
+
+- win-win is based on the paradigm that there is plenty for everybody
+
+- one person's success is not achieved at the expense of exclusion of the success of others
+
+- not your way or my way; it is a better way, a higher way
+
+#### win-lose
+
+- the paradigm of the race to Bermuda
+
+- if i win, you lose
+
+- value does not lie inside them, it lies outside
+
+- it is in comparison with somebody else or against some expectation
+
+- most results you want depend on cooperation between you and others
+
+- the win-lose mentality is dysfunctional to that cooperation
+
+#### lose-win
+
+- "go ahead, have your way with me"
+- "step on me again, everyone does"
+- "i am a loser, i have always been a loser"
+
+#### lose-lose
+
+- two win-lose people get together
+
+- murder is suicide, that revenge is a two-edged sword
+
+- judge asks husband to sell the assets, and share the half with the wife
+  - husband sells the the car, worth of 10,000$, for 50$
+
+- lose-lose is the philosophy of the highly dependent person
+  - without inner direction who is miserable and thinks everyone else should be, too
+
+> if nobody ever wins, perhaps being a loser isn't so bad
+
+#### win
+
+- people with win mentaility don't necessarily want someone else to lose
+- what matters is that they get what they want
+
+- when there is no sense of contest or competition, win is probably the most
+  common approach in every negatiation
+
+#### which option is best?
+
+- if you value a relationship and the issue isn't really that important, you may
+  want to go for lose-win in some circumstances to genuinely affirm the other person
+
+- the best choice depends on reality
+
+- win-win is the only real alternative in interdependent realities

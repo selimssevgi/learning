@@ -25,9 +25,3 @@ dependencies {
   testCompile "junit:junit:4.12"
 }
 ```
-
-### Cache
-
-```shell
-ls ~/.gradle/caches/module-2/files-2.1
-```

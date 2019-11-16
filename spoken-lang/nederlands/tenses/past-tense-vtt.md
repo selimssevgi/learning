@@ -1,13 +1,3 @@
-# dutch past tense
-
-- there are two past tenses:
-
-1. perfectum (regular) (used more often)
-2. imperfectum
-
-1. I have worked = ik heb gewerkt
-2. I worked      = ik werkte
-
 ## perfectum
 
 - hebben + ge + STAM + d/t
@@ -61,43 +51,6 @@ ont-   |
 - leven  leef geleefd(d/t is decided on v, not on v)
 
 
-## simple past tense (OVT)
-
-- De Onvoltooid Verleden Tijd
-
-- i worked
-- ik werkte
-
-- take the 'ik' form + te
-
-- knippen(cutting with sciosers)
-- ik knip, ik knipte
-
-- ik/jij/hij/zij knipte
-- wij/jullie/zij knipten
-
-- some words get 'de' instead of 'te'
-
-- ik ren, ik rende
-
-- softketchup rule is also applicable here based on the letter before 'en'
-
-- ik luister naar de radio
-- ik luisterde naar de radio
-
-- hij poetst zijn auto
-- hij poetste zijn auto
-
-- ze print een document
-- ze printte een document
-
-- ze bouwen een huis
-- ze bouwden een huis(bouw, de, n)
-
-* leven, reizen and other verbs with -v- and -z-
-
-- reizen, ik reis, the letter before 'en' is z, ik reisde
-- leven, ik leef, the letter before 'en' is v, ik leefde
-- geloven, ik geloof, the letter before 'en is v, ik geloofde
 
 #### irregular verbs
+

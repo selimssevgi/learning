@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- status represents the level at which internal log4j events should be logged -->
+<!-- fully qualified name of com.mycompany.myproduct.MyPlugin -->
+<!-- tell where is your log4j2 plugin is -->
+<Configuration
+  status="WARN"
+  packages="com.mycompany.myproduct">
+
+  <!-- -->
+  <!-- list of appenders -->
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+    </Console>
+
+    <RollingFile
+      name="RollingFileAppender"
+      filePattern="logs/$${date:yyyy-MM}/app-%d{MM-dd-yyyy}-%i.log.gz"
+      fileName="logs/app.log">
+
+      <PatternLayout>
+        <Pattern>%d [%t] %p %c - %m%n</Pattern>
+      </PatternLayout>
+
+      <!-- triggering policy determines when the log file is rolled -->
+      <Policies>
+        <OnStartupTriggeringPolicy /> <!-- a new log file is created every time JVM starts -->
+        <TimeBasedTriggeringPolicy /> <!-- rolled based on a date/time pattern -->
+        <SizeBasedTriggeringPolicy size="50 MB" /> <!-- rolled when it reaches a certain size -->
+      </Policies>
+      <!-- determines how the file is rolled -->
+      <DefaultRolloverStrategy max="20" />
+    </RollingFile>
+
+    <Failover name="FailoverAppender" primary="JDBCAppender">
+      <Failovers>
+        <AppenderRef ref="RollingFileAppender" />
+        <AppenderRef ref="Console" />
+      </Failovers>
+    </Failover>
+  </Appenders>
+
+  <!-- list of loggers -->
+  <Loggers>
+    <!-- root is a standard logger that outputs all messages -->
+    <!-- it is mandatory, if not provided, default console appendar and error level will be used -->
+    <Root level="INFO">
+      <AppenderRef ref="Console"/>
+    </Root>
+
+    <!-- getLogger(Clazz.class); uses best matching logger name for that class  -->
+    <Logger name="com.company.projectb" level="WARN">
+      <AppenderRef ref="RollingFileAppender" />
+    </Logger>
+    <Logger name="com.company.anotherproject" level="ERROR">
+      <AppenderRef ref="RollingFileAppender" />
+    </Logger>
+  </Loggers>
+</Configuration>

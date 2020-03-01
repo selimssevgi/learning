@@ -9,6 +9,8 @@
 - jasmine, karma
 - redux, ngRx
 
+- progressive web apps
+
 ## angular cli
 
 ```shell

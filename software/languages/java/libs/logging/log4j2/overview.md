@@ -1,6 +1,23 @@
-# log4j
+# log4j2
 
-- need an src/main/resources/log4j.properties
+```groovy
+compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+```
+
+## simple usage
+
+- provides a simple default configuration if none provided
+  - just for error logging
+
+```java
+private static Logger logger = LogManager.getLogger(HelloLogging.class);
+logger.error("This is an error message");
+```
+
+## configuration
+
+- could be either programmatically or by file
+- override default config by src/main/resources/log4j2.[xml, json, yaml, properties]
 
 - log to standard output
 

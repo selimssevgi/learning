@@ -9,17 +9,6 @@
 
 - Traditionally has been used with SQL Relational databases.
 
-#### History
-
-- JPA 1.0 - May,2006
-- JPA 2.0 - Dec,2009
-- JPA 2.1 - Apr,2013
-
-#### JPA 2.1 Implementations:
-
-- Hibernate
-- EclipseLink
-- DataNucleus
 
 - JPA Entity is just a POJO.
 

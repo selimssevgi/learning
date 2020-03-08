@@ -18,6 +18,9 @@
 
 - defines which MIME type is delivered by a method annotated with @GET
 
+- MediaType.APPLICATION_XML will require @XmlRootElement on the exposed object for MessageBodyWriter
+  - jersey doesnot know how to convert from POJO to XML
+
 ## @Consumes(type)
 
 - defines which MIME type is consumed by this method

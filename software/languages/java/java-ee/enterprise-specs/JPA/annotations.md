@@ -1,4 +1,4 @@
-# JSP Annotations
+# JPA Annotations
 
 - Static and transient fields are not persisted.
 ```xml
@@ -21,7 +21,7 @@ public class Employee {
 - Default table name will be same as class name.
 - If we want a different table name, we can use @Table(name="TABLE_NAME")
 
-#### @Id
+#### @Id, @IdClass, @EmbeddedId
 
 - It could be used to annotate accessor method too.
 - ID might be a reserved word in some dbs,
@@ -37,8 +37,10 @@ public class Employee {
 - AUTO : default. portable. HB chooses the appropriate ID based on the DB.
 
 - IDENTITY: responsibility of the database to provide a unique identifier.
+  - MySQL: AUTO_INCREMENT, PostgreSQL: SERIAL, ORACLE: NoSupport
 
 - SEQUENCE: some db provides mechanism of sequenced numbers.
+  - ORACLE: alternative to IDENTITY
 
 - TABLE: sometimes primary keys have been created from a unique column in
   another table.

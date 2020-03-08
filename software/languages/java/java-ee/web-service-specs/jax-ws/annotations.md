@@ -1,19 +1,5 @@
 # JAX-WS Annotations
 
-## @WebService
-
-- can be used on a concrete class asa the implementing web service
-- can be used on an interface, in other words Service Endpoint interface
-
-```java
-@WebService
-@SOAPBinding(style = SOAPBinding.Style.RPC)
-public interface UserService {}
-
-@WebService(endpointInterface="com.selimssevgi.service.UserService")
-public class UserServiceImpl implements UserService {}
-```
-
 ## @SOAPBinding(style = SOAPBinding.Style.RPC)
 
 - used to specify the SOAP messaging 'style'

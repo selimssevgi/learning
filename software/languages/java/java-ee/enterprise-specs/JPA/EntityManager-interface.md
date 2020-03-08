@@ -1,5 +1,7 @@
 # EntityManager Interface
 
+- is an interpreter between the object-oriented and relational worlds
+
 - Creating an EntityManager starts its persistence context.
 
 - hibernate wont access the db ntil necessary; EntityManager doesn't obtain a

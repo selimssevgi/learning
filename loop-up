@@ -1,0 +1,56 @@
+#!/bin/bash
+
+
+show_gradle_lu () {
+  echo "gradle tasks: loop up what tasks you have in the project"
+  echo "gradle -q: quite the gradle's own logger for simple logs"
+  echo "can abbreviate camel-case tasks names: gradle dI instead of dependencyInsight"
+  echo "gr --refresh-dependencies #do not use cache"
+  echo "gr --stop # stop deamons"
+}
+
+show_mac_lu () {
+  echo "screenshot: shift + command + 3, or shift + command + 5"
+  echo "pbcopy < file.txt, pbpaste (check content)"
+  echo "show hidden files in dialog: cmd + shift + ."
+  echo "sudo lsof -i tcp:8080; kill -9 PID"
+  echo "apple icon -> about this mac"
+}
+
+show_ombuds_lu () {
+  echo "SDPOS: gitlab related stuff"
+}
+
+show_tmux_lu () {
+  echo "tmux ls and tmux attach -t 0"
+}
+
+show_java_lu() {
+  echo "jps -l# show java processes"
+}
+
+my_cmd="$1"
+
+case $my_cmd in
+  gradle|Gradle|g)
+    show_gradle_lu
+    ;;
+  mac|m)
+    show_mac_lu
+    ;;
+  ombuds)
+    show_ombuds_lu
+    ;;
+  tmux)
+    show_tmux_lu
+    ;;
+  java)
+    show_java_lu
+    ;;
+  *)
+    echo "one of gradle|mac"
+    ;;
+esac
+
+
+

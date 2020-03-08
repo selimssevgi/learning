@@ -1,6 +1,11 @@
 # Gradle Task
 
-- Code that Gradle executes
+- every newly created task is of type org.gradle.api.DefaultTask
+  - standard implementation of org.gradle.api.Task
+
+- Task provides two methods to declare a task action:
+  - doFirst(Closure)
+  - doLast(Closure)
 
 - Has a lifecycle
 
@@ -12,29 +17,7 @@
 
 ### Define a task
 
-- gradle tasks --all
+### declaring task inputs and outputs
 
-```groovy
-task Task6 {
-  description "This is task 6 description"
-  dependsOn Task3
-  doLast {
-    println "This is doLast for task6"
-  }
-  doFirst {
-    println "This is doFirst for task6"
-  }
-}
-```
-
-### Run a task
-
-- gradle MyTask
-
-## Task Phases
-
-- initialization phase -- used to configure multi project builds
-
-- configuration phase -- executes code in the task that's not the action
-
-- execution phase -- execute the task actions (doLast, doFirst)
+- gradle determines if a task is up to date by comparing a snapshot of a task's
+  inputs and outputs between two builds

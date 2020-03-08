@@ -2,6 +2,7 @@ group 'com.selimssevgi.gradle'
 version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
+apply plugin: 'war' // extends jar, no need to apply jar
 apply plugin: 'application'
 
 mainClassName = 'hello.HelloWorld'
@@ -17,6 +18,10 @@ targetCompatibility = 1.8
 dependencies {
   compile "joda-time:joda-time:2.2"
   testCompile "junit:junit:4.12"
+
+  // introduced by war
+  provividedCompile 'javax.servlet:servlet-api:2.5'
+  runtime 'javax.servlet:jstl:1.1.2'
 }
 
 jar {

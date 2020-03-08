@@ -1,0 +1,11 @@
+// we are in subproject, no need to wrap in project block
+
+apply plugin: 'war'
+
+dependencies {
+  compile project(':subproject-a')
+  providedCompile 'javax.servlet:servlet-api:2.5'
+  runtime 'javax.servlet:jstl:1.1.2'
+
+  testCompile 'junit:junit:4.11'
+}

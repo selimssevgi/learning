@@ -1,0 +1,9 @@
+allprojects {
+  // be aware of all of the conflicts
+  // solve them, not to have surprises
+  configurations.all {
+    resolutionStrategy {
+      failOnVersionConflict()
+    }
+  }
+}

@@ -1,0 +1,14 @@
+ext.projectIds = ['group': 'com.selimssevgi', 'version': '0.1']
+
+allprojects {
+  group = projectIds.group
+  version = projectIds.version
+
+  repositories {
+    mavenCentral()
+  }
+}
+
+subprojects {
+  apply plugin: 'java'
+}

@@ -1,0 +1,10 @@
+include 'subproject-a'
+include 'subproject-b'
+
+// rootProject.name = 'multiproject'
+// each subproject can have a specific gradle build file name
+// instead of generic build.gradle, which could cause problems in many subprojects
+// subproject-a.gradle, subproject-b.gradle instead of build.gradle
+rootProject.children.each { project ->
+  project.buildFileName = "${project.name}.gradle"
+}

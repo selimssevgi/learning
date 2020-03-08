@@ -1,5 +1,8 @@
 # Dependencies
 
+- dependencies are grouped by configurations
+- one of the configurations that the java plugin introduces is *compile*
+
 
 ```shell
 # listing dependencies

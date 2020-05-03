@@ -20,3 +20,16 @@ vim no-pass
     fingerprints:
       - "80:2d:9c:70:d7:07:3f:fc:25:8d:b1:ed:4b:cd:96:73"
 ```
+
+**ERROR:** invalid private key
+
+- [server-fault](https://serverfault.com/questions/939909/ssh-keygen-does-not-create-rsa-private-key)
+
+```shell
+cd ~/.ssh
+mkdir converted-for-circleci
+cp id_rsa* converted-for-circleci/
+cd converted-for-circleci
+ssh-keygen -p -m PEM -f id_rsa
+pbcopy < id_rsa
+```

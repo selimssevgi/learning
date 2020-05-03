@@ -24,3 +24,9 @@ del hello
 get hello
 # (nil)
 ```
+
+- list all of the keys:
+
+```shell
+KEYS '*'
+```

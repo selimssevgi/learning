@@ -10,19 +10,20 @@ show_gradle_lu () {
 }
 
 show_mac_lu () {
-  echo "screenshot: shift + command + 3, or shift + command + 5"
+  echo "screenshot: shift + command + 3/5, snippet: shift + command + 4"
   echo "pbcopy < file.txt, pbpaste (check content)"
   echo "show hidden files in dialog: cmd + shift + ."
   echo "sudo lsof -i tcp:8080; kill -9 PID"
   echo "apple icon -> about this mac"
 }
 
-show_ombuds_lu () {
-  echo "SDPOS: gitlab related stuff"
-}
-
 show_tmux_lu () {
   echo "tmux ls and tmux attach -t 0"
+}
+
+show_git_lu() {
+  echo "git commit -av # diff in $EDITOR"
+  echo "git commit -p # commit step by step"
 }
 
 show_java_lu() {

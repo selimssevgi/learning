@@ -10,3 +10,4 @@
 - verhogen: to increase
 - verminderen: reduction
 - verplicht: require (plicht: duty, obligation)
+- verleen: to grant (leen: to loan)

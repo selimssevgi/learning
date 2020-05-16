@@ -1,4 +1,56 @@
-# # 7 Habits of Highly Effective People
+# 7 Habits of Highly Effective People
+
+## Part One: Paradigms and Principles
+
+```shell
+we began to realize that what we were doing to help our son was not in harmony
+with the way we really saw him. When we honestly examined our deepest feelings,
+we realized that our perception was that he was basically inadequate, somehow
+"behind". No matter how much we worked on our attitude and behavior, our efforts
+were ineffective because, despite our actions and our words, what we really
+communicated to him was "you are not capable, you have to be protected."
+```
+
+* the personality and character ethics
+
+- character ethic as the foundation of success:
+  - integrity
+  - humility
+  - fidelity
+  - temperance
+  - courage
+  - justice
+  - patience
+  - industry
+  - simplicity
+  - modesty
+  - golden rule
+
+* primary and secondary greatness
+
+- "what you are shouts so loudly in my ears that I cannot hear whay you say"
+
+* the power of a paradigm
+
+- the fundamental problem has nothing to do with your behavior or your attitude.
+  It has everything to do with having a wrong map
+
+- each of us has maps whichs can be divided into 2 main categories:
+  - maps of the things are, or realities
+  - maps of the way things should be, or values
+
+- two people can see the same thing, disagree, and yet both be right. it is not
+  logical; it is psychological.
+
+* the power of a paradigm shift
+
+- ...almost every significant breakthrough in the field of scientific endeavor
+  is first a break with tradition, with old ways of thinking, with old paradigms
+
+- people on train, another man with children, irritating children, can you
+  control them? they lost their mother: paradigm shift
+
+- Principles are like lighthouses
 
 * on the maturity continuum:
 
@@ -124,6 +176,16 @@
 
 - weigh the consequences of each action, compare and choose what you want to do.  You don't "have to" it.
 
+- where do we focus our time or energy?
+- Circle of Concern: things which we have no real control
+- Circle of Influence: things which we have control over
+
+* alcoholics anonymous prayer:
+
+"Lord, give me the courage to change the things which can and ought to be
+changed, the serenity to accept the things which cannot be changed, and the
+wisdom to know the difference."
+
 
 ### Habit 2: begin with the end in mind
 
@@ -134,13 +196,16 @@
 >> gets us to the wrong place faster
 
 * all things are created twice:
-
-- there is a mental or first creation, and a physical or second creation of all things
+  - there is a mental or first creation, and a physical or second creation of all things
 
 - Habit 1 says: "You are the creator."
 - Habit 2 is the first creation
 
-- leadership deals with the top line: what are the things I want to accomplish?
+- management is a bottom-line focus:
+  - *how* can I best accomplish certain things?
+
+- leadership deals with the top line:
+  - *what* are the things I want to accomplish?
 
 >> Management is doing things right, leadership is doing the right things.
 
@@ -151,6 +216,9 @@
   leadership first and management second.
 
 #### rescriptings: becoming your own first creator
+
+- the two additional unique human endowments that enable us to expand our
+  proactivity and to exercise personal leadership in our lives are *imagination* and *conscience*
 
 - self-awareness, imagination, conscience
 
@@ -282,8 +350,6 @@
     - the attitudes, behavior, and actions of others
     - many of the circumstances and environmental influences that limit other people
 
-
-
 - personal responsibility, or proactivity, is fundamental to the first creation
 
 - habit 1 says "you are the programmer"
@@ -327,6 +393,15 @@
    basis, would make a tremendous positive difference in your personal life?
 
 2. what one thing in your business or professional life would bring similar results?
+
+- habit 1 says, "you are the creator, you are in charge"
+  - four unique human endowments:
+    1. imagination
+    2. conscience
+    3. independent will
+    4. self-awareness
+
+- habit 2 is the first or mental creation
 
 - habit 3 is the personal fruit, the practical fulfillment of habits 1 and 2
 
@@ -403,6 +478,9 @@
 - habit 1: you are the programmer
 - habit 2: write the program
 - habit 3: run the program
+
+- "you simply can't think efficiency with people. You think effectiveness with
+  people and efficiency with things."
 
 #### deletegation: increasing P and PC
 
@@ -541,9 +619,14 @@
 
 - it is in comparison with somebody else or against some expectation
 
+- Competition, not cooperation, lies at the core of the educational process.
+  Cooperation, in fact, is usually associated with cheating.
+
 - most results you want depend on cooperation between you and others
 
 - the win-lose mentality is dysfunctional to that cooperation
+
+- "Who's winning in your marriage?" is a ridiculous question. If both people aren't winning, both are losing.
 
 #### lose-win
 
@@ -581,3 +664,217 @@
 - the best choice depends on reality
 
 - win-win is the only real alternative in interdependent realities
+
+#### five dimensions of win-win
+
+1. character
+  - integrity
+  - maturity
+    - ego strength / empathy balance
+    - self confidence / respect for others balance
+    - the concern for people / concern for tasks balance
+    - I am okay, you are okay
+  - abundance mentality
+    - inner sense of personal worth and security
+    - scarcity mentality (zero-sum game, if you win, i lose)
+      - it almost smth is taken from them when someelse succeeds
+      - "they are always comparing, always competing"
+
+2. relationships
+  - we're focused on the issues, not on personalities or positions
+
+3. agreements
+
+- "the program primarily focused on people achieving self-selected performance
+  objectives and on groups achieving team objectives"
+
+### habit 5: seek first to understand, then to be understood
+
+- principles of empathic communication
+
+- communication is the most important skill in life
+
+#### empathic listening
+
+1. ignoring listening (not listening at all)
+2. pretending listening
+3. selective listening (hearing only certain parts)
+4. attentive listening (paying attention and focusing energy on the words)
+5. empathic listening (not the technique of "active" or "reflective" listenings)
+
+- empathy is not sympathy
+- sympathy is a form of agreement, a form of judgment
+
+- the essence of empathic listening is not that you agree with someone
+- it is that you fully, deeply understand that person, emotionally as well as intellectually
+
+
+- satisfied needs do not motivate. It is only the unsatisfied need that motivates
+
+#### diagnose before you prescribe
+
+#### four autobiographical responses
+
+- we evaluate -- we either agree or disagree
+
+- we probe -- we ask questions from our own frame of reference
+
+- we advise -- we give counsel based on our own experience
+
+- we interpret -- we try to figure people out
+
+
+* the skills, the tip of the iceberg of empathic listening, involve four developmental stages
+
+1. mimic content (skill taught in "active" or "reflective" listening)
+  - repeat what you other person says
+  - no brain used
+  - at least no "evaluating, proving, advising, interpreting"
+
+2. rephrase the content
+  - left/logical brain used
+
+3. reflect feeling
+  - right brain
+
+4. includes both the second and the third
+  - rephrase the content and reflect the feeling
+
+
+- ethos, pathos, and logos
+  - ethos: personal credibility, the faith people have in your integrity and competency
+  - pathos: empathic side, the feeling, you are in alighment with the emotional trust of another person's communication
+  - logos: logic, the reasoning part of the presentation
+
+### habit 6: synergize, principles of creative cooperation
+
+- synergy means that the whole is greater than the sum of its parts
+
+- one plus one equals three
+
+- the essense of synergy is to value differences, to respect them, to build on
+  strengths, to compensate for weaknesses
+
+- "We obviously value the physical differences between men and women, husbands
+  and wives. But what about the social, mental, and emotional differences?"
+
+#### fishing for the A Third Alternative
+
+- Buddhism calls this "the middle way"
+
+- middle in this sense does not mean compromise; it means higher
+
+#### negative synergy
+
+- "the very strength of the relationship is in having another point of view"
+
+- sameness is uncreative, and boring
+
+- the essense of synergy is to value the differences
+
+#### valuing the differences
+
+- the key to valuing those differences is to realize that all people see the
+  world, not as it is, but as they are.
+
+#### force field analysis
+
+- describes any current level of performance or being as a state of equilibrium
+  between the driving forces that encourage upward movement and the restraining
+  forces that discourage it
+
+
+## part four -- renewal
+
+### habit 7: sharpen the saw - principles of balanced self-renewal
+
+- habit 7 is personal PC
+
+- it is renewing the four dimensions of your nature:
+  1. physical - tone - a good animal
+  2. spiritual - perspective - a saint
+  3. mental - autonomy - a good craftsman
+  4. social/emotional - connectedness - a good friend
+
+- taking time to sharpen the saw is a definite Quadrant II nature
+
+#### the physical dimension (habit1: proactive)
+
+- eating right kinds of foods
+- getting sufficient rest and relaxation
+- exercising on a regular basis
+
+- if practive, physical dimension stay in quadrant II
+- if not practive, physical dimension goes to quadrant I
+
+- heartbeat, flexibility, strength
+
+#### the spritual dimension (habit 2: principle-centered)
+
+- quadrant-II
+
+- medidation
+
+- music
+
+- "the doctor told him to spend the following day in the place where he was happiest as a child."
+
+- "i have so much to do today, I'll need to spend another hour on my knees" - Marting Luther
+  - so we could get more power to do all
+
+#### the mental dimension (habit 3)
+
+- education
+
+- reading good literature (quadrant-II)
+  - "the person who doesn't read is no better off than the person who can't read"
+
+- "the Great Book", "the Harvard Classics", "autobiographies"
+
+- writing, journal of our thoughts, experiences, insights, and learnings
+
+#### the social/emotional dimension (habit 4, 5, 6)
+
+- let's at least agree to communicate until we can find a solution we both feel good about(habit 4)
+
+- let me understand you first (habit 5)
+
+- let see if I understand you
+
+- now let me explain myself
+
+- let's find the third way (habit 6)
+
+- "service is the rent we pay for the privilege of living on this earth"
+
+#### balance in renewal
+
+- organizational as well as individual effectiveness requires development and
+  renewal of all four dimensions in a wise and balanced way
+
+#### synergy in renewal
+
+- the more proactive you are (habit1), the more effectively you can exercise
+  personal leadership(habit2), and management (habit3) in your life
+
+- the more effectively you manage your life(habit3), the more quadrant-II
+  renewing activities you can do (habit7)
+
+- the more you seek first to understand (habit5), the more effectively you can
+  go for synergetic win-win solutions(habit4-6).
+
+- the more you improve in any of the habits that lead to independence(habits
+  1,2,3), the more effective you will be in interdependent situations (habits 4,5,6)
+
+
+- "That's true financial independence. It's not having wealth; it's having the
+  power to produce wealth. It's intrinsic."
+
+#### The Upward Spiral
+
+- our conscience
+
+- education of the conscience is vital to the truly proactive, highly effective person
+
+- ""That which we persist in doing becomes easier -- not that the nature of the
+  task has changed, but our ability to do has increased.""

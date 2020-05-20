@@ -179,3 +179,82 @@ hou er rekening mee dat niet iedereen de maximum toegelaten snelheid kan of mag 
   - einde snelheidsbeperking (witte borden, zwarte streep door)
   - zone 30: voor de veiligheid van kwetsbare weggebruikers
 
+## bijzondere omgevingen
+
+### voetgangerszone
+
+het begin en einde van een voetgangerszone duidt men aan met verkeersborden
+
+een voetgangerszone is vanzelfsprekend(of course) bedoeld voor voetgangers
+
+soms worden fietsers of andere voertuigen ook toegelaten, of alleen tijdens bepaalde uren, dat staat dan vermeld(mentioned) op het zonebord in kwestie
+
+#### regels voetgangerszone
+
+- bestuurders die in een voetgangerszone mogen rijden, moeten stapvoets(walking pace) rijden
+
+- voetgangers mogen de volledige breedte van de openbare weg gebruiken om te wandelen(walking) of spelen
+
+- je moet de doorgang(passage) voor hen vrijlaten en in elke situatie kunnen stoppen, je mag de voetgangers niet hinderen of in gevaar brengen
+
+- fietsers moeten afstappen(get off) als het voetgangersverkeer te druk(busy) is
+
+- je mag er niet parkeren
+
+#### toegelaten bestuurders
+
+- prioritaire voertuigen
+- voertuigen voor afvalophaling(waste collection)
+- voertuigen voor toezicht(supervision), controle en onderhoud(maintenance) van de weg
+
+### speelstraat
+
+tijdens de vakantieperiodes kan een speelstraat worden ingericht.
+de straat wordt dan tijdelijk(temporarily) afgesloten,
+zodat kinderen over de hele breedte van de straat kunnen spelen.
+
+het is de bedoeling dat er dan geen motorvoertuigen rijden en fietsers moeten afstappen indien nodig.
+
+de openbare weg is er tijdelijk en op vaste uren afgezet met hekken(fence) met daarop het verkeersbord met vermelding 'speelstraat'
+
+#### regels speelstraat
+
+- de toegelaten bestuurders (ook de fietsers) mogen enkel stapvoets rijden en moeten kunnen stoppen als dat nodig is.
+ ze moeten dubbel voorzichtig zijn ten opzichte van kinderen
+
+- de doorgang moet vrij blijven voor de spelende voetgangers, je moet hen voorrang verlenen
+
+#### uitzonderlijk toegelaten
+
+- prioritaire voertuigen
+- bewoners of eigenaars/huurders van een garage in dat afgebakende deel
+- fietsers
+- houders van een vergunning(permit)
+
+### voorbehouden(reserved) wegen
+
+voor voetgangers, fietsers, ruiters, landbouwvoertuigen(agricultural) en/of speed pedelecs
+
+- ze mogen het verkeer niet nodeloos belemmeren(obstruct)
+
+### verhoogde inrichtingen (elevated fixtures)
+
+op verhoogde inrichtingen mag je maximaal 30 km/u rijden
+
+- een verhoogde wordt altijd aangekondigd(announced) met een gevaarsbord, behalve in de zone 30
+
+- bij de inrichting zelf staat meestal een blauw bord dat de verhoogde inrichting aanduidt
+
+- je kunt het begin en einde van de verhoodge inrichting herkennen(recognize) aan de afwisselend(alternatively)
+ korte en lange witte strepen op de weg over de breedte van de heilig
+
+### samengevat: bijzondere omgevingen
+
+- voetgangerszone
+- speelstraat
+- erf of woonerf: max. 20 km/u
+- schoolomgeving: max 30km/u
+- fietsstraat: max 30 km/u
+- voorbehouden wegen: max 30 km/u
+- verhoogde inrichtingen: max 30 km/u
+- schoolstraat

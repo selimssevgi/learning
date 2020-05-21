@@ -258,3 +258,142 @@ op verhoogde inrichtingen mag je maximaal 30 km/u rijden
 - voorbehouden wegen: max 30 km/u
 - verhoogde inrichtingen: max 30 km/u
 - schoolstraat
+
+## autoweg / autosnelweg
+
+### dynamische verkeersborden
+
+- dynamische verkeersborden zijn digitale verkeersborden die op ieder ogenblik(any time) aangepast kunnen worden aan de verkeerssituatie of omstandigheden(circumstances)
+
+- ze leggen soms een lagere snelheidslimiet op
+
+- ze duiden de rijstroken aan waar je moet op rijden, niet mag op rijden of die je moet vrijmaken
+
+- wanneer een dynamisch bord boven een rijstrook hangs, geldt dat alleen voor die bepaalde rijstrook
+
+- je ziet ze het meest bij files, verkeersdrukte, ongevallen, wegenwerken of slechte weersomstandigheden(weather conditions)
+
+- verkeersborden die erop verschijnen(appear) hebben dezelfde betekenis(meaning) als de gewone verkeersborden
+
+### pechstrook (emergency lane)
+
+- een pechstrook komt vaak op autowegen en autosnelwegen voor (niet altijd)
+
+- je mag er niet op rijden
+
+- ze bevindt zich rechts van de rijbaan
+
+- je mag er alleen je voertuig parkeren bij pech(breakdown) of een ongeval
+
+- in alle andere gevallen zijn stilstaan of parkeren op de pechstrook verboden
+
+- in uitzonderlijke gevallen mogen onder andere prioritaire voertuigen en takelwagens(tow tracks) de pechstrook gebruiken voor hun opdracht(task)
+
+### retro-reflecterend veiligheidshesje (safety-vest)
+
+- een bestuurder moet een retro-reflecterend veiligheidshesje dragen als(when) hij zijn auto verlaat(leaves) bij een ongeval of pech op autowegen en autosnelwegen
+
+- het is verplicht om minstens een hesje in je auto te hebben, het is veiliger als je er voor alle passagiers een bij hebt
+
+### autoweg
+
+een autoweg is een verbindingsweg die zowel binnen als buiten de bebouwde kom kan liggen(can be inside and outside of built-up area)
+
+#### snelheid
+
+er is geen minimumsnelheid op autowegen, zoals op autosnelwegen wel het geval is.
+
+of een autoweg binnen of buiten de bebouwde kom ligt, bepaalt(determines) in eerste instantie hoe snel je er mag rijden.
+
+* binnen de bebouwde kom: in heel Belgie max. 50 km/u
+
+buiten de bebouwde kom zijn de snelheden anders geregeld in de verschillende gewesten. let goed op in welk gewest je rijdt, zodat je week welke algemene snelheidslimiet je moet naleven
+
+- vlaams gewest: 70 km/u
+- bxl and waals gewest: 90 km/u
+- in heel belgie op wegen met vier of meer rijstroken waarvan tenminste 2 rijstroken in elke rijrichting, gescheiden door een middenberm: 120 km/u
+
+### wie mag er niet op een autoweg?
+
+de autoweg is verboden voor:
+
+- voetgangers
+- ruuiters en andere bestuurders van dieren
+- niet motorvoertuigen bv. fietsen
+- bromfietsen
+- landbouwvoertuigen
+- vierwielers zonder passagiersruimte bv. quads
+- slepen van kermisvoertuigen
+
+### wat mag je niet op een autoweg?
+
+volgende zaken(things) zijn verboden op de autoweg:
+
+- stilstaan en parkeren, behalve op parkeerstroken aangeduid door verkeersborden
+
+- keren, achteruit of in tegenovergestelde richting rijden ('spookrijden')
+
+- een voertuig slepen met een nood- of hulpkoppeling, ook niet op de pechstrook *!!*
+
+- dwarsverbindingen gebruiken (cross connection)
+- sportwedstrijden
+- reclametochten
+- stoeten, betongingen en samenschoolingen (gatherings)
+- om het even wat verkopen of te koop aanbieden (tenzij met toelatig van de bevoegde instantie)
+
+### autosnelweg
+
+- de maximaal toegelaten snelheid op autosnelwegen is 120 km/u
+
+- je moet er minimaal 70 km/u rijden
+
+- in de buurt van steden of bij tunnels en bruggen, bij file, bij wegenwerken of door andere omstandingheden kan een verlaagde snelheidslimiet van toepassing zijn.
+ dan staan er ofwel vaste borden langs de snelweg die de maximaal toegelaten snelheid aangeven of hangen er dynamische borden boven de rijstroken.
+
+### snelheid afrit (exit speed)
+
+op een afrit van de autosnelweg staat soms een bord met een lagere snelheidslimiet.
+
+aan de pijl op het onderbord zie je dat die lagere maximumsnelheid enkel op de afrit geldt.
+
+### wie mag er niet op een autosnelweg?
+
+de autosnelweg is verboden voor:
+
+- bestuurders van voertuigen of slepen die op een horizontale weg de snelheid van 70 van km/u niet kunnen halen(catch/reach)
+
+### wat mag niet op een autosnelweg?
+
+op een autosnelweg gelden dezelfde regels als op een autoweg.
+
+### spitsstrook (rush-hour lane)
+
+- de spitstrook is een extra rijstrook op de autosnelweg die op drukke momenten wordt opengesteld voor het verkeer
+
+- ze bevindt zich dan op de plaats van de pech- of vluchtstrook
+
+- er gelden dezelfde snelheidsregels als op de rest van autosnelweg
+
+- je herkent ze aan de onderbroken strepen (langer dan gewone rijstroken) met korte tussenafstanden(short intervals)
+
+je ziet op de dynamische rijstrooksignalisatie of de spitsstrook open of gesloten is. dat kan op twee manieren:
+
+1. een groene pijl
+2. of een verkeersbord met aanduiding van de maxsnelheid op de rijstrook
+
+### samengevat: autoweg en autosnelweg
+
+- dynamische verkeersborden (gelden voor de rijstrook)
+- pechstrook (niet op rijden, stilstaan of parkeren, alleen voor pech)
+- retro-reflecterend veiligheidshesje (bestuurder die uitspat bij ongeval op auto(snel)weg)
+
+* autoweg:
+
+- snelheid, afhankelijk binnen of buiten bebouwde kom
+- verboden voor (voetgangers, fietsers, ruiter, quads, tractoren)
+- je mag er niet (stilstaan, parkeren, acteruit rijden, keren, spookrijden)
+
+* autosnelweg:
+
+- snelheid, max 120 km/u, min. 70 km/u.
+- afrit meestal lagere snelheidslimiet

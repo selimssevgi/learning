@@ -397,3 +397,113 @@ je ziet op de dynamische rijstrooksignalisatie of de spitsstrook open of geslote
 
 - snelheid, max 120 km/u, min. 70 km/u.
 - afrit meestal lagere snelheidslimiet
+
+## inhalen
+
+- inhalen doe je als je een bestuurder in beweging(in motion) voorbijrijdt. een
+  stilstaande bestuurder haal je niet in, maar 'rijd je voorbij'
+
+  - je mag nooit de maximaal toegelaten snelheid overschrijden tijdens het
+    inhalen
+
+### links inhalen (overtake on the left)
+
+inhalen moet je langs de linkerkant doen
+
+je mag uitzonderts inhalen als de bestuurder die je wil inhalen:
+
+- aangeeft(indicates) dat hij links zal afslaan of zijn voertuig aan de linkerkant van de openbare weg zal opstellen
+  
+- en zich naar links begeven heeft om die beweging uit te voerene
+
+### voor je inhaalt (before overtaking)
+
+toets(check) de volgende zaken af voor je inhaalt:
+
+- mag je in inhalen in de situatie dat je je bevindt?
+- is er voldoende afstand vrij om dat te doen zonder gevaar?
+- kn je spiegels. is niemand jou al beginnen inhalen?
+- kan je je plaats rechts op de rijbaan terug innemen zonder anderen te hinderen?
+- kan je op korte tijd inhalen?
+  
+aan al deze voorwaarden moet voldaan(satisfied) zijn om te mogen inhalen. als
+het antwoord op een van deze vragen neen in, mag je niet inhalen.i
+
+### tijdens het inhalen (while overtaking)
+
+- maak anderen duidelit je van plan bent door tijdig je linkerrichtingaanwijzer aan te zetten
+
+- maak de zijdelingse(sideways) verplaatsing naar links en zet de
+  linkerrichtingaanwijzer uit zodra(once) die beweging gedaan(done) is.
+
+- haal het voertuig in.
+
+### na het inhalen
+
+- nadat je hebt ingehaald, moet je je plaats rechts opnieuw zodra het veilig kan
+
+- zet daarbij je rechterrichtingaanwijzer aan
+
+- zodra de beweging gedaan is, zet je die weer uit
+
+**!!** opgelet(pat attention): je moet je plaats rechts niet terug innemen als
+je ommiddelli
+pnieuw wil inhalen:
+
+- op rijbanen met eenrichtingsverkeer
+- op rijbanen met minimaal twee rijstroken in elke richting, op voorwaarde dat
+  alleen gereden wordt op de rijstroken bestemd voor het verkeer in de gevolgde
+  rijrichting
+
+### je wordt ingehaald
+
+als iemand op het punt staat om jou in te halen:
+
+- wijk(move) je zo ver mogelijk uit naar rechts
+- drift(increase) je je snelheid niet op
+
+### inhalen van een spoorvoertuig
+
+een spoorvoertuig (tram) dat de rijbaan volgt, haal je langs rechts in, ook als de tram stilstaat om reizigers te laten in- of uitstappen
+
+je mag een tram uitzonderlijk links inhalen alleen op voorwaarde dat je daarbij geen tegenliggers hindert of in gevaar brengt:
+
+- als er rechts niet genoeg plaats is, of
+- als er een geparkeerde auto of een vaste hindernis staat
+
+op een rijbaan met eenrichtingsverkeer mag je een tram altijd links inhalen als dat nodig is.
+
+### dit is niet inhalen
+
+in de volgende omstandigheden spreken we niet over inhalen:
+
+- als je een rijstrook volgt, aangeduid met aanwijzingsborden(sings) die een bepaalde richting(certain direction) aangeven
+
+- als bij fileverkeer op sommige momenten het verkeer in een rijstrook sneller gaat dan in de andere rijstroken.
+ in dat geval mag je andere voertuigen langs rechts voorbijrijden(when left lane moves slower)
+
+- motorfietsers mogen tussen twee rijstroken of files, sneller rijden dan de voertuigen die er stoppen of traag rijden.
+ de motorfietser moet zich daarbij aan bepaalde regels houden(they can go faster than other vehicles)
+
+- binnen de bebouwde kom mag je op de rijstrook rijden die het best aan je bestemming(destionation) voldoet(suits).
+ je mag daarbij voertuigen langs rechts voorbijrijden. dat mag alleen op eenrichtingswegen verdeeld in rijstroken en tweerichtingswegen met vier of meer rijstroken waarvan minstens twee in elke rijrichting
+
+### samengevat: inhalen
+
+- definitie inhalen: bestuurder in beweging voorbijrijden
+
+- niet hoger dan maximaal toegelaten snelheid
+
+- inhalen doe je links
+
+- check: mag je? voldoende afstand vrij? niemand haalt jou in? terug naar rechts zonder hinderen? korte tijd?
+
+- hoe? linkerrichtingaanwijzer, uitzetten, inhalen, rechterrichtingaanwijzer, terug naar rechts, uitzetten
+
+- opnieuw inhalen
+
+- je wordt ingehaald: naar rechts, niet versnellen
+
+- spoorvertuigen rechts inhalen (tenzij hindernis, eenrichtingsverkeer dan ook links)
+
+- spreken niet van inhalen: verschillende richtingen boven verschillinde rijstroken, file, binnen bebouwde kom

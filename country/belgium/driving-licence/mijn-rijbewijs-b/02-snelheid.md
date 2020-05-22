@@ -507,3 +507,139 @@ in de volgende omstandigheden spreken we niet over inhalen:
 - spoorvertuigen rechts inhalen (tenzij hindernis, eenrichtingsverkeer dan ook links)
 
 - spreken niet van inhalen: verschillende richtingen boven verschillinde rijstroken, file, binnen bebouwde kom
+
+## inhalen verboden
+
+er is een *algemeen inhaalverbod* (je mag niemand inhalen)
+
+- een *doorlopende witte streep* die rijstroken scheidt(separates), mag je niet overschrijden om in te halen
+
+- bij een doorlopende en onderbroken witte streep naast elkaar, hou je rekening met de streep aan jouw kant van de rijstrook
+
+- als je tegemoetkomende weggebruikers niet van ver genoeg kan zien annkomen
+
+- op verhoogde incrichtingen (bumps)
+
+er is een inhaalverbord, maar fietsers mag je wel inhalen als dit veilig kan:
+
+- op een kruispunt waar je voorrang aan rechts moet verlenen
+- op een ander kruispunt waar je voorrang moet verlenen
+- bij oversteekplaatsen voor voetgangers en fietsers die niet geregeld worden door verkeerslichten of een bevoegde persoon,
+ wanneer de in te halen bestuurder stopt voor deze oversteekplaatsen of ze nadert (do not overtake around intersections and zebrapads)
+
+er is een inhaalverbod, maar fietsers mag je wel inhalen als dit veilig kan:
+
+- op een overweg(crossing) aangeduid met een van deze verkeersborden, tenzij(unless) er slagbomen(barriers) zijn of het maanwitte knipperlicht brandt
+
+- als er onvoldoende(insufficient) zichtbaarheid is bij het naderen van de top van een helling(slope) en in een bocht(bend)
+
+### dubbel inhalen verboden
+
+als de bestuurder die jij wil inhalen zelf al begonnen is met inhalen, mag je hem niet inhalen.
+
+* uitzonderingen
+
+- een bestuurder die een fiets, tweewielige bromfiets of motorfiets aan het inhalen is, mag je wel inhalen(if the first overtaken is a bike)
+
+- op een weg met ten minste drie rijstroken in jouw rijrichting, mag je een bestuurder die een andere auto inhaalt, wel inhalen (bv. op een autosnelweg)
+
+### verbodsbord inhalen
+
+een inhaalverbod kan ook aangeduid worden met een verbodsbord.
+vanaf het verkeersbord tot en met het volgende kruispunt is het inhalen van een gespan of voertuig met *meer dan twee wielen* verboden.
+
+het einde van het verbod kan ook aangeduid worden met een van deze borden:
+
+- einde van het inhaalverbod
+- einde van de plaatselijke(local) verbodsbepalingen(prohibitions)
+
+### samengevat: inhalen verboden
+
+inhalen verboden:
+
+- doorlopende streep die rijstroken scheidt
+- zicht op tegeliggers niet goed
+- aan kruispunt waar je voorrang moet verlenen
+- op verhoogde inrichtingen
+- aan oversteekplaatsen voor fietsers en voetgangers
+- overweg zonder lichten
+- helling of bocht
+
+dubbel inhalen verboden
+
+## ritsen (zippers)
+
+bij sterk vertraagd verkeer ben je verplicht om te ritsen als er meerdere(several) rijstroken in een richting zijn waarvan er een (of meer) ophoudt, bv. door wegenverken.
+
+het verkeer verloopt vlotter(smoothly) als je op de juiste manier ritst. (kaynak, cift taraftan gelince, once sagdaki, sonra soldaki, sonra ortadaki)
+
+ritsen is niet van toepassing bij:
+
+- opritten van snelwegen
+- afritten van snelwegen
+- verkeerswisselaars(changers)
+
+### samengevat ritsen
+
+- verplicht als rijstrook wegvalt(lost), bij sterk vertraagd verkeer
+
+- tot op het einde rijden van de rijstrook die wegvalt, dan pas ritsen
+
+- beurtelings een bestuurder tussen laten op de plaats de versmalling als je op de aanliggende rijstrook rijdt
+
+## remmen(brakes) en afstand
+
+### reactieafstand
+
+- wanneer je remt, is de reactieafstand de afstand die je aflegt tussen het moment waarop je iets opmerkt(notice) en het moment waarop je effectief je "rempedaal indrukt"(press)
+
+- de tijd die je daarvoor nodig hebt is ongeveer(about) 1 seconde bij iemand die geconcentreerd rijdt,
+en langer wanneer je bv. afgeleid(distracted) of vermoeid(tired) bent of als je alcohol gedronken hebt
+
+- tijdens die ene seconde leg je nog heel wat meters af. hoe sneller je rijdt, hoe groter de afstand die je aflegt(travel)
+
+bv. wanneer je merk dat je plots moet remmen en je rijdt met een snelheid van 120 km/u,
+ dan leg je in die ene seconde voor je effectief je rempedaal intrapt nog 33 meter af. Pas na 33 meter begin je te remmen en neemt je snelheid af
+
+### remafstand
+
+- pas dan volgt de remafstand
+
+- dat is de afstand die het voertuig nog aflegt tussen het moment dat jij het rempedaal induwt en het moment waarop je stilstaat
+
+- hoe sneller je rijdt, hoe meer afstand je voertuig nodig heeft om tot stilstand te komen. bij een nat wegdek, verstelen banden of remmen, zal de remafstand nog meer oplopen(increase)
+
+* stopafstand = reactieafstand + remafstand
+
+- dus de totale afstand die je nodig hebt om een remmanoeuvre uit te voeren. met andere woorden om tot stilstand te komen vanaf dat je het gevaar opmerkt
+
+- in de onderstaande tabel zie je dat de stopafstanden telkens langer worden naarmate je sneller rijdt en dat ze nog groter zijn op een nat wegdek
+
+### volgafstand
+
+hoe sneller je rijdt, hoe meer volgafstand je moet laten tussen jezelf en je voorligger.
+als je te dicht(close) achter je voorligger rijdt, riskeer je een kop-staartaanrijding(rear-end collision).
+Wanneer je voldoende volgafstand laat, behoud je ook een beter overzicht op de gehele(entire) verkeerssituatie.
+voldoende afstand houden is dus de boodschap(message) (en bovendien wettelijk(legally) verplicht)
+
+vuistregel(rules of thumb): hou minstens twee seconden afstand
+
+- kies een duidelijk(clear) herkenningspunt(landmark) langs de weg, bijvoorbeeld een verlichtingspaal
+
+- pas de 'tweesecondenregel' toe. zodra je voorligger de verlichtingspaal voorbijrijdt, tel je twee seconden ('eenentwintig, tweeentwintig').
+
+- rij je na die 2 seconden, of als je uitgezongen bent, zelf voorbij de verlichtingspaal, dan rijd je op een veilige afstand.
+ ben je eerder bij de paal(pole), dan rijd je te dicht achter je voorligger
+
+- op een nat wegdek tel je een seconde extra, de 'driesecondenregel'.
+ want bij een nat wegdek is je remafstand groter en moet je verder van je voorligger blijven
+
+### samengevat: remmen en afstand
+
+- reactieafstand: leg je af tussen gevaar opmerken en rempedaal intrappen
+
+- remafstand: leg je af tussen rempedaal intrappen en stil staan
+
+- stopafstand = reactiefstand + remafstand
+
+- hoe sneller, hoe meer afstand je aflegt om tot stilstand te komen, bij nat wegdek nog meer

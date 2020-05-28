@@ -196,3 +196,93 @@ openbare wegen kunnen er afhankelijk van de omgeving heel anders uitzien(look)
   - overwegen: nooit op stilstaan
     - met slagbomen: niet oprijden als geluidssignaal gaat, rode knipperlichten werken of slagbomen in beweging/gesloten
     - zonder: controleren of trein nadert
+
+## wegmarkeringen
+
+### rand(edge) van de rijbaan
+
+* werkelijke(actual) rand 
+
+- een witte doorlopende streep op de rijbaan, de trottoirband of de boordsteen van een verhoogde berm maakt de rand beter zichtbaar
+
+* denkbeeldige(imaginary) rand
+
+- een brede witte doorlopende streep op rijbaan
+
+- aan de andere kant van de denkbeeldige rand mag je stilstaan en parkeren, behalve op autosnelwegen en autowegen
+
+* gele onderbroken streep
+
+- mag op de werkelijke rand van de rijbaan, op een trottoirband of op de boordsteen van een verhoogde berm aangebracht worden
+
+- *!!* verboden op de rijbaan te parkeren langs de onderbroken gele streep
+
+### rijstroken
+
+- een doorlopende streep mag je niet overschrijden en je mag er niet links van rijden als de streep de rijrichtingen scheidt
+
+- een onderbroken streep mag je enkel overschrijden om:
+  - in te halen
+  - links af te slaan
+  - te keren
+  - van rijstrook te veranderen
+
+- als je strepen korter zijn en dichter(closer) bij elkaar staan, kondigen ze een doorlopende streep aan
+
+- bij een doorlopende en onderbroken streep naast elkaar, moet je alleen rekening houden met de streep aan jouw kant
+
+- voorlopige markeringen
+bij werken worden soms oranje voorlopige markeringen aangebracht om de rijstroken aan te duiden. de betekenis van de oranje strepen is dezelfde als die van de witte
+
+de strepen kunnen vervangen worden door oranje spijkers
+
+### oversteekplaats voor voetgangers
+
+- beter gekend als 'een zebrapad'
+
+- herken je aan een rij brede, witte stroken, evenwijdig met de as van de rijbaan
+
+- je mag niet stoppen op oversteekplaatsen voor voetgangers.
+ als je in een file staat aan te schuiven, wacht je voor de oversteekplaats totdat je zeker bent dat je er in een keer over kunt rijden
+
+- voetgangers moeten de oversteekplaats gebruiken als die op minder dan 20 meter afstand ligt
+
+* oversteekplaats voetgangers zonder verkeerslichten
+
+- mag je slechts(only) met matige(moderated) snelheid naderen
+- je moet voorrang verlenen aan voetgangers die zich erop bevinden of op het punt staan zich erop te begeven
+
+### rijstrookverminderingspijlen (lane reduction arrows)
+
+- rijstrookverminderingspijlen kondigen aan dat verderop de rijstrook de zal wegvallen(fall out)
+
+- de pijl wijst naar de rijstrook waarnaar je je moet verplaatsen
+
+- je voert de verplaatsing uit zonder anderen te hinderen en gebruikt je richtingaanwijzer
+
+- als er een rijstrook wegvalt, ben jij bij sterk vertraagd verkeer verplicht om te ritsen(zip)
+
+### samengevat: wegmarkeringen
+
+- rand van rijden: werkelijke, denkbeeldige, gele onderbroken streep: verboden parkeren
+
+- rijstroken: doorlopende, onderbroken witte streep, voorlopige (oranje)
+
+- oversteekplaats voor zoetgangers(zebrapad): niet op stoppen of stilstaan,
+     zonder verkeerslichten: met matige snelheid naderen, voorrang verlenen aan wie erop is of zich erop wil begeven
+
+- fietspad: verkeersbord of evenwijdige onderbroken witte strepen, auto's niet over rijden, stilstaan of parkeren
+
+- oversteekplaats (brom)fietsers: onderbroken strepen van witte vierkanten, naderen met matige snelheid, wie erop is niet in gevaar brengen of hinderen, niet op stoppen
+
+- fietslogo-verbindingsmarkering: onderbroken streep van witte vierkantjes, fietslogo, waar fietsers kunnen oversteken, fietsers moeten voorrang verlenen
+
+- busstrook: onderbroken witte streep, woord BUS
+  - voor wie: openbaar vervoer, schoolvervoer, taxi's, prioritaire voertuigen, andere indien pictogram
+  - auto enkel: hindernis, kruispunt, parkeerplaats, eigendom
+
+- bijzonderoverrijdbare bedding: doorlopende witte strepen of dambord witte vierkanten
+  - voor wie: openbaar vervoer, taxi's, prioritaire voertuigen, andere indien pictogram
+  - auto enkel: hindernis, kruispunt, parkeerplaats, eigendom
+
+- rijstrookverminderingspijlen: rijstrook gaat wegvallen

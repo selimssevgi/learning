@@ -286,3 +286,81 @@ de strepen kunnen vervangen worden door oranje spijkers
   - auto enkel: hindernis, kruispunt, parkeerplaats, eigendom
 
 - rijstrookverminderingspijlen: rijstrook gaat wegvallen
+
+## je plaats op de weg
+
+* algemeen
+
+- als de openbare weg een rijbaan heeft, moet je die volgen
+
+- je rijdt niet op gelijkgrondse bermen of andere delen van de weg
+
+### uiters rechts rijden (right-hand drive)
+
+- je bent verplicht om zo dicht mogelijk bij de rechterrand van de rijbaan te rijden
+
+- de geldt ook op autosnelwegen of wegen met twee of meer rijstroken
+
+- op een openbare weg emt twee of drie rijbanen die duidelijk van elkaar gescheiden zijn, 
+  is het verboden om de meest links gelegen(ligen) rijbaan te volgen
+
+
+### uitzonderingen uiterst rechts rijden
+
+* op pleinen (on squares)
+
+- op pleinen hoef je niet uiterst rechts te rijden
+
+- je bepaalt(decide) daar zelf waar je best rijdt, tenzij(unless) wegmarkeringen of verkeersborden je iets anders verplichten of verbieden
+
+* op rotondes (on randoabouts)
+
+- op rotondes met rijstroken hoef je niet uiterst rechts te rijden,
+ je mag de rijstrook volgen die het best aan je bestemming(destination) beantwoordt,
+ tenzij een gedeelte van de openbare weg voor bepaalde bestuurders is voorbehouden(reserved)
+ (bv. fietsers moeten het fietspad volgen als er een is)
+
+- op rotondes zonder rijstroken mag je zelf bepalen waar je best rijdt
+
+### bij bepaalde(certain) verkeersborden
+
+- bij bepaalde verkeersborden moet je een rijstrook of een richting kiezen. Op die plaatsen hoef je niet uiterst rechts te rijden
+
+- zodra(as soon as) je de aanwijzing hebt opgevold, ga je terug rechts rijden
+
+### rijstrookkeuze (lane selection)
+
+* binnen de bebouwde kom
+
+binnen de bebouwde kom mag je de rijstrook volgen die het best aan je bestemming beantwoordt:
+
+- op de rijbanen met eenrichtingsverkeer in rijstroken verdeeld
+- op de rijbanen met tweerichtingsverkeer in vier of meer rijstroken verdeeld, waarvan er ten minste twee in iedere rijrichting
+
+* bij druk verkeer
+
+als er druk verkeer is, mag je in meerdere(multiple) files rijden op rijbanen
+
+- met eenrichtingsverkeer
+- met tweerichtingsverkeer in vier of meer rijstroken verdeeld, op de rijstroken in de gevolgde rijrichting
+- in rijstroken verdeeld waarboven verkeerslichten hangen in de vorm van groene naar beneden gerichte pijlen (green downward arrows)
+
+### verkeerslichten boven de weg
+
+verkeerslichten boven de weg kunnen aangeven (indicate) of(whether) je bepaalde rijstroken mag gebruiken:
+
+-  rood kruis: verboden richting
+- groene pijk recht naar beneden: toegelaten richting
+- oranje pijl schuin naar beneden (soms knipperend): verboden richting, tenzij je de weg verlaat in de richting van de pijl(unless you leave the road in that direction)
+
+### samengevat: je plaats op de weg
+
+- op de rijbaan rijden als er een is
+
+- zo dicht mogelijk tegen rechterrand (uitz: pleinen, rotondes, bord voorsorteren rijstrook / richting)
+
+- rijstrookkeuze:
+  - binnen bebouwde kom (eenrichtingsverkeer in rijstroken, minstens 2x2 rijstroken in iedere richting)
+  - bij druk verkeer (eenrichting, minstens 2x2 rijstroken in iedere richting, groene pijlen boven rijstrook)
+
+- verkeerslichten boven de weg (rood kruis / groene pijl / schuine oranje pijl)

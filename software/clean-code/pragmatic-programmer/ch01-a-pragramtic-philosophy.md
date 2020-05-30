@@ -20,6 +20,7 @@
 ## software entropy
 
 - entropy is a term from physics that refers to the amount if "disorder" in a system
+  - the laws of thermo-dynamics guarantee that the entropy in the universe tends toward a maximum
 
 - when disorder increases in software, programmers call it "software rot"
 

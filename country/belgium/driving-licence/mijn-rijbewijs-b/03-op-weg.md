@@ -364,3 +364,80 @@ verkeerslichten boven de weg kunnen aangeven (indicate) of(whether) je bepaalde 
   - bij druk verkeer (eenrichting, minstens 2x2 rijstroken in iedere richting, groene pijlen boven rijstrook)
 
 - verkeerslichten boven de weg (rood kruis / groene pijl / schuine oranje pijl)
+
+## wat doe je bij een ongeval?
+
+ben je betrokken(involved) bij een ongeval, dan moet je, zoals iedereen die betrokken was bij het ongeval,
+ ter plaatse blijven en de nodige maatregelen(measures) nemen for de veiligheid en vlotheid van het verkeer.
+ denk daarbij aan de volgende "drie V's": veiligheid, verwittigen(notication) en verzorgen(care)
+
+## 1. Veiligheid
+
+zorg(ensure) altijd voor je eigen veiligheid en die van de andere weggebruikers:
+
+- parkeer je auto op een veilige plaats
+- zorg voor signalisatie van de betrokken voertuig(en)
+- draag een retro-reflecterend veiligheidshesje als je uitstapt bij een ongeval op een auto(snel)weg
+- zorg dat niemand rookt (ontploffingsgevaar (risk of explosion))
+- blus(extinguish) een beginnende brand indien mogelijk (if possible)
+
+bij een ongeval met enkel stoffelijke schade(material damage)
+
+- verplaats je het voertuig onmiddelijk (teken eventueel de positie met krijt(chalk) op de rijbaan af)
+- zet je de vier richtingaanwijzers aan en plaats je de gevaarsdriehoek als verplaatsen niet meer mogelijk is
+- doe samen met de andere betrokkene(n) de nodige vaststellingen(observations) en vul het Europees aanrijdingsformulier in
+
+- wie ouder is dan 15 jaar moet zijn identiteitskaart of identiteitsbewijs tonen als andere in het ongeval betrokken personen dat vragen
+
+### 2. verwittigen (notify)
+
+als er gewonden(wounded) zijn, is het belangrijk om de hulpdiensten zo goed mogelijk te informeren
+
+- bij een ongeval met gewonden, moet een bevoegd persoon de vaststellingen doen
+
+- bel het noodnummer 112, probeer rustig te blijven en luister goed naar de vragen van de operator
+
+als je niet binnen een redelijke(reasonable) tijd een bevoegd persoon kan bereiken(reach),
+ moet het ongeval ten laatste binnen 24 uren aangegeven (reported) worden.
+ dat doe je op het dichtstbijzinde(nearest) politiekantoor of dat van je woonplaats
+
+bij een ongeval met enkel stoffelijke schade verwittig je de politie:
+
+- als het niet lukt om tot een akkoord to komen bij het invullen van het formulier (in case of disagreement)
+
+- als de andere betrokkene afwezig is of als er geen andere betrokkene is,
+bv. als je tegen een gepaarkeerde auto of verlichtingspaal rijdt
+
+### 3. verzorgen (take care)
+
+indien mogelijk kan je de eerste zorgen toedienen aan eventuele slachtoffers(victims):
+
+- probeer gewonden gerust te stellen
+- hou ze warm met een deken of met kleding
+- geef slachtoffers geen eten of drinken
+- verplaats slachtoffers enkel in uitzonderlijke gevallen, bv. bij ontploffingsgevaar (explosion)
+
+### vluchtmisdrijf (flight crime)
+
+je pleegt(commit) een vluchtmisdrijf als:
+
+- je weet dat je een ongeval hebt veroorzaakt of betrokken was bij een ongeval
+
+- en dat je de plaats verlaten hebt om te vermijden dat de nodige vaststellingen kunnen gebeuren(left the place)
+
+als je toch van de plaats weg moet om beroep te doen op een bevoegd persoon of een gekwetste te helpen,
+moet je eerste je naam en adres achterlaten bij een andere aanwezige (leave your info before leaving)
+
+vluchtmisdrijf leidt altijd tot vervolging(prosecution) voor de politierechtbank(police court) en wordt streng bestraft(punished)
+
+### samengevat: wat doe je bij een ongeval?
+
+- ter plaatse blijven: veiligheid en vlotheid(smooth) verkeer
+- veiligheid: van jezelf en van anderen
+- verwittigen: 112
+- verzorgen: eerste zorgen indien mogelijk
+
+- vluchtmisdrif
+  - plaats van ongeval bewust verlaten om geen vaststellingen te kunnen doen
+  - ongeval niet bij politie binnen de 24 uren aangeven
+  - wordt zwaar bestraft

@@ -1,0 +1,555 @@
+#!/bin/bash
+
+function driving_licence {
+  echo "study!"
+  echo "1 - gevarendriehoek(stad: 20m, normaal: 30m, asnelwegen: 100m)"
+  echo "boards test on 'op weg'"
+  echo "busstrook en bijzondere"
+  echo "motorfietsen vs bromfietsen"
+  echo "broomfiets A vs broomfiets B"
+  echo "MTM MBT specific bords"
+  echo "ritsen"
+  echo "stopafstand"
+  echo "3de en 4de overtredingen"
+  echo "speed pedejec"
+}
+
+function speed_pedelec {
+echo "NIET WAAR: vierkant groen geldt ook als ik met de speed pedelec rijdt"
+
+}
+
+function opstelvak {
+  echo "is voor fietsers en bestuurders van tweewielige bromfietsen"
+  echo "opstelvak is niet for een motorfiets"
+}
+
+function verdrijvingsvlak {
+  echo "mag je niet rijden, niet stilstaan en niet parkeren"
+}
+
+function ritsen {
+  echo "bij sterk vertraagd verkeer ben je verplicht om te ritsen"
+  echo "seridin bittige yerde ritsen baslar"
+  echo "uc seritten iki seride: ortadaki sagdakine izin verecek"
+  echo "uc seritten tek seride: ortadaki sagdakine soldakine sonra kendisi"
+  echo "== NIET RITSEN"
+  echo "opritten van snelwegen"
+  echo "afritten van snelwegen"
+  echo "verkeerswisselaars(otoban kesisimi)"
+}
+
+function rijbewijs {
+  echo "rijbewijs B: minibus, niet meer dan 8+1, MTM < 3.5t"
+  echo "voorlopig:"
+  echo "in belgie"
+  echo "L ophangen"
+  echo "niet rijden tussen 22-6 tijdens weekend"
+  echo "niet rijden op feestdagen(+vooravond)"
+}
+
+function weggebruikers {
+  echo "voetganger"
+  echo "bestuurder"
+}
+
+function voetganger {
+  echo "bromfiets of rolstoel voortduwen"
+  echo "rustig met de step rijden"
+}
+
+function voetgangerszone {
+  echo "bestuurders moeten stapvoets rijden"
+  echo "voetgangers mogen de volledige breedte gebruiken"
+  echo "niet parkeren"
+  echo "fietsers moeten afstappen als het voetgangersverkeer te druk is"
+}
+
+function bestuurder {
+  echo "fietsen"
+  echo "paardrijden"
+  echo "motorfiets voortduwen"
+  echo "skate"
+  echo "sneller dan stapvoets gebruikt"
+}
+
+function gordel {
+  echo "verplict"
+  echo "< 18 jaar en < 1.35m => kinderbeveiligssysteem"
+  echo "geen verplict"
+  echo "achteruit rijdt"
+
+}
+
+function auto {
+  echo "verplichten dingen:"
+  echo "1 - gevarendriehoek(stad: 20m, normaal: 30m, asnelwegen: 100m)"
+  echo "2 - brandblustoestel"
+  echo "3 - fluojasje"
+  echo "4 - verbanddoosje"
+  echo "documenten:"
+  echo "gelijkvormigheidsattest"
+  echo "verzekeringsbewijs"
+  echo "inschrijvingsbewijs - kentekenbewijs"
+  echo "keuringsbewijs (inspection, ouder dan 4 jaar)"
+}
+
+function gevarendriehoek {
+  echo "gewone wegen op minstens 30 m"
+  echo "autosnelwegen op minstens 100 m"
+  echo "zichbaar zijn vanaf 50 m"
+}
+
+function voorrang_van_rechts {
+  echo "geen bevoegd persoon, geen verkeerslichten, geen borden die de voorrang regelen"
+  echo "deze regel zegt: elke bestuurder(fietsen)"
+  echo "links inhalen verboden"
+  echo "geldt niet wanneer er een doorlopend fietspad is(bisiklet, sagdaki, duz)"
+  echo "fietssuggestiestrook: hier geldt wel de voorrang van rechts"
+  echo "geldt niet wanneer er een doorlopend trottoir of zebra is(yaya, sagdaki, duz)"
+  echo "UITZONDERING:"
+  echo "  - tram altijd eerst"
+  echo "  - geen voorrang voor die uit een verboden rijrichting"
+  echo "  - pad een aardeweg (even if last meter is verhard)"
+  echo "  - prive uitrit: garagdan cikan yol verecek "
+  echo "  - verlaten van een parkeerplaats "
+  echo "  - rotonde(icerdeki oncelikli)"
+
+}
+
+function snelheid {
+  echo "inmiddelijke tijdelijke intrekking van je rijbewijs"
+  echo "door de POLITIE"
+  echo "meer dan 30 km/u te snel rijdt op autosnelwegen, autowegen, gewone wegen"
+  echo "meer dan 20 km/u te snel rijdt op bebouwde kom, zone 30, woonerf"
+  echo "door de RECHTER"
+  echo "meer dan 40 km/u te snel rijdt op autosnelwegen, autowegen, gewone wegen"
+  echo "meer dan 30 km/u te snel rijdt op bebouwde kom, zone 30, woonerf"
+}
+
+function fietsstraat {
+  echo "max snelheid 30 km/u"
+  echo "niet links of niet rechts inhalen"
+  echo "hele breedte"
+  echo "speed pedelec = fietsers"
+}
+
+function fietspad {
+  echo "het fietspad is geen onderdeel van de rijbaan"
+  echo "niet rijden, parkeren, of stilstaan"
+}
+
+function speelstraat {
+  echo "toegelaten bestuurders and fietsers stapvoeten rijden"
+  echo "bewoners"
+  echo "fietsers"
+}
+
+function verhoogde_inrichting {
+  echo "max 30 km/u"
+  echo "geen enkele bestuurder links inhalen, ook geen fietsers"
+  echo "gevaarsbord zegt dat 150 meter verder"
+}
+
+function gesleept {
+  echo "als een auto op een autosnelweg wordt GESLEEPT, moet dit door een takendients gebeuren"
+  echo "zelf een auto slepen is sinds 1 maar 2014 is verboden"
+}
+
+function autosnelweg {
+  gesleept
+}
+
+function autoweg {
+  echo "no minimaal snelheid"
+  echo "BINNEN de bebouwde kom max 50 km/u"
+  echo "gewone weg max 70 km/u"
+  echo "met een middenberm 2x2 rijstrooken max 120 km"
+}
+
+function volgafstand {
+  echo "vuistregel: hou minstens twee seconden afstand"
+  echo "last night a DJ saved my life"
+  echo "nat wegdek => driesecondenregel"
+  echo "snelheid: 100 km/u -> afstand = 50m"
+}
+
+function reactieafstand  {
+  echo "opmerk -> rempedaal indrukt"
+  echo "ongeveer 1 seconde"
+  echo "afgeleid, vermoid, alcohol = longer"
+}
+
+function remafstand  {
+  echo "rempedaal indrukt -> stilstaat"
+  echo "hoe sneller, hoe meer"
+  echo "wegdek, versleten banden of remmen => longer"
+}
+
+function stopafstand {
+  echo "= reactieafstand + remafstand"
+  echo "X km/u -> -+ (X-20)m"
+}
+
+function banden {
+  echo "1 -banden moeten in orde zijn:"
+  echo "afgesleten banden of te lage bandendruk:"
+  echo "verhogen de remafstand"
+  echo "verhogen het brandstofverbruik"
+  echo "verminderen ook de wegligging(yol tutus)"
+  echo "2 - profieldiepte"
+  echo "moet minstens 1.6 mm zijn"
+  echo "3 - afgesleten(worn out) - niet opnieuw laten insnijden"
+  echo "4 - bandendruk"
+  echo "gecontroleerd als de banden KOUD zijn"
+  echo "lange uitstap(long trip), zware lading => verhoog de druk een beetje"
+  echo "5 - spijkerbanden"
+  echo "tussen 1 Nov tot en met 31 Maart(gewone wegen => 60 km/u, autosnelwegen => 90 km/u)"
+  echo "6 - winterbanden, < 7 graden"
+  echo "7 - sneeuwkettingen, als er sneeuw of ijzel op de rijbaan ligt"
+  echo "8 - aanduidingen op een autoband - 165/70 R 14 81 T"
+  echo "9 - het wisselen van banden"
+  echo "after 10K - 15K change them crosswise, so evenly, front left, rear right"
+  echo "het vastdraaien van de bouten (tighten the bolts)"
+  echo "follow a star pattern while doing"
+}
+
+function manoeuvres {
+  echo "bij alle manoeuvres die je uitvoert, moet je altijd voorrang verlenen"
+  echo "dat is een belangrijk verschil met de rijbewegingen waar bepaalde voorrangsregels gelden"
+  echo "van rijstrook veranderen"
+  echo "een rijbaan oversteken"
+  echo "een parkeerplaats inrijden of verlaten"
+  echo "uit een aanpalende eigendom komen"
+  echo "keren of achteruit rijden"
+}
+
+function kruisen {
+  echo "om rechts te kruisen"
+}
+
+function eenrichtingsverkeer {
+  echo "zowel rechts als links op de rijbaan parkeren"
+  echo "op voorwaarde dat er tussen de geparkeerde auto's een vrije ruimte van minstens 3 meter blijft"
+}
+
+function aanwijzingsbord {
+  echo "indication sign bord"
+  echo "square shape"
+}
+
+function gebodsbord {
+  echo "mandatory traffic sign"
+  echo "circle shape"
+}
+
+function inhalen {
+  echo "buiten = 1.5m, binnen = 1m"
+  echo "inhalen(beweging) vs voorbijrijden(voertuig niet rijdt)"
+  echo "niet over inhalen, wanneer er file of druk verkeer"
+  echo "!! links inhalen is toegestaan op een kruispunt waar de voorrang geregeld wordt door verkeerlichten"
+  echo ""
+  echo "== voor je een vortuig links inhaalt, vragen:"
+  echo "   trager dan de maximaal toegelaten snelheid?"
+  echo "   op zeer korte tijd inhalen?"
+  echo "   is er een tegenligger die nadert?"
+  echo "   word je misschien zelf ingehaald door een achterligger?"
+  echo "   is er voldoende plaats, zodat je na het inhalen terug kunt invoegen?(een file)"
+  echo "   borden of regels die op deze weg het inhalen verbieden?"
+}
+
+function niet_inhalen {
+  echo "een fietser is geen motorvoertuig en mag je dus wel inhalen"
+  echo "doorlopende streep"
+  echo "verhoogde inrichting (geen voertuig, geen fietser)"
+  echo "overwegen(tren yolu), behalve slagbomen, maanwit licht"
+  echo "gevaarlijke bocht(donuslerde)"
+  echo "onvoldoende zicht (behalve zonder over de doorlopende witte)"
+  echo "oversteekplaatsen voor voetgangers of bromfietsers"
+  echo "tripleren = inhalen een voertuig die inhaalt andere auto(motorbike is okay), behalve 3 rijstroken"
+  echo "voorrang van rechts geldt, voorrang, en stop-bord"
+  echo "steile helling(steep slope, yokus)"
+}
+
+function bevelen {
+  echo "1 arm in de hoogte => alle weggebruikers stoppen"
+  echo "een of beide armen horizontaal gestrekt(strech)"
+  echo "een armen == twee armen"
+  echo "  vingertoppen of zijn zijkant => oprijden om er rechtdoor, of naar links, of naar rechts af te slaan"
+}
+
+function prioritaire_voertuigen {
+  echo "blauwe zwaailichten + speciaal alarmsignaal = voorrang verlenen"
+  echo "blauwe zwaailichten + speciaal alarmsignaal = stoppen als beveogde personen bevelen"
+  echo "extra turn around in round-about to give the way"
+  echo "can stay ahead of the vehicle if able to ride already by maximum speed"
+}
+
+function bushalte {
+  echo "kun rijden, stilstaan"
+  echo "niet parkeren"
+  echo "geen markering, niet parkeren 15m-bushalte-15m"
+  echo "voorrang verlenen als de bus de richtingwijzer aanzetten, binnen de bobuwde kom"
+  echo "enkel voor de Lijn, niet touristbus"
+}
+
+function overweg {
+  echo "maanwit licht => links inhalen"
+  echo "geen lichten of geen slagbomen => links inhalen verboden"
+}
+
+function bijzondere_overrijdbare_bedding {
+  echo "doorgetrokken witte streep"
+  echo "geen onderdeel van de rijbaan"
+  echo "niet rijden, stilstaan, parkeren"
+  echo "laatste meters voor een kruispunt NIET over het rijden"
+}
+
+function busstrook {
+  echo "onderbroken witte streep"
+  echo "niet rijden, parkeren"
+  echo "mag stilstaan, laatste meters voor een kruispunt over het rijden"
+}
+
+
+function stilstaan {
+  echo "tijd die nodig is om iemand te late in- of utistappen"
+  echo "tijd die nodig is om goederen te laden of te lossen"
+  echo "rode licht, in een file, een defect voertuig -> niet stilstaan of parkeren"
+  echo "===="
+  echo "binnen de bebouwde kom -> gelijkgrondse berm"
+  echo "buiten de bebouwde kom -> eender welke berm (niet voorrangsweg)"
+  echo "rechts van de rijbaan een dikke witte streep"
+  echo "berm niet breed genoeg -> deels op de berm en deels op de rijbaan -> op voorwaarde minstens 1.5 m voor voetgangers"
+  echo "op de rijbaan:"
+  echo "rand van de rijbaan"
+  echo "rechts in de rijrichting"
+  echo "dubbel parkeren of stilstaan verboden"
+  echo "minstens 1 m vrije ruimte laten tussen twee geparkeerde wagens"
+}
+
+function parkeren {
+  stilstaan
+  niet_parkeren_stilstaan
+}
+
+function niet_parkeren_stilstaan {
+  echo "auto(snel)weg"
+  echo "troittoir of voetpad"
+  echo "op een verhoogde inrichting"
+  echo "op een fietspad"
+  echo "dambordmarkering"
+  echo "op een verdrijvingsvlak"
+  echo "op een verkeersgeleider"
+  echo "op tramsporen"
+  echo "op overwegen"
+  echo ""
+  echo "niet minder dan 5 meter rond hoek rijbaan"
+  echo "niet minder dan 20 meter met verkeerslicht"
+  echo "also 20 meters to bords if car is not higher than 1.65m(bottom of bord is usually 2m), then can park next to the bord"
+  echo "niet minder dan 5 meter zebrapad"
+  echo "onder bruggen"
+  echo "in tunnels"
+  echo "nabij de top of een helling"
+  echo "voor of in een onoverzichtelijke bocht"
+  echo "======"
+  echo "als je langs de voor- en achterkant van je auto niet 1 m vrije tussenruimte kunt laten"
+  echo "15 meter voor en voorbij bus-halte"
+  echo "er moet nog minstens 3 meter vrije doorgang overblijven"
+  echo "gele onderbroken streep -> stilstaan OK, parkeren NIET"
+}
+
+function beurtelings_parkeren {
+  echo "wanner wisselen?"
+  echo "laatste dag(15th, 30th) van periode tussen 19.30 en 20.00"
+  echo "beurtelings parkeren heel bebouwde kom:"
+  echo "1ste tot de 15de van de maand -> oneven huisnummers"
+  echo "15de tot de het einde van de maand -> even huisnummers"
+}
+
+function parkeerschijf {
+  echo "werkdagen -> van maandag tot en met zaterday, tussen 9 en 18 uur"
+  echo "2 uren maximaal"
+  echo "10.45 -> 11.00"
+  echo "10.05 -> 10.30"
+}
+
+function uitstappen {
+  echo "de handrem optrekken"
+  echo "alle ramen en het open dak sluiten"
+  echo "je schakelt de motor uit"
+  echo "neemt de sleutel uit het contact"
+  echo "en je sluit de deuren zodra je bent uitgestapt"
+  echo "verlaten: in the richting van de achterkant van de auto"
+}
+
+function instappen {
+  echo "langs de voorzijde naar de auto"
+  echo "zo heb je zicht op het achteropkomend verkeer"
+}
+
+function tijd {
+  echo "defecte auto -> maximaal 24h op de openbare weg blijven staan"
+  echo "reclamevoertuig -> maximaal 3h"
+  echo "te koop aanbieden -> verboden"
+}
+
+function alcohol {
+  echo "vermindert aandacht, het beoordelings(assessment), en het reactivevermogen"
+  echo "sneller vemoeid, overmoedig en roekeloos gedragen"
+  echo "waar: openbare plaats"
+  echo "wie: bestuurt, fietsers, ruiters"
+  echo "ademtest: no indication alchol does not prove, so adem of bloed analyse"
+  echo "15 minuten wachttijd (if just drunk a glass of alcohol, can be asked)"
+  echo "[S]afe = veilig = verder rijden"
+  echo "[A]larm = 0.22 < x < 0.35 => 3 uur"
+  echo "[P]ositief = 0.35 < x"
+  echo "refusing is also means Positive => 6 uur rijverbod => een nieuwe test"
+  echo "A and P is geldboete(punishment)"
+
+  echo "committing a driving crime, and after 3 years, again one of them, goes to court"
+  echo "3 maanden rijverboden"
+  echo "examen"
+  echo "psychologisch"
+}
+
+function drug {
+  echo "speekseltest (saliva test)"
+  echo "Positief => 12 uur => een nieuwe test"
+}
+
+function ongeval {
+  echo "voertuig parkeren en lading verwijderen van wegdek"
+  echo "voorkom dat nog meer ongevallen gebeuren"
+  gevarendriehoek
+  echo "waarschuwingslichten"
+  echo "motor afzetten"
+  echo "niet roken"
+  ongeval_geen_gewonden
+  ongeval_gewonden
+}
+
+function ongeval_geen_gewonden {
+  echo "zonger gewonden: de politie niet laten komen, europees aanrijdengsformulier"
+}
+
+function ongeval_gewonden {
+  echo "hulpdiensten verwittigen: 112 internationaal"
+  echo "niet verplaatsen"
+  echo "geen helm afnemen"
+  echo "geen drank/medicijnen geven"
+  echo "drukverband"
+}
+
+function reddingsstrook {
+  echo "rescue line"
+}
+
+function tunnel {
+  echo "voor je een tunnel inrijdt:"
+  echo "zonnebril af"
+  echo "dimlichten aan"
+  echo "zijn verboden in een tunner:"
+  echo "parkeren of stilstaan"
+  echo "keren"
+  echo "achteruitrijden"
+  echo "bij brand of hevige rook:"
+  echo "de auto recht parkeren"
+  echo "de sleutel op het contact laten zitten"
+  echo "tunnel verlaten (via de nooduitgang)"
+}
+
+function roken {
+  echo "in vlaanderen(sinds feb 2019) en in wallonie is roken in auto verboden met kinderen"
+}
+
+function vluchtmisdrijf {
+  echo "moedwillig(willingly) de plaats van een ongeval verlaat"
+  echo "omdat je denkt of weet de aanleiding of de oorzaak van een ongeval te zijn"
+  echo "je bedoeling is om te ontsnappen(escape) aan de vaststellingen(findings) en aan de gevolgen(consequences)"
+
+}
+
+function stop_principe {
+  echo "Stappen < 1KM"
+  echo "Trappen - met de fiets < 10KM"
+  echo "Openbaar vervoer - met de fiets < 10KM"
+  echo "Privaat vervoer > 10KM"
+}
+
+function zuinig_rijden {
+  echo "1 - aanbevolen toerental om te schakelen(recommended speed to shift)"
+  echo "more shift changing, requires veel brandstof"
+  echo "2 - lading is extra brandstof"
+  echo "3 - skibox en imperiaal(roof rack)"
+  echo "4 - fiets achteraan"
+  echo "5 - ramen dicht"
+  echo "incrases air resistance, extra brandstof"
+  echo "6 - stroomverbruikers(power consumers)"
+  echo "turn off airconditioning, vantilator etc if not needed"
+  echo "7 - banden"
+  echo "met de door de fabrikant voorgeschreven bandenspanning(tire pressure) rijdt"
+  echo "zware lading of lange afstand => verhoogd bandenspanning"
+  echo "8 - motor"
+  echo "regelmatig onderhoud"
+  echo "vuile luchtfilter (dirty air filter) => extra brandstof"
+  echo "9 - brandstof"
+  echo "LPG of GAS is het milieuvriendelijkst"
+  echo "wat diesel > benzine"
+  echo "10 - motor stil"
+  echo "als je ergens langer dan 30 seconden moet watchten"
+}
+
+function olie {
+  echo "soepele(smooth) werking"
+  echo "voorkomt oververhit en blokkeert"
+  echo "beschermt inwendige delen ook tegen roest en reinigt de motor"
+  echo "doen als de motor koud en de auto horizontaal(level) staat (to get a correct result)"
+}
+
+function remmen {
+  echo "1 - remmen"
+  echo "controleer regelmatig of er nog voldoende remvloeistof(liquid) is"
+  echo "2 - remmen en bochten"
+  echo "niet extra afremmen, wat gas bijgeven"
+  echo "3 - afslaan en remmen"
+  echo "spiegels -> richtingaanwijzer -> afremmen"
+  echo "4 - ABS - anti blocking system - allows breaking and steering"
+  echo "niet sneller remt, beter bestuurbaar"
+  echo "abs lights als je het rempedaal hard indrukt"
+  echo "5 - ESP - electronic stability program"
+  echo "ani manevralarda arabanin arkasinin kaymasini onluyor"
+}
+
+function accu {
+  echo "beperkte levensduur: vier tot vijf jaar"
+}
+
+function alternator {
+  echo "als een auto stilstaat, dan levert de accu van de auto de nodige stroom"
+  echo "radio, lichten, motor starten"
+  echo "als je met de auto rijdt, dan zorgt de alternator:"
+  echo "voor de stroomvoorziening(power supplier)"
+  echo "voor de opladen van de accu"
+}
+
+function schakelen {
+  echo "benzin => 2500 rpm"
+  echo "diesel => 2000 rpm"
+  echo "lage versnelling => meer brandstof"
+  echo "probeer altijd naar een hogere versnelling te schakelen wanneer dit veilig is"
+  echo "if go uphill or downhill => small gear"
+}
+
+function lading {
+  echo "2.55 m breedte"
+  echo "4 m hoogte"
+  echo "arkadan 1m, 3m ise yansiyan bayrak"
+
+}
+
+function lichten {
+  echo "dimlicht: [avond, ochtend], minder dan 200 m ver kan zien"
+
+
+}

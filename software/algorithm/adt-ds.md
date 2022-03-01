@@ -17,6 +17,10 @@
 - Mathematical model for data types
 - A data types is defined by its behavior from pov of a user
 
+- an ADT specifies *what* each operations does, but not *how* it does it
+
+- in java, an ADT can be expressed by an *interface*
+
 ## Data Structure
 
 - Concrete representations of data

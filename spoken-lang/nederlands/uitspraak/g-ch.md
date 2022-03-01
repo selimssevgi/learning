@@ -1,0 +1,3 @@
+# g and ch
+
+- hetzelfde

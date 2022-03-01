@@ -6,6 +6,14 @@ ln -s existing-file link-file
 
 - Links can either be “hard” or “symbolic”
 
+- uses the path as literally given:
+
+```shell
+ln -s daily.py ~/bin/daily.py # does not work
+ln -s ./daily.py ~/bin/daily.py # does not work
+ln -s "$(pwd)/daily.py" ~/bin/daily.py
+```
+
 ## Hard Links
 
 - We can use the ln command to create a link between two files.

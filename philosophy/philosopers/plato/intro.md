@@ -18,6 +18,10 @@
 - material objects are the manifestation of the universal ideas
 - reality is not matter, is idea
 
+- eternal, immutable, flowed
+  - is wrong or right smth flows? changes from person to person, society to society?
+  - socrates thinks right/wrong is product of eternal, immutable human reason, common sesne, so that is also immutable
+
 
 ### 3 classes of people with 3 types of faculties:
 

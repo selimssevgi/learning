@@ -8,6 +8,7 @@
 
 - instead of pursuing the truth, they are after winning an argument
 
+- teaching/sharing knowledge for money
 
 - nothing exists
 - if anythin exists, i cant know what that is

@@ -1,5 +1,31 @@
 # immanuel kant
 
+- both professor and philoshoper
+
+- time and space are first and foremost modes of perception and not attributes or the physical world
+
+- mind is not just passive wat which simply receives sensations from outside,
+  mind leaves its imprint on the way we apprehend the world
+
+- the thing in itself and the thing for me
+
+## before kant
+
+- rationalism(reason) vs empiricism(experience)
+
+- why not both?
+
+- there is inside and outside world
+- kant focuses inside world
+  - outside world focused by hegel and schopen
+
+- outside world is outside of human experience
+
+- kant thought both sensing and reason come into play in our conception of the world
+
+
+##
+
 - david hume became skeptical of any metaphysical knowledge
 
 

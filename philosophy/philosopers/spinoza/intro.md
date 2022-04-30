@@ -1,5 +1,7 @@
 # spinoza
 
+- one of the pillars of his philosophy was to see things from the perspective of eternity
+
 - from descartes: mind, body, god, 3 different substances
 
 - trying to reduce from multiple to singular

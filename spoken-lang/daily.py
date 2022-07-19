@@ -27,7 +27,7 @@ def word_of_day(data):
     show_word_of_day(word_of_day)
 
 def show_word_of_day(word_of_day):
-    word_of_day = choice(data)
+    # word_of_day = choice(data)
     print()
     print('################################################################################')
     print('###### ' + word_of_day['word'] + ' (' + word_of_day['type'] + '): ' + word_of_day['translate'])
@@ -42,6 +42,8 @@ def show_just_words(data):
 
 def show_help():
     print("new | add --add a new word")
+    print("eng-to    --translate them from english to other language")
+    print("to-eng    --translate them from the language to english")
     print("list      --show the list of words")
     print("fix       --running the latest fix after confirmation")
     print("backup    --backup data file, good to run before a fix")
@@ -122,6 +124,16 @@ def backup(orjfile, data):
     save(data, backup_file)
     print("backup file created", backup_file)
 
+def play_to_eng(data):
+    while True:
+        word_of_day = choice(data)
+        answer = input("translation of " + word_of_day['word'] + ": ")
+        show_word_of_day(word_of_day)
+        if answer == "":
+            break
+        # else:
+        #     examples.append(example)
+
 
 n = len(sys.argv)
 # print("Total arguments passed:", n)
@@ -144,6 +156,8 @@ elif cmd == "find":
     print(found_word)
 elif cmd == "new" or cmd == "add":
     get_new_word(data)
+elif cmd == "to-eng":
+    play_to_eng(data)
 elif cmd == "fix":
     fix(data)
 elif cmd == "backup":

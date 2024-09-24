@@ -1,8 +1,0 @@
-- Spark also supports pulling data sets into a cluster-wide in-memory cache.
-  This is very useful when data is accessed repeatedly, such as when querying
-  a small "hot" dataset or when running an iterative algorithm.
-
-  rddData.cache()
-
-- By default, each transformed RDD may be recomputed each time you run an action
-  on it. However, you may also 'persist' an RDD in memory using the cache method.

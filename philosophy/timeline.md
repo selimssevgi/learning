@@ -125,6 +125,10 @@
 
 - 1878 - 1965 buber I-Thou, I-It relationship, philosophy of dialoge
 
+- 1879 - 1950 ramana maharshi - self-enquiry
+
+- 1883 - 1924 kafka
+
 - 1889 - 1976 heidegger - authenticity
   - influenced by kierkegaard and nietzsche
 
